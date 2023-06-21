@@ -20,9 +20,7 @@ const ContactInfo = ({
     "
     >
       <div
-        className="group flex flex-col gap-4
-      
-      "
+        className="group flex flex-col gap-4"
       >
         <Link
           to="/pharmacies/name"
