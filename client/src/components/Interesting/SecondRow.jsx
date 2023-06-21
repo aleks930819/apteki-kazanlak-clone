@@ -1,5 +1,6 @@
 import Vacine from '../../assets//vaccine.jpg';
 import Vitamins from '../../assets/vitamins.jpg';
+import { Link } from 'react-router-dom';
 
 const SecondRow = () => {
   return (
@@ -25,7 +26,7 @@ const SecondRow = () => {
           </div>
           <div>
             <h2 className="mb-5 text-2xl text-blue-dark">
-              <a>Витамини</a>
+              <Link to="/interesno/name">Витамини</Link>
             </h2>
             <p>
               Всеки ден с храната нашият организъм приема известно количество

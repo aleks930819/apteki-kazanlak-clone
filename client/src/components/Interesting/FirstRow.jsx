@@ -1,10 +1,11 @@
+import { Link } from 'react-router-dom';
 import HeroBannerLogo from '../../assets/about-us.jpg';
 
 const FirstRow = () => {
   return (
     <ul
-      className="mb-20 grid  grid-cols-1 sm:grid-cols-2
-    gap-10 "
+      className="mb-20 grid  grid-cols-1 gap-10
+    sm:grid-cols-2 "
     >
       <li>
         <article>
@@ -40,7 +41,7 @@ const FirstRow = () => {
           </div>
           <div>
             <h2 className="mb-5 text-2xl text-blue-dark">
-              <a>Антибиотици</a>
+              <Link to="/interesno/name">Антибиотици</Link>
             </h2>
             <p>
               Всеки човек поне веднъж в живота си е приемал антибиотик, назначен

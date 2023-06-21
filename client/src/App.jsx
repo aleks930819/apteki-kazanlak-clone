@@ -10,6 +10,7 @@ import InterestingScreen from './screens/Interesting';
 import PromoScreen from './screens/Promo';
 import HistoryScreen from './screens/History';
 import Pharmacie from './screens/Pharmacie';
+import NewsScreen from './screens/News';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: '/interesno',
         element: <InterestingScreen />,
+      },
+      {
+        path: 'interesno/:name',
+        element: <NewsScreen />,
       },
       {
         path: '/promo',
