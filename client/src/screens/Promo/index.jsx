@@ -39,7 +39,7 @@ const promoData = [
 
 const PromoScreen = () => {
   return (
-    <div className=" mx-auto h-[1024px] w-[75vw] mt-5">
+    <div className="mx-auto  w-[75vw] mt-5 ">
       <ul
         className=" grid grid-cols-1  items-center  sm:grid-cols-4 gap-2
       "

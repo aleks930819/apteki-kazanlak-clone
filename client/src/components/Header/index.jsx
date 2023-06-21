@@ -5,7 +5,7 @@ import HeaderLinks from './HeaderLinks';
 
 const Header = () => {
   return (
-    <header className="shadow-lg sticky top-0 z-[1000] flex  w-full items-center justify-center  gap-[150px]  bg-white pb-2 pt-2">
+    <header className="sticky top-0 z-[1000] flex w-full  items-center justify-center gap-[150px]  bg-white  pb-2 pt-2 shadow-lg">
       <div className="inline-flex items-center justify-center gap-4">
         <HeaderLogo />
         <HeaderTitle />

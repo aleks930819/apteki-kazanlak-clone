@@ -2,6 +2,7 @@ import ContactInfoAddress from './ContactInfoAddress';
 import ContactInfoManager from './ContactInfoManager';
 import ContactInfoPhone from './ContactInfoPhone';
 import ContactInfoWorkHours from './ContactInfoWorkHours';
+import { Link } from 'react-router-dom';
 
 const ContactInfo = ({
   name,
@@ -16,7 +17,11 @@ const ContactInfo = ({
   return (
     <div className="h-[300px] w-[33.3333%]">
       <div className="flex flex-col gap-4">
-        <h2 className="text-xl font-semibold uppercase text-primary">{name}</h2>
+        <Link to="/pharmacies/name">
+          <h2 className="text-xl font-semibold uppercase text-primary">
+            {name}
+          </h2>
+        </Link>
         <ContactInfoAddress city={city} street={street} />
         <ContactInfoPhone phone={phone} />
         <ContactInfoWorkHours

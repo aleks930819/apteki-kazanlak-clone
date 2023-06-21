@@ -7,15 +7,19 @@ import AboutUsPharmacyServices from '../../components/AboutUs/AboutUsPharmacySer
 const ServiceHighlightsTitles = [
   {
     title: 'Качествено обслужване',
+    fontSize: 'text-sm',
   },
   {
     title: 'Професионализъм',
+    fontSize: 'text-sm',
   },
   {
     title: 'Достъпни цени',
+    fontSize: 'text-sm',
   },
   {
     title: 'Силно мотивиран екип',
+    fontSize: 'text-sm',
   },
 ];
 
@@ -49,7 +53,7 @@ const AboutUsScreen = () => {
         </p>
         <br />
         <div className="flex items-center justify-center ">
-          <div className='mr-auto'>
+          <div className="mr-auto">
             <img
               src={AboutUsInnerImage}
               alt="About Us Inner Image"

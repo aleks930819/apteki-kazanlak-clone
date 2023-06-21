@@ -3,7 +3,7 @@ import Man from '../../assets/man.jpg';
 const PharmacieHero = () => {
   return (
     <div className="linear-background-purple py-[80px]">
-      <div className="mx-auto flex w-[90vw]  flex-col-reverse items-center justify-center gap-10 sm:w-[70vw] sm:flex-row">
+      <div className="mx-auto flex w-[90vw]  flex-col-reverse items-center justify-center gap-10 sm:w-[65vw] sm:flex-row">
         <div className="flex-1 text-white">
           <h2 className="text-4xl">Иван Гитев</h2>
           <br />

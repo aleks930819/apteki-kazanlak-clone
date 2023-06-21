@@ -6,9 +6,8 @@ const ServiceHighlightsItems = ({ ServiceHighlightsTitles }) => {
     ServiceHighlightsItem
   );
 
-
   return (
-    <div className="flex flex-col items-center justify-center ">
+    <div className="flex flex-col justify-center ">
       <ul className="flex flex-col gap-2 text-primary">
         {ServiceHighlightsTitles?.map((item) => (
           <ServiceHighlightsItemsWithFontSize
