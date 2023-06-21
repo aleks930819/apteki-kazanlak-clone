@@ -7,7 +7,7 @@ const PharmacieWorking = () => {
   return (
     <section className="bg-grey-main p-5 sm:p-10 ">
       <div
-        className="mx-auto flex  flex-col items-center justify-center   sm:w-[75vw] xl:w-[60vw]
+        className="mx-auto flex  flex-col items-center justify-center   sm:w-[75vw] xl:w-[70vw]
       "
       >
         {/* 1 */}
