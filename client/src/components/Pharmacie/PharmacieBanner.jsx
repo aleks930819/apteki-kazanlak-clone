@@ -15,17 +15,17 @@ const PharmacieBanner = () => {
       </div>
       <span
         className="
-        absolute
-        bottom-[5%]
-        left-[35%]
-        -translate-x-1/2
-        -translate-y-1/2
-        transform
-        bg-primary
-        bg-opacity-90 
-         p-2
-         text-6xl text-white
-        "
+    animate-pop-in
+    absolute
+    bottom-24
+    left-60
+    transform
+    bg-primary
+    bg-opacity-90
+    p-2
+    text-6xl
+    text-white
+  "
       >
         Фарма 1 Казанлък
       </span>

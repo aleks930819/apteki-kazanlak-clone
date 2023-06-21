@@ -50,3 +50,24 @@ body {
   -webkit-box-shadow: 1px 5px 8px -3px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 1px 5px 8px -3px rgba(0, 0, 0, 0.75);
 }
+
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  80% {
+    opacity: 0.9;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-pop-in {
+  animation-name: pop-in;
+  animation-duration: .9s;
+  animation-fill-mode: forwards;
+}

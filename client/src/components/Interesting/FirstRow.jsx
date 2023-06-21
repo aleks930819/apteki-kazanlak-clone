@@ -41,7 +41,9 @@ const FirstRow = () => {
           </div>
           <div>
             <h2 className="mb-5 text-2xl text-blue-dark">
-              <Link to="/interesno/name">Антибиотици</Link>
+              <Link to="/interesno/name" className="hover:underline">
+                Антибиотици
+              </Link>
             </h2>
             <p>
               Всеки човек поне веднъж в живота си е приемал антибиотик, назначен
