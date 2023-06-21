@@ -74,7 +74,7 @@ const PharmaciesScreen = () => {
          mb-28   mt-24 w-full p-2 sm:w-[70vw] sm:p-0
         "
         >
-          <div className="grid grid-cols-1 gap-y-20 sm:grid-cols-2 sm:gap-y-32 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-y-24 sm:grid-cols-2 sm:gap-y-32 lg:grid-cols-3">
             {pharmaciesData.map((pharmacy) => (
               <ContactInfo
                 key={pharmacy.name}

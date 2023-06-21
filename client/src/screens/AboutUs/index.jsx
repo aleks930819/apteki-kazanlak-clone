@@ -7,19 +7,19 @@ import AboutUsPharmacyServices from '../../components/AboutUs/AboutUsPharmacySer
 const ServiceHighlightsTitles = [
   {
     title: 'Качествено обслужване',
-    fontSize: 'text-sm',
+    fontSize: 'text-base',
   },
   {
     title: 'Професионализъм',
-    fontSize: 'text-sm',
+    fontSize: 'text-base',
   },
   {
     title: 'Достъпни цени',
-    fontSize: 'text-sm',
+    fontSize: 'text-base',
   },
   {
     title: 'Силно мотивиран екип',
-    fontSize: 'text-sm',
+    fontSize: 'text-base',
   },
 ];
 
@@ -32,7 +32,8 @@ const AboutUsScreen = () => {
       container mx-auto
       mb-12
       mt-12
-      w-[50vw]
+      lg:w-[54vw]
+      xl:w-[45vw]
       "
       >
         <p>
@@ -52,18 +53,19 @@ const AboutUsScreen = () => {
           здравето е най-ценното нещо в живота ни, затова винаги залагаме на:
         </p>
         <br />
-        <div className="flex items-center justify-center ">
+        <div className="flex flex-col items-center justify-center sm:flex-row ">
           <div className="mr-auto">
             <img
               src={AboutUsInnerImage}
               alt="About Us Inner Image"
-              className="h-[35vh]
-            w-full
-            object-cover"
+              className="h-full
+              w-full
+            object-cover
+            sm:h-[30vh]"
             />
           </div>
 
-          <div className="p-10">
+          <div className=" w-full p-4 sm:w-auto  lg:mb-8 lg:pr-4">
             <ServiceHighlightsItems
               ServiceHighlightsTitles={ServiceHighlightsTitles}
             />

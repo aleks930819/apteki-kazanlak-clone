@@ -6,7 +6,7 @@ const FooterLinksData = [
     title: 'Социални Аптеки',
     links: [
       {
-        url: '/',
+        url: '/za-nas',
         title: 'За нас',
       },
       {

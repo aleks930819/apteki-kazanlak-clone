@@ -3,19 +3,19 @@ import ServiceHighlightsItems from './ServiceHighlightsItems';
 const ServiceHighlightsTitles = [
   {
     title: 'Качествено обслужване',
-    fontSize: 'text-4xl',
+    fontSize: 'text-3xl',
   },
   {
     title: 'Професионализъм',
-    fontSize: 'text-4xl',
+    fontSize: 'text-3xl',
   },
   {
     title: 'Достъпни цени',
-    fontSize: 'text-4xl',
+    fontSize: 'text-3xl',
   },
   {
     title: 'Силно мотивиран екип',
-    fontSize: 'text-4xl',
+    fontSize: 'text-3xl',
   },
 ];
 
