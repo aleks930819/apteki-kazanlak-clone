@@ -1,10 +1,58 @@
-import HeroBanner from './HeroBanner';
-import HeroBannerLogo from '../../assets/promo-banner-centrum.jpg';
+// import HeroBanner from './HeroBanner';
+import thirdImage from '../../assets/promo-banner-centrum.jpg';
+import secondImage from '../../assets/slide2.jpg';
+import firstImage from '../../assets/vitamins.jpg';
+import { useState } from 'react';
+import HeroCurrentImageShow from './HeroCurrentImageShow';
+import HeroImagesChangeButtons from './HeroImagesChangeButtons';
+
+const imagesArray = [
+  {
+    url: firstImage,
+  },
+  {
+    url: secondImage,
+  },
+  {
+    url: thirdImage,
+  },
+];
 
 const Hero = () => {
+  const [currentImage, setCurrentImage] = useState(0);
+
+  const handleNextImage = () => {
+    setCurrentImage((prevState) => {
+      if (prevState === imagesArray.length - 1) {
+        return 0;
+      }
+      return prevState + 1;
+    });
+  };
+
+  const handlePrevImage = () => {
+    setCurrentImage((prevState) => {
+      if (prevState === 0) {
+        return imagesArray.length - 1;
+      }
+      return prevState - 1;
+    });
+  };
+
   return (
     <section className="relative ">
-      <HeroBanner imageSrc={HeroBannerLogo} />
+      <div>
+        <div
+          className="duration-100"
+          style={{
+            backgroundImage: `url(${imagesArray[currentImage].url})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            height: '55vh',
+          }}
+        ></div>
+      </div>
       <div
         className="
         absolute
@@ -30,6 +78,11 @@ const Hero = () => {
           Виж още
         </button>
       </div>
+      <HeroImagesChangeButtons
+        handleNextImage={handleNextImage}
+        handlePrevImage={handlePrevImage}
+      />
+      <HeroCurrentImageShow currentImage={currentImage} />
     </section>
   );
 };

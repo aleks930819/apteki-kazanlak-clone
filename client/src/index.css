@@ -68,6 +68,7 @@ body {
 
 .animate-pop-in {
   animation-name: pop-in;
-  animation-duration: .9s;
+  animation-duration: 0.9s;
   animation-fill-mode: forwards;
 }
+
