@@ -1,4 +1,3 @@
-
 const promoProducts = [
   {
     name: 'Магне Б6 Форте табл.',
@@ -17,6 +16,5 @@ const promoProducts = [
       'https://uploads.remediumapi.com/5ecc48266af72c3ad4d5f0e8/146556/1af9f7402b9faef0b3fee1830fc89ef7/1440.jpeg',
   },
 ];
-
 
 export default promoProducts;

@@ -21,7 +21,10 @@ const FirstRow = ({ item }) => {
             </div>
             <div>
               <h2 className="mb-5 text-2xl text-blue-dark">
-                <Link to="/interesno/name" className="hover:underline">
+                <Link
+                  to={`/interesno/${item.slug}`}
+                  className="hover:underline"
+                >
                   {item.title}
                 </Link>
               </h2>
