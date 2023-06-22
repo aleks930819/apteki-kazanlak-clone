@@ -1,6 +1,6 @@
 import People from '../../assets/people.jpg';
 
-const PharmacieBanner = () => {
+const PharmacieBanner = ({ name }) => {
   return (
     <div className="relative">
       <div className="flex flex-col items-center justify-center ">
@@ -27,7 +27,7 @@ const PharmacieBanner = () => {
     text-white
   "
       >
-        Фарма 1 Казанлък
+        {name}
       </span>
     </div>
   );

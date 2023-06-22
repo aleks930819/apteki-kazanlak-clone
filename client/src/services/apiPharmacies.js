@@ -12,3 +12,14 @@ export const getPharmacies = async () => {
   const data = await response.json();
   return data;
 };
+
+export const getPharmacie = async (slug) => {
+  const response = await fetch(`${API_URL}/${slug}`);
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch pharmacy.');
+  }
+
+  const data = await response.json();
+  return data;
+};

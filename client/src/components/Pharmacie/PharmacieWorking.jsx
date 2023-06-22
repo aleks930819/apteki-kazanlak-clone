@@ -3,7 +3,7 @@ import PharmacieRow1 from './PharmacieRow1';
 import PharmacieRow2 from './PharmacieRow2';
 import PharmacieRow3 from './PharmacieRow3';
 
-const PharmacieWorking = () => {
+const PharmacieWorking = ({ workingHours, phone }) => {
   return (
     <section className="bg-grey-main p-5 sm:p-10 ">
       <div
@@ -13,9 +13,9 @@ const PharmacieWorking = () => {
         {/* 1 */}
         <PharmacieRow1 />
         {/* 2 */}
-        <PharmacieRow2 />
+        <PharmacieRow2 workingHours={workingHours} />
         {/* 3 */}
-        <PharmacieRow3 />
+        <PharmacieRow3 phone={phone} />
       </div>
     </section>
   );

@@ -1,19 +1,27 @@
 import PharmacieRowTitle from './PharmacieRowTitle';
 import PharmacieRowWrapper from './PharmacieRowWrapper';
 import PharmacieRowImage from './PharmacieRowImage';
+import formattedHours from '../../utils/formattedHours';
 
-const PharmacieRow2 = () => {
+const PharmacieRow2 = ({ workingHours }) => {
+  const { mondayToFriday, saturday, sunday } = workingHours;
+
   return (
     <PharmacieRowWrapper>
       <PharmacieRowTitle title="Работно време" />
       <div className="flex flex-col items-start ">
-        <p className="font-semibold mb-4 text-primary">
-          Понеделник – Петък: 08:00ч. – 19:00ч.
+        <p className="mb-4 font-semibold text-primary">
+          Понеделник – Петък:{' '}
+          {formattedHours(mondayToFriday[0], mondayToFriday[1])}
         </p>
         <br />
-        <p className="font-semibold mb-4 text-primary">Събота: 09:00ч. – 14:00ч.</p>
+        <p className="mb-4 font-semibold text-primary">
+          Събота: {formattedHours(saturday[0], saturday[1])}
+        </p>
         <br />
-        <p className="font-semibold text-primary">Неделя: Почивен ден</p>
+        <p className="font-semibold text-primary">
+          Неделя: {formattedHours(sunday[0], sunday[1])}
+        </p>
       </div>
       <PharmacieRowImage />
     </PharmacieRowWrapper>

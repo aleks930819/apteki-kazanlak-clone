@@ -13,7 +13,7 @@ import InterestingScreen, {
 } from './screens/Interesting';
 import PromoScreen, { loader as promoLoader } from './screens/Promo';
 import HistoryScreen from './screens/History';
-import Pharmacie from './screens/Pharmacie';
+import Pharmacie, { loader as phrmacieLoader } from './screens/Pharmacie';
 import NewsScreen, { loader as singleNewsLoader } from './screens/News';
 
 const router = createBrowserRouter([
@@ -31,8 +31,9 @@ const router = createBrowserRouter([
         loader: pharmaciesLoader,
       },
       {
-        path: '/pharmacies/:name',
+        path: '/pharmacies/:slug',
         element: <Pharmacie />,
+        loader: phrmacieLoader,
       },
       {
         path: '/za-nas',
