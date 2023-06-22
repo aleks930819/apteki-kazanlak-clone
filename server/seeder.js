@@ -1,0 +1,53 @@
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import users from './data/admins.js';
+import promoProducts from './data/promoProducts.js';
+import User from './models/userModel.js';
+import PromoProduct from './models/promoProductModel.js';
+import connectDB from './config/db.js';
+
+dotenv.config();
+
+connectDB();
+
+const importData = async () => {
+  try {
+    await User.deleteMany();
+    await PromoProduct.deleteMany();
+
+    const createdUsers = await User.insertMany(users);
+
+    const adminUser = createdUsers[0]._id;
+
+    const samplePromoProducts = promoProducts.map((promoProduct) => {
+      return { ...promoProduct, user: adminUser };
+    });
+
+    await PromoProduct.insertMany(samplePromoProducts);
+
+    console.log('Data imported!');
+    process.exit();
+  } catch (err) {
+    console.error(`${err}`);
+    process.exit(1);
+  }
+};
+
+const destroyData = async () => {
+  try {
+    await User.deleteMany();
+    await PromoProduct.deleteMany();
+
+    console.log('Data destroyed!');
+    process.exit();
+  } catch (err) {
+    console.error(`${err}`);
+    process.exit(1);
+  }
+};
+
+if (process.argv[2] === '-d') {
+  destroyData();
+} else {
+  importData();
+}
