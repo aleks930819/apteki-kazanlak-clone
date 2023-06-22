@@ -1,5 +1,7 @@
+import FooterContacts from './FooterContacts';
 import FooterCopyRight from './FooterCopyRight';
 import FooterLinks from './FooterLinks';
+import FooterNomenclature from './FooterNomenclature';
 
 const FooterLinksData = [
   {
@@ -61,60 +63,6 @@ const FooterLinksData = [
       },
     ],
   },
-  {
-    title: 'Номенклатура',
-    links: [
-      {
-        url: '/',
-        title: 'ОТС продукти',
-      },
-      {
-        url: '/',
-        title: 'Лекарско предписание',
-      },
-      {
-        url: '/',
-        title: 'Лекарства, отпускани със зелени и жълти рецепти',
-      },
-      {
-        url: '/',
-        title: 'Лекарства, реимбурсирани от НЗОК',
-      },
-      {
-        url: '/',
-        title: 'Хранителни добавки',
-      },
-      {
-        url: '/',
-        title: 'Козметика',
-      },
-      {
-        url: '/',
-        title: 'Санитарни принадлежности',
-      },
-      {
-        url: '/',
-        title: 'Ортопедрични принадлежности',
-      },
-      {
-        url: '/',
-        title: 'Апарати за измерване на кръвно налягане',
-      },
-      {
-        url: '/',
-        title: 'Глюкомери',
-      },
-    ],
-  },
-  {
-    title: 'Контакти',
-    links: [
-      {
-        url: '/',
-        title: 'За нас',
-      },
-    ],
-  },
 ];
 
 const Footer = () => {
@@ -129,6 +77,8 @@ const Footer = () => {
               links={item.links}
             />
           ))}
+          <FooterNomenclature />
+          <FooterContacts />
         </div>
         <FooterCopyRight />
       </footer>
