@@ -2,8 +2,12 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import users from './data/admins.js';
 import promoProducts from './data/promoProducts.js';
+import news from './data/news.js';
+
 import User from './models/userModel.js';
 import PromoProduct from './models/promoProductModel.js';
+import News from './models/newsModel.js';
+
 import connectDB from './config/db.js';
 
 dotenv.config();
@@ -14,6 +18,7 @@ const importData = async () => {
   try {
     await User.deleteMany();
     await PromoProduct.deleteMany();
+    await News.deleteMany();
 
     const createdUsers = await User.insertMany(users);
 
@@ -24,6 +29,7 @@ const importData = async () => {
     });
 
     await PromoProduct.insertMany(samplePromoProducts);
+    await News.insertMany(news);
 
     console.log('Data imported!');
     process.exit();
@@ -37,6 +43,7 @@ const destroyData = async () => {
   try {
     await User.deleteMany();
     await PromoProduct.deleteMany();
+    await News.deleteMany();
 
     console.log('Data destroyed!');
     process.exit();

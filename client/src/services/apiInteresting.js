@@ -1,8 +1,8 @@
 import { BASE_URL } from '../config';
 
-const API_URL = `${BASE_URL}/promo`;
+const API_URL = `${BASE_URL}/news`;
 
-export const getPromoProducts = async () => {
+export const getNews = async () => {
   const response = await fetch(API_URL);
 
   if (!response.ok) {
