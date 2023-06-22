@@ -1,12 +1,7 @@
 const HistoryScreen = () => {
   return (
-    <div className="relative bg-grey-lighter-2">
-      <div
-        className="
-      
-      
-      "
-      ></div>
+    <div className="flex h-screen items-center justify-center rounded-sm">
+      <div className=" h-[95%] w-1 bg-primary  "></div>
     </div>
   );
 };

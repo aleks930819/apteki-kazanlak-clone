@@ -3,20 +3,10 @@ import LogoImage from '../../assets/logo.png';
 
 const HeaderLogo = () => {
   return (
-    <Link
-      to="/"
-      className="flex 
-      h-[75px] w-[75px]
-      items-center justify-center
-        rounded-full border-[3px]
-        border-primary
-       "
-    >
-      <img
-        src={LogoImage}
-        alt="Logo"
-        className="inline-block h-[45px]  sm:h-[65px]"
-      />
+    <Link to="/">
+      <div className="flex h-12 w-12 items-center justify-center rounded-full border-[3px] border-primary sm:h-[70px] sm:w-[70px]">
+        <img src={LogoImage} alt="Logo" className="h-10 sm:h-16" />
+      </div>
     </Link>
   );
 };

@@ -40,3 +40,13 @@
 .read-the-docs {
   color: #888;
 }
+
+.spine::before {
+  background-color: #00686d;
+  content: '';
+  height: 4px;
+  position: absolute;
+  left: calc(50% - 15px);
+  top: 0;
+  width: 30px;
+}

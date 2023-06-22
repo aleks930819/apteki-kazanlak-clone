@@ -3,13 +3,13 @@ import AboutUsImage from '../../assets/about-us.jpg';
 const AboutUsBanner = () => {
   return (
     <div className="relative">
-      <div className="flex flex-col items-center justify-center ">
+      <div className="flex sm:h-[60vh] flex-col items-center justify-center">
         <img
           src={AboutUsImage}
           alt="About Us Banner Logo"
-          className="h-[60vh]
-             w-full object-top
-                object-cover
+          className="h-full
+             w-full object-cover
+                object-top
             "
         />
       </div>
@@ -21,8 +21,9 @@ const AboutUsBanner = () => {
         -translate-x-1/2
         -translate-y-1/2
         transform
-        text-6xl
-        text-white        "
+        text-2xl
+        text-white
+        sm:text-6xl        "
       >
         За нас
       </h1>
