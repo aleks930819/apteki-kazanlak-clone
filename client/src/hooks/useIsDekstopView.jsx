@@ -12,6 +12,8 @@ const useIsDekstopView = () => {
       }
     };
 
+    handleResize(); // Call the function initially to set the initial value
+
     window.addEventListener('resize', handleResize);
 
     return () => window.removeEventListener('resize', handleResize);
