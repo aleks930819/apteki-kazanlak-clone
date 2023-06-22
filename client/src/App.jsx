@@ -7,7 +7,7 @@ import NotFoundScreen from './screens/NotFound';
 import PharmaciesScreen from './screens/Pharmacies';
 import AboutUsScreen from './screens/AboutUs';
 import InterestingScreen from './screens/Interesting';
-import PromoScreen from './screens/Promo';
+import PromoScreen, { loader as promoLoader } from './screens/Promo';
 import HistoryScreen from './screens/History';
 import Pharmacie from './screens/Pharmacie';
 import NewsScreen from './screens/News';
@@ -15,8 +15,7 @@ import NewsScreen from './screens/News';
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
-    errorElement: <NotFoundScreen />,
-
+    // errorElement: <NotFoundScreen />,
     children: [
       {
         path: '/',
@@ -45,16 +44,17 @@ const router = createBrowserRouter([
       {
         path: '/promo',
         element: <PromoScreen />,
+        loader: promoLoader,
       },
       {
         path: '/history',
         element: <HistoryScreen />,
       },
 
-      // {
-      //   path: '*',
-      //   element: <NotFoundScreen />,
-      // },
+      {
+        path: '*',
+        element: <NotFoundScreen />,
+      },
     ],
   },
 ]);

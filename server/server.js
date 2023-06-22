@@ -2,6 +2,7 @@ import express from 'express';
 import connectDB from './config/db.js';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 import promoProductRoutes from './routes/promoProductRoute.js';
 
@@ -15,6 +16,8 @@ connectDB();
 const app = express();
 
 app.use(bodyParser.json());
+
+app.use(cors());
 
 // app.get('/api/interesno', (req, res) => {});
 

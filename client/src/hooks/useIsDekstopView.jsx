@@ -12,7 +12,7 @@ const useIsDekstopView = () => {
       }
     };
 
-    handleResize(); // Call the function initially to set the initial value
+    handleResize();
 
     window.addEventListener('resize', handleResize);
 
