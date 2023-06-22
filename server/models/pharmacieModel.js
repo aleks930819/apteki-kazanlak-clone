@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import slugify from 'slugify';
 
 const imageSchema = new mongoose.Schema({
   url: { type: String, required: true },
@@ -24,6 +25,14 @@ const pharmacieSchema = mongoose.Schema({
   managerName: { type: String, required: true },
   managerTitle: { type: String, required: true },
   managerDescription: { type: String, required: true, image: [imageSchema] },
+  slug: { type: String },
+});
+
+pharmacieSchema.pre('save', function (next) {
+  if (this.isModified('name') || this.slug === null) {
+    this.slug = slugify(this.title, { lower: true, replacement: '-' });
+  }
+  next();
 });
 
 const Pharmacie = mongoose.model('Pharmacie', pharmacieSchema);
