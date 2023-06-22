@@ -29,11 +29,7 @@ const HeaderLinks = ({ handleDropdownToggle }) => {
     <ul className="flex items-center gap-8">
       {headerLinks.map((link) => (
         <li key={link.title} className="text-secondary">
-          <Link
-            to={link.url}
-          >
-            {link.title}
-          </Link>
+          <Link to={link.url}>{link.title}</Link>
         </li>
       ))}
     </ul>

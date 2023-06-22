@@ -12,7 +12,7 @@ const HeaderLogo = () => {
     p-6"
     >
       <Link to="/">
-        <img src={LogoImage} alt="Logo" className="inline-block h-[65px]" />
+        <img src={LogoImage} alt="Logo" className="inline-block h-[45px]  sm:h-[65px]" />
       </Link>
     </div>
   );

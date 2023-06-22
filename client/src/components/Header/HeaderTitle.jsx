@@ -4,10 +4,10 @@ const HeaderTitle = () => {
   return (
     <Link to="/">
       <div className="flex flex-col">
-        <span className="text-3xl font-semibold tracking-wide text-primary">
+        <span className=" text-base font-semibold tracking-wide text-primary sm:text-2xl lg:text-3xl">
           Социални Аптеки
         </span>
-        <span className="text-2xl font-semibold leading-8 tracking-wide text-primary">
+        <span className=" text-base font-semibold leading-8 tracking-wide text-primary sm:text-2xl lg:text-2xl">
           Казанлък
         </span>
       </div>
