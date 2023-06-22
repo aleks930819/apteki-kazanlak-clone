@@ -22,4 +22,22 @@ router.get(
   })
 );
 
+// @desc    Fetch single pharmacy
+// @route   GET /api/pharmacies/:slug
+// @access  Public
+router.get(
+  '/:slug',
+  asyncHandler(async (req, res) => {
+    const { slug } = req.params;
+    const pharmacy = await Pharmacie.findOne({ slug });
+
+    if (pharmacy) {
+      res.status(200).json(pharmacy);
+    } else {
+      res.status(404);
+      throw new Error('Pharmacy not found.');
+    }
+  })
+);
+
 export default router;

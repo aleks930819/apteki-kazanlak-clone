@@ -81,6 +81,7 @@ const PharmaciesScreen = () => {
             {pharmaciesData.map((pharmacy) => (
               <ContactInfo
                 key={pharmacy.name}
+                slug={pharmacy.slug}
                 name={pharmacy.name}
                 city={pharmacy.address.city}
                 street={pharmacy.address.street}

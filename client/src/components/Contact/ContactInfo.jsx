@@ -13,15 +13,15 @@ const ContactInfo = ({
   saturdayHours,
   sundayHours,
   managerName,
+  slug,
 }) => {
   return (
     <div
-      className="h-[300px] 
-    "
+      className="h-[300px]"
     >
       <div className="group flex flex-col gap-4">
         <Link
-          to="/pharmacies/name"
+          to={`/pharmacies/${slug}`}
           className="relative block w-fit text-xl after:absolute after:block after:h-[2px] after:w-full after:origin-center after:scale-x-0 after:bg-primary after:transition after:duration-300 after:content-[''] after:hover:scale-x-100
           "
         >
