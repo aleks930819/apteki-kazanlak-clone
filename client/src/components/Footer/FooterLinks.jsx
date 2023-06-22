@@ -19,7 +19,9 @@ const FooterLinks = ({ title, links }) => {
                   {link.title}
                 </span>
 
-                <span className="absolute bottom-0 left-0 h-[1px] w-full origin-left scale-x-0 transform bg-white transition duration-300 group-hover:scale-x-100 "></span>
+                {link.effect && (
+                  <span className="absolute bottom-0 left-0 h-[1px] w-full origin-left scale-x-0 transform bg-white transition duration-300 group-hover:scale-x-100 "></span>
+                )}
               </Link>
             </div>
           </li>
