@@ -14,6 +14,10 @@ const newsSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    summary: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,

@@ -4,11 +4,13 @@ const NewsScreen = () => {
   return (
     <>
       <NewsBanner />
-      <section className="mx-auto lg:w-[50vw] bg-white p-10">
+      <section className="mx-auto bg-white p-10 lg:w-[50vw]">
         <div className="flex flex-col items-start justify-center">
-          <h1 className="text-4xl font-semibold text-gray-800 mb-4">Дермоанализ на лице</h1>
+          <h1 className="mb-4 text-4xl font-semibold text-gray-800">
+            Дермоанализ на лице
+          </h1>
           <br />
-          <p className='mb-4'>
+          <p className="mb-4">
             Скъпи пациенти, имаме удоволствието да Ви поканим на 30.03.2021г.
             (Вторник) в Социална аптека "Арника" (аптеката ни под хотел "Роза")
             на едно събитие, което организираме заедно с ESTHEDERM ДЕРМОЕКСПЕРТ.

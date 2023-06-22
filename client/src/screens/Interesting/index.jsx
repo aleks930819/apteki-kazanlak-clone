@@ -1,9 +1,13 @@
+import { useLoaderData } from 'react-router-dom';
 import HeroBannerLogo from '../../assets/slide2.jpg';
 import HeroBanner from '../../components/Hero/HeroBanner';
 import FirstRow from '../../components/Interesting/FirstRow';
 import SecondRow from '../../components/Interesting/SecondRow';
+import { getNews } from '../../services/apiInteresting';
 
 const InterestingScreen = () => {
+  const getAll = useLoaderData();
+
   return (
     <div>
       <HeroBanner imageSrc={HeroBannerLogo} />
@@ -24,11 +28,16 @@ const InterestingScreen = () => {
         </span>
       </div>
       <div className="mx-auto mb-20 mt-10 p-5 lg:w-[80vw]">
-        <FirstRow />
-        <SecondRow />
+        <FirstRow item={getAll} />
+        <SecondRow item={getAll} />
       </div>
     </div>
   );
+};
+
+export const loader = async () => {
+  const getAll = await getNews();
+  return getAll;
 };
 
 export default InterestingScreen;

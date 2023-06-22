@@ -6,7 +6,9 @@ import HomeScreen from './screens/Home';
 import NotFoundScreen from './screens/NotFound';
 import PharmaciesScreen from './screens/Pharmacies';
 import AboutUsScreen from './screens/AboutUs';
-import InterestingScreen from './screens/Interesting';
+import InterestingScreen, {
+  loader as interestingLoader,
+} from './screens/Interesting';
 import PromoScreen, { loader as promoLoader } from './screens/Promo';
 import HistoryScreen from './screens/History';
 import Pharmacie from './screens/Pharmacie';
@@ -36,6 +38,7 @@ const router = createBrowserRouter([
       {
         path: '/interesno',
         element: <InterestingScreen />,
+        loader: interestingLoader,
       },
       {
         path: 'interesno/:name',
