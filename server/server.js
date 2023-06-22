@@ -6,6 +6,7 @@ import cors from 'cors';
 
 import promoProductRoutes from './routes/promoProductRoute.js';
 import interestingRoute from './routes/interestingRoute.js';
+import pharmacieRoute from './routes/phramcieRoute.js';
 
 dotenv.config();
 
@@ -20,20 +21,9 @@ app.use(bodyParser.json());
 
 app.use(cors());
 
-// app.get('/api/interesno', (req, res) => {});
-
-// app.get('/api/interesno/:name', (req, res) => {});
-
-// app.get('/api/pharmacies', (req, res) => {
-//   res.send('Hello from pharmacies.');
-// });
-
-// app.get('/api/pharmacies/:name', (req, res) => {
-//   res.send('Hello from pharmacies.');
-// });
-
 app.use('/api/promo', promoProductRoutes);
 app.use('/api/interesting', interestingRoute);
+app.use('/api/pharmacies', pharmacieRoute);
 
 app.listen(PORT, () =>
   console.log(`Server running on port: http://localhost:${PORT}`)

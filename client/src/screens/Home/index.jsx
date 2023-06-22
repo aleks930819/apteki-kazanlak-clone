@@ -1,8 +1,6 @@
 import Hero from '../../components/Hero';
 import ServiceHighlights from '../../components/ServiceHighlights';
 
-
-
 const HomeScreen = () => {
   return (
     <main>

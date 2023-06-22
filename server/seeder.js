@@ -3,10 +3,12 @@ import dotenv from 'dotenv';
 import users from './data/admins.js';
 import promoProducts from './data/promoProducts.js';
 import news from './data/news.js';
+import pharmaciesData from './data/phramacies.js';
 
 import User from './models/userModel.js';
 import PromoProduct from './models/promoProductModel.js';
 import News from './models/newsModel.js';
+import Pharmacie from './models/pharmacieModel.js';
 
 import connectDB from './config/db.js';
 
@@ -19,6 +21,7 @@ const importData = async () => {
     await User.deleteMany();
     await PromoProduct.deleteMany();
     await News.deleteMany();
+    await Pharmacie.deleteMany();
 
     const createdUsers = await User.insertMany(users);
 
@@ -30,6 +33,7 @@ const importData = async () => {
 
     await PromoProduct.insertMany(samplePromoProducts);
     await News.insertMany(news);
+    await Pharmacie.insertMany(pharmaciesData);
 
     console.log('Data imported!');
     process.exit();
@@ -44,6 +48,7 @@ const destroyData = async () => {
     await User.deleteMany();
     await PromoProduct.deleteMany();
     await News.deleteMany();
+    await Pharmacie.deleteMany();
 
     console.log('Data destroyed!');
     process.exit();

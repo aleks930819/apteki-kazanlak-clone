@@ -4,6 +4,9 @@ const router = express.Router();
 import asyncHandler from '../middleware/asyncHandler.js';
 import News from '../models/newsModel.js';
 
+// @desc    Fetch all news
+// @route   GET /api/interesting
+// @access  Public
 router.get(
   '/',
   asyncHandler(async (req, res) => {
@@ -18,6 +21,9 @@ router.get(
   })
 );
 
+// @desc   Fetch news by slug
+// @route  GET /api/interesting/:slug
+// @access Public
 router.get(
   '/:slug',
   asyncHandler(async (req, res) => {
