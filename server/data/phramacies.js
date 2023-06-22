@@ -31,7 +31,7 @@ const pharmaciesData = [
     workingHours: {
       mondayToFriday: ['08:00', '19:00'],
       saturday: ['09:00', '14:00'],
-      sunday: [],
+      sunday: ['', ''],
     },
     managerName: 'Иван Гитев',
     managerTitle: 'Магистър фармацевт',
@@ -49,7 +49,7 @@ const pharmaciesData = [
     workingHours: {
       mondayToFriday: ['08:00', '19:00'],
       saturday: ['09:00', '14:00'],
-      sunday: [],
+      sunday: ['', ''],
     },
     managerName: 'Христина Ванкина',
     managerTitle: 'Магистър фармацевт',
@@ -67,7 +67,7 @@ const pharmaciesData = [
     workingHours: {
       mondayToFriday: ['08:00', '19:00'],
       saturday: ['09:00', '14:00'],
-      sunday: [],
+      sunday: ['', ''],
     },
     managerName: 'Виктория Башаранова',
     managerTitle: 'Магистър фармацевт',
@@ -85,7 +85,7 @@ const pharmaciesData = [
     workingHours: {
       mondayToFriday: ['08:30', '18:30'],
       saturday: ['09:00', '16:30'],
-      sunday: [],
+      sunday: ['', ''],
     },
     managerName: 'Кристияна Димитрова',
     managerTitle: 'Магистър фармацевт',
@@ -103,7 +103,7 @@ const pharmaciesData = [
     workingHours: {
       mondayToFriday: ['08:30', '19:00'],
       saturday: ['09:00', '14:00'],
-      sunday: [],
+      sunday: ['', ''],
     },
     managerName: 'Мария Кръстева',
     managerTitle: 'Магистър фармацевт',

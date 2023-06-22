@@ -12,16 +12,14 @@ const ContactInfo = ({
   weekdayHours,
   saturdayHours,
   sundayHours,
-  manager,
+  managerName,
 }) => {
   return (
     <div
       className="h-[300px] 
     "
     >
-      <div
-        className="group flex flex-col gap-4"
-      >
+      <div className="group flex flex-col gap-4">
         <Link
           to="/pharmacies/name"
           className="relative block w-fit text-xl after:absolute after:block after:h-[2px] after:w-full after:origin-center after:scale-x-0 after:bg-primary after:transition after:duration-300 after:content-[''] after:hover:scale-x-100
@@ -38,7 +36,7 @@ const ContactInfo = ({
           saturdayHours={saturdayHours}
           sundayHours={sundayHours}
         />
-        <ContactInfoManager manager={manager} />
+        <ContactInfoManager managerName={managerName} />
       </div>
       <div className="mx-auto mt-5 h-[.5px] w-24 bg-grey-dark sm:hidden" />
     </div>

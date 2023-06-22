@@ -1,9 +1,9 @@
-const ContactInfoManager = ({ manager }) => {
+const ContactInfoManager = ({ managerName }) => {
   return (
     <p>
       <span className="font-semibold text-grey-dark">Управител:</span>
       <br />
-      <p>{manager}</p>
+      <p>{managerName}</p>
     </p>
   );
 };

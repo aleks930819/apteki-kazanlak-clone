@@ -18,8 +18,8 @@ const pharmacieSchema = mongoose.Schema({
   phone: { type: String, required: true, image: [imageSchema] },
   workingHours: {
     mondayToFriday: [{ type: String, required: true, image: [imageSchema] }],
-    saturday: [{ type: String, required: true, image: [imageSchema] }],
-    sunday: [{ type: String, required: true, image: [imageSchema] }],
+    saturday: [{ type: String, image: [imageSchema] }],
+    sunday: [{ type: String, image: [imageSchema] }],
   },
   managerName: { type: String, required: true },
   managerTitle: { type: String, required: true },

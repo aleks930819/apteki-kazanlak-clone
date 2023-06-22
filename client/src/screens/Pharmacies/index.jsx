@@ -1,70 +1,73 @@
 import ContactBanner from '../../components/Contact/ContactBanner';
 import ContactInfo from '../../components/Contact/ContactInfo';
+import { getPharmacies } from '../../services/apiPharmacies';
+import { useLoaderData } from 'react-router-dom';
 
-const pharmaciesData = [
-  {
-    name: 'ХИГИЯ',
-    city: 'гр. Казанлък',
-    street: 'ул. "Отец Паисий" № 33',
-    phone: '0431/6 34 95',
-    weekdayHours: '08:00ч. - 21:00ч.',
-    saturdayHours: '09:00ч. - 21:00ч.',
-    sundayHours: '09:00ч. - 21:00ч.',
-    manager: 'Христина Иванова - Теодосиева',
-  },
-  {
-    name: 'ФАРМА 1 КАЗАНЛЪК',
-    city: 'гр. Казанлък',
-    street: 'ул. "Ген Стобелев" 17',
-    phone: '0431/7 50 57',
-    weekdayHours: '08:00ч. - 19:00ч.',
-    saturdayHours: '09:00ч. - 14:00ч.',
-    sundayHours: 'Почивен ден',
-    manager: 'Иван Гитев',
-  },
-  {
-    name: 'АРНИКА',
-    city: 'гр. Казанлък',
-    street: 'бул. Розова долина №2',
-    phone: '0431/6 24 15',
-    weekdayHours: '08:00ч. - 19:00ч.',
-    saturdayHours: '09:00ч. - 14:00ч.',
-    sundayHours: 'Почивен ден',
-    manager: 'Христина Ванкина',
-  },
-  {
-    name: 'ФАРМАВИСТ',
-    city: 'гр. Казанлък',
-    street: 'кв. "Изток", бл. 76',
-    phone: '0431/4 00 40',
-    weekdayHours: '08:00ч. - 19:00ч.',
-    saturdayHours: '09:00ч. - 14:00ч.',
-    sundayHours: 'Почивен ден.',
-    manager: 'Виктория Башаранова',
-  },
-  {
-    name: 'ФАРМА 1 ПАВЕЛ БАНЯ',
-    city: 'гр. Павел Баня',
-    street: 'ул. Ген. Столетов 14',
-    phone: '04361/20 60',
-    weekdayHours: '08:30ч. - 18:30ч.',
-    saturdayHours: '09:00ч. - 16:30ч.',
-    sundayHours: 'Почивен ден',
-    manager: 'Кристияна Димитрова',
-  },
-  {
-    name: 'ФАРМА 1 ЦЕНТЪР',
-    city: 'гр. Казанлък',
-    street: 'ул. "Отец Паисий" 2 Б',
-    phone: '0431/4 00 10',
-    weekdayHours: '08:00ч. - 19:00ч.',
-    saturdayHours: '09:00ч. -  14:00ч.',
-    sundayHours: 'Почивен ден',
-    manager: 'Мария Кръстева',
-  },
-];
+// const pharmaciesData = [
+//   {
+//     name: 'ХИГИЯ',
+//     city: 'гр. Казанлък',
+//     street: 'ул. "Отец Паисий" № 33',
+//     phone: '0431/6 34 95',
+//     weekdayHours: '08:00ч. - 21:00ч.',
+//     saturdayHours: '09:00ч. - 21:00ч.',
+//     sundayHours: '09:00ч. - 21:00ч.',
+//     manager: 'Христина Иванова - Теодосиева',
+//   },
+//   {
+//     name: 'ФАРМА 1 КАЗАНЛЪК',
+//     city: 'гр. Казанлък',
+//     street: 'ул. "Ген Стобелев" 17',
+//     phone: '0431/7 50 57',
+//     weekdayHours: '08:00ч. - 19:00ч.',
+//     saturdayHours: '09:00ч. - 14:00ч.',
+//     sundayHours: 'Почивен ден',
+//     manager: 'Иван Гитев',
+//   },
+//   {
+//     name: 'АРНИКА',
+//     city: 'гр. Казанлък',
+//     street: 'бул. Розова долина №2',
+//     phone: '0431/6 24 15',
+//     weekdayHours: '08:00ч. - 19:00ч.',
+//     saturdayHours: '09:00ч. - 14:00ч.',
+//     sundayHours: 'Почивен ден',
+//     manager: 'Христина Ванкина',
+//   },
+//   {
+//     name: 'ФАРМАВИСТ',
+//     city: 'гр. Казанлък',
+//     street: 'кв. "Изток", бл. 76',
+//     phone: '0431/4 00 40',
+//     weekdayHours: '08:00ч. - 19:00ч.',
+//     saturdayHours: '09:00ч. - 14:00ч.',
+//     sundayHours: 'Почивен ден.',
+//     manager: 'Виктория Башаранова',
+//   },
+//   {
+//     name: 'ФАРМА 1 ПАВЕЛ БАНЯ',
+//     city: 'гр. Павел Баня',
+//     street: 'ул. Ген. Столетов 14',
+//     phone: '04361/20 60',
+//     weekdayHours: '08:30ч. - 18:30ч.',
+//     saturdayHours: '09:00ч. - 16:30ч.',
+//     sundayHours: 'Почивен ден',
+//     manager: 'Кристияна Димитрова',
+//   },
+//   {
+//     name: 'ФАРМА 1 ЦЕНТЪР',
+//     city: 'гр. Казанлък',
+//     street: 'ул. "Отец Паисий" 2 Б',
+//     phone: '0431/4 00 10',
+//     weekdayHours: '08:00ч. - 19:00ч.',
+//     saturdayHours: '09:00ч. -  14:00ч.',
+//     sundayHours: 'Почивен ден',
+//     manager: 'Мария Кръстева',
+//   },
+// ];
 
 const PharmaciesScreen = () => {
+  const pharmaciesData = useLoaderData();
   return (
     <>
       <ContactBanner />
@@ -79,13 +82,13 @@ const PharmaciesScreen = () => {
               <ContactInfo
                 key={pharmacy.name}
                 name={pharmacy.name}
-                city={pharmacy.city}
-                street={pharmacy.street}
+                city={pharmacy.address.city}
+                street={pharmacy.address.street}
                 phone={pharmacy.phone}
-                weekdayHours={pharmacy.weekdayHours}
-                saturdayHours={pharmacy.saturdayHours}
-                sundayHours={pharmacy.sundayHours}
-                manager={pharmacy.manager}
+                weekdayHours={pharmacy.workingHours.mondayToFriday}
+                saturdayHours={pharmacy.workingHours.saturday}
+                sundayHours={pharmacy.workingHours.sunday}
+                managerName={pharmacy.managerName}
               />
             ))}
           </div>
@@ -93,6 +96,11 @@ const PharmaciesScreen = () => {
       </section>
     </>
   );
+};
+
+export const loader = async () => {
+  const pharmacies = await getPharmacies();
+  return pharmacies;
 };
 
 export default PharmaciesScreen;
