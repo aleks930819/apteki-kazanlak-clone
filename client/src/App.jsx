@@ -12,7 +12,7 @@ import InterestingScreen, {
 import PromoScreen, { loader as promoLoader } from './screens/Promo';
 import HistoryScreen from './screens/History';
 import Pharmacie from './screens/Pharmacie';
-import NewsScreen from './screens/News';
+import NewsScreen, { loader as singleNewsLoader } from './screens/News';
 
 const router = createBrowserRouter([
   {
@@ -41,8 +41,9 @@ const router = createBrowserRouter([
         loader: interestingLoader,
       },
       {
-        path: 'interesno/:name',
+        path: '/interesno/:slug',
         element: <NewsScreen />,
+        loader: singleNewsLoader,
       },
       {
         path: '/promo',

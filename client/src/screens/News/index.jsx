@@ -1,36 +1,28 @@
 import NewsBanner from '../../components/News/NewsBanner';
 
+import { useLoaderData } from 'react-router-dom';
+import { getSingleNews } from '../../services/apiInteresting';
+
 const NewsScreen = () => {
+  const { title, description, image } = useLoaderData();
+
   return (
     <>
-      <NewsBanner />
+      <NewsBanner image={image} />
       <section className="mx-auto bg-white p-10 lg:w-[50vw]">
         <div className="flex flex-col items-start justify-center">
-          <h1 className="mb-4 text-4xl font-semibold text-gray-800">
-            Дермоанализ на лице
-          </h1>
+          <h1 className="mb-4 text-4xl font-semibold text-gray-800">{title}</h1>
           <br />
-          <p className="mb-4">
-            Скъпи пациенти, имаме удоволствието да Ви поканим на 30.03.2021г.
-            (Вторник) в Социална аптека "Арника" (аптеката ни под хотел "Роза")
-            на едно събитие, което организираме заедно с ESTHEDERM ДЕРМОЕКСПЕРТ.
-            Ще се проведе професионална диагностика на кожа на лице. Експертите
-            на Esthederm ще ви дадат ценни съвети за грижата, която е необходимо
-            да полагате ежедневно за вашето лице. Ще имате възможността да
-            изберете продукти от Esthederm - френска козметична марка от
-            най-висок клас. Повече за марката и разнообразието от продуктите
-            можете да прочетете тук : <span>https://esthederm.bg/</span>
-          </p>
-          <br />
-          <p>
-            Във връзка с епидемичната обстановка Ви уведомяваме, че ще бъдат
-            спазени всички мерки за безопасност на закрито. За повече информация
-            можете да ни потърсите на място или на телефон: 0431/6 24 15.
-          </p>
+          <p className="mb-4">{description}</p>
         </div>
       </section>
     </>
   );
+};
+
+export const loader = async ({ params }) => {
+  const singleNews = getSingleNews(params.slug);
+  return singleNews;
 };
 
 export default NewsScreen;

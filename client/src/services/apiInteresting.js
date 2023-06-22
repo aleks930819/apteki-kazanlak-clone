@@ -12,3 +12,14 @@ export const getNews = async () => {
   const data = await response.json();
   return data;
 };
+
+export const getSingleNews = async (slug) => {
+  const response = await fetch(`${API_URL}/${slug}`);
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch single news');
+  }
+
+  const data = await response.json();
+  return data;
+};
