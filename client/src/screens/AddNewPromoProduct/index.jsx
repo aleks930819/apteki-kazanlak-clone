@@ -1,26 +1,11 @@
-import { useNavigate } from 'react-router-dom';
-import { createNewPromoProduct } from '../../services/apiPromoProducts';
+import useAddPromoProduct from '../../hooks/useAddPromoProduct';
+
 import InputField from '../../ui/InputField';
 import TextAreaField from '../../ui/TextAreaField';
 import ActionForm from '../../ui/ActionForm';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import toast from 'react-hot-toast';
 
 const AddNewPromoProductScreen = () => {
-  const queryClient = useQueryClient();
-  const navigate = useNavigate();
-
-  const { mutate, isLoading } = useMutation({
-    mutationFn: createNewPromoProduct,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ['promoProducts'],
-      });
-      toast.success('Продуктът е добавен успешно!');
-      navigate('/admin/promo-products');
-    },
-    onError: (error) => toast.error(error.message),
-  });
+  const { addPromoProduct, addingPromoProductLoading } = useAddPromoProduct();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,7 +13,7 @@ const AddNewPromoProductScreen = () => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
 
-    mutate(data);
+    addPromoProduct(data);
   };
 
   return (
@@ -36,7 +21,7 @@ const AddNewPromoProductScreen = () => {
       heading="Добави нов продукт"
       buttonName="Добави"
       onSubmit={handleSubmit}
-      isLoading={isLoading}
+      isLoading={addingPromoProductLoading}
     >
       <InputField
         type="text"
