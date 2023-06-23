@@ -1,14 +1,71 @@
+import { useNavigate, useParams } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
+
 import {
   getProductById,
   updateProductById,
+  deleteProductById,
 } from '../../services/apiPromoProducts';
-import { useLoaderData, redirect } from 'react-router-dom';
+
 import ActionForm from '../../ui/ActionForm';
 import InputField from '../../ui/InputField';
 import TextAreaField from '../../ui/TextAreaField';
+import Spinner from '../../ui/Spinner';
 
 const EditPromoScreeen = () => {
-  const { name, description, oldPrice, newPrice, image, _id } = useLoaderData();
+  const { id } = useParams();
+
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+
+  const { isLoading: editingLoading, mutate: updateProduct } = useMutation({
+    mutationFn: (data) => updateProductById(data, id),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['promoProducts'],
+      });
+      toast.success('Продуктът е променен успешно!');
+      navigate('/admin/promo-products');
+    },
+    onError: (error) => toast.error(error.message),
+  });
+
+  const { isLoading: deletingLoading, mutate: deleteProduct } = useMutation({
+    mutationFn: () => deleteProductById(id),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['promoProducts'],
+      });
+
+      toast.success('Продуктът е изтрит успешно!');
+      navigate('/admin/promo-products');
+    },
+    onError: (error) => toast.error(error.message),
+  });
+
+  const { isLoading, data } = useQuery(['singleProduct', id], () =>
+    getProductById(id)
+  );
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  const { name, description, oldPrice, newPrice, image } = data;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!deletingLoading) {
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData);
+      updateProduct(data);
+    }
+
+    
+  };
 
   return (
     <ActionForm
@@ -16,8 +73,9 @@ const EditPromoScreeen = () => {
       buttonName="Редактирай"
       deleteButton="Изтрий"
       method="POST"
+      onSubmit={handleSubmit}
+      onDeleteAction={deleteProduct}
     >
-      <input type="hidden" name="_id" value={_id} />
       <InputField
         type="text"
         label="Име на продукта"
@@ -56,24 +114,6 @@ const EditPromoScreeen = () => {
       />
     </ActionForm>
   );
-};
-
-export const loader = async ({ params }) => {
-  const { id } = params;
-  const product = await getProductById(id);
-
-  return product;
-};
-
-export const action = async ({ request }) => {
-  const body = await request.formData();
-  const data = Object.fromEntries(body);
-
-  console.log(data);
-
-  await updateProductById(data._id, data);
-
-  return redirect('/admin/promo-products');
 };
 
 export default EditPromoScreeen;

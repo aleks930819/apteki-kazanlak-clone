@@ -13,12 +13,8 @@ import Pharmacie from './screens/Pharmacie';
 import NewsScreen from './screens/News';
 import LoginScreen from './screens/Login';
 import AdminPanelScreen from './screens/AdminPanel';
-
 import AddNewPromoProductScreen from './screens/AddNewPromoProduct';
-import EditPromoScreeen, {
-  loader as editPromoProductLoader,
-  action as editPromoProductAction,
-} from './screens/EditPromoProduct';
+import EditPromoScreeen from './screens/EditPromoProduct';
 
 import AdminPromoProducts from './components/Admin/AdminPromoProducts';
 import AdminInteresno from './components/Admin/adminInteresno';
@@ -96,8 +92,6 @@ const router = createBrowserRouter([
           {
             path: 'promo-products/edit/:id',
             element: <EditPromoScreeen />,
-            loader: editPromoProductLoader,
-            action: editPromoProductAction,
           },
           {
             path: 'intersno',

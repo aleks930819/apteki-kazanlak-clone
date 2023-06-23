@@ -5,6 +5,7 @@ const ActionForm = ({
   onSubmit,
   deleteButton,
   isLoading,
+  onDeleteAction,
 }) => {
   return (
     <div className="flex h-full w-full flex-col items-center justify-center rounded-md bg-white p-4 shadow-md">
@@ -25,16 +26,14 @@ const ActionForm = ({
             {buttonName}
           </button>
           {deleteButton && (
-            <>
-              <input type="hidden" name="_method" value="DELETE" />
-              <button
-                className="rounded-md border-2  bg-red-600 px-4  py-2 font-bold uppercase text-white disabled:cursor-not-allowed disabled:opacity-80"
-                type="submit"
-                disabled={isLoading}
-              >
-                {deleteButton}
-              </button>
-            </>
+            <button
+              className="rounded-md border-2  bg-red-600 px-4  py-2 font-bold uppercase text-white disabled:cursor-not-allowed disabled:opacity-80"
+              type="button"
+              disabled={isLoading}
+              onClick={onDeleteAction}
+            >
+              {deleteButton}
+            </button>
           )}
         </div>
       </form>

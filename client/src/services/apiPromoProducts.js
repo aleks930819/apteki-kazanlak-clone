@@ -41,7 +41,7 @@ export const getProductById = async (id) => {
   return data;
 };
 
-export const updateProductById = async (id, data) => {
+export const updateProductById = async (data, id) => {
   const response = await fetch(`${API_URL}/${id}`, {
     method: 'PATCH',
     headers: {
@@ -52,6 +52,19 @@ export const updateProductById = async (id, data) => {
 
   if (!response.ok) {
     throw new Error('Failed to update promo product.');
+  }
+
+  const responseData = await response.json();
+  return responseData;
+};
+
+export const deleteProductById = async ( id) => {
+  const response = await fetch(`${API_URL}/${id}`, {
+    method: 'DELETE',
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to delete promo product.');
   }
 
   const responseData = await response.json();
