@@ -26,6 +26,7 @@ import AdminPharmacies from './components/Admin/adminPharmacies';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { Toaster } from 'react-hot-toast';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -117,6 +118,26 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
       <RouterProvider router={router} />
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        gutter={12}
+        containerStyle={{ top: 80 }}
+        toastOptions={{
+          success: {
+            duration: 5000,
+          },
+          error: {
+            duration: 5000,
+          },
+          style: {
+            fontSize: '1rem',
+            color: 'white',
+            padding: '16px',
+            background: '#00686c',
+          },
+        }}
+      />
     </QueryClientProvider>
   );
 }

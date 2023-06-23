@@ -4,6 +4,7 @@ import InputField from '../../ui/InputField';
 import TextAreaField from '../../ui/TextAreaField';
 import ActionForm from '../../ui/ActionForm';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
 
 const AddNewPromoProductScreen = () => {
   const queryClient = useQueryClient();
@@ -15,8 +16,10 @@ const AddNewPromoProductScreen = () => {
       queryClient.invalidateQueries({
         queryKey: ['promoProducts'],
       });
+      toast.success('Продуктът е добавен успешно!');
       navigate('/admin/promo-products');
     },
+    onError: (error) => toast.error(error.message),
   });
 
   const handleSubmit = (e) => {

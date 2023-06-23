@@ -3,7 +3,7 @@ const Table = ({ columns, data }) => {
     <div className="h-[calc(100vh-100px)] w-[calc(100vw-300px)] overflow-y-auto ">
       <div className="relative overflow-x-auto">
         <table className="w-full text-left text-sm text-white">
-          <thead className="bg-primary text-xs uppercase">
+          <thead className="bg-primary text-xs uppercase ">
             <tr>
               {columns.map((column, index) => (
                 <th key={index} scope="col" className="px-6 py-3">
