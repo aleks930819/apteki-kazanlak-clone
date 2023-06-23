@@ -1,9 +1,13 @@
-import { getNews } from '../../services/apiInteresting';
-import Table from '../../ui/Table';
+import { useQuery } from '@tanstack/react-query';
+
+import { Link } from 'react-router-dom';
+
 import { BsPencilSquare } from 'react-icons/bs';
 import { AiFillPlusCircle } from 'react-icons/ai';
 
-import { Link, useLoaderData } from 'react-router-dom';
+import { getNews } from '../../services/apiInteresting';
+import Table from '../../ui/Table';
+import Spinner from '../../ui/Spinner';
 
 const tableColumns = [
   { label: 'Заглавие на статията', dataKey: 'title' },
@@ -31,7 +35,10 @@ const tableColumns = [
     label: 'Добави Статия',
     dataKey: 'add',
     render: (rowData) => (
-      <Link to="/admin/promo-products/add" className="flex cursor-pointer items-center">
+      <Link
+        to="/admin/promo-products/add"
+        className="flex cursor-pointer items-center"
+      >
         <AiFillPlusCircle className="text-2xl text-primary" />
         <span className="ml-2">{rowData.add}</span>
       </Link>
@@ -40,22 +47,27 @@ const tableColumns = [
 ];
 
 const AdminInteresno = () => {
-  const news = useLoaderData();
+  const { isLoading, data: news } = useQuery({
+    queryKey: ['news'],
+    queryFn: getNews,
+  });
 
-  const tableData = [
-    ...news.map((news) => ({
-      title: news.title,
-      date: news.createdAt,
-      image: news.image,
-    })),
-  ];
+  let tableData = [];
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  if (news) {
+    tableData = [
+      ...news.map((news) => ({
+        title: news.title,
+        date: news.createdAt,
+        image: news.image,
+      })),
+    ];
+  }
 
   return <Table columns={tableColumns} data={tableData}></Table>;
-};
-
-export const loader = async () => {
-  const news = getNews();
-  return news;
 };
 
 export default AdminInteresno;

@@ -1,10 +1,22 @@
 import NewsBanner from '../../components/News/NewsBanner';
 
-import { useLoaderData } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getSingleNews } from '../../services/apiInteresting';
+import { useQuery } from '@tanstack/react-query';
+import Spinner from '../../ui/Spinner';
 
 const NewsScreen = () => {
-  const { title, description, image } = useLoaderData();
+  const { slug } = useParams();
+
+  const { isLoading, data } = useQuery(['singleNews', slug], () =>
+    getSingleNews(slug)
+  );
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  const { image, title, description } = data;
 
   return (
     <>
@@ -18,11 +30,6 @@ const NewsScreen = () => {
       </section>
     </>
   );
-};
-
-export const loader = async ({ params }) => {
-  const singleNews = getSingleNews(params.slug);
-  return singleNews;
 };
 
 export default NewsScreen;

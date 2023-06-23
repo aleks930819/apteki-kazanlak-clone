@@ -6,25 +6,14 @@ import HomeScreen from './screens/Home';
 import NotFoundScreen from './screens/NotFound';
 import PharmaciesScreen from './screens/Pharmacies';
 import AboutUsScreen from './screens/AboutUs';
-import InterestingScreen, {
-  loader as interestingLoader,
-} from './screens/Interesting';
+import InterestingScreen from './screens/Interesting';
 import PromoScreen from './screens/Promo';
 import HistoryScreen from './screens/History';
-import Pharmacie, { loader as phrmacieLoader } from './screens/Pharmacie';
-import NewsScreen, { loader as singleNewsLoader } from './screens/News';
+import Pharmacie from './screens/Pharmacie';
+import NewsScreen from './screens/News';
 import LoginScreen from './screens/Login';
 import AdminPanelScreen from './screens/AdminPanel';
 
-import AdminPromoProducts, {
-  loader as adminPromoProducts,
-} from './components/Admin/AdminPromoProducts';
-import AdminInteresno, {
-  loader as admiIntersnoLoader,
-} from './components/Admin/adminInteresno';
-import AdminPharmacies, {
-  loader as adminPharmaciesLoader,
-} from './components/Admin/adminPharmacies';
 import AddNewPromoProductScreen, {
   action as createNewPromoProductAction,
 } from './screens/AddNewPromoProduct';
@@ -32,6 +21,10 @@ import EditPromoScreeen, {
   loader as editPromoProductLoader,
   action as editPromoProductAction,
 } from './screens/EditPromoProduct';
+
+import AdminPromoProducts from './components/Admin/AdminPromoProducts';
+import AdminInteresno from './components/Admin/adminInteresno';
+import AdminPharmacies from './components/Admin/adminPharmacies';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
@@ -60,7 +53,6 @@ const router = createBrowserRouter([
       {
         path: '/pharmacies/:slug',
         element: <Pharmacie />,
-        loader: phrmacieLoader,
       },
       {
         path: '/za-nas',
@@ -69,17 +61,14 @@ const router = createBrowserRouter([
       {
         path: '/interesno',
         element: <InterestingScreen />,
-        loader: interestingLoader,
       },
       {
         path: '/interesno/:slug',
         element: <NewsScreen />,
-        loader: singleNewsLoader,
       },
       {
         path: '/promo',
         element: <PromoScreen />,
-        // loader: promoLoader,
       },
       {
         path: '/history',
@@ -96,12 +85,10 @@ const router = createBrowserRouter([
           {
             path: 'pharmacies',
             element: <AdminPharmacies />,
-            loader: adminPharmaciesLoader,
           },
           {
             path: 'promo-products',
             element: <AdminPromoProducts />,
-            loader: adminPromoProducts,
           },
           {
             path: 'promo-products/add',
@@ -117,7 +104,6 @@ const router = createBrowserRouter([
           {
             path: 'intersno',
             element: <AdminInteresno />,
-            loader: admiIntersnoLoader,
           },
         ],
       },

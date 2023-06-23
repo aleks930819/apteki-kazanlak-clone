@@ -1,4 +1,6 @@
-import { useLoaderData } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+
 import PharmacieAbout from '../../components/Pharmacie/PharmacieAbout';
 import PharmacieBanner from '../../components/Pharmacie/PharmacieBanner';
 import PharmacieHero from '../../components/Pharmacie/PharmacieHero';
@@ -7,8 +9,27 @@ import { getPharmacie } from '../../services/apiPharmacies';
 import { GoogleMap, Marker } from '@react-google-maps/api';
 import { useJsApiLoader } from '@react-google-maps/api';
 import { GOOGLE_MAPS_API_KEY } from '../../../api';
+import Spinner from '../../ui/Spinner';
 
 const Pharmacie = () => {
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: GOOGLE_MAPS_API_KEY,
+  });
+
+  const { slug } = useParams();
+  const { isLoading, data: pharmacie } = useQuery(
+    ['singlePharmacie', slug],
+    () => getPharmacie(slug)
+  );
+
+  if (!isLoaded) {
+    return <div>Loading...</div>;
+  }
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   const {
     name,
     history,
@@ -17,14 +38,7 @@ const Pharmacie = () => {
     managerName,
     managerTitle,
     managerDescription,
-  } = useLoaderData();
-  const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: GOOGLE_MAPS_API_KEY,
-  });
-
-  if (!isLoaded) {
-    return <div>Loading...</div>;
-  }
+  } = pharmacie;
 
   const mapCenter = { lat: -3.745, lng: -38.523 };
 
@@ -49,11 +63,6 @@ const Pharmacie = () => {
       </div>
     </>
   );
-};
-
-export const loader = async ({ params }) => {
-  const pharmacie = await getPharmacie(params.slug);
-  return pharmacie;
 };
 
 export default Pharmacie;

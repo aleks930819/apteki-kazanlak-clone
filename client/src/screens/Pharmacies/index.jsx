@@ -5,11 +5,7 @@ import { getPharmacies } from '../../services/apiPharmacies';
 import Spinner from '../../ui/Spinner';
 
 const PharmaciesScreen = () => {
-  const {
-    isLoading,
-    data: pharmaciesData,
-    error,
-  } = useQuery({
+  const { isLoading, data: pharmaciesData } = useQuery({
     queryKey: ['pharmacies'],
     queryFn: getPharmacies,
   });

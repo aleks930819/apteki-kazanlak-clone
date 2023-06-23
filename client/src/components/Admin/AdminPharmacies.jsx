@@ -1,8 +1,10 @@
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getPharmacies } from '../../services/apiPharmacies';
 import Table from '../../ui/Table';
 import { BsPencilSquare } from 'react-icons/bs';
 import { AiFillPlusCircle } from 'react-icons/ai';
+import { useQuery } from '@tanstack/react-query';
+import Spinner from '../../ui/Spinner';
 
 const tableColumns = [
   { label: 'Име на Аптеката', dataKey: 'pharmacieName' },
@@ -23,7 +25,7 @@ const tableColumns = [
     label: 'Добави Аптека',
     dataKey: 'add',
     render: (rowData) => (
-      <Link to='/add' className="flex cursor-pointer items-center">
+      <Link to="/add" className="flex cursor-pointer items-center">
         <AiFillPlusCircle className="text-2xl text-primary" />
         <span className="ml-2">{rowData.add}</span>
       </Link>
@@ -32,23 +34,28 @@ const tableColumns = [
 ];
 
 const AdminPharmacies = () => {
-  const pharmacies = useLoaderData();
+  const { isLoading, data: pharmacies } = useQuery({
+    queryKey: ['pharmacies'],
+    queryFn: getPharmacies,
+  });
+  let tableData = [];
 
-  const tableData = [
-    ...pharmacies.map((pharmacie) => ({
-      pharmacieName: pharmacie.name,
-      address: `${pharmacie.address.city}, ${pharmacie.address.street}`,
-      phone: pharmacie.phone,
-      manager: pharmacie.managerName,
-    })),
-  ];
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  if (pharmacies) {
+    tableData = [
+      ...pharmacies.map((pharmacie) => ({
+        pharmacieName: pharmacie.name,
+        address: `${pharmacie.address.city}, ${pharmacie.address.street}`,
+        phone: pharmacie.phone,
+        manager: pharmacie.managerName,
+      })),
+    ];
+  }
 
   return <Table columns={tableColumns} data={tableData}></Table>;
-};
-
-export const loader = async () => {
-  const pharmacies = getPharmacies();
-  return pharmacies;
 };
 
 export default AdminPharmacies;

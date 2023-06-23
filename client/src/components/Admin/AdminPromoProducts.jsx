@@ -3,8 +3,9 @@ import Table from '../../ui/Table';
 import { BsPencilSquare } from 'react-icons/bs';
 import { AiFillPlusCircle } from 'react-icons/ai';
 
-import { useLoaderData } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import Spinner from '../../ui/Spinner';
 
 const tableColumns = [
   { label: 'Име на продукта', dataKey: 'productName' },
@@ -48,24 +49,29 @@ const tableColumns = [
 ];
 
 const AdminPromoProducts = () => {
-  const promoProducts = useLoaderData();
+  const { isLoading, data: promoProducts } = useQuery({
+    queryKey: ['promoProducts'],
+    queryFn: getPromoProducts,
+  });
 
-  const tableData = [
-    ...promoProducts.map((promoProduct) => ({
-      _id: promoProduct._id,
-      productName: promoProduct.name,
-      oldPrice: promoProduct.oldPrice,
-      newPrice: promoProduct.newPrice,
-      image: promoProduct.image,
-    })),
-  ];
+  let tableData = [];
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+  if (promoProducts) {
+    tableData = [
+      ...promoProducts.map((promoProduct) => ({
+        _id: promoProduct._id,
+        productName: promoProduct.name,
+        oldPrice: promoProduct.oldPrice,
+        newPrice: promoProduct.newPrice,
+        image: promoProduct.image,
+      })),
+    ];
+  }
 
   return <Table columns={tableColumns} data={tableData}></Table>;
-};
-
-export const loader = async () => {
-  const promoProducts = await getPromoProducts();
-  return promoProducts;
 };
 
 export default AdminPromoProducts;
