@@ -1,6 +1,7 @@
 import { getPromoProducts } from '../../services/apiPromoProducts';
 import Table from '../../ui/Table';
 import { BsPencilSquare } from 'react-icons/bs';
+import { AiFillPlusCircle } from 'react-icons/ai';
 
 import { useLoaderData } from 'react-router-dom';
 
@@ -22,8 +23,18 @@ const tableColumns = [
     dataKey: 'edit',
     render: (rowData) => (
       <div className="flex items-center">
-        <BsPencilSquare className="cursor-pointer text-2xl" />
+        <BsPencilSquare className="cursor-pointer text-2xl text-primary" />
         <span className="ml-2">{rowData.edit}</span>
+      </div>
+    ),
+  },
+  {
+    label: 'Добави Аптека',
+    dataKey: 'add',
+    render: (rowData) => (
+      <div className="flex cursor-pointer items-center text-primary">
+        <AiFillPlusCircle className="text-2xl" />
+        <span className="ml-2">{rowData.add}</span>
       </div>
     ),
   },

@@ -14,12 +14,12 @@ const Table = ({ columns, data }) => {
           </thead>
           <tbody>
             {data.map((rowData, index) => (
-              <tr
-                key={index}
-                className="border-b border-t border-black "
-              >
+              <tr key={index} className="border-b border-t border-black ">
                 {columns.map((column, columnIndex) => (
-                  <td key={columnIndex} className="px-6 py-4 text-black">
+                  <td
+                    key={columnIndex}
+                    className="px-6 py-4 font-bold text-primary"
+                  >
                     {column.render
                       ? column.render(rowData)
                       : rowData[column.dataKey]}

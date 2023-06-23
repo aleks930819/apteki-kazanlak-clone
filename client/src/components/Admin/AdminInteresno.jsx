@@ -1,6 +1,8 @@
 import { getNews } from '../../services/apiInteresting';
 import Table from '../../ui/Table';
 import { BsPencilSquare } from 'react-icons/bs';
+import { AiFillPlusCircle } from 'react-icons/ai';
+
 import { useLoaderData } from 'react-router-dom';
 
 const tableColumns = [
@@ -20,8 +22,18 @@ const tableColumns = [
     dataKey: 'edit',
     render: (rowData) => (
       <div className="flex cursor-pointer items-center">
-        <BsPencilSquare className="text-2xl" />
+        <BsPencilSquare className="text-2xl text-primary" />
         <span className="ml-2">{rowData.edit}</span>
+      </div>
+    ),
+  },
+  {
+    label: 'Добави Статия',
+    dataKey: 'add',
+    render: (rowData) => (
+      <div className="flex cursor-pointer items-center">
+        <AiFillPlusCircle className="text-2xl text-primary" />
+        <span className="ml-2">{rowData.add}</span>
       </div>
     ),
   },
