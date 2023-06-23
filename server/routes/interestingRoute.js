@@ -9,10 +9,7 @@ import {
 } from '../controllers/interestingController.js';
 
 router.get('/', getAllNews);
-
-// @desc   Fetch news by slug
-// @route  GET /api/interesting/:slug
-// @access Public
 router.get('/:slug', getSingleNews);
+
 
 export default router;

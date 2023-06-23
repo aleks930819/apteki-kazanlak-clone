@@ -1,13 +1,15 @@
 import express from 'express';
 const router = express.Router();
 
-import asyncHandler from '../middleware/asyncHandler.js';
-import PromoProduct from '../models/promoProductModel.js';
-import { getAllPromoProducts } from '../controllers/promoProductController.js';
+import {
+  addPromoProduct,
+  deletePromoProduct,
+  getAllPromoProducts,
+  editPromoProduct,
+} from '../controllers/promoProductController.js';
 
-// @desc    Fetch all promo products
-// @route   GET /api/promo
-// @access  Public
 router.get('/', getAllPromoProducts);
+router.post('/', addPromoProduct);
+router.delete('/:id', deletePromoProduct).put('/:id', editPromoProduct);
 
 export default router;
