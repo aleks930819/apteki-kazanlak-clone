@@ -11,7 +11,7 @@ import AboutUsScreen from './screens/AboutUs';
 import InterestingScreen, {
   loader as interestingLoader,
 } from './screens/Interesting';
-import PromoScreen, { loader as promoLoader } from './screens/Promo';
+import PromoScreen from './screens/Promo';
 import HistoryScreen from './screens/History';
 import Pharmacie, { loader as phrmacieLoader } from './screens/Pharmacie';
 import NewsScreen, { loader as singleNewsLoader } from './screens/News';
@@ -34,6 +34,17 @@ import EditPromoScreeen, {
   loader as editPromoProductLoader,
   action as editPromoProductAction,
 } from './screens/EditPromoProduct';
+
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 60 * 1000,
+    },
+  },
+});
 
 const router = createBrowserRouter([
   {
@@ -71,7 +82,7 @@ const router = createBrowserRouter([
       {
         path: '/promo',
         element: <PromoScreen />,
-        loader: promoLoader,
+        // loader: promoLoader,
       },
       {
         path: '/history',
@@ -122,7 +133,12 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  );
 }
 
 export default App;

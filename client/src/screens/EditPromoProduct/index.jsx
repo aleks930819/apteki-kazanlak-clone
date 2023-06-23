@@ -14,6 +14,7 @@ const EditPromoScreeen = () => {
     <ActionForm
       heading="Редактирай продукт"
       buttonName="Редактирай"
+      deleteButton="Изтрий"
       method="POST"
     >
       <input type="hidden" name="_id" value={_id} />
@@ -67,6 +68,8 @@ export const loader = async ({ params }) => {
 export const action = async ({ request }) => {
   const body = await request.formData();
   const data = Object.fromEntries(body);
+
+  console.log(data);
 
   await updateProductById(data._id, data);
 

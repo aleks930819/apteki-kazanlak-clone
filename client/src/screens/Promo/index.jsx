@@ -1,9 +1,21 @@
-import { useLoaderData } from 'react-router-dom';
 import PromoCard from '../../components/Promo/PromoCard';
 import { getPromoProducts } from '../../services/apiPromoProducts';
+import { useQuery } from '@tanstack/react-query';
+import Spinner from '../../ui/Spinner';
 
 const PromoScreen = () => {
-  const promoData = useLoaderData();
+  const {
+    isLoading,
+    data: promoData,
+    error,
+  } = useQuery({
+    queryKey: ['promo-products'],
+    queryFn: getPromoProducts,
+  });
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <div className="mx-auto  mt-10 w-[75vw] ">
@@ -24,11 +36,6 @@ const PromoScreen = () => {
       </ul>
     </div>
   );
-};
-
-export const loader = async () => {
-  const promoProducts = await getPromoProducts();
-  return promoProducts;
 };
 
 export default PromoScreen;

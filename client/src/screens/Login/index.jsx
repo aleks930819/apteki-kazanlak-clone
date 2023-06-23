@@ -9,9 +9,9 @@ const LoginScreen = () => {
   };
 
   const icon = isShowPassword ? (
-    <AiFillEyeInvisible className="absolute right-3 text-2xl text-primary" />
+    <AiFillEyeInvisible className="absolute right-3 text-2xl text-primary cursor-pointer" />
   ) : (
-    <AiFillEye className="absolute right-3 text-2xl text-primary" />
+    <AiFillEye className="absolute right-3 text-2xl text-primary cursor-pointer" />
   );
 
   return (
