@@ -1,13 +1,7 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import toast from 'react-hot-toast';
 
-import {
-  getProductById,
-  updateProductById,
-  deleteProductById,
-} from '../../services/apiPromoProducts';
+import { getProductById } from '../../services/apiPromoProducts';
 
 import useDeletePromoProduct from '../../hooks/useDeletePromoProduct';
 
@@ -15,39 +9,13 @@ import ActionForm from '../../ui/ActionForm';
 import InputField from '../../ui/InputField';
 import TextAreaField from '../../ui/TextAreaField';
 import Spinner from '../../ui/Spinner';
+import useUpdatePromoProduct from '../../hooks/useUpdatePromoProduct';
 
 const EditPromoScreeen = () => {
   const { id } = useParams();
 
-  const navigate = useNavigate();
-  const queryClient = useQueryClient();
-
-  const { isLoading: editingLoading, mutate: updateProduct } = useMutation({
-    mutationFn: (data) => updateProductById(data, id),
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ['promoProducts'],
-      });
-      toast.success('Продуктът е променен успешно!');
-      navigate('/admin/promo-products');
-    },
-    onError: (error) => toast.error(error.message),
-  });
-
+  const { editingLoading, updateProduct } = useUpdatePromoProduct(id);
   const { deleteProduct, deletingLoading } = useDeletePromoProduct(id);
-
-  // const { isLoading: deletingLoading, mutate: deleteProduct } = useMutation({
-  //   mutationFn: () => deleteProductById(id),
-  //   onSuccess: () => {
-  //     queryClient.invalidateQueries({
-  //       queryKey: ['promoProducts'],
-  //     });
-
-  //     toast.success('Продуктът е изтрит успешно!');
-  //     navigate('/admin/promo-products');
-  //   },
-  //   onError: (error) => toast.error(error.message),
-  // });
 
   const { isLoading, data } = useQuery(['singleProduct', id], () =>
     getProductById(id)
