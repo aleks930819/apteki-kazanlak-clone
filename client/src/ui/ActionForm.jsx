@@ -4,7 +4,8 @@ const ActionForm = ({
   children,
   onSubmit,
   deleteButton,
-  isLoading,
+  editingLoading,
+  deletingLoading,
   onDeleteAction,
 }) => {
   return (
@@ -21,7 +22,7 @@ const ActionForm = ({
              disabled:cursor-not-allowed disabled:opacity-80
             "
             type="submit"
-            disabled={isLoading}
+            disabled={editingLoading}
           >
             {buttonName}
           </button>
@@ -29,7 +30,7 @@ const ActionForm = ({
             <button
               className="rounded-md border-2  bg-red-600 px-4  py-2 font-bold uppercase text-white disabled:cursor-not-allowed disabled:opacity-80"
               type="button"
-              disabled={isLoading}
+              disabled={deletingLoading}
               onClick={onDeleteAction}
             >
               {deleteButton}

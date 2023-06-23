@@ -9,6 +9,8 @@ import {
   deleteProductById,
 } from '../../services/apiPromoProducts';
 
+import useDeletePromoProduct from '../../hooks/useDeletePromoProduct';
+
 import ActionForm from '../../ui/ActionForm';
 import InputField from '../../ui/InputField';
 import TextAreaField from '../../ui/TextAreaField';
@@ -32,18 +34,20 @@ const EditPromoScreeen = () => {
     onError: (error) => toast.error(error.message),
   });
 
-  const { isLoading: deletingLoading, mutate: deleteProduct } = useMutation({
-    mutationFn: () => deleteProductById(id),
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ['promoProducts'],
-      });
+  const { deleteProduct, deletingLoading } = useDeletePromoProduct(id);
 
-      toast.success('Продуктът е изтрит успешно!');
-      navigate('/admin/promo-products');
-    },
-    onError: (error) => toast.error(error.message),
-  });
+  // const { isLoading: deletingLoading, mutate: deleteProduct } = useMutation({
+  //   mutationFn: () => deleteProductById(id),
+  //   onSuccess: () => {
+  //     queryClient.invalidateQueries({
+  //       queryKey: ['promoProducts'],
+  //     });
+
+  //     toast.success('Продуктът е изтрит успешно!');
+  //     navigate('/admin/promo-products');
+  //   },
+  //   onError: (error) => toast.error(error.message),
+  // });
 
   const { isLoading, data } = useQuery(['singleProduct', id], () =>
     getProductById(id)
@@ -63,8 +67,6 @@ const EditPromoScreeen = () => {
       const data = Object.fromEntries(formData);
       updateProduct(data);
     }
-
-    
   };
 
   return (
@@ -74,6 +76,8 @@ const EditPromoScreeen = () => {
       deleteButton="Изтрий"
       method="POST"
       onSubmit={handleSubmit}
+      editingLoading={editingLoading}
+      deletingLoading={deletingLoading}
       onDeleteAction={deleteProduct}
     >
       <InputField
