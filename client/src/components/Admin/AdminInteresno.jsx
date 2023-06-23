@@ -1,16 +1,25 @@
+import { getNews } from '../../services/apiInteresting';
 import Table from '../../ui/Table';
 import { BsPencilSquare } from 'react-icons/bs';
+import { useLoaderData } from 'react-router-dom';
 
 const tableColumns = [
-  { label: 'Име на Аптеката', dataKey: 'pharmacieName' },
-  { label: 'Адрес', dataKey: 'address' },
-  { label: 'Телефон', dataKey: 'phone' },
-  { label: 'Мениджър', dataKey: 'manager' },
+  { label: 'Заглавие на статията', dataKey: 'title' },
+  { label: 'Дата', dataKey: 'date' },
+  {
+    label: 'Снимка',
+    dataKey: 'image',
+    render: (rowData) => (
+      <div className="flex items-center">
+        <img src={rowData.image} alt="image" className="h-[45px] w-[45px]" />
+      </div>
+    ),
+  },
   {
     label: 'Редактирай',
     dataKey: 'edit',
     render: (rowData) => (
-      <div className="flex items-center">
+      <div className="flex cursor-pointer items-center">
         <BsPencilSquare className="text-2xl" />
         <span className="ml-2">{rowData.edit}</span>
       </div>
@@ -18,17 +27,23 @@ const tableColumns = [
   },
 ];
 
-const tableData = [
-  {
-    pharmacieName: 'ХИГИЯ',
-    address: 'гр. Казанлък, ул. Христо Ботев 1',
-    phone: '0431 6 22 22',
-    manager: 'Христина Иванова - Теодосиев',
-  },
-];
-
 const AdminInteresno = () => {
+  const news = useLoaderData();
+
+  const tableData = [
+    ...news.map((news) => ({
+      title: news.title,
+      date: news.createdAt,
+      image: news.image,
+    })),
+  ];
+
   return <Table columns={tableColumns} data={tableData}></Table>;
+};
+
+export const loader = async () => {
+  const news = getNews();
+  return news;
 };
 
 export default AdminInteresno;

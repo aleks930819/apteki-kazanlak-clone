@@ -17,9 +17,16 @@ import Pharmacie, { loader as phrmacieLoader } from './screens/Pharmacie';
 import NewsScreen, { loader as singleNewsLoader } from './screens/News';
 import LoginScreen from './screens/Login';
 import AdminPanelScreen from './screens/AdminPanel';
-import AdminPromoProducts from './components/Admin/AdminPromoProducts';
-import AdminInteresno from './components/Admin/adminInteresno';
-import AdminPharmacies from './components/Admin/adminPharmacies';
+
+import AdminPromoProducts, {
+  loader as adminPromoProducts,
+} from './components/Admin/AdminPromoProducts';
+import AdminInteresno, {
+  loader as admiIntersnoLoader,
+} from './components/Admin/adminInteresno';
+import AdminPharmacies, {
+  loader as adminPharmaciesLoader,
+} from './components/Admin/adminPharmacies';
 
 const router = createBrowserRouter([
   {
@@ -74,14 +81,17 @@ const router = createBrowserRouter([
           {
             path: 'pharmacies',
             element: <AdminPharmacies />,
+            loader: adminPharmaciesLoader,
           },
           {
             path: 'promo-products',
             element: <AdminPromoProducts />,
+            loader: adminPromoProducts,
           },
           {
             path: 'intersno',
             element: <AdminInteresno />,
+            loader: admiIntersnoLoader,
           },
         ],
       },

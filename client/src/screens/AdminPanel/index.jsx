@@ -23,7 +23,7 @@ const adminLinks = [
 const AdminPanelScreen = () => {
   return (
     <div className="flex flex-col">
-      <div className="sidebar fixed  bottom-0 top-0 w-[300px] overflow-y-auto bg-primary p-2 text-center lg:left-0">
+      <div className="sidebar fixed bottom-0 top-0  w-[300px] overflow-y-auto border-r-2 border-black bg-primary p-2 text-center lg:left-0">
         {adminLinks.map((link) => (
           <Link
             key={link.name}

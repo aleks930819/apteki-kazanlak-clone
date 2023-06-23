@@ -1,6 +1,6 @@
 const Table = ({ columns, data }) => {
   return (
-    <div className="h-[calc(100vh-100px)] w-[calc(100vw-300px)] overflow-y-auto">
+    <div className="h-[calc(100vh-100px)] w-[calc(100vw-300px)] overflow-y-auto ">
       <div className="relative overflow-x-auto">
         <table className="w-full text-left text-sm text-white">
           <thead className="bg-primary text-xs uppercase">
@@ -16,10 +16,10 @@ const Table = ({ columns, data }) => {
             {data.map((rowData, index) => (
               <tr
                 key={index}
-                className="border-b border-t border-black bg-green-700"
+                className="border-b border-t border-black "
               >
                 {columns.map((column, columnIndex) => (
-                  <td key={columnIndex} className="px-6 py-4">
+                  <td key={columnIndex} className="px-6 py-4 text-black">
                     {column.render
                       ? column.render(rowData)
                       : rowData[column.dataKey]}

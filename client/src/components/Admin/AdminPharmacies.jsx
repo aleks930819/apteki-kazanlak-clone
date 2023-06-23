@@ -1,3 +1,5 @@
+import { useLoaderData } from 'react-router-dom';
+import { getPharmacies } from '../../services/apiPharmacies';
 import Table from '../../ui/Table';
 import { BsPencilSquare } from 'react-icons/bs';
 
@@ -11,25 +13,31 @@ const tableColumns = [
     dataKey: 'edit',
     render: (rowData) => (
       <div className="flex items-center">
-        <BsPencilSquare className="text-2xl" />
+        <BsPencilSquare className="cursor-pointer text-2xl" />
         <span className="ml-2">{rowData.edit}</span>
       </div>
     ),
   },
 ];
 
-const tableData = [
-  {
-    pharmacieName: 'ХИГИЯ',
-    address: 'гр. Казанлък, ул. Христо Ботев 1',
-    phone: '0431 6 22 22',
-    manager: 'Христина Иванова - Теодосиев',
-  },
-];
-
 const AdminPharmacies = () => {
-  console.log('yes');
+  const pharmacies = useLoaderData();
+
+  const tableData = [
+    ...pharmacies.map((pharmacie) => ({
+      pharmacieName: pharmacie.name,
+      address: `${pharmacie.address.city}, ${pharmacie.address.street}`,
+      phone: pharmacie.phone,
+      manager: pharmacie.managerName,
+    })),
+  ];
+
   return <Table columns={tableColumns} data={tableData}></Table>;
+};
+
+export const loader = async () => {
+  const pharmacies = getPharmacies();
+  return pharmacies;
 };
 
 export default AdminPharmacies;
