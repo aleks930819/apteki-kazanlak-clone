@@ -16,7 +16,7 @@ const Maps = () => {
   // const markerPosition = { lat: -3.755, lng: -38.523 };
 
   return (
-    <div className="flex h-auto w-[100%] flex-col lg:h-[700px] lg:flex-row  xl:h-[800px] ">
+    <div className=" flex w-[100%] flex-col lg:flex-row  3xl:h-[800px] ">
       <div className="w-auto lg:w-[70%]">
         <GoogleMap
           mapContainerStyle={{ width: '100%', height: '100%' }}

@@ -29,7 +29,7 @@ const Header = () => {
         display: 'flex',
         justifyContent: 'center',
         background: 'white',
-        position: 'fixed',
+        position: 'sticky',
         top: 0,
         left: 0,
         zIndex: 100,
@@ -37,7 +37,7 @@ const Header = () => {
         padding: '2px',
         boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.4)',
       }}
-      className="h-20"
+      className="h-20 "
     >
       <div
         style={{

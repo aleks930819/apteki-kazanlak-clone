@@ -22,19 +22,21 @@ const headerLinks = [
     url: '/promo',
     title: 'Промоции',
   },
+  {
+    url: '/login',
+    title: 'Вход',
+  },
 ];
 
 const HeaderLinks = ({ handleDropdownToggle }) => {
   return (
-  
-      <ul className="flex items-center gap-8">
-        {headerLinks.map((link) => (
-          <li key={link.title} className="text-secondary">
-            <Link to={link.url}>{link.title}</Link>
-          </li>
-        ))}
-      </ul>
-   
+    <ul className="flex items-center gap-8">
+      {headerLinks.map((link) => (
+        <li key={link.title} className="text-secondary">
+          <Link to={link.url}>{link.title}</Link>
+        </li>
+      ))}
+    </ul>
   );
 };
 

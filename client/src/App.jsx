@@ -17,6 +17,9 @@ import Pharmacie, { loader as phrmacieLoader } from './screens/Pharmacie';
 import NewsScreen, { loader as singleNewsLoader } from './screens/News';
 import LoginScreen from './screens/Login';
 import AdminPanelScreen from './screens/AdminPanel';
+import AdminPromoProducts from './components/Admin/AdminPromoProducts';
+import AdminInteresno from './components/Admin/adminInteresno';
+import AdminPharmacies from './components/Admin/adminPharmacies';
 
 const router = createBrowserRouter([
   {
@@ -67,6 +70,20 @@ const router = createBrowserRouter([
       {
         path: '/admin',
         element: <AdminPanelScreen />,
+        children: [
+          {
+            path: 'pharmacies',
+            element: <AdminPharmacies />,
+          },
+          {
+            path: 'promo-products',
+            element: <AdminPromoProducts />,
+          },
+          {
+            path: 'intersno',
+            element: <AdminInteresno />,
+          },
+        ],
       },
       {
         path: '*',

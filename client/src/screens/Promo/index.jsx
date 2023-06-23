@@ -6,7 +6,7 @@ const PromoScreen = () => {
   const promoData = useLoaderData();
 
   return (
-    <div className="mx-auto  mt-[100px] w-[75vw] ">
+    <div className="mx-auto  mt-10 w-[75vw] ">
       <ul
         className="grid grid-cols-1  items-center  gap-2 sm:grid-cols-4
       "
@@ -14,7 +14,7 @@ const PromoScreen = () => {
         {promoData.map((item) => (
           <PromoCard
             key={item.id}
-            title={item.title}
+            name={item.name}
             image={item.image}
             newPrice={item.newPrice}
             oldPrice={item.oldPrice}
