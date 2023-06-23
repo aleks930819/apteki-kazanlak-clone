@@ -4,9 +4,7 @@ import AppLayout from './ui/AppLayout';
 
 import HomeScreen from './screens/Home';
 import NotFoundScreen from './screens/NotFound';
-import PharmaciesScreen, {
-  loader as pharmaciesLoader,
-} from './screens/Pharmacies';
+import PharmaciesScreen from './screens/Pharmacies';
 import AboutUsScreen from './screens/AboutUs';
 import InterestingScreen, {
   loader as interestingLoader,
@@ -58,7 +56,6 @@ const router = createBrowserRouter([
       {
         path: '/pharmacies',
         element: <PharmaciesScreen />,
-        loader: pharmaciesLoader,
       },
       {
         path: '/pharmacies/:slug',
