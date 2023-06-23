@@ -1,38 +1,70 @@
-import { redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { createNewPromoProduct } from '../../services/apiPromoProducts';
 import InputField from '../../ui/InputField';
 import TextAreaField from '../../ui/TextAreaField';
 import ActionForm from '../../ui/ActionForm';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 const AddNewPromoProductScreen = () => {
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
+
+  const { mutate, isLoading } = useMutation({
+    mutationFn: createNewPromoProduct,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['promoProducts'],
+      });
+      navigate('/admin/promo-products');
+    },
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+
+    mutate(data);
+  };
+
   return (
-    <ActionForm heading="Добави нов продукт" buttonName="Добави" method="POST">
-      <InputField type="text" label="Име на продукта" id="name" name="name" />
+    <ActionForm
+      heading="Добави нов продукт"
+      buttonName="Добави"
+      onSubmit={handleSubmit}
+      isLoading={isLoading}
+    >
+      <InputField
+        type="text"
+        label="Име на продукта"
+        id="name"
+        name="name"
+        required
+      />
       <InputField
         type="number"
         label="Стара Цена"
         id="oldPrice"
         name="oldPrice"
+        required
       />
       <InputField
         type="number"
         label="Нова Цена"
         id="newPrice"
         name="newPrice"
+        required
       />
-      <InputField type="text" label="Снимка" id="image" name="image" />
-      <TextAreaField label="Описание" id="description" name="description" />
+      <InputField type="text" label="Снимка" id="image" name="image" required />
+      <TextAreaField
+        label="Описание"
+        id="description"
+        name="description"
+        required
+      />
     </ActionForm>
   );
-};
-
-export const action = async ({ request }) => {
-  const formData = await request.formData();
-  const data = Object.fromEntries(formData);
-
-  await createNewPromoProduct(data);
-
-  return redirect('/admin/promo-products');
 };
 
 export default AddNewPromoProductScreen;

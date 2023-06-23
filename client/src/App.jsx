@@ -14,9 +14,7 @@ import NewsScreen from './screens/News';
 import LoginScreen from './screens/Login';
 import AdminPanelScreen from './screens/AdminPanel';
 
-import AddNewPromoProductScreen, {
-  action as createNewPromoProductAction,
-} from './screens/AddNewPromoProduct';
+import AddNewPromoProductScreen from './screens/AddNewPromoProduct';
 import EditPromoScreeen, {
   loader as editPromoProductLoader,
   action as editPromoProductAction,
@@ -93,7 +91,6 @@ const router = createBrowserRouter([
           {
             path: 'promo-products/add',
             element: <AddNewPromoProductScreen />,
-            action: createNewPromoProductAction,
           },
           {
             path: 'promo-products/edit/:id',
