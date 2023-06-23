@@ -30,6 +30,10 @@ import AdminPharmacies, {
 import AddNewPromoProductScreen, {
   action as createNewPromoProductAction,
 } from './screens/AddNewPromoProduct';
+import EditPromoScreeen, {
+  loader as editPromoProductLoader,
+  action as editPromoProductAction,
+} from './screens/EditPromoProduct';
 
 const router = createBrowserRouter([
   {
@@ -95,6 +99,12 @@ const router = createBrowserRouter([
             path: 'promo-products/add',
             element: <AddNewPromoProductScreen />,
             action: createNewPromoProductAction,
+          },
+          {
+            path: 'promo-products/edit/:id',
+            element: <EditPromoScreeen />,
+            loader: editPromoProductLoader,
+            action: editPromoProductAction,
           },
           {
             path: 'intersno',

@@ -23,7 +23,10 @@ const tableColumns = [
     label: 'Редактирай',
     dataKey: 'edit',
     render: (rowData) => (
-      <Link to="/admin/promo-products/edit/:id" className="flex items-center">
+      <Link
+        to={`/admin/promo-products/edit/${rowData._id}`}
+        className="flex items-center"
+      >
         <BsPencilSquare className="cursor-pointer text-2xl text-primary" />
         <span className="ml-2">{rowData.edit}</span>
       </Link>
@@ -49,6 +52,7 @@ const AdminPromoProducts = () => {
 
   const tableData = [
     ...promoProducts.map((promoProduct) => ({
+      _id: promoProduct._id,
       productName: promoProduct.name,
       oldPrice: promoProduct.oldPrice,
       newPrice: promoProduct.newPrice,

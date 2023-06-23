@@ -63,7 +63,7 @@ export const getPromoProductById = asyncHandler(async (req, res) => {
 });
 
 // @desc Edit promo product
-// @route PUT /api/promo/:id
+// @route  PATCH /api/promo/:id
 // @access Private/Admin
 export const editPromoProduct = asyncHandler(async (req, res) => {
   const { name, image, oldPrice, description, newPrice } = req.body;
@@ -71,11 +71,11 @@ export const editPromoProduct = asyncHandler(async (req, res) => {
   const promoProduct = await PromoProduct.findById(req.params.id);
 
   if (promoProduct) {
-    promoProduct.name = name;
-    promoProduct.image = image;
-    promoProduct.oldPrice = oldPrice;
-    promoProduct.newPrice = newPrice;
-    promoProduct.description = description;
+    promoProduct.name = name || promoProduct.name;
+    promoProduct.image = image || promoProduct.image;
+    promoProduct.oldPrice = oldPrice || promoProduct.oldPrice;
+    promoProduct.newPrice = newPrice || promoProduct.newPrice;
+    promoProduct.description = description || promoProduct.description;
 
     const updatedPromoProduct = await promoProduct.save();
     res.status(200).json(updatedPromoProduct);

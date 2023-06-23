@@ -13,7 +13,7 @@ router.get('/', getAllPromoProducts);
 router.post('/', addPromoProduct);
 router
   .delete('/:id', deletePromoProduct)
-  .put('/:id', editPromoProduct)
+  .patch('/:id', editPromoProduct)
   .get('/:id', getPromoProductById);
 
 export default router;
