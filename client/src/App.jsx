@@ -16,6 +16,7 @@ import HistoryScreen from './screens/History';
 import Pharmacie, { loader as phrmacieLoader } from './screens/Pharmacie';
 import NewsScreen, { loader as singleNewsLoader } from './screens/News';
 import LoginScreen from './screens/Login';
+import AdminPanelScreen from './screens/AdminPanel';
 
 const router = createBrowserRouter([
   {
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <LoginScreen />,
+      },
+      {
+        path: '/admin',
+        element: <AdminPanelScreen />,
       },
       {
         path: '*',
