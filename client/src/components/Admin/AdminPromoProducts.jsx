@@ -23,10 +23,10 @@ const tableColumns = [
     label: 'Редактирай',
     dataKey: 'edit',
     render: (rowData) => (
-      <div className="flex items-center">
+      <Link to="/admin/promo-products/edit/:id" className="flex items-center">
         <BsPencilSquare className="cursor-pointer text-2xl text-primary" />
         <span className="ml-2">{rowData.edit}</span>
-      </div>
+      </Link>
     ),
   },
   {

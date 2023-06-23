@@ -48,12 +48,24 @@ export const deletePromoProduct = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc Get promo product by id
+// @route GET /api/promo/:id
+// @access Public
+export const getPromoProductById = asyncHandler(async (req, res) => {
+  const promoProduct = await PromoProduct.findById(req.params.id);
+
+  if (promoProduct) {
+    res.status(200).json(promoProduct);
+  } else {
+    res.status(404);
+    throw new Error('Promo product not found');
+  }
+});
+
 // @desc Edit promo product
 // @route PUT /api/promo/:id
 // @access Private/Admin
-
 export const editPromoProduct = asyncHandler(async (req, res) => {
-
   const { name, image, oldPrice, description, newPrice } = req.body;
 
   const promoProduct = await PromoProduct.findById(req.params.id);
@@ -66,10 +78,9 @@ export const editPromoProduct = asyncHandler(async (req, res) => {
     promoProduct.description = description;
 
     const updatedPromoProduct = await promoProduct.save();
-    res.json(updatedPromoProduct);
+    res.status(200).json(updatedPromoProduct);
   } else {
     res.status(404);
     throw new Error('Promo product not found');
   }
-
 });

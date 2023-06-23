@@ -1,4 +1,4 @@
-import { Form, redirect } from 'react-router-dom';
+import { redirect } from 'react-router-dom';
 import { createNewPromoProduct } from '../../services/apiPromoProducts';
 import InputField from '../../ui/InputField';
 import TextAreaField from '../../ui/TextAreaField';
