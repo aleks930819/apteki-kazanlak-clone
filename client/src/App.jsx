@@ -15,6 +15,7 @@ import PromoScreen, { loader as promoLoader } from './screens/Promo';
 import HistoryScreen from './screens/History';
 import Pharmacie, { loader as phrmacieLoader } from './screens/Pharmacie';
 import NewsScreen, { loader as singleNewsLoader } from './screens/News';
+import LoginScreen from './screens/Login';
 
 const router = createBrowserRouter([
   {
@@ -58,7 +59,10 @@ const router = createBrowserRouter([
         path: '/history',
         element: <HistoryScreen />,
       },
-
+      {
+        path: '/login',
+        element: <LoginScreen />,
+      },
       {
         path: '*',
         element: <NotFoundScreen />,

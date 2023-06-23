@@ -3,7 +3,7 @@ import { useState } from 'react';
 import HeaderTitle from './HeaderTitle';
 import HeaderLogo from './HeaderLogo';
 import HeaderLinks from './HeaderLinks';
-import PharmaciesDropdown from '../PharmaciesDropdown/PharmaciesDropdown';
+// import PharmaciesDropdown from '../PharmaciesDropdown/PharmaciesDropdown';
 import HamburgerMenu from '../../ui/HamburgerMenu';
 // import useIsMobileView from '../../hooks/useIsMobileView';
 import useIsDekstopView from '../../hooks/useIsDekstopView';
