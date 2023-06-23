@@ -27,6 +27,9 @@ import AdminInteresno, {
 import AdminPharmacies, {
   loader as adminPharmaciesLoader,
 } from './components/Admin/adminPharmacies';
+import AddNewPromoProductScreen, {
+  action as createNewPromoProductAction,
+} from './screens/AddNewPromoProduct';
 
 const router = createBrowserRouter([
   {
@@ -87,6 +90,11 @@ const router = createBrowserRouter([
             path: 'promo-products',
             element: <AdminPromoProducts />,
             loader: adminPromoProducts,
+          },
+          {
+            path: 'promo-products/add',
+            element: <AddNewPromoProductScreen />,
+            action: createNewPromoProductAction,
           },
           {
             path: 'intersno',

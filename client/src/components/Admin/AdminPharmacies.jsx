@@ -1,4 +1,4 @@
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { getPharmacies } from '../../services/apiPharmacies';
 import Table from '../../ui/Table';
 import { BsPencilSquare } from 'react-icons/bs';
@@ -23,10 +23,10 @@ const tableColumns = [
     label: 'Добави Аптека',
     dataKey: 'add',
     render: (rowData) => (
-      <div className="flex cursor-pointer items-center">
+      <Link to='/add' className="flex cursor-pointer items-center">
         <AiFillPlusCircle className="text-2xl text-primary" />
         <span className="ml-2">{rowData.add}</span>
-      </div>
+      </Link>
     ),
   },
 ];

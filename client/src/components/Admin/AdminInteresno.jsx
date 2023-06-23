@@ -3,7 +3,7 @@ import Table from '../../ui/Table';
 import { BsPencilSquare } from 'react-icons/bs';
 import { AiFillPlusCircle } from 'react-icons/ai';
 
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const tableColumns = [
   { label: 'Заглавие на статията', dataKey: 'title' },
@@ -31,10 +31,10 @@ const tableColumns = [
     label: 'Добави Статия',
     dataKey: 'add',
     render: (rowData) => (
-      <div className="flex cursor-pointer items-center">
+      <Link to="/admin/promo-products/add" className="flex cursor-pointer items-center">
         <AiFillPlusCircle className="text-2xl text-primary" />
         <span className="ml-2">{rowData.add}</span>
-      </div>
+      </Link>
     ),
   },
 ];

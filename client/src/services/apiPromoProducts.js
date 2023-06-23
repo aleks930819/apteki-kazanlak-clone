@@ -12,3 +12,20 @@ export const getPromoProducts = async () => {
   const data = await response.json();
   return data;
 };
+
+export const createNewPromoProduct = async (data) => {
+  const response = await fetch(API_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to create promo product.');
+  }
+
+  const responseData = await response.json();
+  return responseData;
+};

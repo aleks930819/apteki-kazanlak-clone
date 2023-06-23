@@ -4,6 +4,7 @@ import { BsPencilSquare } from 'react-icons/bs';
 import { AiFillPlusCircle } from 'react-icons/ai';
 
 import { useLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const tableColumns = [
   { label: 'Име на продукта', dataKey: 'productName' },
@@ -32,10 +33,13 @@ const tableColumns = [
     label: 'Добави Аптека',
     dataKey: 'add',
     render: (rowData) => (
-      <div className="flex cursor-pointer items-center text-primary">
+      <Link
+        to="/admin/promo-products/add"
+        className="flex cursor-pointer items-center"
+      >
         <AiFillPlusCircle className="text-2xl" />
         <span className="ml-2">{rowData.add}</span>
-      </div>
+      </Link>
     ),
   },
 ];
