@@ -58,8 +58,7 @@ export const createNews = asyncHandler(async (req, res) => {
 // @route   DELETE /api/interesting/:slug
 // @access  Private/Admin
 export const deleteNews = asyncHandler(async (req, res) => {
-  console.log(req.params);
-  const news = await News.deleteOne({ slug: req.params.id });
+  const news = await News.deleteOne({ slug: req.params.slug });
 
   if (news) {
     res.json({ message: 'News removed' });
@@ -75,7 +74,7 @@ export const deleteNews = asyncHandler(async (req, res) => {
 export const editNews = asyncHandler(async (req, res) => {
   const { title, description, summary, image } = req.body;
 
-  const news = await News.findOne({ slug: req.params.id });
+  const news = await News.findOne({ slug: req.params.slug });
 
   if (news) {
     news.title = title || news.title;

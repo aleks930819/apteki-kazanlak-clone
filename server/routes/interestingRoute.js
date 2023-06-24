@@ -10,7 +10,9 @@ import {
 } from '../controllers/interestingController.js';
 
 router.get('/', getAllNews).post('/', createNews);
-router.get('/:slug', getSingleNews);
-router.delete('/:id', deleteNews).patch('/:id', editNews);
+router
+  .get('/:slug', getSingleNews)
+  .delete('/:slug', deleteNews)
+  .patch('/:slug', editNews);
 
 export default router;
