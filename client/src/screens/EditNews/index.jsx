@@ -1,6 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 
+import { useState } from 'react';
+
 import { getNews, getSingleNews } from '../../services/apiInteresting';
 
 import useUpdateNews from '../../hooks/useUpdateNews';
@@ -10,9 +12,17 @@ import ActionForm from '../../ui/ActionForm';
 import InputField from '../../ui/InputField';
 import TextAreaField from '../../ui/TextAreaField';
 import Spinner from '../../ui/Spinner';
+import setChangedValue from '../../utils/changeValueHandler';
 
 const EditNewsScreen = () => {
   const { slug } = useParams();
+
+  const [values, setValues] = useState({
+    title: '',
+    summary: '',
+    image: '',
+    description: '',
+  });
 
   const { editingLoading, updateNews } = useUpdateNews(slug);
   const { deleteNews, deletingLoading } = useDeleteNews(slug);
@@ -27,6 +37,10 @@ const EditNewsScreen = () => {
 
   const { title, summary, image, description } = data;
 
+  if (!values.title) {
+    setValues({ title, summary, image, description });
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -35,6 +49,10 @@ const EditNewsScreen = () => {
       const data = Object.fromEntries(formData);
       updateNews(data);
     }
+  };
+
+  const changeHandler = (e) => {
+    setChangedValue(e, setValues);
   };
 
   return (
@@ -52,14 +70,16 @@ const EditNewsScreen = () => {
         label="Залгавие на статията"
         id="title"
         name="title"
-        placeholder={title}
+        onChange={changeHandler}
+        value={values.title}
       />
       <InputField
         type="text"
         label="Кратко описание"
         id="summary"
         name="summary"
-        placeholder={summary}
+        onChange={changeHandler}
+        value={values.summary}
       />
       <InputField
         type="text"
@@ -67,12 +87,15 @@ const EditNewsScreen = () => {
         id="image"
         name="image"
         placeholder={image}
+        onChange={changeHandler}
+        value={values.image}
       />
       <TextAreaField
         label="Описание"
         id="description"
         name="description"
-        placeholder={description}
+        onChange={changeHandler}
+        value={values.description}
       />
     </ActionForm>
   );

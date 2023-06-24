@@ -1,4 +1,13 @@
-const InputField = ({ type, label, name, id, placeholder, value,required }) => {
+const InputField = ({
+  type,
+  label,
+  name,
+  id,
+  placeholder,
+  value,
+  required,
+  onChange,
+}) => {
   return (
     <div className="flex w-full flex-col items-start">
       <label htmlFor={id} className="mb-2 font-bold text-gray-700">
@@ -11,6 +20,7 @@ const InputField = ({ type, label, name, id, placeholder, value,required }) => {
         value={value}
         placeholder={placeholder}
         required={required}
+        onChange={onChange}
         className="w-full rounded-md border-2 border-gray-300 p-2 outline-none focus:border-primary"
       />
     </div>

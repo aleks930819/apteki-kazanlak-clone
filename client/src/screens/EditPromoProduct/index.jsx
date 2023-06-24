@@ -1,6 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 
+import { useState } from 'react';
+
 import { getProductById } from '../../services/apiPromoProducts';
 
 import useDeletePromoProduct from '../../hooks/useDeletePromoProduct';
@@ -10,9 +12,18 @@ import ActionForm from '../../ui/ActionForm';
 import InputField from '../../ui/InputField';
 import TextAreaField from '../../ui/TextAreaField';
 import Spinner from '../../ui/Spinner';
+import setChangedValue from '../../utils/changeValueHandler';
 
 const EditPromoScreeen = () => {
   const { id } = useParams();
+
+  const [values, setValues] = useState({
+    name: '',
+    oldPrice: null,
+    newPrice: null,
+    description: '',
+    image: '',
+  });
 
   const { editingLoading, updateProduct } = useUpdatePromoProduct(id);
   const { deleteProduct, deletingLoading } = useDeletePromoProduct(id);
@@ -27,6 +38,10 @@ const EditPromoScreeen = () => {
 
   const { name, description, oldPrice, newPrice, image } = data;
 
+  if (!values.name) {
+    setValues({ name, description, oldPrice, newPrice, image });
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -35,6 +50,10 @@ const EditPromoScreeen = () => {
       const data = Object.fromEntries(formData);
       updateProduct(data);
     }
+  };
+
+  const changeHandler = (e) => {
+    setChangedValue(e, setValues);
   };
 
   return (
@@ -53,7 +72,8 @@ const EditPromoScreeen = () => {
         label="Име на продукта"
         id="name"
         name="name"
-        placeholder={name}
+        onChange={changeHandler}
+        value={values.name}
       />
 
       <InputField
@@ -62,6 +82,8 @@ const EditPromoScreeen = () => {
         id="oldPrice"
         name="oldPrice"
         placeholder={oldPrice}
+        onChange={changeHandler}
+        value={values.oldPrice}
       />
       <InputField
         type="text"
@@ -69,13 +91,16 @@ const EditPromoScreeen = () => {
         id="newPrice"
         name="newPrice"
         placeholder={newPrice}
+        onChange={changeHandler}
+        value={values.newPrice}
       />
       <InputField
         type="text"
         label="Снимка"
         id="image"
         name="image"
-        placeholder={image}
+        onChange={changeHandler}
+        value={values.image}
       />
       <TextAreaField
         type="text"
@@ -83,6 +108,8 @@ const EditPromoScreeen = () => {
         id="description"
         name="description"
         placeholder={description}
+        onChange={changeHandler}
+        value={values.description}
       />
     </ActionForm>
   );
