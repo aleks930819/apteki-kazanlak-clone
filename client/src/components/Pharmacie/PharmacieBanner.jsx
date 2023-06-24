@@ -7,7 +7,7 @@ const PharmacieBanner = ({ name }) => {
         <img
           src={People}
           alt="People Banner Logo"
-          className="h-[70vh]
+          className="h-[65vh]
              w-full object-cover
                 object-top
             "
@@ -17,13 +17,13 @@ const PharmacieBanner = ({ name }) => {
         className="
     animate-pop-in
     absolute
-    bottom-24
+    bottom-12
     left-60
     transform
     bg-primary
     bg-opacity-90
     p-2
-    text-6xl
+    text-5xl
     text-white
   "
       >
