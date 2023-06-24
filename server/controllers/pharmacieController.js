@@ -4,7 +4,6 @@ import Pharmacie from '../models/pharmacieModel.js';
 // @desc    Fetch all pharmacies
 // @route   GET /api/pharmacies
 // @access  Public
-
 export const getAllPharmacies = asyncHandler(async (req, res) => {
   const pharmacies = await Pharmacie.find({});
 
@@ -19,7 +18,6 @@ export const getAllPharmacies = asyncHandler(async (req, res) => {
 // @desc    Fetch single pharmacy
 // @route   GET /api/pharmacies/:slug
 // @access  Public
-
 export const getSinglePharmacy = asyncHandler(async (req, res) => {
   const { slug } = req.params;
 

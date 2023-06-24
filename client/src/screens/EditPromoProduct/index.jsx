@@ -4,12 +4,12 @@ import { useQuery } from '@tanstack/react-query';
 import { getProductById } from '../../services/apiPromoProducts';
 
 import useDeletePromoProduct from '../../hooks/useDeletePromoProduct';
+import useUpdatePromoProduct from '../../hooks/useUpdatePromoProduct';
 
 import ActionForm from '../../ui/ActionForm';
 import InputField from '../../ui/InputField';
 import TextAreaField from '../../ui/TextAreaField';
 import Spinner from '../../ui/Spinner';
-import useUpdatePromoProduct from '../../hooks/useUpdatePromoProduct';
 
 const EditPromoScreeen = () => {
   const { id } = useParams();

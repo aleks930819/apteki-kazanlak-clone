@@ -1,5 +1,5 @@
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
-// import HeaderLogo from '../Header/HeaderLogo';
+import HeaderLogo from '../Header/HeaderLogo';
 // import Logo from '../../assets//logo.png';
 import { GOOGLE_MAPS_API_KEY } from '../../../api';
 
@@ -13,10 +13,15 @@ const Maps = () => {
   }
 
   const mapCenter = { lat: -3.745, lng: -38.523 };
-  // const markerPosition = { lat: -3.755, lng: -38.523 };
+  const markerPosition = { lat: -3.755, lng: -38.523 };
+
+  const customMarkerIcon = {
+    url: 'https://www.apteki-kazanlak.com/images/logo.png',
+    scaledSize: new window.google.maps.Size(50, 50),
+  };
 
   return (
-    <div className=" flex w-[100%] flex-col lg:flex-row  3xl:h-[800px] ">
+    <div className=" 3xl:h-[800px] flex w-[100%] flex-col  lg:flex-row ">
       <div className="w-auto lg:w-[70%]">
         <GoogleMap
           mapContainerStyle={{ width: '100%', height: '100%' }}
@@ -24,25 +29,30 @@ const Maps = () => {
           zoom={12}
           panControl={true}
           zoomControl={true}
-        />
-        {/* <Marker position={markerPosition}>
-          <div className="bg-primary bg-opacity-90 px-4 py-1 text-center text-2xl text-white sm:text-6xl">
-            <HeaderLogo />
-          </div>
-        </Marker> */}
+        >
+          <Marker position={markerPosition}
+          icon={customMarkerIcon}
+          ></Marker>
+        </GoogleMap>
       </div>
       <div className="w-auto lg:w-[30%]">
         <ul className="mr-auto flex flex-col gap-4 pl-10 pt-5">
-          <li className="text-base font-semibold text-primary ">Хигия</li>
-          <li className="flex items-center text-base font-semibold text-primary">
+          <li className="cursor-pointer text-base font-semibold  text-primary">
+            Хигия
+          </li>
+          <li className="flex cursor-pointer items-center text-base font-semibold text-primary">
             Фарма 1 Казанлък
           </li>
-          <li className="text-base font-semibold text-primary ">Арника</li>
-          <li className="text-base font-semibold text-primary ">Фармавист</li>
-          <li className="text-base font-semibold text-primary ">
+          <li className="cursor-pointer text-base font-semibold  text-primary">
+            Арника
+          </li>
+          <li className="cursor-pointer text-base font-semibold  text-primary">
+            Фармавист
+          </li>
+          <li className="cursor-pointer text-base font-semibold  text-primary">
             Фарма 1 Павел Баня
           </li>
-          <li className="text-base font-semibold text-primary ">
+          <li className="cursor-pointer text-base font-semibold  text-primary">
             Фарма 1 Център
           </li>
         </ul>

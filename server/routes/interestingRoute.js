@@ -1,15 +1,16 @@
 import express from 'express';
 const router = express.Router();
 
-import asyncHandler from '../middleware/asyncHandler.js';
-import News from '../models/newsModel.js';
 import {
+  createNews,
   getAllNews,
   getSingleNews,
+  deleteNews,
+  editNews,
 } from '../controllers/interestingController.js';
 
-router.get('/', getAllNews);
+router.get('/', getAllNews).post('/', createNews);
 router.get('/:slug', getSingleNews);
-
+router.delete('/:id', deleteNews).patch('/:id', editNews);
 
 export default router;

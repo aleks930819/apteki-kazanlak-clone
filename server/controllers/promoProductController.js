@@ -21,6 +21,10 @@ export const getAllPromoProducts = asyncHandler(async (req, res) => {
 export const addPromoProduct = asyncHandler(async (req, res) => {
   const { name, image, oldPrice, description, newPrice } = req.body;
 
+  if (!name || !image || !oldPrice || !description || !newPrice) {
+    return res.status(400).json({ message: 'Please fill all fields' });
+  }
+
   const promoProduct = new PromoProduct({
     name,
     image,
