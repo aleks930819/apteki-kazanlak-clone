@@ -31,3 +31,47 @@ export const getSinglePharmacy = asyncHandler(async (req, res) => {
     throw new Error('News not found.');
   }
 });
+
+// @desc    Create new pharmacy
+// @route   POST /api/pharmacies
+// @access  Private/Admin
+export const createPharmacy = asyncHandler(async (req, res) => {
+  const {
+    name,
+    address,
+    history,
+    phone,
+    managerName,
+    workingHours,
+    managerTitle,
+    managerDescription,
+  } = req.body;
+
+  if (
+    !name ||
+    !address ||
+    !phone ||
+    !history ||
+    !managerName ||
+    !workingHours ||
+    !managerTitle ||
+    !managerDescription
+  ) {
+    return res.status(400).json({ message: 'Please fill all fields.' });
+  }
+
+  const pharmacy = new Pharmacie({
+    name,
+    address,
+    history,
+    phone,
+    managerName,
+    workingHours,
+    managerTitle,
+    managerDescription,
+  });
+
+  const createdPharmacy = await pharmacy.save();
+
+  res.status(201).json(createdPharmacy);
+});
