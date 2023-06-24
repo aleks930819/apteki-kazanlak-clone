@@ -27,7 +27,7 @@ export const getSingleNews = async (slug) => {
 export const createNewNews = async (news) => {
   const response = await fetch(API_URL, {
     method: 'POST',
-    headers:{
+    headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(news),
@@ -35,6 +35,36 @@ export const createNewNews = async (news) => {
 
   if (!response.ok) {
     throw new Error('Failed to create new news');
+  }
+
+  const data = await response.json();
+  return data;
+};
+
+export const updateNews = async (news, slug) => {
+  const response = await fetch(`${API_URL}/${slug}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(news),
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to update news');
+  }
+
+  const data = await response.json();
+  return data;
+};
+
+export const deleteNewsBySlug = async (slug) => {
+  const response = await fetch(`${API_URL}/${slug}`, {
+    method: 'DELETE',
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to delete news');
   }
 
   const data = await response.json();

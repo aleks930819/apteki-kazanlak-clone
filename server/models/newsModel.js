@@ -21,6 +21,7 @@ const newsSchema = mongoose.Schema(
     },
     slug: {
       type: String,
+      unique: true,
     },
   },
   {

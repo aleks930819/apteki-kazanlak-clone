@@ -27,7 +27,7 @@ const tableColumns = [
     dataKey: 'edit',
     render: (rowData) => (
       <Link
-        to={`/admin/interesno/edit/${rowData._id}`}
+        to={`/admin/interesno/edit/${rowData.slug}`}
         className="flex cursor-pointer items-center"
       >
         <BsPencilSquare className="text-2xl text-primary" />
@@ -65,6 +65,7 @@ const AdminInteresno = () => {
     tableData = [
       ...news.map((news) => ({
         _id: news._id,
+        slug: news.slug,
         title: news.title,
         date: news.createdAt,
         image: news.image,

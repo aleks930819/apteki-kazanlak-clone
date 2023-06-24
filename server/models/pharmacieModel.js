@@ -25,7 +25,7 @@ const pharmacieSchema = mongoose.Schema({
   managerName: { type: String, required: true },
   managerTitle: { type: String, required: true },
   managerDescription: { type: String, required: true, image: [imageSchema] },
-  slug: { type: String },
+  slug: { type: String, unique: true },
 });
 
 pharmacieSchema.pre('save', function (next) {

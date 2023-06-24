@@ -55,10 +55,11 @@ export const createNews = asyncHandler(async (req, res) => {
 });
 
 // @desc    Delete news
-// @route   DELETE /api/interesting/:id
+// @route   DELETE /api/interesting/:slug
 // @access  Private/Admin
 export const deleteNews = asyncHandler(async (req, res) => {
-  const news = await News.deleteOne({ _id: req.params.id });
+  console.log(req.params);
+  const news = await News.deleteOne({ slug: req.params.id });
 
   if (news) {
     res.json({ message: 'News removed' });
@@ -69,16 +70,12 @@ export const deleteNews = asyncHandler(async (req, res) => {
 });
 
 // @desc    Edit news
-// @route   PATCH /api/interesting/:id
+// @route   PATCH /api/interesting/:slug
 // @access  Private/Admin
 export const editNews = asyncHandler(async (req, res) => {
   const { title, description, summary, image } = req.body;
 
-  if (!title || !description || !image || !summary) {
-    return res.status(400).json({ message: 'Please fill all fields' });
-  }
-
-  const news = await News.findById(req.params.id);
+  const news = await News.findOne({ slug: req.params.id });
 
   if (news) {
     news.title = title || news.title;

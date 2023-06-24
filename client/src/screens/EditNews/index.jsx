@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 
-import { getProductById } from '../../services/apiPromoProducts';
+import { getNews, getSingleNews } from '../../services/apiInteresting';
 
-import useDeletePromoProduct from '../../hooks/useDeletePromoProduct';
-import useUpdatePromoProduct from '../../hooks/useUpdatePromoProduct';
+import useUpdateNews from '../../hooks/useUpdateNews';
+import useDeleteNews from '../../hooks/useDeleteNews';
 
 import ActionForm from '../../ui/ActionForm';
 import InputField from '../../ui/InputField';
@@ -12,20 +12,20 @@ import TextAreaField from '../../ui/TextAreaField';
 import Spinner from '../../ui/Spinner';
 
 const EditNewsScreen = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
 
-  const { editingLoading, updateProduct } = useUpdatePromoProduct(id);
-  const { deleteProduct, deletingLoading } = useDeletePromoProduct(id);
+  const { editingLoading, updateNews } = useUpdateNews(slug);
+  const { deleteNews, deletingLoading } = useDeleteNews(slug);
 
-  const { isLoading, data } = useQuery(['singleProduct', id], () =>
-    getProductById(id)
+  const { isLoading, data } = useQuery(['singleNews', slug], () =>
+    getSingleNews(slug)
   );
 
   if (isLoading) {
     return <Spinner />;
   }
 
-  const { name, description, oldPrice, newPrice, image } = data;
+  const { title, summary, image, description } = data;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,53 +33,43 @@ const EditNewsScreen = () => {
     if (!deletingLoading) {
       const formData = new FormData(e.target);
       const data = Object.fromEntries(formData);
-      updateProduct(data);
+      updateNews(data);
     }
   };
 
   return (
     <ActionForm
-      heading="Редактирай продукт"
-      buttonName="Редактирай"
-      deleteButton="Изтрий"
-      method="POST"
+      heading="Редактирай статия"
+      buttonName="Добави"
       onSubmit={handleSubmit}
-      editingLoading={editingLoading}
-      deletingLoading={deletingLoading}
-      onDeleteAction={deleteProduct}
+      isLoading={editingLoading}
+      onDeleteAction={deleteNews}
+      isDeleting={deletingLoading}
+      deleteButton={'Изтрий'}
     >
       <InputField
         type="text"
-        label="Име на продукта"
-        id="name"
-        name="name"
-        placeholder={name}
-      />
-
-      <InputField
-        type="text"
-        label="Стара цена"
-        id="oldPrice"
-        name="oldPrice"
-        placeholder={oldPrice}
+        label="Залгавие на статията"
+        id="title"
+        name="title"
+        placeholder={title}
       />
       <InputField
         type="text"
-        label="Нова цена"
-        id="newPrice"
-        name="newPrice"
-        placeholder={newPrice}
+        label="Кратко описание"
+        id="summary"
+        name="summary"
+        placeholder={summary}
       />
       <InputField
         type="text"
-        label="Снимка"
+        label="Заглавна снимка"
         id="image"
         name="image"
         placeholder={image}
       />
       <TextAreaField
-        type="text"
-        label="Описание на продукта"
+        label="Описание"
         id="description"
         name="description"
         placeholder={description}

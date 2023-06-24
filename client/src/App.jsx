@@ -24,6 +24,7 @@ import AdminPharmacies from './components/Admin/adminPharmacies';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Toaster } from 'react-hot-toast';
+import EditNewsScreen from './screens/EditNews';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -103,8 +104,8 @@ const router = createBrowserRouter([
             element: <AddNewNewsScreen />,
           },
           {
-            path: 'interesno/edit/:id',
-            element: <EditPromoScreeen />,
+            path: 'interesno/edit/:slug',
+            element: <EditNewsScreen />,
           },
         ],
       },
