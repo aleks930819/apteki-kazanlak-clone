@@ -42,6 +42,12 @@ export const addPromoProduct = asyncHandler(async (req, res) => {
 // @route   DELETE /api/promo/:id
 // @access  Private/Admin
 export const deletePromoProduct = asyncHandler(async (req, res) => {
+  const isPromoProductExist = await PromoProduct.findById(req.params.id);
+
+  if (!isPromoProductExist) {
+    return res.status(404).json({ message: 'Promo product not found' });
+  }
+
   const promoProduct = await PromoProduct.deleteOne({ _id: req.params.id });
 
   if (promoProduct) {

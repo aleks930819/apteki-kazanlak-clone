@@ -81,8 +81,12 @@ export const createPharmacy = asyncHandler(async (req, res) => {
 // @access  Private/Admin
 
 export const deletePharmacy = asyncHandler(async (req, res) => {
-  console.log(req.params.id);
-  const news = await Pharmacie.deleteOne({ slug: req.params.id });
+  const isPharmacyExist = await Pharmacie.findOne({ slug: req.params.slug });
+
+  if (!isPharmacyExist) {
+    return res.status(404).json({ message: 'Pharmacy not found' });
+  }
+  const news = await Pharmacie.deleteOne({ slug: req.params.slug });
 
   if (news) {
     res.json({ message: 'News removed' });

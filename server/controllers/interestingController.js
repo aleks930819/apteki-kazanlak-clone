@@ -58,6 +58,12 @@ export const createNews = asyncHandler(async (req, res) => {
 // @route   DELETE /api/interesting/:slug
 // @access  Private/Admin
 export const deleteNews = asyncHandler(async (req, res) => {
+  const isNewsExist = await News.findOne({ slug: req.params.slug });
+
+  if (!isNewsExist) {
+    return res.status(404).json({ message: 'News not found' });
+  }
+
   const news = await News.deleteOne({ slug: req.params.slug });
 
   if (news) {
