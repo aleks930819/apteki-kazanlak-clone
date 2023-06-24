@@ -1,21 +1,24 @@
-import { toast } from 'react-hot-toast';
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 
 import { useState } from 'react';
 
-import useAddPharmacie from '../../hooks/useAddPharmacie';
+import useUpdatePharmacie from '../../hooks/useUpdatePharmacie';
 
-import InputField from '../../ui/InputField';
-import TextAreaField from '../../ui/TextAreaField';
-import ActionForm from '../../ui/ActionForm';
+import { getPharmacie } from '../../services/apiPharmacies';
 
-import 'react-time-picker/dist/TimePicker.css';
-import 'react-clock/dist/Clock.css';
-
-import WorkTimePicker from '../../ui/WorkTimePicker';
 import WorkTimeWrapper from '../../components/WorktTme/WorkTimeWrapper';
 
-const AddNewPharmacieScreen = () => {
-  const { addPharmacie, addingPharmacieLoading } = useAddPharmacie();
+import ActionForm from '../../ui/ActionForm';
+import InputField from '../../ui/InputField';
+import TextAreaField from '../../ui/TextAreaField';
+import Spinner from '../../ui/Spinner';
+import WorkTimePicker from '../../ui/WorkTimePicker';
+
+import setChangedValue from '../../utils/changeValueHandler';
+
+const EditPharmacieScreen = () => {
+  const { slug } = useParams();
 
   const [workingTime, setWorkingTime] = useState({
     weekDays: {
@@ -42,12 +45,74 @@ const AddNewPharmacieScreen = () => {
     }));
   };
 
+  const [values, setValues] = useState({
+    name: '',
+    history: '',
+    phone: '',
+    managerName: '',
+    city: '',
+    street: '',
+    workingHours: '',
+    managerTitle: '',
+    managerDescription: '',
+  });
+
+  const { editingLoading, updatePharmacie } = useUpdatePharmacie(slug);
+  //   const { deleteNews, deletingLoading } = useDeleteNews(slug);
+
+  const { isLoading, data } = useQuery(['pharmacies', slug], () =>
+    getPharmacie(slug)
+  );
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  const {
+    name,
+    history,
+    phone,
+    managerName,
+    address,
+    workingHours,
+    managerTitle,
+    managerDescription,
+  } = data;
+
+  if (!values.name) {
+    setValues({
+      name,
+      history,
+      phone,
+      managerName,
+      managerTitle,
+      managerDescription,
+      city: address.city,
+      street: address.street,
+    });
+
+    setWorkingTime({
+      weekDays: {
+        open: workingHours.mondayToFriday[0],
+        close: workingHours.mondayToFriday[1],
+      },
+      saturday: {
+        open: workingHours.saturday[0],
+        close: workingHours.saturday[1],
+      },
+      sunday: {
+        open: workingHours.sunday[0],
+        close: workingHours.sunday[1],
+      },
+    });
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // if (!deletingLoading) {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
-
     const newData = {
       ...data,
       address: {
@@ -60,39 +125,34 @@ const AddNewPharmacieScreen = () => {
         sunday: [workingTime.sunday.open ?? '', workingTime.sunday.close ?? ''],
       },
     };
+    updatePharmacie(newData);
+  };
 
-    if (
-      !data.name ||
-      !data.city ||
-      !data.street ||
-      !data.phone ||
-      !data.history ||
-      !data.managerName ||
-      !data.managerTitle
-    ) {
-      return toast.error('Моля попълнете всички полета!');
-    }
-
-    addPharmacie(newData);
+  const changeHandler = (e) => {
+    setChangedValue(e, setValues);
   };
 
   return (
     <ActionForm
-      heading="Добавате нова статия"
-      buttonName="Добави"
+      heading="Редактирай информация за аптека"
+      buttonName="Редактирай"
       onSubmit={handleSubmit}
-      isLoading={addingPharmacieLoading}
+      // isLoading={addingPharmacieLoading}
     >
       <InputField
         type="text"
         label="Име на аптеката"
         id="name"
         name="name"
+        value={values.name}
+        onChange={changeHandler}
         required
       />
       <InputField
         type="text"
         label="Населено място"
+        value={values.city}
+        onChange={changeHandler}
         id="city"
         name="city"
         required
@@ -103,19 +163,26 @@ const AddNewPharmacieScreen = () => {
         label="Улица"
         id="street"
         name="street"
+        value={values.street}
+        onChange={changeHandler}
         required
       />
+
       <InputField
         type="text"
         label="Телефон"
         id="phone"
         name="phone"
+        value={values.phone}
+        onChange={changeHandler}
         required
       />
       <TextAreaField
         label="История на аптеката"
         id="history"
         name="history"
+        value={values.history}
+        onChange={changeHandler}
         required
       />
       <InputField
@@ -123,6 +190,8 @@ const AddNewPharmacieScreen = () => {
         label="Мениджър"
         id="managerName"
         name="managerName"
+        value={values.managerName}
+        onChange={changeHandler}
         required
       />
       <InputField
@@ -130,14 +199,19 @@ const AddNewPharmacieScreen = () => {
         label="Мениджър образование"
         id="managerTitle"
         name="managerTitle"
+        value={values.managerTitle}
+        onChange={changeHandler}
         required
       />
       <TextAreaField
         label="Мениджър описание"
         id="managerDescription"
         name="managerDescription"
+        value={values.managerDescription}
+        onChange={changeHandler}
         required
       />
+
       <div>
         <h2 className="mb-2 font-bold text-gray-700">Работно Време:</h2>
         {/* Weekdays working time */}
@@ -186,4 +260,4 @@ const AddNewPharmacieScreen = () => {
   );
 };
 
-export default AddNewPharmacieScreen;
+export default EditPharmacieScreen;

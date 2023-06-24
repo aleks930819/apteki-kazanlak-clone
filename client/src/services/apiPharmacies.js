@@ -40,3 +40,33 @@ export const addNewPharmacie = async (data) => {
   const responseData = await response.json();
   return responseData;
 };
+
+export const updatePharmacieBySlug = async (slug, data) => {
+  const response = await fetch(`${API_URL}/${slug}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to update pharmacy.');
+  }
+
+  const responseData = await response.json();
+  return responseData;
+};
+
+export const deletePharmacie = async (slug) => {
+  const response = await fetch(`${API_URL}/${slug}`, {
+    method: 'DELETE',
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to delete pharmacy.');
+  }
+
+  const responseData = await response.json();
+  return responseData;
+};

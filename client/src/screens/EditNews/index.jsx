@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import { useState } from 'react';
 
-import { getNews, getSingleNews } from '../../services/apiInteresting';
+import { getSingleNews } from '../../services/apiInteresting';
 
 import useUpdateNews from '../../hooks/useUpdateNews';
 import useDeleteNews from '../../hooks/useDeleteNews';
