@@ -57,11 +57,9 @@ const AddNewPharmacieScreen = () => {
       workingHours: {
         mondayToFriday: [workingTime.weekDays.open, workingTime.weekDays.close],
         saturday: [workingTime.saturday.open, workingTime.saturday.close],
-        sunday: [workingTime.sunday.open, workingTime.sunday.close],
+        sunday: [workingTime.sunday.open ?? '', workingTime.sunday.close ?? ''],
       },
     };
-
-    console.log(newData);
 
     if (
       !data.name ||
