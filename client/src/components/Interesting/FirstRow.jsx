@@ -14,8 +14,11 @@ const FirstRow = ({ item }) => {
                 src={item.image}
                 alt={item.title}
                 className="
-              h-[260px] w-full
-              object-cover
+              h-[160px] w-full
+              object-center
+              sm:h-[250px]
+              sm:object-cover
+              sm:object-center
                   "
               />
             </div>

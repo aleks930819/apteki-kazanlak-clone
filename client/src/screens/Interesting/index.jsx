@@ -21,20 +21,8 @@ const InterestingScreen = () => {
 
   return (
     <div>
-      <HeroBanner imageSrc={HeroBannerLogo}>
-        {/* <span
-          className="text:2xl absolute left-[20%] top-[50%] bg-primary bg-opacity-90 px-[20px] py-1
-          text-center
-          text-white
-          sm:text-6xl
-
-          "
-        >
-          Интересно
-        </span> */}
-      </HeroBanner>
-
-      <div className="mx-auto mb-20 mt-10 p-5 lg:w-[80vw]">
+      <HeroBanner imageSrc={HeroBannerLogo}></HeroBanner>
+      <div className="mx-auto mb-20 mt-10 p-5 lg:max-w-lg">
         <FirstRow item={allNews} />
         <SecondRow item={allNews} />
       </div>

@@ -13,8 +13,8 @@ const HeroImagesChangeButtons = () => {
     swiper.slidePrev();
   };
   return (
-    <div className="mx-auto flex w-full max-w-[1140px] items-center justify-center p-4 ">
-      <div className="mt-[100px] flex w-full  max-w-[1140px] sm:mt-[200px] ">
+    <div className="mx-auto flex w-full max-w-lg items-center justify-center p-4 ">
+      <div className="mt-[100px] flex w-full  max-w-lg sm:mt-[200px] ">
         <div
           className="left-26 
   absolute

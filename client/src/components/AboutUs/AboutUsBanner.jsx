@@ -12,7 +12,7 @@ const AboutUsBanner = () => {
     sm:h-[50vh]
     "
     >
-      <div className="relative mx-auto flex w-full max-w-[1140px] items-start justify-start p-4 ">
+      <div className="relative mx-auto flex w-full max-w-lg items-start justify-start p-4 ">
         <span
           className="  mt-[10vh] text-center text-2xl text-white
          font-light

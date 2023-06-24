@@ -47,8 +47,8 @@ const Hero = () => {
             style={{ backgroundImage: `url(${image.url})` }}
             className="relative h-[30vh] bg-cover bg-center bg-no-repeat sm:h-[55vh]"
           >
-            <div className="relative mx-auto flex w-full max-w-[1140px] items-start justify-start p-4">
-              <div className="mt-[10vh] flex flex-col items-center gap-2 text-center sm:mt-[20vh]">
+            <div className="relative mx-auto flex w-full max-w-lg items-start justify-start p-4">
+              <div className="mt-[5vh] flex flex-col items-center gap-2 text-center sm:mt-[20vh]">
                 <div className="flex flex-col gap-2">
                   <span className="bg-primary bg-opacity-90 px-4 py-1 text-center text-2xl text-white sm:text-6xl">
                     {image.title}
