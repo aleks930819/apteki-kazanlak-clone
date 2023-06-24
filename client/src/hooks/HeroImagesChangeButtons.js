@@ -12,15 +12,16 @@ const HeroImagesChangeButtons = () => {
   const handlePrevImage = () => {
     swiper.slidePrev();
   };
+
   return (
     <div className="mx-auto flex w-full max-w-[1140px] items-center justify-center p-4 ">
       <div className="mt-[100px] flex w-full  max-w-[1140px] sm:mt-[200px] ">
         <div
           className="left-26 
-  absolute
-  bottom-0
-  inline-flex
-  items-center gap-2 bg-primary px-2 py-2 text-white"
+            absolute
+            bottom-0
+            inline-flex
+            items-center gap-2 bg-primary px-2 py-2 text-white"
         >
           <button>
             <BsArrowLeft size={30} onClick={handlePrevImage} />

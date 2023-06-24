@@ -5,85 +5,76 @@ import firstImage from '../../assets/vitamins.jpg';
 import { useState } from 'react';
 import HeroCurrentImageShow from './HeroCurrentImageShow';
 import HeroImagesChangeButtons from './HeroImagesChangeButtons';
+import { Link } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 
 const imagesArray = [
   {
     url: firstImage,
+    title: 'Вашите аптеки',
+    subTitle: 'с нашите грижи',
   },
   {
     url: secondImage,
+    title: 'Интересно',
+    link: '/interesno',
   },
   {
     url: thirdImage,
+    title: 'Промоции',
+    link: '/promo',
   },
 ];
 
 const Hero = () => {
-  const [currentImage, setCurrentImage] = useState(0);
-
-  const handleNextImage = () => {
-    setCurrentImage((prevState) => {
-      if (prevState === imagesArray.length - 1) {
-        return 0;
-      }
-      return prevState + 1;
-    });
-  };
-
-  const handlePrevImage = () => {
-    setCurrentImage((prevState) => {
-      if (prevState === 0) {
-        return imagesArray.length - 1;
-      }
-      return prevState - 1;
-    });
-  };
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   return (
-    <section className="relative ">
-      <div>
-        <div
-          className="duration-100"
-          style={{
-            backgroundImage: `url(${imagesArray[currentImage].url})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            height: '55vh',
-          }}
-        ></div>
-      </div>
-      <div
-        className="
-        absolute
-        left-[15%]
-        top-[35%]
-        flex
-        flex-col
-        items-center
-        justify-center
-        gap-4
-      "
-      >
-        <span className="bg-primary bg-opacity-90 px-[20px] py-1 text-center text-6xl text-white">
-          Промоции
-        </span>
-        <button
-          className="linear-background  text-shadow-primary self-start rounded-md border-[1px]  border-blue-dark px-3 py-2 
-        text-center 
-        text-base font-semibold uppercase
-        text-blue-dark
-        "
-        >
-          Виж още
-        </button>
-      </div>
-      <HeroImagesChangeButtons
-        handleNextImage={handleNextImage}
-        handlePrevImage={handlePrevImage}
-      />
-      <HeroCurrentImageShow currentImage={currentImage} />
-    </section>
+    <Swiper
+      spaceBetween={50}
+      slidesPerView={1}
+      navigation={true}
+      onSwiper={(swiper) => {
+        swiper.on('slideChange', () => {
+          setCurrentIndex(swiper.activeIndex);
+        });
+      }}
+    >
+      {imagesArray.map((image, index) => (
+        <SwiperSlide key={index}>
+          <div
+            style={{ backgroundImage: `url(${image.url})` }}
+            className="relative h-[30vh] bg-cover bg-center bg-no-repeat sm:h-[55vh]"
+          >
+            <div className="relative mx-auto flex w-full max-w-[1140px] items-start justify-start p-4">
+              <div className="mt-[10vh] flex flex-col items-center gap-2 text-center sm:mt-[20vh]">
+                <div className="flex flex-col gap-2">
+                  <span className="bg-primary bg-opacity-90 px-4 py-1 text-center text-2xl text-white sm:text-6xl">
+                    {image.title}
+                  </span>
+                  {image.subTitle && (
+                    <span className="bg-primary bg-opacity-90 px-4 py-1 text-center text-2xl text-white sm:text-6xl">
+                      {image.subTitle}
+                    </span>
+                  )}
+                  {image.link && (
+                    <Link
+                      to={image.link}
+                      className="linear-background w-[fit-content] overflow-hidden rounded-md border-2 border-blue-dark px-[20px] py-[10px] text-sm font-bold uppercase text-blue-dark"
+                    >
+                      Виж още
+                    </Link>
+                  )}
+                </div>
+              </div>
+            </div>
+            <HeroImagesChangeButtons handleNextImage handlePrevImage />
+            <HeroCurrentImageShow currentImage={currentIndex} /> */
+          </div>
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 };
 

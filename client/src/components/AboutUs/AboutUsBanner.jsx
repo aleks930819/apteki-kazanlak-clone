@@ -1,32 +1,27 @@
 import AboutUsImage from '../../assets/about-us.jpg';
 
 const AboutUsBanner = () => {
+  const divStyle = {
+    backgroundImage: `url(${AboutUsImage})`,
+  };
   return (
-    <div className="relative">
-      <div className="flex sm:h-[60vh] flex-col items-center justify-center">
-        <img
-          src={AboutUsImage}
-          alt="About Us Banner Logo"
-          className="h-full
-             w-full object-cover
-                object-top
-            "
-        />
+    <div
+      style={divStyle}
+      className="relative h-[30vh] bg-cover bg-no-repeat 
+      object-top
+    sm:h-[50vh]
+    "
+    >
+      <div className="relative mx-auto flex w-full max-w-[1140px] items-start justify-start p-4 ">
+        <span
+          className="  mt-[10vh] text-center text-2xl text-white
+         font-light
+        sm:mt-[20vh] sm:text-6xl 
+      "
+        >
+          За нас
+        </span>
       </div>
-      <h1
-        className="
-        absolute
-        left-[20%]
-        top-1/2
-        -translate-x-1/2
-        -translate-y-1/2
-        transform
-        text-2xl
-        text-white
-        sm:text-6xl        "
-      >
-        За нас
-      </h1>
     </div>
   );
 };
