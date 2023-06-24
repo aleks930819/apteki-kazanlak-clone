@@ -1,11 +1,13 @@
-import { getPromoProducts } from '../../services/apiPromoProducts';
-import Table from '../../ui/Table';
-import { BsPencilSquare } from 'react-icons/bs';
 import { AiFillPlusCircle } from 'react-icons/ai';
+import { BsPencilSquare } from 'react-icons/bs';
+
+import { getPromoProducts } from '../../services/apiPromoProducts';
+
+import Table from '../../ui/Table';
+import Spinner from '../../ui/Spinner';
 
 import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import Spinner from '../../ui/Spinner';
 
 const tableColumns = [
   { label: 'Име на продукта', dataKey: 'productName' },

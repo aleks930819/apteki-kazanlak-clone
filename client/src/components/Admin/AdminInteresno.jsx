@@ -6,6 +6,7 @@ import { BsPencilSquare } from 'react-icons/bs';
 import { AiFillPlusCircle } from 'react-icons/ai';
 
 import { getNews } from '../../services/apiInteresting';
+
 import Table from '../../ui/Table';
 import Spinner from '../../ui/Spinner';
 
@@ -25,10 +26,13 @@ const tableColumns = [
     label: 'Редактирай',
     dataKey: 'edit',
     render: (rowData) => (
-      <div className="flex cursor-pointer items-center">
+      <Link
+        to={`/admin/interesno/edit/${rowData._id}`}
+        className="flex cursor-pointer items-center"
+      >
         <BsPencilSquare className="text-2xl text-primary" />
         <span className="ml-2">{rowData.edit}</span>
-      </div>
+      </Link>
     ),
   },
   {
@@ -36,7 +40,7 @@ const tableColumns = [
     dataKey: 'add',
     render: (rowData) => (
       <Link
-        to="/admin/promo-products/add"
+        to="/admin/interesno/add"
         className="flex cursor-pointer items-center"
       >
         <AiFillPlusCircle className="text-2xl text-primary" />
@@ -60,6 +64,7 @@ const AdminInteresno = () => {
   if (news) {
     tableData = [
       ...news.map((news) => ({
+        _id: news._id,
         title: news.title,
         date: news.createdAt,
         image: news.image,

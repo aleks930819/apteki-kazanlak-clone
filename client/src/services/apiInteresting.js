@@ -23,3 +23,20 @@ export const getSingleNews = async (slug) => {
   const data = await response.json();
   return data;
 };
+
+export const createNewNews = async (news) => {
+  const response = await fetch(API_URL, {
+    method: 'POST',
+    headers:{
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(news),
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to create new news');
+  }
+
+  const data = await response.json();
+  return data;
+};

@@ -1,4 +1,4 @@
-import useAddPromoProduct from '../../hooks/useAddPromoProduct';
+import useAddNewNews from '../../hooks/useAddNewNews';
 
 import InputField from '../../ui/InputField';
 import TextAreaField from '../../ui/TextAreaField';
@@ -6,8 +6,8 @@ import ActionForm from '../../ui/ActionForm';
 
 import { toast } from 'react-hot-toast';
 
-const AddNewPromoProductScreen = () => {
-  const { addPromoProduct, addingPromoProductLoading } = useAddPromoProduct();
+const AddNewNews = () => {
+  const { addNewNewsing, addingNewNewsLoading } = useAddNewNews();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,45 +15,41 @@ const AddNewPromoProductScreen = () => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
 
-    if (
-      !data.name ||
-      !data.oldPrice ||
-      !data.newPrice ||
-      !data.image ||
-      !data.description
-    ) {
+    console.log(data);
+
+    if (!data.image || !data.title || !data.summary || !data.description) {
       return toast.error('Моля попълнете всички полета!');
     }
 
-    addPromoProduct(data);
+    addNewNewsing(data);
   };
 
   return (
     <ActionForm
-      heading="Добави нов продукт"
+      heading="Добавате нова статия"
       buttonName="Добави"
       onSubmit={handleSubmit}
-      isLoading={addingPromoProductLoading}
+      isLoading={addingNewNewsLoading}
     >
       <InputField
         type="text"
-        label="Име на продукта"
-        id="name"
-        name="name"
+        label="Залгавие на статията"
+        id="title"
+        name="title"
         required
       />
       <InputField
-        type="number"
-        label="Стара Цена"
-        id="oldPrice"
-        name="oldPrice"
+        type="text"
+        label="Кратко описание"
+        id="summary"
+        name="summary"
         required
       />
       <InputField
-        type="number"
-        label="Нова Цена"
-        id="newPrice"
-        name="newPrice"
+        type="text"
+        label="Заглавна снимка"
+        id="image"
+        name="image"
         required
       />
       <InputField type="text" label="Снимка" id="image" name="image" required />
@@ -67,4 +63,4 @@ const AddNewPromoProductScreen = () => {
   );
 };
 
-export default AddNewPromoProductScreen;
+export default AddNewNews;

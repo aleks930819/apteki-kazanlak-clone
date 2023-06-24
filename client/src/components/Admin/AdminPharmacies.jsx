@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom';
+
 import { getPharmacies } from '../../services/apiPharmacies';
+
 import Table from '../../ui/Table';
+import Spinner from '../../ui/Spinner';
+
 import { BsPencilSquare } from 'react-icons/bs';
 import { AiFillPlusCircle } from 'react-icons/ai';
 import { useQuery } from '@tanstack/react-query';
-import Spinner from '../../ui/Spinner';
 
 const tableColumns = [
   { label: 'Име на Аптеката', dataKey: 'pharmacieName' },
@@ -47,6 +50,7 @@ const AdminPharmacies = () => {
   if (pharmacies) {
     tableData = [
       ...pharmacies.map((pharmacie) => ({
+        _id: pharmacie._id,
         pharmacieName: pharmacie.name,
         address: `${pharmacie.address.city}, ${pharmacie.address.street}`,
         phone: pharmacie.phone,

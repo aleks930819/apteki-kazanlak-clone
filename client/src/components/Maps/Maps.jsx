@@ -1,5 +1,4 @@
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
-import HeaderLogo from '../Header/HeaderLogo';
 // import Logo from '../../assets//logo.png';
 import { GOOGLE_MAPS_API_KEY } from '../../../api';
 
@@ -30,9 +29,7 @@ const Maps = () => {
           panControl={true}
           zoomControl={true}
         >
-          <Marker position={markerPosition}
-          icon={customMarkerIcon}
-          ></Marker>
+          <Marker position={markerPosition} icon={customMarkerIcon}></Marker>
         </GoogleMap>
       </div>
       <div className="w-auto lg:w-[30%]">

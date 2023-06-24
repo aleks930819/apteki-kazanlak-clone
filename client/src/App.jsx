@@ -15,6 +15,7 @@ import LoginScreen from './screens/Login';
 import AdminPanelScreen from './screens/AdminPanel';
 import AddNewPromoProductScreen from './screens/AddNewPromoProduct';
 import EditPromoScreeen from './screens/EditPromoProduct';
+import AddNewNewsScreen from './screens/AddNewNews';
 
 import AdminPromoProducts from './components/Admin/AdminPromoProducts';
 import AdminInteresno from './components/Admin/adminInteresno';
@@ -94,8 +95,16 @@ const router = createBrowserRouter([
             element: <EditPromoScreeen />,
           },
           {
-            path: 'intersno',
+            path: 'interesno',
             element: <AdminInteresno />,
+          },
+          {
+            path: 'interesno/add',
+            element: <AddNewNewsScreen />,
+          },
+          {
+            path: 'interesno/edit/:id',
+            element: <EditPromoScreeen />,
           },
         ],
       },

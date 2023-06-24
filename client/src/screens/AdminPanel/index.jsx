@@ -12,7 +12,7 @@ const adminLinks = [
   },
   {
     name: 'Интересно',
-    path: '/admin/intersno',
+    path: '/admin/interesno',
   },
   {
     name: 'Изход',
