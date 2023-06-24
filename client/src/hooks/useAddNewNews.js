@@ -4,13 +4,13 @@ import toast from 'react-hot-toast';
 
 import { createNewNews } from '../services/apiInteresting';
 
-const useAddPromoProduct = () => {
+const useAddPromoProduct = (user) => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
   const { mutate: addNewNewsing, isLoading: addingNewNewsLoading } =
     useMutation({
-      mutationFn: createNewNews,
+      mutationFn: (data) => createNewNews(data, user.token),
       onSuccess: () => {
         queryClient.invalidateQueries({
           queryKey: ['news'],

@@ -1,15 +1,14 @@
 import { useQueryClient, useMutation } from '@tanstack/react-query';
-import { deleteProductById } from '../services/apiPromoProducts';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { deletePharmacieBySlug } from '../services/apiPharmacies';
 
-const useDeletePharmacie = (slug) => {
+const useDeletePharmacie = (slug, user) => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
   const { isLoading: deletingLoading, mutate: deletePharmacie } = useMutation({
-    mutationFn: () => deletePharmacieBySlug(slug),
+    mutationFn: () => deletePharmacieBySlug(slug, user.token),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ['pharmacies'],

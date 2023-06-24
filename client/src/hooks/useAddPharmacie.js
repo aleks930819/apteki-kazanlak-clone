@@ -4,13 +4,13 @@ import toast from 'react-hot-toast';
 
 import { addNewPharmacie } from '../services/apiPharmacies';
 
-const useAddPharmacie = () => {
+const useAddPharmacie = (user) => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
   const { mutate: addPharmacie, isLoading: addingPharmacieLoading } =
     useMutation({
-      mutationFn: addNewPharmacie,
+      mutationFn: (data) => addNewPharmacie(data, user.token),
       onSuccess: () => {
         queryClient.invalidateQueries({
           queryKey: ['pharmacies'],

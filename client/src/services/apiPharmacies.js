@@ -24,11 +24,12 @@ export const getPharmacie = async (slug) => {
   return data;
 };
 
-export const addNewPharmacie = async (data) => {
+export const addNewPharmacie = async (data, token) => {
   const response = await fetch(`${API_URL}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token || '',
     },
     body: JSON.stringify(data),
   });
@@ -41,11 +42,12 @@ export const addNewPharmacie = async (data) => {
   return responseData;
 };
 
-export const updatePharmacieBySlug = async (slug, data) => {
+export const updatePharmacieBySlug = async (slug, data, token) => {
   const response = await fetch(`${API_URL}/${slug}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token || '',
     },
     body: JSON.stringify(data),
   });
@@ -58,9 +60,13 @@ export const updatePharmacieBySlug = async (slug, data) => {
   return responseData;
 };
 
-export const deletePharmacieBySlug = async (slug) => {
+export const deletePharmacieBySlug = async (slug, token) => {
   const response = await fetch(`${API_URL}/${slug}`, {
     method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token || '',
+    },
   });
 
   if (!response.ok) {

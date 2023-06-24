@@ -13,11 +13,12 @@ export const getPromoProducts = async () => {
   return data;
 };
 
-export const createNewPromoProduct = async (data) => {
+export const createNewPromoProduct = async (data, token) => {
   const response = await fetch(API_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token || '',
     },
     body: JSON.stringify(data),
   });
@@ -41,11 +42,12 @@ export const getProductById = async (id) => {
   return data;
 };
 
-export const updateProductById = async (data, id) => {
+export const updateProductById = async (data, id, token) => {
   const response = await fetch(`${API_URL}/${id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token || '',
     },
     body: JSON.stringify(data),
   });
@@ -58,9 +60,13 @@ export const updateProductById = async (data, id) => {
   return responseData;
 };
 
-export const deleteProductById = async ( id) => {
+export const deleteProductById = async (id, token) => {
   const response = await fetch(`${API_URL}/${id}`, {
     method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token || '',
+    },
   });
 
   if (!response.ok) {

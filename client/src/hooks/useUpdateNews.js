@@ -5,11 +5,11 @@ import { useQueryClient, useMutation } from '@tanstack/react-query';
 
 import { updateNews as updateNewsBySlug } from '../services/apiInteresting';
 
-const useUpdateNews = (slug) => {
+const useUpdateNews = (slug, user) => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const { isLoading: editingLoading, mutate: updateNews } = useMutation({
-    mutationFn: (data) => updateNewsBySlug(data, slug),
+    mutationFn: (data) => updateNewsBySlug(data, slug, user.token),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ['news'],

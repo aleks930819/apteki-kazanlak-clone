@@ -24,11 +24,12 @@ export const getSingleNews = async (slug) => {
   return data;
 };
 
-export const createNewNews = async (news) => {
+export const createNewNews = async (news, token) => {
   const response = await fetch(API_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token || '',
     },
     body: JSON.stringify(news),
   });
@@ -41,11 +42,12 @@ export const createNewNews = async (news) => {
   return data;
 };
 
-export const updateNews = async (news, slug) => {
+export const updateNews = async (news, slug, token) => {
   const response = await fetch(`${API_URL}/${slug}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token || '',
     },
     body: JSON.stringify(news),
   });
@@ -58,9 +60,13 @@ export const updateNews = async (news, slug) => {
   return data;
 };
 
-export const deleteNewsBySlug = async (slug) => {
+export const deleteNewsBySlug = async (slug, token) => {
   const response = await fetch(`${API_URL}/${slug}`, {
     method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token || '',
+    },
   });
 
   if (!response.ok) {

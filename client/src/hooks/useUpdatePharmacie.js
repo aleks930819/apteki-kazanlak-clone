@@ -3,11 +3,12 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { updatePharmacieBySlug } from '../services/apiPharmacies';
 
-const useUpdatePharmacie = (slug) => {
+const useUpdatePharmacie = (slug, user) => {
+  console.log('user', user);
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const { isLoading: editingLoading, mutate: updatePharmacie } = useMutation({
-    mutationFn: (data) => updatePharmacieBySlug(slug, data),
+    mutationFn: (data) => updatePharmacieBySlug(slug, data, user.token),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ['pharmacies'],

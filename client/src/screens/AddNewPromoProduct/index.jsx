@@ -5,9 +5,13 @@ import TextAreaField from '../../ui/TextAreaField';
 import ActionForm from '../../ui/ActionForm';
 
 import { toast } from 'react-hot-toast';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 
 const AddNewPromoProductScreen = () => {
-  const { addPromoProduct, addingPromoProductLoading } = useAddPromoProduct();
+  const { user } = useContext(AuthContext);
+  const { addPromoProduct, addingPromoProductLoading } =
+    useAddPromoProduct(user);
 
   const handleSubmit = (e) => {
     e.preventDefault();

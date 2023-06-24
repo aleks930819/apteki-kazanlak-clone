@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import useUpdatePharmacie from '../../hooks/useUpdatePharmacie';
 import useDeletePharmacie from '../../hooks/useDeletePharmacie';
@@ -17,9 +17,11 @@ import Spinner from '../../ui/Spinner';
 import WorkTimePicker from '../../ui/WorkTimePicker';
 
 import setChangedValue from '../../utils/changeValueHandler';
+import { AuthContext } from '../../context/AuthContext';
 
 const EditPharmacieScreen = () => {
   const { slug } = useParams();
+  const { user } = useContext(AuthContext);
 
   const [workingTime, setWorkingTime] = useState({
     weekDays: {
@@ -58,8 +60,8 @@ const EditPharmacieScreen = () => {
     managerDescription: '',
   });
 
-  const { editingLoading, updatePharmacie } = useUpdatePharmacie(slug);
-  const { deletePharmacie, deletingLoading } = useDeletePharmacie(slug);
+  const { editingLoading, updatePharmacie } = useUpdatePharmacie(slug, user);
+  const { deletePharmacie, deletingLoading } = useDeletePharmacie(slug, user);
 
   const { isLoading, data } = useQuery(['pharmacies', slug], () =>
     getPharmacie(slug)

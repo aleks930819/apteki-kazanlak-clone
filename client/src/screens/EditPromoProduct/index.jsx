@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { getProductById } from '../../services/apiPromoProducts';
 
@@ -13,9 +13,12 @@ import InputField from '../../ui/InputField';
 import TextAreaField from '../../ui/TextAreaField';
 import Spinner from '../../ui/Spinner';
 import setChangedValue from '../../utils/changeValueHandler';
+import { AuthContext } from '../../context/AuthContext';
 
 const EditPromoScreeen = () => {
   const { id } = useParams();
+  const { user } = useContext(AuthContext);
+
 
   const [values, setValues] = useState({
     name: '',
@@ -25,8 +28,8 @@ const EditPromoScreeen = () => {
     image: '',
   });
 
-  const { editingLoading, updateProduct } = useUpdatePromoProduct(id);
-  const { deleteProduct, deletingLoading } = useDeletePromoProduct(id);
+  const { editingLoading, updateProduct } = useUpdatePromoProduct(id, user);
+  const { deleteProduct, deletingLoading } = useDeletePromoProduct(id, user);
 
   const { isLoading, data } = useQuery(['singleProduct', id], () =>
     getProductById(id)

@@ -3,12 +3,12 @@ import { deleteProductById } from '../services/apiPromoProducts';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
-const useDeltePromoProduct = (id) => {
+const useDeltePromoProduct = (id, user) => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
   const { isLoading: deletingLoading, mutate: deleteProduct } = useMutation({
-    mutationFn: () => deleteProductById(id),
+    mutationFn: () => deleteProductById(id, user.token),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ['promoProducts'],

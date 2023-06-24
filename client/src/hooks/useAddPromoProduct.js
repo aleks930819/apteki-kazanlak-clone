@@ -4,13 +4,13 @@ import toast from 'react-hot-toast';
 
 import { createNewPromoProduct } from '../services/apiPromoProducts';
 
-const useAddPromoProduct = () => {
+const useAddPromoProduct = (user) => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
   const { mutate: addPromoProduct, isLoading: addingPromoProductLoading } =
     useMutation({
-      mutationFn: createNewPromoProduct,
+      mutationFn: (data) => createNewPromoProduct(data, user.token),
       onSuccess: () => {
         queryClient.invalidateQueries({
           queryKey: ['promoProducts'],

@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { getSingleNews } from '../../services/apiInteresting';
 
@@ -13,9 +13,11 @@ import InputField from '../../ui/InputField';
 import TextAreaField from '../../ui/TextAreaField';
 import Spinner from '../../ui/Spinner';
 import setChangedValue from '../../utils/changeValueHandler';
+import { AuthContext } from '../../context/AuthContext';
 
 const EditNewsScreen = () => {
   const { slug } = useParams();
+  const { user } = useContext(AuthContext);
 
   const [values, setValues] = useState({
     title: '',
@@ -24,8 +26,8 @@ const EditNewsScreen = () => {
     description: '',
   });
 
-  const { editingLoading, updateNews } = useUpdateNews(slug);
-  const { deleteNews, deletingLoading } = useDeleteNews(slug);
+  const { editingLoading, updateNews } = useUpdateNews(slug, user);
+  const { deleteNews, deletingLoading } = useDeleteNews(slug, user);
 
   const { isLoading, data } = useQuery(['singleNews', slug], () =>
     getSingleNews(slug)

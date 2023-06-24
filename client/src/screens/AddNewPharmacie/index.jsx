@@ -1,6 +1,6 @@
 import { toast } from 'react-hot-toast';
 
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
 import useAddPharmacie from '../../hooks/useAddPharmacie';
 
@@ -14,8 +14,12 @@ import 'react-clock/dist/Clock.css';
 import WorkTimePicker from '../../ui/WorkTimePicker';
 import WorkTimeWrapper from '../../components/WorktTme/WorkTimeWrapper';
 
+import { AuthContext } from '../../context/AuthContext';
+
 const AddNewPharmacieScreen = () => {
-  const { addPharmacie, addingPharmacieLoading } = useAddPharmacie();
+  const { user } = useContext(AuthContext);
+
+  const { addPharmacie, addingPharmacieLoading } = useAddPharmacie(user);
 
   const [workingTime, setWorkingTime] = useState({
     weekDays: {

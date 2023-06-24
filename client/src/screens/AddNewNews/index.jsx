@@ -5,9 +5,13 @@ import TextAreaField from '../../ui/TextAreaField';
 import ActionForm from '../../ui/ActionForm';
 
 import { toast } from 'react-hot-toast';
+import { useContext } from 'react';
+
+import { AuthContext } from '../../context/AuthContext';
 
 const AddNewNews = () => {
-  const { addNewNewsing, addingNewNewsLoading } = useAddNewNews();
+  const { user } = useContext(AuthContext);
+  const { addNewNewsing, addingNewNewsLoading } = useAddNewNews(user);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -50,7 +54,6 @@ const AddNewNews = () => {
         name="image"
         required
       />
-      <InputField type="text" label="Снимка" id="image" name="image" required />
       <TextAreaField
         label="Описание"
         id="description"
