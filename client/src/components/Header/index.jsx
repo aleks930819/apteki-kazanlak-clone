@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import HeaderTitle from './HeaderTitle';
 import HeaderLogo from './HeaderLogo';
@@ -8,12 +8,14 @@ import HamburgerMenu from '../../ui/HamburgerMenu';
 // import useIsMobileView from '../../hooks/useIsMobileView';
 import useIsDekstopView from '../../hooks/useIsDekstopView';
 import MobileHeaderLinks from './MobileHeaderLinks';
+import { AuthContext } from '../../context/AuthContext';
 // import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
   const [isDekstopView] = useIsDekstopView();
+  const { user } = useContext(AuthContext);
 
   const handleDropdownToggle = () => {
     setDropdownVisible(!isDropdownVisible);
@@ -55,7 +57,10 @@ const Header = () => {
         </div>
         <nav>
           {isDekstopView ? (
-            <HeaderLinks handleDropdownToggle={handleDropdownToggle} />
+            <HeaderLinks
+              handleDropdownToggle={handleDropdownToggle}
+              user={user}
+            />
           ) : (
             <>
               <HamburgerMenu

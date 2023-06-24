@@ -27,6 +27,7 @@ import { Toaster } from 'react-hot-toast';
 import EditNewsScreen from './screens/EditNews';
 import AddNewPharmacieScreen from './screens/AddNewPharmacie';
 import EditPharmacieScreen from './screens/EditPharmacie';
+import { AuthProvider } from './context/AuthContext';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -130,28 +131,30 @@ const router = createBrowserRouter([
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
-      <RouterProvider router={router} />
-      <Toaster
-        position="top-center"
-        reverseOrder={false}
-        gutter={12}
-        containerStyle={{ top: 80 }}
-        toastOptions={{
-          success: {
-            duration: 5000,
-          },
-          error: {
-            duration: 5000,
-          },
-          style: {
-            fontSize: '1rem',
-            color: 'white',
-            padding: '16px',
-            background: '#00686c',
-          },
-        }}
-      />
+      <AuthProvider>
+        <ReactQueryDevtools initialIsOpen={false} />
+        <RouterProvider router={router} />
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+          gutter={12}
+          containerStyle={{ top: 80 }}
+          toastOptions={{
+            success: {
+              duration: 5000,
+            },
+            error: {
+              duration: 5000,
+            },
+            style: {
+              fontSize: '1rem',
+              color: 'white',
+              padding: '16px',
+              background: '#00686c',
+            },
+          }}
+        />
+      </AuthProvider>
     </QueryClientProvider>
   );
 }

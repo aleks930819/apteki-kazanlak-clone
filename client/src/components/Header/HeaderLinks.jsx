@@ -22,13 +22,9 @@ const headerLinks = [
     url: '/promo',
     title: 'Промоции',
   },
-  {
-    url: '/login',
-    title: 'Вход',
-  },
 ];
 
-const HeaderLinks = ({ handleDropdownToggle }) => {
+const HeaderLinks = ({ handleDropdownToggle, user }) => {
   return (
     <ul className="flex items-center gap-8">
       {headerLinks.map((link) => (
@@ -36,6 +32,13 @@ const HeaderLinks = ({ handleDropdownToggle }) => {
           <Link to={link.url}>{link.title}</Link>
         </li>
       ))}
+      <li className="text-secondary">
+        {user ? (
+          <Link to="/admin/pharmacies">Админ панел</Link>
+        ) : (
+          <Link to="/login">Вход</Link>
+        )}
+      </li>
     </ul>
   );
 };

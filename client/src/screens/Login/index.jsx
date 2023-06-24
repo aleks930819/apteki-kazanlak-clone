@@ -1,10 +1,12 @@
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { login } from '../../services/apiAuth';
+import { AuthContext } from '../../context/AuthContext';
 
 const LoginScreen = () => {
   const [isShowPassword, setIsShowPassword] = useState(false);
+  const { userLogin } = useContext(AuthContext);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -32,6 +34,8 @@ const LoginScreen = () => {
         email,
         password,
       });
+
+      userLogin(data);
     } catch (error) {
       toast.error(error.message);
     }

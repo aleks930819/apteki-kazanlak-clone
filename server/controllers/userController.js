@@ -15,6 +15,11 @@ const authUser = asyncHandler(async (req, res) => {
       expiresIn: '30d',
     });
 
+    res.cookie('token', token, {
+      httpOnly: true,
+      maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+    });
+
     res.json({
       _id: user._id,
       name: user.name,
@@ -31,7 +36,7 @@ const authUser = asyncHandler(async (req, res) => {
 // @route POST /api/users/logout
 // @access Private
 const logoutUser = asyncHandler(async (req, res) => {
-  res.send('Logout Route');
+  res.json({ message: 'User logged out' });
 });
 
 export { authUser, logoutUser };
