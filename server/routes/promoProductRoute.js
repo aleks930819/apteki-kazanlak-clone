@@ -8,12 +8,13 @@ import {
   editPromoProduct,
   getPromoProductById,
 } from '../controllers/promoProductController.js';
+import adminMiddleware from '../middleware/authMiddleware.js';
 
 router.get('/', getAllPromoProducts);
-router.post('/', addPromoProduct);
+router.post('/', adminMiddleware, addPromoProduct);
 router
-  .delete('/:id', deletePromoProduct)
-  .patch('/:id', editPromoProduct)
+  .delete('/:id', adminMiddleware, deletePromoProduct)
+  .patch('/:id', adminMiddleware, editPromoProduct)
   .get('/:id', getPromoProductById);
 
 export default router;

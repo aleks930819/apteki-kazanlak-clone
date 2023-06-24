@@ -1,6 +1,8 @@
 import express from 'express';
 const router = express.Router();
 
+import adminMiddleware from '../middleware/authMiddleware.js';
+
 import {
   createNews,
   getAllNews,
@@ -9,10 +11,10 @@ import {
   editNews,
 } from '../controllers/interestingController.js';
 
-router.get('/', getAllNews).post('/', createNews);
+router.get('/', getAllNews).post('/', adminMiddleware, createNews);
 router
   .get('/:slug', getSingleNews)
-  .delete('/:slug', deleteNews)
-  .patch('/:slug', editNews);
+  .delete('/:slug', adminMiddleware, deleteNews)
+  .patch('/:slug', adminMiddleware, editNews);
 
 export default router;
