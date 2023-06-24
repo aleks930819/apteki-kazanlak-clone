@@ -23,3 +23,20 @@ export const getPharmacie = async (slug) => {
   const data = await response.json();
   return data;
 };
+
+export const addNewPharmacie = async (data) => {
+  const response = await fetch(`${API_URL}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to add new pharmacy.');
+  }
+
+  const responseData = await response.json();
+  return responseData;
+};

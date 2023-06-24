@@ -6,10 +6,14 @@ import {
   deletePharmacy,
   getAllPharmacies,
   getSinglePharmacy,
+  updatePharmacy
 } from '../controllers/pharmacieController.js';
 
 router.get('/', getAllPharmacies).post('/', createPharmacy);
 
-router.get('/:slug', getSinglePharmacy).delete('/:slug', deletePharmacy);
+router
+  .get('/:slug', getSinglePharmacy)
+  .delete('/:slug', deletePharmacy)
+  .patch('/:slug', updatePharmacy);
 
 export default router;

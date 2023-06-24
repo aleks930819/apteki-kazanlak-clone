@@ -18,17 +18,23 @@ const tableColumns = [
     label: 'Редактирай',
     dataKey: 'edit',
     render: (rowData) => (
-      <div className="flex items-center">
+      <Link
+        to={`/admin/pharmacies/edit/${rowData.slug}`}
+        className="flex cursor-pointer items-center"
+      >
         <BsPencilSquare className="cursor-pointer text-2xl text-primary" />
         <span className="ml-2">{rowData.edit}</span>
-      </div>
+      </Link>
     ),
   },
   {
     label: 'Добави Аптека',
     dataKey: 'add',
     render: (rowData) => (
-      <Link to="/add" className="flex cursor-pointer items-center">
+      <Link
+        to="/admin/pharmacies/add"
+        className="flex cursor-pointer items-center"
+      >
         <AiFillPlusCircle className="text-2xl text-primary" />
         <span className="ml-2">{rowData.add}</span>
       </Link>
@@ -55,6 +61,7 @@ const AdminPharmacies = () => {
         address: `${pharmacie.address.city}, ${pharmacie.address.street}`,
         phone: pharmacie.phone,
         manager: pharmacie.managerName,
+        slug: pharmacie.slug,
       })),
     ];
   }

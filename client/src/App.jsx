@@ -1,5 +1,7 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
+
+
 import AppLayout from './ui/AppLayout';
 
 import HomeScreen from './screens/Home';
@@ -25,6 +27,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Toaster } from 'react-hot-toast';
 import EditNewsScreen from './screens/EditNews';
+import AddNewPharmacieScreen from './screens/AddNewPharmacie';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -82,6 +85,10 @@ const router = createBrowserRouter([
           {
             path: 'pharmacies',
             element: <AdminPharmacies />,
+          },
+          {
+            path: 'pharmacies/add',
+            element: <AddNewPharmacieScreen />,
           },
           {
             path: 'promo-products',

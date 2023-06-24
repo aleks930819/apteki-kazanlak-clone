@@ -79,19 +79,54 @@ export const createPharmacy = asyncHandler(async (req, res) => {
 // @desc    Delete pharmacy
 // @route   DELETE /api/pharmacies/:slug
 // @access  Private/Admin
-
 export const deletePharmacy = asyncHandler(async (req, res) => {
   const isPharmacyExist = await Pharmacie.findOne({ slug: req.params.slug });
 
   if (!isPharmacyExist) {
     return res.status(404).json({ message: 'Pharmacy not found' });
   }
-  const news = await Pharmacie.deleteOne({ slug: req.params.slug });
+  const pharmacy = await Pharmacie.deleteOne({ slug: req.params.slug });
 
-  if (news) {
-    res.json({ message: 'News removed' });
+  if (pharmacy) {
+    res.json({ message: 'Pharmacy removed' });
   } else {
     res.status(404);
-    throw new Error('News not found');
+    throw new Error('Pharmacy not found');
+  }
+});
+
+// @desc    Update pharmacy
+// @route   PATCH /api/pharmacies/:slug
+// @access  Private/Admin
+export const updatePharmacy = asyncHandler(async (req, res) => {
+  const {
+    name,
+    address,
+    history,
+    phone,
+    managerName,
+    workingHours,
+    managerTitle,
+    managerDescription,
+  } = req.body;
+
+  const pharmacy = await Pharmacie.findOne({ slug: req.params.slug });
+
+  if (pharmacy) {
+    pharmacy.name = name || pharmacy.name;
+    pharmacy.address = address || pharmacy.address;
+    pharmacy.history = history || pharmacy.history;
+    pharmacy.phone = phone || pharmacy.phone;
+    pharmacy.managerName = managerName || pharmacy.managerName;
+    pharmacy.workingHours = workingHours || pharmacy.workingHours;
+    pharmacy.managerTitle = managerTitle || pharmacy.managerTitle;
+    pharmacy.managerDescription =
+      managerDescription || pharmacy.managerDescription;
+
+    const updatedPharmacy = await pharmacy.save();
+    res.status(200).json(updatedPharmacy);
+  } else {
+    res.status(404);
+    throw new Error('Pharmacy not found');
   }
 });
