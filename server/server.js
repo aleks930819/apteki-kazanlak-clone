@@ -7,6 +7,7 @@ import cors from 'cors';
 import promoProductRoutes from './routes/promoProductRoute.js';
 import interestingRoute from './routes/interestingRoute.js';
 import pharmacieRoute from './routes/phramcieRoute.js';
+import userRoute from './routes/userRoute.js';
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ app.use(cors());
 app.use('/api/promo', promoProductRoutes);
 app.use('/api/interesting', interestingRoute);
 app.use('/api/pharmacies', pharmacieRoute);
+app.use('/api/auth',userRoute);
 
 app.listen(PORT, () =>
   console.log(`Server running on port: http://localhost:${PORT}`)
