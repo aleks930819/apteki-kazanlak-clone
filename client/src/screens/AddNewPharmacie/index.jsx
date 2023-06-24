@@ -78,7 +78,7 @@ const AddNewPharmacieScreen = () => {
 
   return (
     <ActionForm
-      heading="Добавате нова статия"
+      heading="Добавате нова аптека"
       buttonName="Добави"
       onSubmit={handleSubmit}
       isLoading={addingPharmacieLoading}

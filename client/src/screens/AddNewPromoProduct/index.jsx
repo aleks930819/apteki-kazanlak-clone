@@ -30,7 +30,7 @@ const AddNewPromoProductScreen = () => {
 
   return (
     <ActionForm
-      heading="Добави нов продукт"
+      heading="Добавете нов продукт"
       buttonName="Добави"
       onSubmit={handleSubmit}
       isLoading={addingPromoProductLoading}

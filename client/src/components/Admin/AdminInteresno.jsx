@@ -3,7 +3,6 @@ import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 
 import { BsPencilSquare } from 'react-icons/bs';
-import { AiFillPlusCircle } from 'react-icons/ai';
 
 import { getNews } from '../../services/apiInteresting';
 
@@ -35,19 +34,6 @@ const tableColumns = [
       </Link>
     ),
   },
-  {
-    label: 'Добави Статия',
-    dataKey: 'add',
-    render: (rowData) => (
-      <Link
-        to="/admin/interesno/add"
-        className="flex cursor-pointer items-center"
-      >
-        <AiFillPlusCircle className="text-2xl text-primary" />
-        <span className="ml-2">{rowData.add}</span>
-      </Link>
-    ),
-  },
 ];
 
 const AdminInteresno = () => {
@@ -73,7 +59,14 @@ const AdminInteresno = () => {
     ];
   }
 
-  return <Table columns={tableColumns} data={tableData}></Table>;
+  return (
+    <Table
+      columns={tableColumns}
+      data={tableData}
+      addButtonTitle="Добави Статия"
+      to="/admin/interesno/add"
+    ></Table>
+  );
 };
 
 export default AdminInteresno;

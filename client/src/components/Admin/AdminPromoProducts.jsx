@@ -1,4 +1,3 @@
-import { AiFillPlusCircle } from 'react-icons/ai';
 import { BsPencilSquare } from 'react-icons/bs';
 
 import { getPromoProducts } from '../../services/apiPromoProducts';
@@ -35,19 +34,6 @@ const tableColumns = [
       </Link>
     ),
   },
-  {
-    label: 'Добави Аптека',
-    dataKey: 'add',
-    render: (rowData) => (
-      <Link
-        to="/admin/promo-products/add"
-        className="flex cursor-pointer items-center"
-      >
-        <AiFillPlusCircle className="text-2xl" />
-        <span className="ml-2">{rowData.add}</span>
-      </Link>
-    ),
-  },
 ];
 
 const AdminPromoProducts = () => {
@@ -73,7 +59,14 @@ const AdminPromoProducts = () => {
     ];
   }
 
-  return <Table columns={tableColumns} data={tableData}></Table>;
+  return (
+    <Table
+      columns={tableColumns}
+      data={tableData}
+      addButtonTitle="Добави Продукт"
+      to="/admin/promo-products/add"
+    ></Table>
+  );
 };
 
 export default AdminPromoProducts;

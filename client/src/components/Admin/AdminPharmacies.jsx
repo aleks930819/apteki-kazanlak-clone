@@ -6,7 +6,6 @@ import Table from '../../ui/Table';
 import Spinner from '../../ui/Spinner';
 
 import { BsPencilSquare } from 'react-icons/bs';
-import { AiFillPlusCircle } from 'react-icons/ai';
 import { useQuery } from '@tanstack/react-query';
 
 const tableColumns = [
@@ -24,19 +23,6 @@ const tableColumns = [
       >
         <BsPencilSquare className="cursor-pointer text-2xl text-primary" />
         <span className="ml-2">{rowData.edit}</span>
-      </Link>
-    ),
-  },
-  {
-    label: 'Добави Аптека',
-    dataKey: 'add',
-    render: (rowData) => (
-      <Link
-        to="/admin/pharmacies/add"
-        className="flex cursor-pointer items-center"
-      >
-        <AiFillPlusCircle className="text-2xl text-primary" />
-        <span className="ml-2">{rowData.add}</span>
       </Link>
     ),
   },
@@ -66,7 +52,14 @@ const AdminPharmacies = () => {
     ];
   }
 
-  return <Table columns={tableColumns} data={tableData}></Table>;
+  return (
+    <Table
+      columns={tableColumns}
+      data={tableData}
+      addButtonTitle="Добави Аптека"
+      to="/admin/pharmacies/add"
+    ></Table>
+  );
 };
 
 export default AdminPharmacies;
