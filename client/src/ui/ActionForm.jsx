@@ -3,6 +3,7 @@ const ActionForm = ({
   buttonName,
   children,
   onSubmit,
+  isLoading,
   deleteButton,
   editingLoading,
   deletingLoading,
@@ -22,7 +23,7 @@ const ActionForm = ({
              disabled:cursor-not-allowed disabled:opacity-80
             "
             type="submit"
-            disabled={editingLoading}
+            disabled={editingLoading || isLoading}
           >
             {buttonName}
           </button>

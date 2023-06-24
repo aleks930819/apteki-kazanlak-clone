@@ -5,7 +5,7 @@ import Spinner from '../../ui/Spinner';
 
 const PromoScreen = () => {
   const { isLoading, data: promoData } = useQuery({
-    queryKey: ['promo-products'],
+    queryKey: ['promoProducts'],
     queryFn: getPromoProducts,
   });
 

@@ -1,17 +1,20 @@
+import { toast } from 'react-hot-toast';
+import { useContext } from 'react';
+
 import useAddPromoProduct from '../../hooks/useAddPromoProduct';
 
 import InputField from '../../ui/InputField';
 import TextAreaField from '../../ui/TextAreaField';
 import ActionForm from '../../ui/ActionForm';
 
-import { toast } from 'react-hot-toast';
-import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
+import useImageUploader from '../../hooks/useUploadImage';
 
 const AddNewPromoProductScreen = () => {
   const { user } = useContext(AuthContext);
   const { addPromoProduct, addingPromoProductLoading } =
     useAddPromoProduct(user);
+  const { isLoadingImageUpload, image, handleImageUpload } = useImageUploader();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,6 +32,8 @@ const AddNewPromoProductScreen = () => {
       return toast.error('Моля попълнете всички полета!');
     }
 
+    data.image = image;
+
     addPromoProduct(data);
   };
 
@@ -37,7 +42,7 @@ const AddNewPromoProductScreen = () => {
       heading="Добавете нов продукт"
       buttonName="Добави"
       onSubmit={handleSubmit}
-      isLoading={addingPromoProductLoading}
+      isLoading={addingPromoProductLoading || isLoadingImageUpload}
     >
       <InputField
         type="text"
@@ -60,7 +65,15 @@ const AddNewPromoProductScreen = () => {
         name="newPrice"
         required
       />
-      <InputField type="text" label="Снимка" id="image" name="image" required />
+
+      <InputField
+        type="file"
+        label="Снимка"
+        id="image"
+        name="image"
+        required
+        onChange={handleImageUpload}
+      />
       <TextAreaField
         label="Описание"
         id="description"

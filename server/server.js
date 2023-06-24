@@ -1,3 +1,4 @@
+import path from 'path';
 import express from 'express';
 import connectDB from './config/db.js';
 import bodyParser from 'body-parser';
@@ -17,6 +18,7 @@ const PORT = process.env.PORT || 8000;
 connectDB();
 
 const app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(bodyParser.json());
 
@@ -25,7 +27,8 @@ app.use(cors());
 app.use('/api/promo', promoProductRoutes);
 app.use('/api/interesting', interestingRoute);
 app.use('/api/pharmacies', pharmacieRoute);
-app.use('/api/auth',userRoute);
+app.use('/api/auth', userRoute);
+
 
 app.listen(PORT, () =>
   console.log(`Server running on port: http://localhost:${PORT}`)
