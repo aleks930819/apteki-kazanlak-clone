@@ -1,7 +1,7 @@
 // import HeroBanner from './HeroBanner';
 import thirdImage from '../../assets/promo-banner-centrum.jpg';
 import secondImage from '../../assets/slide2.jpg';
-import firstImage from '../../assets/vitamins.jpg';
+import firstImage from '../../assets/slide1.jpg';
 import { useState } from 'react';
 import HeroCurrentImageShow from './HeroCurrentImageShow';
 import HeroImagesChangeButtons from './HeroImagesChangeButtons';

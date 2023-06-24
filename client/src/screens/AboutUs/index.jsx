@@ -4,6 +4,8 @@ import AboutUsInnerImage from '../../assets/about-us-inner.jpg';
 import ServiceHighlightsItems from '../../components/ServiceHighlights/ServiceHighlightsItems';
 import AboutUsPharmacyServices from '../../components/AboutUs/AboutUsPharmacyServices';
 
+import { AiOutlineCheck } from 'react-icons/ai';
+
 const ServiceHighlightsTitles = [
   {
     title: 'Качествено обслужване',
@@ -61,15 +63,21 @@ const AboutUsScreen = () => {
               className="h-full
               w-full
             object-cover
-            sm:h-[30vh]"
+            sm:h-[250px]"
             />
           </div>
 
-          <div className=" w-full p-4 sm:w-auto  lg:mb-8 lg:pr-4">
-            <ServiceHighlightsItems
-              ServiceHighlightsTitles={ServiceHighlightsTitles}
-            />
-          </div>
+          <ul className="mr-auto mt-4  flex flex-col  gap-2 p-6 text-primary sm:mb-auto sm:mt-0">
+            {ServiceHighlightsTitles?.map((item) => (
+              <li
+                className="flex items-center justify-start text-base font-semibold leading-9 text-primary"
+                key={item.title}
+              >
+                <AiOutlineCheck className="mr-3 inline-block text-2xl" />
+                {item.title}
+              </li>
+            ))}
+          </ul>
         </div>
         <br />
         <p>
