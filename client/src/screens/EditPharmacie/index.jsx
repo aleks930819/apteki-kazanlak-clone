@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 
 import useUpdatePharmacie from '../../hooks/useUpdatePharmacie';
+import useDeletePharmacie from '../../hooks/useDeletePharmacie';
 
 import { getPharmacie } from '../../services/apiPharmacies';
 
@@ -58,7 +59,7 @@ const EditPharmacieScreen = () => {
   });
 
   const { editingLoading, updatePharmacie } = useUpdatePharmacie(slug);
-  //   const { deleteNews, deletingLoading } = useDeleteNews(slug);
+  const { deletePharmacie, deletingLoading } = useDeletePharmacie(slug);
 
   const { isLoading, data } = useQuery(['pharmacies', slug], () =>
     getPharmacie(slug)
@@ -110,22 +111,29 @@ const EditPharmacieScreen = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // if (!deletingLoading) {
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData);
-    const newData = {
-      ...data,
-      address: {
-        city: data.city,
-        street: data.street,
-      },
-      workingHours: {
-        mondayToFriday: [workingTime.weekDays.open, workingTime.weekDays.close],
-        saturday: [workingTime.saturday.open, workingTime.saturday.close],
-        sunday: [workingTime.sunday.open ?? '', workingTime.sunday.close ?? ''],
-      },
-    };
-    updatePharmacie(newData);
+    if (!deletingLoading) {
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData);
+      const newData = {
+        ...data,
+        address: {
+          city: data.city,
+          street: data.street,
+        },
+        workingHours: {
+          mondayToFriday: [
+            workingTime.weekDays.open,
+            workingTime.weekDays.close,
+          ],
+          saturday: [workingTime.saturday.open, workingTime.saturday.close],
+          sunday: [
+            workingTime.sunday.open ?? '',
+            workingTime.sunday.close ?? '',
+          ],
+        },
+      };
+      updatePharmacie(newData);
+    }
   };
 
   const changeHandler = (e) => {
@@ -137,7 +145,10 @@ const EditPharmacieScreen = () => {
       heading="Редактирай информация за аптека"
       buttonName="Редактирай"
       onSubmit={handleSubmit}
-      // isLoading={addingPharmacieLoading}
+      editingLoading={editingLoading}
+      deletingLoading={deletingLoading}
+      onDeleteAction={deletePharmacie}
+      deleteButton="Изтрий аптека"
     >
       <InputField
         type="text"

@@ -58,7 +58,7 @@ export const updatePharmacieBySlug = async (slug, data) => {
   return responseData;
 };
 
-export const deletePharmacie = async (slug) => {
+export const deletePharmacieBySlug = async (slug) => {
   const response = await fetch(`${API_URL}/${slug}`, {
     method: 'DELETE',
   });
