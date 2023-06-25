@@ -1,10 +1,15 @@
-import logo from '../../assets/history2.png';
-
+import logo from '../../assets/history.png';
+import { motion } from 'framer-motion';
 const HistoryYear = () => {
   return (
     <div className="flex w-full flex-col gap-20">
       {/* ODD */}
-      <div className="mr-5 flex items-center gap-x-10 self-end ">
+      <motion.div
+        initial={{ opacity: 0, y: -30, x: -30 }}
+        animate={{ opacity: 1, y: 0, x: 0 }}
+        transition={{ duration: 1 }}
+        className="mr-5 flex items-center gap-x-10 self-end "
+      >
         <div className="mr-auto flex flex-col items-end justify-end">
           <p className="pb-2 text-2xl text-blue-dark">Хигия</p>
           <p className="text-end">
@@ -26,10 +31,15 @@ const HistoryYear = () => {
           <span className="timeline-item"></span>
           <span className="text-2xl font-bold text-blue-dark">1991</span>
         </div>
-      </div>
+      </motion.div>
 
       {/* EVEN */}
-      <div className="ml-5 flex gap-x-10 self-start">
+      <motion.div
+        initial={{ opacity: 0, y: -30, x: 30 }}
+        animate={{ opacity: 1, y: 0, x: 0 }}
+        transition={{ duration: 1 }}
+        className="ml-5 flex gap-x-10 self-start"
+      >
         <div
           className="relative flex flex-col items-center justify-center  gap-2 px-10"
           style={{
@@ -51,14 +61,20 @@ const HistoryYear = () => {
             Скобелев“.
           </p>
         </div>
-      </div>
+      </motion.div>
 
       {/* ODD */}
-      <div className="mr-5 flex items-center gap-x-10 self-end ">
+      <motion.div
+        initial={{ opacity: 0, y: -30, x: -30 }}
+        animate={{ opacity: 1, y: 0, x: 0 }}
+        transition={{ duration: 1 }}
+        className="mr-5 flex items-center gap-x-10 self-end "
+      >
         <div className="mr-auto flex flex-col items-end justify-end">
-          <p className="pb-2 text-2xl text-blue-dark">Арника</p>
+          <p className="pb-2 text-2xl text-blue-dark">Хигия</p>
           <p className="text-end">
-            Социална аптека Арника е открита през 1998г.
+            Отваря врати първата частна аптека в Казанлък. Намира се на
+            Централния Кооперативен пазар.
           </p>
         </div>
         <div
@@ -73,11 +89,16 @@ const HistoryYear = () => {
           }}
         >
           <span className="timeline-item"></span>
-          <span className="text-2xl font-bold text-blue-dark">1998</span>
+          <span className="text-2xl font-bold text-blue-dark">1991</span>
         </div>
-      </div>
+      </motion.div>
       {/* EVEN */}
-      <div className="ml-5 flex gap-x-10 self-start">
+      <motion.div
+        initial={{ opacity: 0, y: -30, x: 30 }}
+        animate={{ opacity: 1, y: 0, x: 0 }}
+        transition={{ duration: 1 }}
+        className="ml-5 flex gap-x-10 self-start"
+      >
         <div
           className="relative flex flex-col items-center justify-center  gap-2 px-10"
           style={{
@@ -99,14 +120,20 @@ const HistoryYear = () => {
             Казанлък – ж.к. „Изток“.
           </p>
         </div>
-      </div>
+      </motion.div>
 
       {/* ODD */}
-      <div className="mr-5 flex items-center gap-x-10 self-end ">
+      <motion.div
+        initial={{ opacity: 0, y: -30, x: -30 }}
+        animate={{ opacity: 1, y: 0, x: 0 }}
+        transition={{ duration: 1 }}
+        className="mr-5 flex items-center gap-x-10 self-end "
+      >
         <div className="mr-auto flex flex-col items-end justify-end">
-          <p className="pb-2 text-2xl text-blue-dark">Фарма 1 Център</p>
+          <p className="pb-2 text-2xl text-blue-dark">Хигия</p>
           <p className="text-end">
-            Социална аптека Фарма 1 Център е открита през 2017г.
+            Отваря врати първата частна аптека в Казанлък. Намира се на
+            Централния Кооперативен пазар.
           </p>
         </div>
         <div
@@ -121,9 +148,9 @@ const HistoryYear = () => {
           }}
         >
           <span className="timeline-item"></span>
-          <span className="text-2xl font-bold text-blue-dark">2017</span>
+          <span className="text-2xl font-bold text-blue-dark">1991</span>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
