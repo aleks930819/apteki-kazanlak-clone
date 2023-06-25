@@ -54,7 +54,7 @@ const AdminInteresno = () => {
         slug: news.slug,
         title: news.title,
         date: news.createdAt,
-        image: news.image,
+        image: news.image.url,
       })),
     ];
   }

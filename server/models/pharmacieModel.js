@@ -11,7 +11,6 @@ const pharmacieSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-
   phone: { type: String, required: true },
   workingHours: {
     mondayToFriday: [{ type: String, required: true }],
@@ -19,11 +18,24 @@ const pharmacieSchema = mongoose.Schema({
     sunday: [{ type: String }],
   },
   workingWith: [{ type: String, required: true }],
-  mainImage: { type: String, required: true },
-  secondaryImage: { type: String, required: true },
-  managerImage: { type: String, required: true },
-  pharmacieImages: [{ type: String, required: true }],
-
+  mainImage: {
+    url: { type: String, required: true },
+    publicId: { type: String, required: true },
+  },
+  secondaryImage: {
+    url: { type: String, required: true },
+    publicId: { type: String, required: true },
+  },
+  managerImage: {
+    url: { type: String, required: true },
+    publicId: { type: String, required: true },
+  },
+  pharmacieImages: [
+    {
+      url: { type: String, required: true },
+      publicId: { type: String, required: true },
+    },
+  ],
   managerName: { type: String, required: true },
   managerTitle: { type: String, required: true },
   managerDescription: { type: String, required: true },

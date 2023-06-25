@@ -11,7 +11,7 @@ const FirstRow = ({ item }) => {
           <article>
             <div className="mb-5">
               <img
-                src={item.image}
+                src={item.image.url}
                 alt={item.title}
                 className="
               h-[160px] w-full

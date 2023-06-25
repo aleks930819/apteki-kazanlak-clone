@@ -58,6 +58,7 @@ const AdminPromoProducts = () => {
       })),
     ];
   }
+  console.log(tableData);
 
   return (
     <Table

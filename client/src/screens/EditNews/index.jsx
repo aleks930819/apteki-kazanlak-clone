@@ -7,7 +7,7 @@ import { getSingleNews } from '../../services/apiInteresting';
 
 import useUpdateNews from '../../hooks/useUpdateNews';
 import useDeleteNews from '../../hooks/useDeleteNews';
-import useImageUploader from '../../hooks/useUploadImage';
+// import useImagesUploader from '../../hooks/useUploadImages';
 
 import ActionForm from '../../ui/ActionForm';
 import InputField from '../../ui/InputField';
@@ -30,11 +30,11 @@ const EditNewsScreen = () => {
 
   const { editingLoading, updateNews } = useUpdateNews(slug, user);
   const { deleteNews, deletingLoading } = useDeleteNews(slug, user);
-  const {
-    isLoadingImageUpload,
-    image: newImage,
-    handleImageUpload,
-  } = useImageUploader();
+  // const {
+  //   isLoadingImageUpload,
+  //   image: newImage,
+  //   handleImageUpload,
+  // } = useImagesUploader();
 
   const { isLoading, data } = useQuery(['singleNews', slug], () =>
     getSingleNews(slug)
@@ -91,12 +91,12 @@ const EditNewsScreen = () => {
         onChange={changeHandler}
         value={values.summary}
       />
-      <UploadImageInput
+      {/* <UploadImageInput
         id="image"
         label="Снимка"
         handleFileChange={handleImageUpload}
         image={values.image}
-      />
+      /> */}
       <TextAreaField
         label="Описание"
         id="description"

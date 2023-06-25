@@ -7,7 +7,7 @@ import ActionForm from '../../ui/ActionForm';
 import { toast } from 'react-hot-toast';
 import { useContext } from 'react';
 
-import useImageUploader from '../../hooks/useUploadImage';
+import useImageUploader from '../../hooks/useUploadImages';
 
 import { AuthContext } from '../../context/AuthContext';
 import UploadImageInput from '../../ui/UploadImageInput';
@@ -15,7 +15,9 @@ import UploadImageInput from '../../ui/UploadImageInput';
 const AddNewNews = () => {
   const { user } = useContext(AuthContext);
   const { addNewNewsing, addingNewNewsLoading } = useAddNewNews(user);
-  const { isLoadingImageUpload, image, handleImageUpload } = useImageUploader();
+
+  const { isLoadingImageUpload, images, handleImagesUpload } =
+    useImageUploader();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,7 +25,7 @@ const AddNewNews = () => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
 
-    data.image = image;
+    data.image = images[0];
 
     if (!data.image || !data.title || !data.summary || !data.description) {
       return toast.error('Моля попълнете всички полета!');
@@ -57,9 +59,9 @@ const AddNewNews = () => {
       <UploadImageInput
         id="image"
         label="Снимка"
-        handleFileChange={handleImageUpload}
-        value={image}
-        image={image}
+        handleFileChange={handleImagesUpload}
+        value={images}
+        image={images[0]?.url}
       />
 
       <TextAreaField

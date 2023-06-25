@@ -11,11 +11,14 @@ const PharmacieWorking = ({ workingHours, phone, pharmacieImages }) => {
       "
       >
         {/* 1 */}
-        <PharmacieRow1 image={pharmacieImages[0]} />
+        <PharmacieRow1 image={pharmacieImages[0]?.url} />
         {/* 2 */}
-        <PharmacieRow2 workingHours={workingHours} image={pharmacieImages[1]} />
+        <PharmacieRow2
+          workingHours={workingHours}
+          image={pharmacieImages[1]?.url}
+        />
         {/* 3 */}
-        <PharmacieRow3 phone={phone} image={pharmacieImages[2]} />
+        <PharmacieRow3 phone={phone} image={pharmacieImages[2]?.url} />
       </div>
     </section>
   );

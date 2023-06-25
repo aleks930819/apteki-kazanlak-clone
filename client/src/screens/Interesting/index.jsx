@@ -19,6 +19,7 @@ const InterestingScreen = () => {
     return <Spinner />;
   }
 
+
   return (
     <div>
       <HeroBanner imageSrc={HeroBannerLogo}></HeroBanner>

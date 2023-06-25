@@ -1,4 +1,3 @@
-import React from 'react';
 import PromoCardPrice from './PromoCardPrice';
 import PromoCardPriceDiscount from './PromoCardPriceDiscount';
 

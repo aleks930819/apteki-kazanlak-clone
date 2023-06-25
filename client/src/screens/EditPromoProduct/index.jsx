@@ -1,12 +1,13 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import { getProductById } from '../../services/apiPromoProducts';
 
 import useDeletePromoProduct from '../../hooks/useDeletePromoProduct';
 import useUpdatePromoProduct from '../../hooks/useUpdatePromoProduct';
+import useImagesUploader from '../../hooks/useUploadImages';
 
 import ActionForm from '../../ui/ActionForm';
 import InputField from '../../ui/InputField';
@@ -30,6 +31,7 @@ const EditPromoScreeen = () => {
 
   const { editingLoading, updateProduct } = useUpdatePromoProduct(id, user);
   const { deleteProduct, deletingLoading } = useDeletePromoProduct(id, user);
+  const { images, handleImagesUpload } = useImagesUploader();
 
   const { isLoading, data } = useQuery(['singleProduct', id], () =>
     getProductById(id)
@@ -51,7 +53,9 @@ const EditPromoScreeen = () => {
     if (!deletingLoading) {
       const formData = new FormData(e.target);
       const data = Object.fromEntries(formData);
-      updateProduct(data);
+      data.image = images[0];
+      return console.log(data);
+      // updateProduct(data);
     }
   };
 
@@ -69,7 +73,7 @@ const EditPromoScreeen = () => {
       editingLoading={editingLoading}
       deletingLoading={deletingLoading}
       onDeleteAction={deleteProduct}
-      deleteMessage='Сигурни ли сте, че искате да изтриете този продукт?'
+      deleteMessage="Сигурни ли сте, че искате да изтриете този продукт?"
     >
       <InputField
         type="text"
@@ -101,9 +105,10 @@ const EditPromoScreeen = () => {
       <UploadImageInput
         id="image"
         label="Снимка"
-        handleFileChange={changeHandler}
-        value={values.image}
-        image={image}
+        inputMessage="Променете снимката"
+        handleFileChange={handleImagesUpload}
+        value={images}
+        image={image.url}
       />
       <TextAreaField
         type="text"

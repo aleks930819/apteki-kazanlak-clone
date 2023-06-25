@@ -17,6 +17,7 @@ import 'react-clock/dist/Clock.css';
 import WorkTimeWrapper from '../../components/WorktTme/WorkTimeWrapper';
 
 import { AuthContext } from '../../context/AuthContext';
+import ChoiceButtons from '../../components/AddNewPharmacie/ChoiceButtons';
 
 const AddNewPharmacieScreen = () => {
   const { user } = useContext(AuthContext);
@@ -24,6 +25,16 @@ const AddNewPharmacieScreen = () => {
   const { addPharmacie, addingPharmacieLoading } = useAddPharmacie(user);
 
   const { images, handleImagesUpload } = useImagesUploader();
+
+  const [selectedChoices, setSelectedChoices] = useState([]);
+
+  const handleChoiceClick = (choice) => {
+    if (selectedChoices.includes(choice)) {
+      setSelectedChoices(selectedChoices.filter((c) => c !== choice));
+    } else {
+      setSelectedChoices([...selectedChoices, choice]);
+    }
+  };
 
   const [workingTime, setWorkingTime] = useState({
     weekDays: {
@@ -49,6 +60,8 @@ const AddNewPharmacieScreen = () => {
       },
     }));
   };
+
+  console.log(selectedChoices);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -96,111 +109,128 @@ const AddNewPharmacieScreen = () => {
       onSubmit={handleSubmit}
       isLoading={addingPharmacieLoading}
     >
-      <InputField
-        type="text"
-        label="Име на аптеката"
-        id="name"
-        name="name"
-        required
-      />
-      <InputField
-        type="text"
-        label="Населено място"
-        id="city"
-        name="city"
-        required
-      />
+      <div className="grid grid-cols-3 gap-4">
+        <InputField
+          type="text"
+          label="Име на аптеката"
+          id="name"
+          name="name"
+          required
+        />
+        <InputField
+          type="text"
+          label="Населено място"
+          id="city"
+          name="city"
+          required
+        />
 
-      <InputField
-        type="text"
-        label="Улица"
-        id="street"
-        name="street"
-        required
-      />
-      <InputField
-        type="text"
-        label="Телефон"
-        id="phone"
-        name="phone"
-        required
-      />
+        <InputField
+          type="text"
+          label="Улица"
+          id="street"
+          name="street"
+          required
+        />
+      </div>
+
+      <div className="grid grid-cols-3 gap-4">
+        <InputField
+          type="text"
+          label="Телефон"
+          id="phone"
+          name="phone"
+          required
+        />
+        <InputField
+          type="text"
+          label="Мениджър"
+          id="managerName"
+          name="managerName"
+          required
+        />
+        <InputField
+          type="text"
+          label="Мениджър образование"
+          id="managerTitle"
+          name="managerTitle"
+          required
+        />
+      </div>
+
       <TextAreaField
         label="История на аптеката"
         id="history"
         name="history"
         required
       />
-      <InputField
-        type="text"
-        label="Мениджър"
-        id="managerName"
-        name="managerName"
-        required
-      />
-      <InputField
-        type="text"
-        label="Мениджър образование"
-        id="managerTitle"
-        name="managerTitle"
-        required
-      />
+
       <TextAreaField
         label="Мениджър описание"
         id="managerDescription"
         name="managerDescription"
         required
       />
-      <UploadImageInput
-        id="mainImage"
-        label="Заглавна снимка"
-        handleFileChange={handleImagesUpload}
-        value={images[0]}
-        image={images[0]}
-      />
-      <UploadImageInput
-        id="secondaryImage"
-        label="Втора снимка"
-        handleFileChange={handleImagesUpload}
-        value={images[1]}
-        image={images[1]}
+      <label className="block text-xl font-medium text-gray-700">Рецепти</label>
+      <ChoiceButtons
+        selectedChoices={selectedChoices}
+        handleChoiceClick={handleChoiceClick}
       />
 
-      <UploadImageInput
-        id="managerImage"
-        label="Снимка на мениджъра"
-        handleFileChange={handleImagesUpload}
-        value={images[2]}
-        image={images[2]}
-      />
+      <div className="mt-10 grid grid-cols-3 gap-4">
+        <UploadImageInput
+          id="mainImage"
+          label="Заглавна снимка"
+          handleFileChange={handleImagesUpload}
+          value={images[0]}
+          image={images[0]?.url}
+        />
+        <UploadImageInput
+          id="secondaryImage"
+          label="Втора снимка"
+          handleFileChange={handleImagesUpload}
+          value={images[1]}
+          image={images[1]?.url}
+        />
 
-      <UploadImageInput
-        id="pharmaciesImage-1"
-        label="Снимки на Аптеката -1"
-        handleFileChange={handleImagesUpload}
-        value={images[3]}
-        image={images[3]}
-        multiple={true}
-      />
-      <UploadImageInput
-        id="pharmaciesImage-2"
-        label="Снимки на Аптеката -2"
-        handleFileChange={handleImagesUpload}
-        value={images[4]}
-        image={images[4]}
-        multiple={true}
-      />
-      <UploadImageInput
-        id="pharmaciesImage-3"
-        label="Снимки на Аптеката -3"
-        handleFileChange={handleImagesUpload}
-        value={images[5]}
-        image={images[5]}
-        multiple={true}
-      />
+        <UploadImageInput
+          id="managerImage"
+          label="Снимка на мениджъра"
+          handleFileChange={handleImagesUpload}
+          value={images[2]}
+          image={images[2]?.url}
+        />
 
-      <div>
-        <h2 className="mb-2 font-bold text-gray-700">Работно Време:</h2>
+        <UploadImageInput
+          id="pharmaciesImage-1"
+          label="Снимки на Аптеката -1"
+          handleFileChange={handleImagesUpload}
+          value={images[3]}
+          image={images[3]?.url}
+          multiple={true}
+        />
+        <UploadImageInput
+          id="pharmaciesImage-2"
+          label="Снимки на Аптеката -2"
+          handleFileChange={handleImagesUpload}
+          value={images[4]}
+          image={images[4]?.url}
+          multiple={true}
+        />
+        <UploadImageInput
+          id="pharmaciesImage-3"
+          label="Снимки на Аптеката -3"
+          handleFileChange={handleImagesUpload}
+          value={images[5]}
+          image={images[5]?.url}
+          multiple={true}
+        />
+      </div>
+
+      <label className="mb-10 mt-10 text-xl font-bold text-gray-700">
+        Работно Време:
+      </label>
+      <div className="grid grid-cols-2 gap-x-20 gap-y-10 ">
         {/* Weekdays working time */}
         <WorkTimeWrapper heading="Понеделник - Петък">
           <WorkTimePicker

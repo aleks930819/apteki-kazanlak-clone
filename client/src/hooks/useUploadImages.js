@@ -19,7 +19,13 @@ const useImagesUploader = () => {
       });
 
       const uploadedImages = await Promise.all(uploadPromises);
-      return uploadedImages.map((data) => data.secure_url);
+
+      const imagesData = uploadedImages.map((data) => ({
+        publicId: data.public_id,
+        url: data.secure_url,
+      }));
+
+      return imagesData;
     } catch (error) {
       console.log(error);
       return [];
@@ -38,7 +44,7 @@ const useImagesUploader = () => {
     }
   };
 
-  return { isLoadingImageUpload, images, handleImagesUpload };
+  return { isLoadingImageUpload, images, handleImagesUpload, setImages };
 };
 
 export default useImagesUploader;

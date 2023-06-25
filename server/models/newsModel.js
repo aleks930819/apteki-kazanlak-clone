@@ -19,6 +19,14 @@ const newsSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    image: {
+      url: {
+        type: String,
+      },
+      publicId: {
+        type: String,
+      },
+    },
     slug: {
       type: String,
       unique: true,

@@ -2,29 +2,30 @@ import { toast } from 'react-hot-toast';
 import { useContext } from 'react';
 
 import useAddPromoProduct from '../../hooks/useAddPromoProduct';
+import useImagesUploader from '../../hooks/useUploadImages';
 
 import InputField from '../../ui/InputField';
 import TextAreaField from '../../ui/TextAreaField';
 import ActionForm from '../../ui/ActionForm';
 
 import { AuthContext } from '../../context/AuthContext';
-import useImageUploader from '../../hooks/useUploadImage';
 import UploadImageInput from '../../ui/UploadImageInput';
 
 const AddNewPromoProductScreen = () => {
   const { user } = useContext(AuthContext);
   const { addPromoProduct, addingPromoProductLoading } =
     useAddPromoProduct(user);
-  const { isLoadingImageUpload, image, handleImageUpload } = useImageUploader();
+  const { isLoadingImageUpload, images, handleImagesUpload } =
+    useImagesUploader();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
-    
-    data.image = image;
-    
+
+    data.image = images[0];
+
     if (
       !data.name ||
       !data.oldPrice ||
@@ -35,9 +36,12 @@ const AddNewPromoProductScreen = () => {
       return toast.error('Моля попълнете всички полета!');
     }
 
+    // return console.log(data);
 
     addPromoProduct(data);
   };
+
+  console.log(images);
 
   return (
     <ActionForm
@@ -71,9 +75,9 @@ const AddNewPromoProductScreen = () => {
       <UploadImageInput
         id="image"
         label="Снимка"
-        handleFileChange={handleImageUpload}
-        value={image}
-        image={image}
+        handleFileChange={handleImagesUpload}
+        value={images}
+        image={images[0]?.url}
       />
       <TextAreaField
         label="Описание"

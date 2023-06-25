@@ -30,6 +30,13 @@ const Pharmacie = () => {
     return <Spinner />;
   }
 
+  const mapCenter = { lat: -3.745, lng: -38.523 };
+  const markerPosition = { lat: -3.755, lng: -38.523 };
+
+  const customMarkerIcon = {
+    url: 'https://www.apteki-kazanlak.com/images/logo.png',
+    scaledSize: new window.google.maps.Size(50, 50),
+  };
   const {
     name,
     history,
@@ -44,17 +51,15 @@ const Pharmacie = () => {
     pharmacieImages,
   } = pharmacie;
 
-  const mapCenter = { lat: -3.745, lng: -38.523 };
-
   return (
     <>
-      <PharmacieBanner name={name} mainImage={mainImage} />
-      <PharmacieAbout history={history} secondaryImage={secondaryImage} />
+      <PharmacieBanner name={name} mainImage={mainImage?.url} />
+      <PharmacieAbout history={history} secondaryImage={secondaryImage?.url} />
       <PharmacieHero
         managerName={managerName}
         managerTitle={managerTitle}
         managerDescription={managerDescription}
-        managerImage={managerImage}
+        managerImage={managerImage?.url}
       />
       <PharmacieWorking
         phone={phone}
@@ -68,7 +73,9 @@ const Pharmacie = () => {
           zoom={12}
           panControl={true}
           zoomControl={true}
-        ></GoogleMap>
+        >
+          <Marker position={markerPosition} icon={customMarkerIcon}></Marker>
+        </GoogleMap>
       </div>
     </>
   );

@@ -5,9 +5,10 @@ const UploadImageInput = ({
   value,
   image,
   multiple,
+  inputMessage,
 }) => {
   return (
-    <div className="flex w-full items-center  justify-between">
+    <div className="flex flex-col  w-full items-center  justify-between">
       <div className="flex w-full flex-col items-start">
         <label htmlFor={id} className="mb-2 font-bold text-gray-700">
           {label}
@@ -30,7 +31,9 @@ const UploadImageInput = ({
               d="M12 6v6m0 0v6m0-6h6m-6 0H6"
             />
           </svg>
-          <span className="text-gray-700">Upload Photo</span>
+          <span className="text-gray-700">
+            {inputMessage || 'Качете снимка'}
+          </span>
         </label>
 
         <input
