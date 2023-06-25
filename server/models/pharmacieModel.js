@@ -1,10 +1,6 @@
 import mongoose from 'mongoose';
 import slugify from 'slugify';
 
-const imageSchema = new mongoose.Schema({
-  url: { type: String, required: true },
-});
-
 const pharmacieSchema = mongoose.Schema({
   name: { type: String, required: true, unique: true },
   address: {
@@ -21,10 +17,11 @@ const pharmacieSchema = mongoose.Schema({
     saturday: [{ type: String }],
     sunday: [{ type: String }],
   },
-  mainImage: { type: imageSchema, required: true },
-  managerImage: { type: imageSchema, required: true },
-  
-  images: [{ type: imageSchema }],
+  mainImage: { type: String, required: true },
+  secondaryImage: { type: String, required: true },
+  managerImage: { type: String, required: true },
+  pharmacieImages: [{ type: String, required: true }],
+
   managerName: { type: String, required: true },
   managerTitle: { type: String, required: true },
   managerDescription: { type: String, required: true },

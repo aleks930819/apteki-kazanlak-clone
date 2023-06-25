@@ -1,13 +1,12 @@
 const UploadImageInput = ({
   id,
   label,
-  handleFileChange,
-  value,
+  handleImageUpload,
   image,
   multiple,
 }) => {
   return (
-    <div className="flex w-full items-center  justify-between">
+    <div className="flex w-full items-center justify-between">
       <div className="flex w-full flex-col items-start">
         <label htmlFor={id} className="mb-2 font-bold text-gray-700">
           {label}
@@ -32,17 +31,23 @@ const UploadImageInput = ({
           </svg>
           <span className="text-gray-700">Upload Photo</span>
         </label>
-
-        <input
-          type="file"
-          id={id}
-          accept="image/*"
-          className="hidden"
-          size={2 * 1024 * 1024}
-          onChange={handleFileChange}
-        />
-        {value && (
-          <span className="mt-2 text-sm text-gray-500">{value.name}</span>
+        {multiple ? (
+          <input
+            type="file"
+            id={id}
+            accept="image/*"
+            className="hidden"
+            onChange={handleImageUpload}
+            multiple
+          />
+        ) : (
+          <input
+            type="file"
+            id={id}
+            accept="image/*"
+            className="hidden"
+            onChange={handleImageUpload}
+          />
         )}
       </div>
       {image && (

@@ -38,20 +38,29 @@ const Pharmacie = () => {
     managerName,
     managerTitle,
     managerDescription,
+    mainImage,
+    secondaryImage,
+    managerImage,
+    pharmacieImages,
   } = pharmacie;
 
   const mapCenter = { lat: -3.745, lng: -38.523 };
 
   return (
     <>
-      <PharmacieBanner name={name} />
-      <PharmacieAbout history={history} />
+      <PharmacieBanner name={name} mainImage={mainImage} />
+      <PharmacieAbout history={history} secondaryImage={secondaryImage} />
       <PharmacieHero
         managerName={managerName}
         managerTitle={managerTitle}
         managerDescription={managerDescription}
+        managerImage={managerImage}
       />
-      <PharmacieWorking phone={phone} workingHours={workingHours} />
+      <PharmacieWorking
+        phone={phone}
+        workingHours={workingHours}
+        pharmacieImages={pharmacieImages}
+      />
       <div className="h-[600px] w-full">
         <GoogleMap
           mapContainerStyle={{ width: '100%', height: '100%' }}

@@ -5,6 +5,7 @@ import { useContext, useState } from 'react';
 
 import useUpdatePharmacie from '../../hooks/useUpdatePharmacie';
 import useDeletePharmacie from '../../hooks/useDeletePharmacie';
+import useImagesUploader from '../../hooks/useUploadImages';
 
 import { getPharmacie } from '../../services/apiPharmacies';
 
@@ -15,6 +16,7 @@ import InputField from '../../ui/InputField';
 import TextAreaField from '../../ui/TextAreaField';
 import Spinner from '../../ui/Spinner';
 import WorkTimePicker from '../../ui/WorkTimePicker';
+import UploadImageInput from '../../ui/UploadImageInput';
 
 import setChangedValue from '../../utils/changeValueHandler';
 import { AuthContext } from '../../context/AuthContext';
@@ -62,10 +64,19 @@ const EditPharmacieScreen = () => {
 
   const { editingLoading, updatePharmacie } = useUpdatePharmacie(slug, user);
   const { deletePharmacie, deletingLoading } = useDeletePharmacie(slug, user);
+  const { images, handleImagesUpload } = useImagesUploader();
+
+  const [updatedImages, setUpdatedImages] = useState({
+    mainImage: null,
+    secondaryImage: null,
+    managerImage: null,
+    pharmacieImages: [null, null, null],
+  });
 
   const { isLoading, data } = useQuery(['pharmacies', slug], () =>
     getPharmacie(slug)
   );
+
 
   if (isLoading) {
     return <Spinner />;
@@ -133,7 +144,14 @@ const EditPharmacieScreen = () => {
             workingTime.sunday.close ?? '',
           ],
         },
+
+        mainImage: images[0] ,
+        secondaryImage: images[1],
+        managerImage: images[2],
+        pharmacieImages: [images[3], images[4], images[5]],
       };
+
+      return console.log(newData);
       updatePharmacie(newData);
     }
   };
@@ -225,8 +243,61 @@ const EditPharmacieScreen = () => {
         required
       />
 
+      <div className="flex w-full flex-col gap-4">
+        <h3 className="text-xl font-semibold text-gray-800">
+          Промяна на снимките
+        </h3>
+        <UploadImageInput
+          id="mainImage"
+          label="Заглавна снимка"
+          handleFileChange={handleImagesUpload}
+          value={images[0] || data?.mainImage}
+          image={images[0] || data?.mainImage}
+        />
+        <UploadImageInput
+          id="secondaryImage"
+          label="Втора снимка"
+          handleFileChange={handleImagesUpload}
+          value={images[1] || data?.secondaryImage}
+          image={images[1] || data?.secondaryImage}
+        />
+
+        <UploadImageInput
+          id="managerImage"
+          label="Снимка на мениджъра"
+          handleFileChange={handleImagesUpload}
+          value={images[2] || data?.managerImage}
+          image={images[2] || data?.managerImage}
+        />
+
+        <UploadImageInput
+          id="pharmaciesImage-1"
+          label="Снимки на Аптеката -1"
+          handleFileChange={handleImagesUpload}
+          value={images[3] || data?.pharmacieImages[0]}
+          image={images[3] || data?.pharmacieImages[0]}
+          multiple={true}
+        />
+        <UploadImageInput
+          id="pharmaciesImage-2"
+          label="Снимки на Аптеката -2"
+          handleFileChange={handleImagesUpload}
+          value={images[4] || data?.pharmacieImages[1]}
+          image={images[4] || data?.pharmacieImages[1]}
+          multiple={true}
+        />
+        <UploadImageInput
+          id="pharmaciesImage-3"
+          label="Снимки на Аптеката -3"
+          handleFileChange={handleImagesUpload}
+          value={images[5] || data?.pharmacieImages[2]}
+          image={images[5] || data?.pharmacieImages[2]}
+          multiple={true}
+        />
+      </div>
+
       <div>
-        <h2 className="mb-2 font-bold text-gray-700">Работно Време:</h2>
+        <h2 className="mb-2 text-xl font-bold text-gray-700">Работно Време:</h2>
         {/* Weekdays working time */}
         <WorkTimeWrapper heading="Понеделник - Петък">
           <WorkTimePicker

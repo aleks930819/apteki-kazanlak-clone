@@ -2,7 +2,7 @@ import PharmacieRowImage from './PharmacieRowImage';
 import PharmacieRowTitle from './PharmacieRowTitle';
 import PharmacieRowWrapper from './PharmacieRowWrapper';
 
-const PharmacieRow3 = ({ phone }) => {
+const PharmacieRow3 = ({ phone, image }) => {
   return (
     <PharmacieRowWrapper>
       <PharmacieRowTitle title="Контакти" />
@@ -11,7 +11,7 @@ const PharmacieRow3 = ({ phone }) => {
         <br />
         <span className="font-semibold  text-primary">{phone}</span>
       </div>
-      <PharmacieRowImage />
+      <PharmacieRowImage image={image} />
     </PharmacieRowWrapper>
   );
 };

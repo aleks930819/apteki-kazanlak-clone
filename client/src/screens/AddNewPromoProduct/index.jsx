@@ -22,7 +22,9 @@ const AddNewPromoProductScreen = () => {
 
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
-
+    
+    data.image = image;
+    
     if (
       !data.name ||
       !data.oldPrice ||
@@ -33,7 +35,6 @@ const AddNewPromoProductScreen = () => {
       return toast.error('Моля попълнете всички полета!');
     }
 
-    data.image = image;
 
     addPromoProduct(data);
   };

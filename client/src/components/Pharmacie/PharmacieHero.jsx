@@ -1,6 +1,6 @@
 import Man from '../../assets/man.jpg';
 
-const PharmacieHero = ({ managerName, managerTitle, managerDescription }) => {
+const PharmacieHero = ({ managerName, managerTitle, managerDescription,managerImage }) => {
   return (
     <div className="linear-background-purple py-[30px] sm:py-[80px]">
       <div className="mx-auto flex w-[90vw]  flex-col-reverse items-center justify-center gap-10 sm:w-[75vw] sm:flex-row">
@@ -13,7 +13,7 @@ const PharmacieHero = ({ managerName, managerTitle, managerDescription }) => {
         </div>
         <div className="flex flex-1 items-center">
           <div className="h-full w-full">
-            <img src={Man} alt="man" className="h-full w-full object-cover" />
+            <img src={managerImage || Man} alt="man" className="h-full w-full object-cover" />
           </div>
         </div>
       </div>

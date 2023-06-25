@@ -1,6 +1,6 @@
 import Woman from '../../assets/working-woman.jpg';
 
-const PharmacieRowImage = ({ rounded }) => {
+const PharmacieRowImage = ({ rounded, image }) => {
   const roundedClass = rounded ? 'rounded-t-md' : '';
 
   return (
@@ -8,7 +8,7 @@ const PharmacieRowImage = ({ rounded }) => {
       className={`h-70 ${roundedClass} ml-auto w-full overflow-hidden lg:h-60 lg:w-auto`}
     >
       <img
-        src={Woman}
+        src={image || Woman}
         className="h-full w-full object-cover transition-transform duration-200 ease-in-out hover:scale-110"
       />
     </div>

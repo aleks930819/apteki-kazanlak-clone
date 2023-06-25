@@ -3,15 +3,17 @@ import { toast } from 'react-hot-toast';
 import { useState, useContext } from 'react';
 
 import useAddPharmacie from '../../hooks/useAddPharmacie';
+import useImagesUploader from '../../hooks/useUploadImages';
 
 import InputField from '../../ui/InputField';
 import TextAreaField from '../../ui/TextAreaField';
 import ActionForm from '../../ui/ActionForm';
+import WorkTimePicker from '../../ui/WorkTimePicker';
+import UploadImageInput from '../../ui/UploadImageInput';
 
 import 'react-time-picker/dist/TimePicker.css';
 import 'react-clock/dist/Clock.css';
 
-import WorkTimePicker from '../../ui/WorkTimePicker';
 import WorkTimeWrapper from '../../components/WorktTme/WorkTimeWrapper';
 
 import { AuthContext } from '../../context/AuthContext';
@@ -20,6 +22,8 @@ const AddNewPharmacieScreen = () => {
   const { user } = useContext(AuthContext);
 
   const { addPharmacie, addingPharmacieLoading } = useAddPharmacie(user);
+
+  const { images, handleImagesUpload } = useImagesUploader();
 
   const [workingTime, setWorkingTime] = useState({
     weekDays: {
@@ -63,7 +67,14 @@ const AddNewPharmacieScreen = () => {
         saturday: [workingTime.saturday.open, workingTime.saturday.close],
         sunday: [workingTime.sunday.open ?? '', workingTime.sunday.close ?? ''],
       },
+
+      mainImage: images[0],
+      secondaryImage: images[1],
+      managerImage: images[2],
+      pharmacieImages: [images[3], images[4], images[5]],
     };
+
+    addPharmacie(newData);
 
     if (
       !data.name ||
@@ -76,8 +87,6 @@ const AddNewPharmacieScreen = () => {
     ) {
       return toast.error('Моля попълнете всички полета!');
     }
-
-    addPharmacie(newData);
   };
 
   return (
@@ -142,6 +151,54 @@ const AddNewPharmacieScreen = () => {
         name="managerDescription"
         required
       />
+      <UploadImageInput
+        id="mainImage"
+        label="Заглавна снимка"
+        handleFileChange={handleImagesUpload}
+        value={images[0]}
+        image={images[0]}
+      />
+      <UploadImageInput
+        id="secondaryImage"
+        label="Втора снимка"
+        handleFileChange={handleImagesUpload}
+        value={images[1]}
+        image={images[1]}
+      />
+
+      <UploadImageInput
+        id="managerImage"
+        label="Снимка на мениджъра"
+        handleFileChange={handleImagesUpload}
+        value={images[2]}
+        image={images[2]}
+      />
+
+      <UploadImageInput
+        id="pharmaciesImage-1"
+        label="Снимки на Аптеката -1"
+        handleFileChange={handleImagesUpload}
+        value={images[3]}
+        image={images[3]}
+        multiple={true}
+      />
+      <UploadImageInput
+        id="pharmaciesImage-2"
+        label="Снимки на Аптеката -2"
+        handleFileChange={handleImagesUpload}
+        value={images[4]}
+        image={images[4]}
+        multiple={true}
+      />
+      <UploadImageInput
+        id="pharmaciesImage-3"
+        label="Снимки на Аптеката -3"
+        handleFileChange={handleImagesUpload}
+        value={images[5]}
+        image={images[5]}
+        multiple={true}
+      />
+
       <div>
         <h2 className="mb-2 font-bold text-gray-700">Работно Време:</h2>
         {/* Weekdays working time */}

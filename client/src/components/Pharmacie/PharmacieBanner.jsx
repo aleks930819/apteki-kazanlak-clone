@@ -1,11 +1,11 @@
 import People from '../../assets/people.jpg';
 
-const PharmacieBanner = ({ name }) => {
+const PharmacieBanner = ({ name, mainImage }) => {
   return (
     <div className="relative">
       <div className="flex flex-col items-center justify-center ">
         <img
-          src={People}
+          src={mainImage || People}
           alt="People Banner Logo"
           className="h-[65vh]
              w-full object-cover

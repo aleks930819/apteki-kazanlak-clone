@@ -18,7 +18,7 @@ const ServiceHighlightsTitles = [
   },
 ];
 
-const PharmacieRow1 = () => {
+const PharmacieRow1 = ({ image }) => {
   return (
     <PharmacieRowWrapper>
       <PharmacieRowTitle title="Ние работим с" />
@@ -27,7 +27,7 @@ const PharmacieRow1 = () => {
           ServiceHighlightsTitles={ServiceHighlightsTitles}
         />
       </div>
-      <PharmacieRowImage rounded={true} />
+      <PharmacieRowImage rounded={true} image={image} />
     </PharmacieRowWrapper>
   );
 };

@@ -3,7 +3,7 @@ import PharmacieRowWrapper from './PharmacieRowWrapper';
 import PharmacieRowImage from './PharmacieRowImage';
 import formattedHours from '../../utils/formattedHours';
 
-const PharmacieRow2 = ({ workingHours }) => {
+const PharmacieRow2 = ({ workingHours, image }) => {
   const { mondayToFriday, saturday, sunday } = workingHours;
 
   return (
@@ -23,7 +23,7 @@ const PharmacieRow2 = ({ workingHours }) => {
           Неделя: {formattedHours(sunday[0], sunday[1])}
         </p>
       </div>
-      <PharmacieRowImage />
+      <PharmacieRowImage image={image} />
     </PharmacieRowWrapper>
   );
 };
