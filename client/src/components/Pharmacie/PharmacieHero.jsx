@@ -9,7 +9,7 @@ const PharmacieHero = ({ managerName, managerTitle, managerDescription }) => {
           <br />
           <p className="text-lg font-semibold">{managerTitle.toLowerCase()}</p>
           <br />
-          <pre  className="whitespace-pre-wrap font-normal text-base">{managerDescription}</pre>
+          <p  className="whitespace-pre-wrap ">{managerDescription}</p>
         </div>
         <div className="flex flex-1 items-center">
           <div className="h-full w-full">

@@ -21,6 +21,10 @@ const pharmacieSchema = mongoose.Schema({
     saturday: [{ type: String }],
     sunday: [{ type: String }],
   },
+  mainImage: { type: imageSchema, required: true },
+  managerImage: { type: imageSchema, required: true },
+  
+  images: [{ type: imageSchema }],
   managerName: { type: String, required: true },
   managerTitle: { type: String, required: true },
   managerDescription: { type: String, required: true },

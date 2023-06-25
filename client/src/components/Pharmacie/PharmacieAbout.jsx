@@ -17,7 +17,7 @@ sm:flex-row sm:px-0"
         />
       </div>
       <div className="max-w-prose pr-10">
-        <pre className='whitespace-pre-wrap'>{history}</pre>
+        <p className='whitespace-pre-wrap'>{history}</p>
       </div>
     </section>
   );

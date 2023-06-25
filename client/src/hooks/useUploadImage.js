@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { CLODUINARY_UPLOAD_PRESET, CLOUDINARY_URL } from '../../api';
+import Resizer from 'react-image-file-resizer';
 
 const useImageUploader = () => {
   const [isLoadingImageUpload, setIsLoadingImageUpload] = useState(false);
@@ -9,6 +10,7 @@ const useImageUploader = () => {
     try {
       const formData = new FormData();
       formData.append('file', file);
+
       formData.append('upload_preset', CLODUINARY_UPLOAD_PRESET);
 
       const response = await fetch(CLOUDINARY_URL, {

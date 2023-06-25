@@ -23,11 +23,11 @@ const AddNewNews = () => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
 
+    data.image = image;
+
     if (!data.image || !data.title || !data.summary || !data.description) {
       return toast.error('Моля попълнете всички полета!');
     }
-
-    data.image = image;
 
     addNewNewsing(data);
   };

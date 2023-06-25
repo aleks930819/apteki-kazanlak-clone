@@ -21,11 +21,10 @@ const NewsScreen = () => {
   return (
     <>
       <NewsBanner image={image} />
-      <section className="mx-auto bg-white p-10 lg:w-[50vw]">
+      <section className="mx-auto bg-white px-[70px] py-[30px] lg:w-[75vw]">
         <div className="flex flex-col items-start justify-center">
           <h1 className="mb-4 text-4xl font-semibold text-gray-800">{title}</h1>
-          <br />
-          <p className="mb-4">{description}</p>
+          <p className="mb-4 whitespace-pre-wrap">{description}</p>
         </div>
       </section>
     </>

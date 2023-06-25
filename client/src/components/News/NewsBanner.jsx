@@ -1,4 +1,3 @@
-
 const NewsBanner = ({ image }) => {
   return (
     <div className="relative">
@@ -6,7 +5,7 @@ const NewsBanner = ({ image }) => {
         <img
           src={image}
           alt="People Banner Logo"
-          className="h-[70vh]
+          className="h-[60vh]
            w-full object-cover
               object-top
           "
