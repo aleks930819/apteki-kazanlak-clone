@@ -16,6 +16,7 @@ import Spinner from '../../ui/Spinner';
 import setChangedValue from '../../utils/changeValueHandler';
 import { AuthContext } from '../../context/AuthContext';
 import UploadImageInput from '../../ui/UploadImageInput';
+import DeleteImageInput from '../../ui/DeleteImageInput';
 
 const EditNewsScreen = () => {
   const { slug } = useParams();
@@ -75,34 +76,34 @@ const EditNewsScreen = () => {
       isDeleting={deletingLoading}
       deleteButton={'Изтрий'}
     >
-      <InputField
-        type="text"
-        label="Залгавие на статията"
-        id="title"
-        name="title"
-        onChange={changeHandler}
-        value={values.title}
-      />
-      <InputField
-        type="text"
-        label="Кратко описание"
-        id="summary"
-        name="summary"
-        onChange={changeHandler}
-        value={values.summary}
-      />
-      {/* <UploadImageInput
-        id="image"
-        label="Снимка"
-        handleFileChange={handleImageUpload}
-        image={values.image}
-      /> */}
+      <div className="grid grid-cols-2 gap-x-10">
+        <InputField
+          type="text"
+          label="Залгавие на статията"
+          id="title"
+          name="title"
+          onChange={changeHandler}
+          value={values.title}
+        />
+        <InputField
+          type="text"
+          label="Кратко описание"
+          id="summary"
+          name="summary"
+          onChange={changeHandler}
+          value={values.summary}
+        />
+      </div>
       <TextAreaField
         label="Описание"
         id="description"
         name="description"
         onChange={changeHandler}
         value={values.description}
+      />
+      <DeleteImageInput
+        image={values.image.url}
+        publicId={values.image.publicId}
       />
     </ActionForm>
   );

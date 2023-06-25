@@ -76,46 +76,26 @@
     transform: scaleY(1);
   }
 
-  
-
-  .history-year-circle {
-    width: 220px;
-    height: 100px;
-
-    background-color: #00686d;
-    border-radius: 50%;
-    color: #fff;
-    font-weight: 600;
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
-
-  .history-year-circle-right {
-    position: relative;
-  }
-
-  .history-year-circle-right:after {
+  .timeline-item {
     background-color: #00686d;
     content: '';
     height: 9px;
     position: absolute;
     width: 55%;
     right: -42%;
-    top: 86%;
-    transform: rotate(30deg);
+    top: 83%;
+    transform: rotate(35deg);
   }
 
-  .history-year-circle-left:before {
+  .timeline-item-2 {
     background-color: #00686d;
     content: '';
     height: 9px;
     position: absolute;
     width: 55%;
-    left: -42%;
-    top: 86%;
+    left: -42%; /* Update left instead of right */
+    top: 82%;
+    right: auto; /* Remove the right property */
     transform: rotate(-30deg);
   }
 }
