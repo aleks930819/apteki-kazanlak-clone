@@ -1,10 +1,10 @@
 import express from 'express';
 import multer from 'multer';
 import cloudinary from '../config/cloudinaryConfig.js';
+import { CLODUINARY_UPLOAD_PRESET } from '../config.js';
 
 const router = express.Router();
 
-// Multer and Cloudinary configuration
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
@@ -22,7 +22,7 @@ router.post('/', upload.single('file'), async (req, res) => {
     const uploadResponse = await cloudinary.uploader.upload(
       `data:${file.mimetype};base64,${fileStr}`,
       {
-        upload_preset: 'jmrhx8e8',
+        upload_preset: CLODUINARY_UPLOAD_PRESET,
       }
     );
 
@@ -32,7 +32,5 @@ router.post('/', upload.single('file'), async (req, res) => {
     res.status(500).json({ message: 'Server Error' });
   }
 });
-
-
 
 export default router;
