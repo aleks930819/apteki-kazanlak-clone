@@ -1,7 +1,6 @@
 import ServiceHighlightsItem from './ServiceHighlightsItem';
 
 const ServiceHighlightsItems = ({ ServiceHighlightsTitles }) => {
-  console.log(ServiceHighlightsTitles);
   return (
     <ul className="flex flex-col gap-4 text-primary ">
       {ServiceHighlightsTitles?.map((item) => (

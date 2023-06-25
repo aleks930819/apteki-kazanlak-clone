@@ -1,6 +1,9 @@
 import Woman from '../../assets/woman.jpg';
 
 const PharmacieAbout = ({ history }) => {
+
+
+
   return (
     <section
       className=" mx-auto flex w-full flex-col items-center  gap-10 bg-white px-6 py-8 sm:w-[70vw] 
@@ -13,7 +16,9 @@ sm:flex-row sm:px-0"
           className=" w-full object-cover sm:h-[35vh]"
         />
       </div>
-      <div className="pr-10">{history}</div>
+      <div className="max-w-prose pr-10">
+        <pre className='whitespace-pre-wrap'>{history}</pre>
+      </div>
     </section>
   );
 };

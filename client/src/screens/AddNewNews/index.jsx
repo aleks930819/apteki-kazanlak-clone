@@ -7,11 +7,15 @@ import ActionForm from '../../ui/ActionForm';
 import { toast } from 'react-hot-toast';
 import { useContext } from 'react';
 
+import useImageUploader from '../../hooks/useUploadImage';
+
 import { AuthContext } from '../../context/AuthContext';
+import UploadImageInput from '../../ui/UploadImageInput';
 
 const AddNewNews = () => {
   const { user } = useContext(AuthContext);
   const { addNewNewsing, addingNewNewsLoading } = useAddNewNews(user);
+  const { isLoadingImageUpload, image, handleImageUpload } = useImageUploader();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,6 +27,8 @@ const AddNewNews = () => {
       return toast.error('Моля попълнете всички полета!');
     }
 
+    data.image = image;
+
     addNewNewsing(data);
   };
 
@@ -31,7 +37,7 @@ const AddNewNews = () => {
       heading="Добавате нова статия"
       buttonName="Добави"
       onSubmit={handleSubmit}
-      isLoading={addingNewNewsLoading}
+      isLoading={addingNewNewsLoading || isLoadingImageUpload}
     >
       <InputField
         type="text"
@@ -47,13 +53,15 @@ const AddNewNews = () => {
         name="summary"
         required
       />
-      <InputField
-        type="text"
-        label="Заглавна снимка"
+
+      <UploadImageInput
         id="image"
-        name="image"
-        required
+        label="Снимка"
+        handleFileChange={handleImageUpload}
+        value={image}
+        image={image}
       />
+
       <TextAreaField
         label="Описание"
         id="description"

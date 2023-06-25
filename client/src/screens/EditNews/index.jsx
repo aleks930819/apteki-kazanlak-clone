@@ -7,6 +7,7 @@ import { getSingleNews } from '../../services/apiInteresting';
 
 import useUpdateNews from '../../hooks/useUpdateNews';
 import useDeleteNews from '../../hooks/useDeleteNews';
+import useImageUploader from '../../hooks/useUploadImage';
 
 import ActionForm from '../../ui/ActionForm';
 import InputField from '../../ui/InputField';
@@ -14,6 +15,7 @@ import TextAreaField from '../../ui/TextAreaField';
 import Spinner from '../../ui/Spinner';
 import setChangedValue from '../../utils/changeValueHandler';
 import { AuthContext } from '../../context/AuthContext';
+import UploadImageInput from '../../ui/UploadImageInput';
 
 const EditNewsScreen = () => {
   const { slug } = useParams();
@@ -28,6 +30,11 @@ const EditNewsScreen = () => {
 
   const { editingLoading, updateNews } = useUpdateNews(slug, user);
   const { deleteNews, deletingLoading } = useDeleteNews(slug, user);
+  const {
+    isLoadingImageUpload,
+    image: newImage,
+    handleImageUpload,
+  } = useImageUploader();
 
   const { isLoading, data } = useQuery(['singleNews', slug], () =>
     getSingleNews(slug)
@@ -49,6 +56,7 @@ const EditNewsScreen = () => {
     if (!deletingLoading) {
       const formData = new FormData(e.target);
       const data = Object.fromEntries(formData);
+
       updateNews(data);
     }
   };
@@ -83,14 +91,11 @@ const EditNewsScreen = () => {
         onChange={changeHandler}
         value={values.summary}
       />
-      <InputField
-        type="text"
-        label="Заглавна снимка"
+      <UploadImageInput
         id="image"
-        name="image"
-        placeholder={image}
-        onChange={changeHandler}
-        value={values.image}
+        label="Снимка"
+        handleFileChange={handleImageUpload}
+        image={values.image}
       />
       <TextAreaField
         label="Описание"

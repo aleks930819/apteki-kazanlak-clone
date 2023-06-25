@@ -9,6 +9,7 @@ import ActionForm from '../../ui/ActionForm';
 
 import { AuthContext } from '../../context/AuthContext';
 import useImageUploader from '../../hooks/useUploadImage';
+import UploadImageInput from '../../ui/UploadImageInput';
 
 const AddNewPromoProductScreen = () => {
   const { user } = useContext(AuthContext);
@@ -66,13 +67,12 @@ const AddNewPromoProductScreen = () => {
         required
       />
 
-      <InputField
-        type="file"
-        label="Снимка"
+      <UploadImageInput
         id="image"
-        name="image"
-        required
-        onChange={handleImageUpload}
+        label="Снимка"
+        handleFileChange={handleImageUpload}
+        value={image}
+        image={image}
       />
       <TextAreaField
         label="Описание"

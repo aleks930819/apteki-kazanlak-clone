@@ -14,11 +14,11 @@ import TextAreaField from '../../ui/TextAreaField';
 import Spinner from '../../ui/Spinner';
 import setChangedValue from '../../utils/changeValueHandler';
 import { AuthContext } from '../../context/AuthContext';
+import UploadImageInput from '../../ui/UploadImageInput';
 
 const EditPromoScreeen = () => {
   const { id } = useParams();
   const { user } = useContext(AuthContext);
-
 
   const [values, setValues] = useState({
     name: '',
@@ -97,13 +97,12 @@ const EditPromoScreeen = () => {
         onChange={changeHandler}
         value={values.newPrice}
       />
-      <InputField
-        type="text"
-        label="Снимка"
+      <UploadImageInput
         id="image"
-        name="image"
-        onChange={changeHandler}
+        label="Снимка"
+        handleFileChange={changeHandler}
         value={values.image}
+        image={image}
       />
       <TextAreaField
         type="text"
