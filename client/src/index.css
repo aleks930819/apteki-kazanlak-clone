@@ -93,10 +93,10 @@
     height: 9px;
     position: absolute;
     width: 55%;
-    left: -42%; /* Update left instead of right */
-    top: 82%;
-    right: auto; /* Remove the right property */
-    transform: rotate(-30deg);
+    left: -42%; 
+    top: 83%;
+    right: auto; 
+    transform: rotate(-35deg);
   }
 
   .spine {
@@ -107,7 +107,7 @@
     left: calc(50% - 2px);
     position: absolute;
     top: 24px;
-    width: 4px;
+    width: 5px;
   }
 
   .spine::before {
