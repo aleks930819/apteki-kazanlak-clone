@@ -6,8 +6,8 @@ const HistoryYearEven = ({ item }) => {
     <motion.div
       initial={{ opacity: 0, y: -30, x: 30 }}
       animate={{ opacity: 1, y: 0, x: 0 }}
-      transition={{ duration: 1 }}
-      className="ml-5 flex items-center  gap-x-10 self-end sm:mr-[-38px]  sm:w-[50%] "
+      transition={{ duration: 1.2 }}
+      className="ml-5 flex items-center text-blue-dark gap-x-10 self-end sm:mr-[-38px]  sm:w-[50%] "
     >
       <div
         className="relative flex flex-col items-center justify-center  gap-2 px-10"
