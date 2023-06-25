@@ -8,13 +8,9 @@ import useImagesUploader from '../../hooks/useUploadImages';
 import InputField from '../../ui/InputField';
 import TextAreaField from '../../ui/TextAreaField';
 import ActionForm from '../../ui/ActionForm';
-// import WorkTimePicker from '../../ui/WorkTimePicker';
-// import UploadImageInput from '../../ui/UploadImageInput';
 
 import 'react-time-picker/dist/TimePicker.css';
 import 'react-clock/dist/Clock.css';
-
-// import WorkTimeWrapper from '../../components/WorktTme/WorkTimeWrapper';
 
 import { AuthContext } from '../../context/AuthContext';
 import ChoiceButtons from '../../components/AddNewPharmacie/ChoiceButtons';
@@ -26,7 +22,8 @@ const AddNewPharmacieScreen = () => {
 
   const { addPharmacie, addingPharmacieLoading } = useAddPharmacie(user);
 
-  const { images, handleImagesUpload } = useImagesUploader();
+  const { images, handleImagesUpload, isLoadingImageUpload } =
+    useImagesUploader();
 
   const [selectedChoices, setSelectedChoices] = useState([]);
 
@@ -87,6 +84,7 @@ const AddNewPharmacieScreen = () => {
       secondaryImage: images[1],
       managerImage: images[2],
       pharmacieImages: [images[3], images[4], images[5]],
+      workingWith: selectedChoices,
     };
 
     addPharmacie(newData);
@@ -182,6 +180,7 @@ const AddNewPharmacieScreen = () => {
       <UploadImagesContainer
         images={images}
         handleImagesUpload={handleImagesUpload}
+        isLoading={isLoadingImageUpload}
       />
       <Workingtime
         workingTime={workingTime}

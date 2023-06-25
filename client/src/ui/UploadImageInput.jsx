@@ -5,10 +5,11 @@ const UploadImageInput = ({
   value,
   image,
   multiple,
+  disabled,
   inputMessage,
 }) => {
   return (
-    <div className="flex flex-col  w-full items-center  justify-between">
+    <div className="flex w-full  flex-col items-center  justify-between">
       <div className="flex w-full flex-col items-start">
         <label htmlFor={id} className="mb-2 font-bold text-gray-700">
           {label}
@@ -43,6 +44,7 @@ const UploadImageInput = ({
           className="hidden"
           size={2 * 1024 * 1024}
           onChange={handleFileChange}
+          disabled={disabled}
         />
         {value && (
           <span className="mt-2 text-sm text-gray-500">{value.name}</span>

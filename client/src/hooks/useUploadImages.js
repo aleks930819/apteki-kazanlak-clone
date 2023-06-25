@@ -7,6 +7,7 @@ const useImagesUploader = () => {
 
   const uploadImages = async (files) => {
     try {
+      setIsLoadingImageUpload(true);
       const uploadPromises = files.map((file) => {
         const formData = new FormData();
         formData.append('file', file);
@@ -28,7 +29,10 @@ const useImagesUploader = () => {
       return imagesData;
     } catch (error) {
       console.log(error);
+
       return [];
+    } finally {
+      setIsLoadingImageUpload(false);
     }
   };
 
