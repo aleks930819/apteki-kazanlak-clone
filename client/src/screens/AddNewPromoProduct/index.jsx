@@ -50,13 +50,23 @@ const AddNewPromoProductScreen = () => {
       onSubmit={handleSubmit}
       isLoading={addingPromoProductLoading || isLoadingImageUpload}
     >
-      <InputField
-        type="text"
-        label="Име на продукта"
-        id="name"
-        name="name"
-        required
-      />
+      <div className="grid grid-cols-2 gap-x-10">
+        <InputField
+          type="text"
+          label="Име на продукта"
+          id="name"
+          name="name"
+          required
+        />
+        <UploadImageInput
+          id="image"
+          label="Снимка"
+          handleFileChange={handleImagesUpload}
+          value={images}
+          image={images[0]?.url}
+        />
+      </div>
+      <div className="grid grid-cols-2 gap-x-10">
       <InputField
         type="number"
         label="Стара Цена"
@@ -71,14 +81,8 @@ const AddNewPromoProductScreen = () => {
         name="newPrice"
         required
       />
+      </div>
 
-      <UploadImageInput
-        id="image"
-        label="Снимка"
-        handleFileChange={handleImagesUpload}
-        value={images}
-        image={images[0]?.url}
-      />
       <TextAreaField
         label="Описание"
         id="description"
