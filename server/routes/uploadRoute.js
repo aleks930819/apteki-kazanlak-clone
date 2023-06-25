@@ -26,7 +26,27 @@ router.post('/', upload.single('file'), async (req, res) => {
       }
     );
 
+    console.log(uploadResponse.public_id);
+
     res.json({ url: uploadResponse.url, publicId: uploadResponse.public_id });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+});
+
+router.delete('/:publicId', async (req, res) => {
+  try {
+    console.log(req.params.publicId);
+
+    const publicId = req.params.publicId;
+
+
+    const deleteResponse = await cloudinary.uploader.destroy(publicId);
+
+    console.log(deleteResponse);
+
+    res.status(204).json({ message: 'Image deleted successfully' });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server Error' });

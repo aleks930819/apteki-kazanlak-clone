@@ -9,6 +9,7 @@ import promoProductRoutes from './routes/promoProductRoute.js';
 import interestingRoute from './routes/interestingRoute.js';
 import pharmacieRoute from './routes/phramcieRoute.js';
 import userRoute from './routes/userRoute.js';
+import uploadsRoute from './routes/uploadRoute.js';
 
 dotenv.config();
 
@@ -28,7 +29,7 @@ app.use('/api/promo', promoProductRoutes);
 app.use('/api/interesting', interestingRoute);
 app.use('/api/pharmacies', pharmacieRoute);
 app.use('/api/auth', userRoute);
-
+app.use('/api/uploads', uploadsRoute);
 
 app.listen(PORT, () =>
   console.log(`Server running on port: http://localhost:${PORT}`)

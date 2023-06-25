@@ -1,31 +1,25 @@
 import { useState } from 'react';
 
 import { toast } from 'react-hot-toast';
-import { CLOUDINARY_API_KEY, CLOUDINARY_CLUD } from '../../api';
 
-// import cloudinary from '../cloudinaryConfig';
-
-const ImageDeleteButton =  ({ publicId, onImageDelete }) => {
+const ImageDeleteButton = ({ publicId, onImageDelete }) => {
   const [deleting, setDeleting] = useState(false);
-  const url = `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLUD}/image/destroy`;
-  console.log(publicId);
 
   const handleDelete = async () => {
     setDeleting(true);
 
     try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          api_key: `${CLOUDINARY_API_KEY}`,
-        },
-      });
+      const response = await fetch(
+        `http://localhost5000/api/uploads/${publicId}`,
+        {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
 
       const data = await response.json();
-
-      console.log(data);
-
     } catch (error) {
       console.error('Error deleting image:', error);
     }

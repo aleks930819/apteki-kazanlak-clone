@@ -1,7 +1,8 @@
 import ImageDeleteButton from './ImageDeleteButton';
 
 const DeleteImageInput = ({ image, publicId }) => {
-  console.log(publicId);
+
+  // pkvntwtpfnkukqvl0ujs
   return (
     <div className="mb-5 mt-5 flex w-full flex-col items-center justify-center gap-4 ">
       {image && (
