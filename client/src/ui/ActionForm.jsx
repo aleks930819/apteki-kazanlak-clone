@@ -8,7 +8,16 @@ const ActionForm = ({
   editingLoading,
   deletingLoading,
   onDeleteAction,
+  deleteMessage,
 }) => {
+  const handleDelete = (deleteMessage) => {
+    console.log(deleteMessage);
+    const shouldDelete = window.confirm(deleteMessage);
+    if (shouldDelete) {
+      onDeleteAction();
+    }
+  };
+
   return (
     <div className="flex h-full w-full flex-col items-center justify-center rounded-md bg-white p-4 shadow-md">
       <form
@@ -32,7 +41,7 @@ const ActionForm = ({
               className="rounded-md border-2  bg-red-600 px-4  py-2 font-bold uppercase text-white disabled:cursor-not-allowed disabled:opacity-80"
               type="button"
               disabled={deletingLoading}
-              onClick={onDeleteAction}
+              onClick={() => handleDelete('Сигурнили сте?')}
             >
               {deleteButton}
             </button>

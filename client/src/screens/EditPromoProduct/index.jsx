@@ -69,6 +69,7 @@ const EditPromoScreeen = () => {
       editingLoading={editingLoading}
       deletingLoading={deletingLoading}
       onDeleteAction={deleteProduct}
+      deleteMessage='Сигурни ли сте, че искате да изтриете този продукт?'
     >
       <InputField
         type="text"

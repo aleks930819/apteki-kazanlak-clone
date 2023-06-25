@@ -11,12 +11,14 @@ const pharmacieSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+
   phone: { type: String, required: true },
   workingHours: {
     mondayToFriday: [{ type: String, required: true }],
     saturday: [{ type: String }],
     sunday: [{ type: String }],
   },
+  workingWith: [{ type: String, required: true }],
   mainImage: { type: String, required: true },
   secondaryImage: { type: String, required: true },
   managerImage: { type: String, required: true },
