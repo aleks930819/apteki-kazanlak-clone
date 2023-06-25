@@ -13,7 +13,7 @@ const useImagesUploader = () => {
         formData.append('file', file);
         formData.append('upload_preset', CLODUINARY_UPLOAD_PRESET);
 
-        return fetch('http://localhost:5000/api/uploads', {
+        return fetch(CLOUDINARY_URL, {
           method: 'POST',
           body: formData,
         }).then((response) => response.json());
@@ -22,8 +22,8 @@ const useImagesUploader = () => {
       const uploadedImages = await Promise.all(uploadPromises);
 
       const imagesData = uploadedImages.map((data) => ({
-        url: data.url,
-        publicId: data.publicId,
+        publicId: data.public_id,
+        url: data.secure_url,
       }));
 
       return imagesData;

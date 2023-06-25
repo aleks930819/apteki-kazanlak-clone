@@ -60,6 +60,8 @@ const AddNewPharmacieScreen = () => {
     }));
   };
 
+  console.log(selectedChoices);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 

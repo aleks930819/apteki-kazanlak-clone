@@ -6,8 +6,8 @@ const HistoryYearOdd = ({ item }) => {
     <motion.div
       initial={{ opacity: 0, y: -30, x: -30 }}
       animate={{ opacity: 1, y: 0, x: 0 }}
-      transition={{ duration: 1.2 }}
-      className="mr-5 flex items-center text-blue-dark gap-x-10 self-start sm:ml-[-38px]   sm:mr-auto sm:w-[50%] "
+      transition={{ duration: 1 }}
+      className="mr-5 flex items-center  gap-x-10 self-start sm:ml-[-38px]   sm:mr-auto sm:w-[50%] "
     >
         <div className="ml-auto flex w-[100%]  sm:w-[40%] flex-col items-end justify-end">
         <p className=" text-2xl pl-1 text-blue-dark mb-4">{item.title}</p>
