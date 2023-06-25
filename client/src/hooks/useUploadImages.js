@@ -10,10 +10,10 @@ const useImagesUploader = () => {
       setIsLoadingImageUpload(true);
       const uploadPromises = files.map((file) => {
         const formData = new FormData();
-        formData.append('file', file);
-        formData.append('upload_preset', CLODUINARY_UPLOAD_PRESET);
+        formData.append('image', file);
+        // formData.append('upload_preset', CLODUINARY_UPLOAD_PRESET);
 
-        return fetch(CLOUDINARY_URL, {
+        return fetch('http://localhost:5000/api/uploads', {
           method: 'POST',
           body: formData,
         }).then((response) => response.json());
@@ -22,8 +22,8 @@ const useImagesUploader = () => {
       const uploadedImages = await Promise.all(uploadPromises);
 
       const imagesData = uploadedImages.map((data) => ({
-        publicId: data.public_id,
-        url: data.secure_url,
+        filename: data.filename,
+        url: data.url,
       }));
 
       return imagesData;

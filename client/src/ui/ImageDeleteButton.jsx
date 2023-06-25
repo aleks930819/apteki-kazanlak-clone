@@ -1,16 +1,15 @@
 import { useState } from 'react';
 
-import { toast } from 'react-hot-toast';
-
-const ImageDeleteButton = ({ publicId, onImageDelete }) => {
+const ImageDeleteButton = ({ filename, removeImageUrlFromValues }) => {
   const [deleting, setDeleting] = useState(false);
 
   const handleDelete = async () => {
     setDeleting(true);
-
+    removeImageUrlFromValues();
+    
     try {
       const response = await fetch(
-        `http://localhost5000/api/uploads/${publicId}`,
+        `http://localhost:5000/api/uploads/${filename}`,
         {
           method: 'DELETE',
           headers: {

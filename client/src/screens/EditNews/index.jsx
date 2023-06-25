@@ -47,6 +47,8 @@ const EditNewsScreen = () => {
 
   const { title, summary, image, description } = data;
 
+  console.log(data);
+
   if (!values.title) {
     setValues({ title, summary, image, description });
   }
@@ -65,6 +67,12 @@ const EditNewsScreen = () => {
   const changeHandler = (e) => {
     setChangedValue(e, setValues);
   };
+
+  const removeImageUrlFromValues = () => {
+    setValues((prev) => ({ ...prev, image: { url: '', publicId: '' } }));
+  };
+
+  console.log(values);
 
   return (
     <ActionForm
@@ -102,8 +110,9 @@ const EditNewsScreen = () => {
         value={values.description}
       />
       <DeleteImageInput
+        removeImageUrlFromValues={removeImageUrlFromValues}
         image={values.image.url}
-        publicId={values.image.publicId}
+        filename={values.image.filename}
       />
     </ActionForm>
   );

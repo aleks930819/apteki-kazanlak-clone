@@ -23,7 +23,7 @@ const newsSchema = mongoose.Schema(
       url: {
         type: String,
       },
-      publicId: {
+      filename: {
         type: String,
       },
     },

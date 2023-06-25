@@ -20,20 +20,20 @@ const pharmacieSchema = mongoose.Schema({
   workingWith: [{ type: String, required: true }],
   mainImage: {
     url: { type: String, required: true },
-    publicId: { type: String, required: true },
+    filename: { type: String, required: true },
   },
   secondaryImage: {
     url: { type: String, required: true },
-    publicId: { type: String, required: true },
+    filename: { type: String, required: true },
   },
   managerImage: {
     url: { type: String, required: true },
-    publicId: { type: String, required: true },
+    filename: { type: String, required: true },
   },
   pharmacieImages: [
     {
       url: { type: String, required: true },
-      publicId: { type: String, required: true },
+      filename: { type: String, required: true },
     },
   ],
   managerName: { type: String, required: true },

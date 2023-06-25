@@ -22,7 +22,7 @@ const promoProductSchema = mongoose.Schema(
       url: {
         type: String,
       },
-      publicId: {
+      filename: {
         type: String,
       },
     },
