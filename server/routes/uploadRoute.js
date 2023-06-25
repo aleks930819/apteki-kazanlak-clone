@@ -40,6 +40,7 @@ router.post('/', upload.single('image'), async (req, res) => {
   }
 
   checkFileType(req.file, (err, isMatch) => {
+    
     if (err) {
       res.status(400).json({ message: err });
       return;
