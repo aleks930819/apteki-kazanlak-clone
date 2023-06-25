@@ -23,9 +23,9 @@ const HistoryYearEven = ({ item }) => {
         <span className="timeline-item-2"></span>
         <span className="text-2xl font-bold text-blue-dark">{item.year}</span>
       </div>
-      <div className="mr-auto flex flex-col items-start justify-start">
-        <p className="pb-2 text-2xl text-blue-dark">{item.title}</p>
-        <p className="text-start">{item.summary}</p>
+      <div className="mr-auto pr-1 flex w-[100%]  sm:w-[40%] flex-col items-end justify-end">
+        <p className=" text-2xl text-blue-dark mb-4">{item.title}</p>
+        <p className="center">{item.summary}</p>
       </div>
     </motion.div>
   );

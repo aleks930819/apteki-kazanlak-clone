@@ -7,19 +7,19 @@ const HistoryYearOdd = ({ item }) => {
       initial={{ opacity: 0, y: -30, x: -30 }}
       animate={{ opacity: 1, y: 0, x: 0 }}
       transition={{ duration: 1 }}
-      className="mr-10 flex items-center  gap-x-10 self-start sm:ml-[-38px]   sm:mr-auto sm:w-[50%] "
+      className="mr-5 flex items-center  gap-x-10 self-start sm:ml-[-38px]   sm:mr-auto sm:w-[50%] "
     >
-      <div className="mx-auto    mr-auto flex flex-col items-end justify-end ">
-        <p className="mb-4 text-4xl text-blue-dark">{item.title}</p>
-        <p className="text-end">{item.summary}</p>
+        <div className="ml-auto flex w-[100%]  sm:w-[40%] flex-col items-end justify-end">
+        <p className=" text-2xl pl-1 text-blue-dark mb-4">{item.title}</p>
+        <p className="center  ">{item.summary}</p>
       </div>
       <div
-        className="relative flex flex-col items-center justify-center gap-2 px-10 "
+        className="relative flex flex-col items-center justify-center  gap-2 px-10"
         style={{
           backgroundImage: `url(${logo})`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
-          backgroundPosition: 'cover',
+          backgroundPosition: 'center',
           width: '105px',
           height: '120px',
         }}
