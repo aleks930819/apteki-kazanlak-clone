@@ -98,6 +98,36 @@
     right: auto; /* Remove the right property */
     transform: rotate(-30deg);
   }
+
+  .spine {
+    background-color: #00686d;
+    border-radius: 2px;
+    bottom: 100%;
+    height: calc(100% - 70px);
+    left: calc(50% - 2px);
+    position: absolute;
+    top: 24px;
+    width: 4px;
+  }
+
+  .spine::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 4px;
+    background: #00686c;
+  }
+  .spine::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 4px;
+    background: #00686c;
+  }
 }
 
 *,
