@@ -20,7 +20,7 @@ const NewsScreen = () => {
 
   return (
     <>
-      <NewsBanner image={image} />
+      <NewsBanner image={image.url} />
       <section className="mx-auto bg-white px-[70px] py-[30px] lg:w-[75vw]">
         <div className="flex flex-col items-start justify-center">
           <h1 className="mb-4 text-4xl font-semibold text-gray-800">{title}</h1>

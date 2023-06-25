@@ -17,6 +17,8 @@ const Header = () => {
   const [isDekstopView] = useIsDekstopView();
   const { user } = useContext(AuthContext);
 
+  console.log(user);
+
   const handleDropdownToggle = () => {
     setDropdownVisible(!isDropdownVisible);
   };

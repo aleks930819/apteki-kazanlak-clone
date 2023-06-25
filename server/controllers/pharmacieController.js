@@ -48,10 +48,9 @@ export const createPharmacy = asyncHandler(async (req, res) => {
     managerImage,
     secondaryImage,
     mainImage,
-    pharmacieImages
+    pharmacieImages,
+    workingWith,
   } = req.body;
-
-  console.log(req.body);
 
   if (
     !name ||
@@ -65,6 +64,7 @@ export const createPharmacy = asyncHandler(async (req, res) => {
     !managerImage ||
     !secondaryImage ||
     !mainImage ||
+    !workingWith ||
     !pharmacieImages
   ) {
     return res.status(400).json({ message: 'Please fill all fields.' });
@@ -82,7 +82,8 @@ export const createPharmacy = asyncHandler(async (req, res) => {
     managerImage,
     secondaryImage,
     mainImage,
-    pharmacieImages
+    workingWith,
+    pharmacieImages,
   });
 
   const createdPharmacy = await pharmacy.save();

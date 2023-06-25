@@ -41,21 +41,22 @@ const AddNewNews = () => {
       onSubmit={handleSubmit}
       isLoading={addingNewNewsLoading || isLoadingImageUpload}
     >
-      <InputField
-        type="text"
-        label="Залгавие на статията"
-        id="title"
-        name="title"
-        required
-      />
-      <InputField
-        type="text"
-        label="Кратко описание"
-        id="summary"
-        name="summary"
-        required
-      />
-
+      <div className="grid grid-cols-2 gap-x-10">
+        <InputField
+          type="text"
+          label="Залгавие на статията"
+          id="title"
+          name="title"
+          required
+        />
+        <InputField
+          type="text"
+          label="Кратко описание"
+          id="summary"
+          name="summary"
+          required
+        />
+      </div>
       <UploadImageInput
         id="image"
         label="Снимка"

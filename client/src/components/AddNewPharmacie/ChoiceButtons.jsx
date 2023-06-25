@@ -13,9 +13,11 @@ const ChoiceButtons = ({ selectedChoices, handleChoiceClick }) => {
           type="button"
           key={choice}
           className={` 
-          text-lg rounded-md px-4 py-2
+          rounded-md px-4 py-2 text-lg
           ${
-            selectedChoices.includes(choice) ? 'bg-primary text-white' : 'border-2 border-black'
+            selectedChoices.includes(choice)
+              ? 'bg-primary text-white'
+              : 'border-2 border-black'
           }`}
           onClick={() => handleChoiceClick(choice)}
         >

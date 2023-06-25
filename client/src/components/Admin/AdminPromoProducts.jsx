@@ -54,11 +54,10 @@ const AdminPromoProducts = () => {
         productName: promoProduct.name,
         oldPrice: promoProduct.oldPrice,
         newPrice: promoProduct.newPrice,
-        image: promoProduct.image,
+        image: promoProduct.image.url,
       })),
     ];
   }
-  console.log(tableData);
 
   return (
     <Table

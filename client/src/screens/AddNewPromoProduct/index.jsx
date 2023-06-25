@@ -36,12 +36,8 @@ const AddNewPromoProductScreen = () => {
       return toast.error('Моля попълнете всички полета!');
     }
 
-    // return console.log(data);
-
     addPromoProduct(data);
   };
-
-  console.log(images);
 
   return (
     <ActionForm
@@ -67,20 +63,20 @@ const AddNewPromoProductScreen = () => {
         />
       </div>
       <div className="grid grid-cols-2 gap-x-10">
-      <InputField
-        type="number"
-        label="Стара Цена"
-        id="oldPrice"
-        name="oldPrice"
-        required
-      />
-      <InputField
-        type="number"
-        label="Нова Цена"
-        id="newPrice"
-        name="newPrice"
-        required
-      />
+        <InputField
+          type="number"
+          label="Стара Цена"
+          id="oldPrice"
+          name="oldPrice"
+          required
+        />
+        <InputField
+          type="number"
+          label="Нова Цена"
+          id="newPrice"
+          name="newPrice"
+          required
+        />
       </div>
 
       <TextAreaField

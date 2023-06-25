@@ -1,31 +1,25 @@
-import ServiceHighlightsItems from '../ServiceHighlights/ServiceHighlightsItems';
 import PharmacieRowWrapper from './PharmacieRowWrapper';
 import PharmacieRowTitle from './PharmacieRowTitle';
 import PharmacieRowImage from './PharmacieRowImage';
 
-const ServiceHighlightsTitles = [
-  {
-    title: 'Обикновени рецепти',
-  },
-  {
-    title: 'Рецепти по НЗОК',
-  },
-  {
-    title: 'Жълти рецепти',
-  },
-  {
-    title: 'Зелени рецепти',
-  },
-];
+import { AiOutlineCheck } from 'react-icons/ai';
 
-const PharmacieRow1 = ({ image }) => {
+const PharmacieRow1 = ({ image, workingWith }) => {
   return (
     <PharmacieRowWrapper>
       <PharmacieRowTitle title="Ние работим с" />
       <div>
-        <ServiceHighlightsItems
-          ServiceHighlightsTitles={ServiceHighlightsTitles}
-        />
+        <ul className="flex flex-col gap-4 text-primary ">
+          {workingWith?.map((item) => (
+            <li
+              className="flex items-center text-base font-semibold leading-9 text-primary"
+              key={item}
+            >
+              <AiOutlineCheck className="mr-3 inline-block text-2xl" />
+              {item}
+            </li>
+          ))}
+        </ul>
       </div>
       <PharmacieRowImage rounded={true} image={image} />
     </PharmacieRowWrapper>

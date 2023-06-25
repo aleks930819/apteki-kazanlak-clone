@@ -3,10 +3,13 @@ import { useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { login } from '../../services/apiAuth';
 import { AuthContext } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const LoginScreen = () => {
   const [isShowPassword, setIsShowPassword] = useState(false);
   const { userLogin } = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -36,6 +39,9 @@ const LoginScreen = () => {
       });
 
       userLogin(data);
+      toast.success('Успешно влизане!');
+
+      navigate('/admin');
     } catch (error) {
       toast.error(error.message);
     }

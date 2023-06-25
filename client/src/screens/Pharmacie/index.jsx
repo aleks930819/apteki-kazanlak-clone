@@ -49,6 +49,7 @@ const Pharmacie = () => {
     secondaryImage,
     managerImage,
     pharmacieImages,
+    workingWith,
   } = pharmacie;
 
   return (
@@ -63,6 +64,7 @@ const Pharmacie = () => {
       />
       <PharmacieWorking
         phone={phone}
+        workingWith={workingWith}
         workingHours={workingHours}
         pharmacieImages={pharmacieImages}
       />
