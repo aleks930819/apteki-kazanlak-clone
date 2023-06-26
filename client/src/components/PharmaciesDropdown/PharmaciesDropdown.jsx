@@ -1,38 +1,38 @@
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/contacts-banner.jpg';
 
-const PharmaciesDropdown = ({ itsHover }) => {
+const PharmaciesDropdown = ({ itsHover, dropdownRef, handleDropdownClose }) => {
   return (
     <div
-      className={`transition-height absolute top-[90px] flex w-full bg-grey-lighter-2 duration-500 ease-in-out ${
-        itsHover ? 'h-[25vh]' : 'h-0'
+      ref={dropdownRef}
+      className={`transition-height absolute top-[100%] left-0 flex h-[35vh] w-full bg-grey-lighter-2 duration-500 ${
+        itsHover ? 'show' : ''
       }`}
+      onMouseLeave={handleDropdownClose}
     >
       <div>
         <img src={Logo} alt="Logo" className="h-full w-full object-cover" />
       </div>
 
-      <div>
-        <ul className="flex flex-col items-start justify-center gap-1 p-5">
-          <li className="text-base text-primary">
-            <Link to="/pharmacies/xigiya"> Хигия</Link>
+      <div className="ml-4 flex justify-center">
+        <ul className="flex flex-col items-start justify-center gap-2 p-5">
+          <li className="text-base font-semibold text-primary">
+            <Link to="/pharmacies/xigiya">Хигия</Link>
           </li>
-          <li className="text-base text-primary">
-            <Link to="/pharmacies/farma-1-kazanlk text-primary">
-              Фарма 1 Казанлък
-            </Link>
+          <li className="text-base font-semibold text-primary">
+            <Link to="/pharmacies/farma-1-kazanlk">Фарма 1 Казанлък</Link>
           </li>
-          <li className="text-base text-primary">
+          <li className="text-base font-semibold text-primary">
             <Link to="/pharmacies/arnika">Арника</Link>
           </li>
-          <li className="text-base text-primary">
+          <li className="text-base font-semibold text-primary">
             <Link to="/pharmacies/farmavist">Фармавист</Link>
           </li>
-          <li className="text-base text-primary">
+          <li className="text-base font-semibold text-primary">
             <Link to="/pharmacies/farma-1-pavel-banya">Фарма 1 Павел Баня</Link>
           </li>
-          <li className="text-base text-primary">
-            <Link to="/pharmacies/farma-1-centr"> Фарма 1 Център</Link>
+          <li className="text-base font-semibold text-primary">
+            <Link to="/pharmacies/farma-1-centr">Фарма 1 Център</Link>
           </li>
         </ul>
       </div>

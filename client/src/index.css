@@ -93,9 +93,9 @@
     height: 9px;
     position: absolute;
     width: 55%;
-    left: -42%; 
+    left: -42%;
     top: 83%;
-    right: auto; 
+    right: auto;
     transform: rotate(-35deg);
   }
 
@@ -127,6 +127,17 @@
     width: 20px;
     height: 4px;
     background: #00686c;
+  }
+
+  .transition-height {
+    overflow: hidden;
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .transition-height.show {
+    transform: scaleY(1);
   }
 }
 

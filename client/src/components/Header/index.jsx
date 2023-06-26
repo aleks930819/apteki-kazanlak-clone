@@ -1,26 +1,31 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useRef } from 'react';
+
+import { AuthContext } from '../../context/AuthContext';
 
 import HeaderTitle from './HeaderTitle';
 import HeaderLogo from './HeaderLogo';
 import HeaderLinks from './HeaderLinks';
-// import PharmaciesDropdown from '../PharmaciesDropdown/PharmaciesDropdown';
-import HamburgerMenu from '../../ui/HamburgerMenu';
-// import useIsMobileView from '../../hooks/useIsMobileView';
-import useIsDekstopView from '../../hooks/useIsDekstopView';
+import PharmaciesDropdown from '../PharmaciesDropdown/PharmaciesDropdown';
 import MobileHeaderLinks from './MobileHeaderLinks';
-import { AuthContext } from '../../context/AuthContext';
-// import { Link } from 'react-router-dom';
+
+import useIsDekstopView from '../../hooks/useIsDekstopView';
+
+import HamburgerMenu from '../../ui/HamburgerMenu';
 
 const Header = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
+  const dropdownRef = useRef(null);
   const [openMenu, setOpenMenu] = useState(false);
   const [isDekstopView] = useIsDekstopView();
+
   const { user } = useContext(AuthContext);
 
-  console.log(user);
+  const handleDropdownOpen = () => {
+    setDropdownVisible(true);
+  };
 
-  const handleDropdownToggle = () => {
-    setDropdownVisible(!isDropdownVisible);
+  const handleDropdownClose = () => {
+    setDropdownVisible(false);
   };
 
   const handleMenuToggle = () => {
@@ -60,7 +65,7 @@ const Header = () => {
         <nav>
           {isDekstopView ? (
             <HeaderLinks
-              handleDropdownToggle={handleDropdownToggle}
+              handleDropdownToggle={handleDropdownOpen}
               user={user}
             />
           ) : (
@@ -74,6 +79,11 @@ const Header = () => {
           )}
         </nav>
       </div>
+        <PharmaciesDropdown
+          dropdownRef={dropdownRef}
+          itsHover={isDropdownVisible}
+          handleDropdownClose={handleDropdownClose}
+        />
     </header>
   );
 };

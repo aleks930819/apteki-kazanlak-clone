@@ -19,16 +19,19 @@ import UploadImagesContainer from '../../components/AddNewPharmacie/UploadImages
 
 import { useLoadScript } from '@react-google-maps/api';
 
-import { getGeocode, getLatLng } from 'use-places-autocomplete';
+import usePlacesAutocomplete, {
+  getGeocode,
+  getLatLng,
+} from 'use-places-autocomplete';
 
 import { GOOGLE_MAPS_API_KEY } from '../../../api';
 const AddNewPharmacieScreen = () => {
   const { user } = useContext(AuthContext);
 
-  // const { isLoaded } = useLoadScript({
-  //   googleMapsApiKey: GOOGLE_MAPS_API_KEY,
-  //   libraries: ['places'],
-  // });
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: GOOGLE_MAPS_API_KEY,
+    libraries: ['places'],
+  });
 
   const { addPharmacie, addingPharmacieLoading } = useAddPharmacie(user);
 

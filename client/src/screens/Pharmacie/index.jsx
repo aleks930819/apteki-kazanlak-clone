@@ -1,22 +1,23 @@
+import { useJsApiLoader } from '@react-google-maps/api';
+
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
+
+import { GOOGLE_MAPS_API_KEY } from '../../../api';
 
 import PharmacieAbout from '../../components/Pharmacie/PharmacieAbout';
 import PharmacieBanner from '../../components/Pharmacie/PharmacieBanner';
 import PharmacieHero from '../../components/Pharmacie/PharmacieHero';
 import PharmacieWorking from '../../components/Pharmacie/PharmacieWorking';
-import { getPharmacie } from '../../services/apiPharmacies';
-import { GoogleMap, Marker } from '@react-google-maps/api';
-import { useLoadScript } from '@react-google-maps/api';
+import GoogleMapView from '../../components/GoogleMap/GoogleMap';
 
-import { GOOGLE_MAPS_API_KEY } from '../../../api';
+import { getPharmacie } from '../../services/apiPharmacies';
+
 import Spinner from '../../ui/Spinner';
-import { useMemo } from 'react';
 
 const Pharmacie = () => {
-  const { isLoaded } = useLoadScript({
+  const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: GOOGLE_MAPS_API_KEY,
-    libraries: ['places'],
   });
 
   const { slug } = useParams();
@@ -24,13 +25,6 @@ const Pharmacie = () => {
     ['singlePharmacie', slug],
     () => getPharmacie(slug)
   );
-
-  const markerPosition = useMemo(() => {
-    return {
-      lat: pharmacie.googleMap.lat,
-      lng: pharmacie.googleMap.lng,
-    };
-  }, [pharmacie.googleMap.lat, pharmacie.googleMap.lng]);
 
   if (!isLoaded) {
     return <div>Loading...</div>;
@@ -40,10 +34,11 @@ const Pharmacie = () => {
     return <Spinner />;
   }
 
-  const customMarkerIcon = {
-    url: 'https://www.apteki-kazanlak.com/images/logo.png',
-    scaledSize: new window.google.maps.Size(50, 50),
+  const markerPosition = {
+    lat: pharmacie?.googleMap.lat,
+    lng: pharmacie?.googleMap.lng,
   };
+
   const {
     name,
     history,
@@ -60,7 +55,7 @@ const Pharmacie = () => {
   } = pharmacie;
 
   return (
-    <>
+    <div>
       <PharmacieBanner name={name} mainImage={mainImage?.url} />
       <PharmacieAbout history={history} secondaryImage={secondaryImage?.url} />
       <PharmacieHero
@@ -75,18 +70,8 @@ const Pharmacie = () => {
         workingHours={workingHours}
         pharmacieImages={pharmacieImages}
       />
-      <div className="h-[600px] w-full">
-        <GoogleMap
-          mapContainerStyle={{ width: '100%', height: '100%' }}
-          zoom={12}
-          center={markerPosition}
-          panControl={true}
-          zoomControl={true}
-        >
-          <Marker position={markerPosition} icon={customMarkerIcon} />
-        </GoogleMap>
-      </div>
-    </>
+      <GoogleMapView markerPosition={markerPosition} />
+    </div>
   );
 };
 

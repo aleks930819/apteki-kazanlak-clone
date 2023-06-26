@@ -1,5 +1,4 @@
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
-// import Logo from '../../assets//logo.png';
 import { GOOGLE_MAPS_API_KEY } from '../../../api';
 
 const Maps = () => {
@@ -11,8 +10,8 @@ const Maps = () => {
     return <div>Loading...</div>;
   }
 
-  const mapCenter = { lat: -3.745, lng: -38.523 };
-  const markerPosition = { lat: -3.755, lng: -38.523 };
+  const mapCenter = { lat: 42.6210227, lng: 25.3974127 };
+  const markerPosition = { lat: 42.6210227, lng: 25.3974127 };
 
   const customMarkerIcon = {
     url: 'https://www.apteki-kazanlak.com/images/logo.png',
@@ -22,10 +21,11 @@ const Maps = () => {
   return (
     <div className=" 3xl:h-[800px] flex w-[100%] flex-col  lg:flex-row ">
       <div className="w-auto lg:w-[70%]">
+        {/* <GoogleMapView /> */}
         <GoogleMap
           mapContainerStyle={{ width: '100%', height: '100%' }}
           center={mapCenter}
-          zoom={12}
+          zoom={18}
           panControl={true}
           zoomControl={true}
         >
