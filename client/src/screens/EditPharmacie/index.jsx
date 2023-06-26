@@ -20,6 +20,7 @@ import Workingtime from '../../ui/Workingtime';
 import setChangedValue from '../../utils/changeValueHandler';
 import { AuthContext } from '../../context/AuthContext';
 import EditImagesContainer from '../../components/EditPharmacie/EditImagesContainer';
+import InputsWrapper from '../../ui/InpusWrapper';
 
 const EditPharmacieScreen = () => {
   const { slug } = useParams();
@@ -150,7 +151,6 @@ const EditPharmacieScreen = () => {
         pharmacieImages: [images[3], images[4], images[5]],
       };
 
-      return console.log(newData);
       updatePharmacie(newData);
     }
   };
@@ -158,7 +158,6 @@ const EditPharmacieScreen = () => {
   const changeHandler = (e) => {
     setChangedValue(e, setValues);
   };
-
 
   return (
     <ActionForm
@@ -170,7 +169,7 @@ const EditPharmacieScreen = () => {
       onDeleteAction={deletePharmacie}
       deleteButton="Изтрий аптека"
     >
-      <div className="flex flex-col lg:gridlg:grid-cols-3 gap-4">
+      <InputsWrapper>
         <InputField
           type="text"
           label="Име на аптеката"
@@ -199,9 +198,9 @@ const EditPharmacieScreen = () => {
           onChange={changeHandler}
           required
         />
-      </div>
+      </InputsWrapper>
 
-      <div className=" flex flex-col lg:grid lg:grid-cols-3 gap-4">
+      <InputsWrapper>
         <InputField
           type="text"
           label="Телефон"
@@ -230,7 +229,7 @@ const EditPharmacieScreen = () => {
           onChange={changeHandler}
           required
         />
-      </div>
+      </InputsWrapper>
       <TextAreaField
         label="История на аптеката"
         id="history"

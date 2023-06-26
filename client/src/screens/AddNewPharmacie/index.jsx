@@ -25,6 +25,7 @@ import usePlacesAutocomplete, {
 } from 'use-places-autocomplete';
 
 import { GOOGLE_MAPS_API_KEY } from '../../../api';
+import InputsWrapper from '../../ui/InpusWrapper';
 const AddNewPharmacieScreen = () => {
   const { user } = useContext(AuthContext);
 
@@ -131,7 +132,7 @@ const AddNewPharmacieScreen = () => {
       onSubmit={handleSubmit}
       isLoading={addingPharmacieLoading}
     >
-      <div className="flex flex-col gap-4   lg:grid lg:grid-cols-3">
+      <InputsWrapper>
         <InputField
           type="text"
           label="Име на аптеката"
@@ -154,9 +155,9 @@ const AddNewPharmacieScreen = () => {
           name="street"
           required
         />
-      </div>
+      </InputsWrapper>
 
-      <div className="flex flex-col gap-4   lg:grid lg:grid-cols-3">
+      <InputsWrapper>
         <InputField
           type="text"
           label="Телефон"
@@ -178,7 +179,7 @@ const AddNewPharmacieScreen = () => {
           name="managerTitle"
           required
         />
-      </div>
+      </InputsWrapper>
 
       <TextAreaField
         label="История на аптеката"
