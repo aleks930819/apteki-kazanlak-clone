@@ -15,10 +15,10 @@ const FirstRow = ({ item }) => {
                 alt={item.title}
                 className="
               h-[160px] w-full
+              object-cover
+
               object-center
-              sm:h-[250px]
-              sm:object-cover
-              sm:object-center
+            sm:h-[250px]
                   "
               />
             </div>

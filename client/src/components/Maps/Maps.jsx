@@ -112,7 +112,7 @@ const Maps = () => {
         <GoogleMap
           mapContainerStyle={{ width: '100%', height: '100%' }}
           center={selectedLocation ? selectedLocation : mapCenter}
-          zoom={selectedLocation ? 18 : 15}
+          zoom={selectedLocation ? 19 : 15}
           panControl={true}
           zoomControl={true}
         >
