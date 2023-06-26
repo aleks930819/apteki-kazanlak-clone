@@ -1,34 +1,15 @@
 import Logo from '../../assets/contacts-banner.jpg';
 import PharmaciesDropdownItem from './PharmaciesDropdownItem';
 
-const pharamicesLinks = [
-  {
-    path: '/pharmacies/xigiya',
-    name: 'ХИГИЯ',
-  },
-  {
-    path: '/pharmacies/farma-1-kazanlak',
-    name: 'ФАРМА 1 КАЗАНЛЪК',
-  },
-  {
-    path: '/pharmacies/arnika',
-    name: 'АРНИКА',
-  },
-  {
-    path: '/pharmacies/farmavist',
-    name: 'ФАРМАВИСТ',
-  },
-  {
-    path: '/pharmacies/farma-1-pavel-banya',
-    name: 'ФАРМА 1 ПАВЕЛ БАНЯ',
-  },
-  {
-    path: '/pharmacies/farma-1-centr',
-    name: 'ФАРМА 1 ЦЕНТЪР',
-  },
-];
+import { useQuery } from '@tanstack/react-query';
+import { getPharmacies } from '../../services/apiPharmacies';
 
 const PharmaciesDropdown = ({ itsHover, dropdownRef, handleDropdownClose }) => {
+  const { data: pharmaciesData } = useQuery({
+    queryKey: ['pharmacies'],
+    queryFn: getPharmacies,
+  });
+
   return (
     <div
       ref={dropdownRef}
@@ -43,11 +24,11 @@ const PharmaciesDropdown = ({ itsHover, dropdownRef, handleDropdownClose }) => {
 
       <div className="ml-4 flex justify-center">
         <ul className="flex flex-col items-start justify-center gap-2 p-5">
-          {pharamicesLinks.map((link) => (
+          {pharmaciesData?.map((pharmacie) => (
             <PharmaciesDropdownItem
-              key={link.name}
-              path={link.path}
-              name={link.name}
+              key={pharmacie.name}
+              path={pharmacie.slug}
+              name={pharmacie.name}
             />
           ))}
         </ul>
