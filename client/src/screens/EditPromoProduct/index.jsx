@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { getProductById } from '../../services/apiPromoProducts';
 
@@ -48,14 +48,17 @@ const EditPromoScreeen = () => {
   }
 
   const handleSubmit = (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-    if (!deletingLoading) {
-      const formData = new FormData(e.target);
-      const data = Object.fromEntries(formData);
-      data.image = images?.mainImage || values.image;
-      updateProduct(data);
-    }
+    const updatedData = {
+      ...values,
+      image: {
+        url: images?.mainImage.url || values?.image.url,
+        name: images?.mainImage.name || values?.image.name,
+      },
+    };
+
+    updateProduct(updatedData);
   };
 
   const changeHandler = (e) => {
