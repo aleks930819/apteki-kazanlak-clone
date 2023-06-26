@@ -53,7 +53,7 @@ const EditPromoScreeen = () => {
     if (!deletingLoading) {
       const formData = new FormData(e.target);
       const data = Object.fromEntries(formData);
-      data.image = images[0];
+      data.image = images?.mainImage || values.image;
       updateProduct(data);
     }
   };
@@ -119,8 +119,8 @@ const EditPromoScreeen = () => {
         id="image"
         inputMessage="Променете снимката"
         handleFileChange={handleImagesUpload}
-        value={images?.mainImage.url}
-        image={images?.mainImage.url}
+        value={images?.mainImage.url || values?.image.url}
+        image={images?.mainImage.url || values?.image.url}
         imageName="mainImage"
       />
     </ActionForm>

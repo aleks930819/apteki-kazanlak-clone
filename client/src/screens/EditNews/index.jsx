@@ -30,11 +30,8 @@ const EditNewsScreen = () => {
 
   const { editingLoading, updateNews } = useUpdateNews(slug, user);
   const { deleteNews, deletingLoading } = useDeleteNews(slug, user);
-  const {
-    isLoadingImageUpload,
-    image: mainImage,
-    handleImageUpload,
-  } = useImagesUploader();
+  const { isLoadingImageUpload, images, handleImagesUpload } =
+    useImagesUploader();
 
   const { isLoading, data } = useQuery(['singleNews', slug], () =>
     getSingleNews(slug)
@@ -56,6 +53,8 @@ const EditNewsScreen = () => {
     if (!deletingLoading) {
       const formData = new FormData(e.target);
       const data = Object.fromEntries(formData);
+
+      data.image = images?.mainImage || values.image;
 
       updateNews(data);
     }
@@ -102,10 +101,12 @@ const EditNewsScreen = () => {
         value={values.description}
       />
       <UploadImageInput
-        image={image.url}
-        handleImagesUpload={handleImageUpload}
-        data={data}
-        itemToUpdate={slug}
+        id="image"
+        inputMessage="Променете снимката"
+        handleFileChange={handleImagesUpload}
+        value={images?.mainImage.url || values?.image.url}
+        image={images?.mainImage.url || values?.image.url}
+        imageName="mainImage"
       />
     </ActionForm>
   );

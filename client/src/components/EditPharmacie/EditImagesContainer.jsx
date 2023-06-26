@@ -16,8 +16,8 @@ const EditImagesContainer = ({ images, handleImagesUpload, data }) => {
         id="secondaryImage"
         label="Втора снимка"
         handleFileChange={handleImagesUpload}
-        value={images?.secondaryImage.url}
-        image={images?.secondaryImage.url}
+        value={images?.secondaryImage.url || data?.secondaryImage.url}
+        image={images?.secondaryImage.url || data?.secondaryImage.url}
         imageName="secondaryImage"
       />
 

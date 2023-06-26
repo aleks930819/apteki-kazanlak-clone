@@ -21,15 +21,15 @@ const createNewData = async (data, images, workingTime, selectedChoices) => {
       lat,
       lng,
     },
-    mainImage: images.mainImage,
-    secondaryImage: images.secondaryImage,
-    managerImage: images.managerImage,
+    mainImage: images.mainImage ?? data.mainImage,
+    secondaryImage: images.secondaryImage ?? data.secondaryImage,
+    managerImage: images.managerImage ?? data.managerImage,
     pharmacieImages: [
-      images.pharmaciesImage1,
-      images.pharmaciesImage2,
-      images.pharmaciesImage3,
+      images.pharmaciesImage1 ?? data.pharmacieImages[0],
+      images.pharmaciesImage2 ?? data.pharmacieImages[1],
+      images.pharmaciesImage3 ?? data.pharmacieImages[2],
     ],
-    workingWith: selectedChoices,
+    workingWith: selectedChoices ?? data.workingWith,
   };
 
   return newData;

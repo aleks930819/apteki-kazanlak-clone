@@ -30,16 +30,16 @@ const EditPharmacieScreen = () => {
 
   const [workingTime, setWorkingTime] = useState({
     weekDays: {
-      open: '08:00',
-      close: '20:00',
+      open: null,
+      close: null,
     },
     saturday: {
-      open: '08:00',
-      close: '20:00',
+      open: null,
+      close: null,
     },
     sunday: {
-      open: '08:00',
-      close: '20:00',
+      open: null,
+      close: null,
     },
   });
 
@@ -129,10 +129,8 @@ const EditPharmacieScreen = () => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
 
-    console.log(workingHours);
-    return console.log(data);
+    const newData = await createNewData(data, images, workingTime);
 
-    const newData = await createNewData(data, images, workingHours);
     updatePharmacie(newData);
   };
 
