@@ -170,7 +170,7 @@ const EditPharmacieScreen = () => {
       onDeleteAction={deletePharmacie}
       deleteButton="Изтрий аптека"
     >
-      <div className="grid grid-cols-3 gap-4">
+      <div className="flex flex-col lg:gridlg:grid-cols-3 gap-4">
         <InputField
           type="text"
           label="Име на аптеката"
@@ -201,7 +201,7 @@ const EditPharmacieScreen = () => {
         />
       </div>
 
-      <div className="grid grid-cols-3 gap-4">
+      <div className=" flex flex-col lg:grid lg:grid-cols-3 gap-4">
         <InputField
           type="text"
           label="Телефон"

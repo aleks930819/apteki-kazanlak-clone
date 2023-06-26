@@ -85,8 +85,6 @@ const AddNewPharmacieScreen = () => {
 
     const { lat, lng } = getLatLng(geocode[0]);
 
-    return console.log(lat, lng);
-
     const newData = {
       ...data,
       address: {
@@ -133,7 +131,7 @@ const AddNewPharmacieScreen = () => {
       onSubmit={handleSubmit}
       isLoading={addingPharmacieLoading}
     >
-      <div className="grid grid-cols-3 gap-4">
+      <div className="flex flex-col gap-4   lg:grid lg:grid-cols-3">
         <InputField
           type="text"
           label="Име на аптеката"
@@ -158,7 +156,7 @@ const AddNewPharmacieScreen = () => {
         />
       </div>
 
-      <div className="grid grid-cols-3 gap-4">
+      <div className="flex flex-col gap-4   lg:grid lg:grid-cols-3">
         <InputField
           type="text"
           label="Телефон"

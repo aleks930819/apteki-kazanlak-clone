@@ -7,7 +7,7 @@ const Workingtime = ({ workingTime, handleChangeWorkingTime }) => {
       <p className="mb-10 mt-10 text-center text-xl font-bold text-gray-700">
         Работно Време:
       </p>
-      <div className="grid grid-cols-2 gap-x-20 gap-y-10 ">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-20 gap-y-10 ">
         {/* Weekdays working time */}
         <WorkTimeWrapper heading="Понеделник - Петък">
           <WorkTimePicker
