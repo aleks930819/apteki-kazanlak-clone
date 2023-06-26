@@ -4,6 +4,8 @@ import { toast } from 'react-hot-toast';
 
 import { useState, useContext } from 'react';
 
+import { GOOGLE_MAPS_API_KEY } from '../../../api';
+
 import useAddPharmacie from '../../hooks/useAddPharmacie';
 import useImagesUploader from '../../hooks/useUploadImages';
 
@@ -13,16 +15,24 @@ import ActionForm from '../../ui/ActionForm';
 import Workingtime from '../../ui/Workingtime';
 import InputsWrapper from '../../ui/InpusWrapper';
 
-
 import { AuthContext } from '../../context/AuthContext';
 import ChoiceButtons from '../../components/AddNewPharmacie/ChoiceButtons';
 import UploadImagesContainer from '../../components/AddNewPharmacie/UploadImagesContainer';
 
-import  createNewData  from '../../utils/createNewData';
+import createNewData from '../../utils/createNewData';
+import setChangedValue from '../../utils/changeValueHandler';
 
-import { GOOGLE_MAPS_API_KEY } from '../../../api';
 const AddNewPharmacieScreen = () => {
   const { user } = useContext(AuthContext);
+  const [values, setValues] = useState({
+    name: '',
+    city: '',
+    street: '',
+    phone: '',
+    history: '',
+    managerName: '',
+    managerTitle: '',
+  });
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: GOOGLE_MAPS_API_KEY,
@@ -72,29 +82,29 @@ const AddNewPharmacieScreen = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData);
-
     const newData = await createNewData(
-      data,
+      values,
       images,
       workingTime,
       selectedChoices
     );
 
-    addPharmacie(newData);
-
     if (
-      !data.name ||
-      !data.city ||
-      !data.street ||
-      !data.phone ||
-      !data.history ||
-      !data.managerName ||
-      !data.managerTitle
+      !values.name ||
+      !values.city ||
+      !values.street ||
+      !values.phone ||
+      !values.history ||
+      !values.managerName ||
+      !values.managerTitle
     ) {
       return toast.error('Моля попълнете всички полета!');
     }
+    addPharmacie(newData);
+  };
+
+  const changeHandler = (e) => {
+    setChangedValue(e, setValues);
   };
 
   return (
@@ -111,6 +121,7 @@ const AddNewPharmacieScreen = () => {
           id="name"
           name="name"
           required
+          onChange={changeHandler}
         />
         <InputField
           type="text"
@@ -118,6 +129,7 @@ const AddNewPharmacieScreen = () => {
           id="city"
           name="city"
           required
+          onChange={changeHandler}
         />
 
         <InputField
@@ -126,6 +138,7 @@ const AddNewPharmacieScreen = () => {
           id="street"
           name="street"
           required
+          onChange={changeHandler}
         />
       </InputsWrapper>
 
@@ -136,6 +149,7 @@ const AddNewPharmacieScreen = () => {
           id="phone"
           name="phone"
           required
+          onChange={changeHandler}
         />
         <InputField
           type="text"
@@ -143,6 +157,7 @@ const AddNewPharmacieScreen = () => {
           id="managerName"
           name="managerName"
           required
+          onChange={changeHandler}
         />
         <InputField
           type="text"
@@ -150,6 +165,7 @@ const AddNewPharmacieScreen = () => {
           id="managerTitle"
           name="managerTitle"
           required
+          onChange={changeHandler}
         />
       </InputsWrapper>
 
@@ -158,6 +174,7 @@ const AddNewPharmacieScreen = () => {
         id="history"
         name="history"
         required
+        onChange={changeHandler}
       />
 
       <TextAreaField
@@ -165,6 +182,7 @@ const AddNewPharmacieScreen = () => {
         id="managerDescription"
         name="managerDescription"
         required
+        onChange={changeHandler}
       />
       <label className=" text-xl font-bold text-gray-700">Рецепти</label>
       <ChoiceButtons
