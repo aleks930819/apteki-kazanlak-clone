@@ -50,14 +50,15 @@ const EditNewsScreen = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!deletingLoading) {
-      const formData = new FormData(e.target);
-      const data = Object.fromEntries(formData);
+    const updatedData = {
+      ...values,
+      image: {
+        url: images?.mainImage.url || values?.image.url,
+        name: images?.mainImage.name || values?.image.name,
+      },
+    };
 
-      data.image = images?.mainImage || values.image;
-
-      updateNews(data);
-    }
+    updateNews(updatedData);
   };
 
   const changeHandler = (e) => {
