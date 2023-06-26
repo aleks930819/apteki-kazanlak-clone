@@ -7,13 +7,16 @@ import PharmacieHero from '../../components/Pharmacie/PharmacieHero';
 import PharmacieWorking from '../../components/Pharmacie/PharmacieWorking';
 import { getPharmacie } from '../../services/apiPharmacies';
 import { GoogleMap, Marker } from '@react-google-maps/api';
-import { useJsApiLoader } from '@react-google-maps/api';
+import { useLoadScript } from '@react-google-maps/api';
+
 import { GOOGLE_MAPS_API_KEY } from '../../../api';
 import Spinner from '../../ui/Spinner';
+import { useMemo } from 'react';
 
 const Pharmacie = () => {
-  const { isLoaded } = useJsApiLoader({
+  const { isLoaded } = useLoadScript({
     googleMapsApiKey: GOOGLE_MAPS_API_KEY,
+    libraries: ['places'],
   });
 
   const { slug } = useParams();
@@ -22,6 +25,13 @@ const Pharmacie = () => {
     () => getPharmacie(slug)
   );
 
+  const markerPosition = useMemo(() => {
+    return {
+      lat: pharmacie.googleMap.lat,
+      lng: pharmacie.googleMap.lng,
+    };
+  }, [pharmacie.googleMap.lat, pharmacie.googleMap.lng]);
+
   if (!isLoaded) {
     return <div>Loading...</div>;
   }
@@ -29,9 +39,6 @@ const Pharmacie = () => {
   if (isLoading) {
     return <Spinner />;
   }
-
-  const mapCenter = { lat: -3.745, lng: -38.523 };
-  const markerPosition = { lat: -3.755, lng: -38.523 };
 
   const customMarkerIcon = {
     url: 'https://www.apteki-kazanlak.com/images/logo.png',
@@ -71,12 +78,12 @@ const Pharmacie = () => {
       <div className="h-[600px] w-full">
         <GoogleMap
           mapContainerStyle={{ width: '100%', height: '100%' }}
-          center={mapCenter}
           zoom={12}
+          center={markerPosition}
           panControl={true}
           zoomControl={true}
         >
-          <Marker position={markerPosition} icon={customMarkerIcon}></Marker>
+          <Marker position={markerPosition} icon={customMarkerIcon} />
         </GoogleMap>
       </div>
     </>

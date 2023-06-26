@@ -17,8 +17,18 @@ import { AuthContext } from '../../context/AuthContext';
 import ChoiceButtons from '../../components/AddNewPharmacie/ChoiceButtons';
 import UploadImagesContainer from '../../components/AddNewPharmacie/UploadImagesContainer';
 
+import { useLoadScript } from '@react-google-maps/api';
+
+import { getGeocode, getLatLng } from 'use-places-autocomplete';
+
+import { GOOGLE_MAPS_API_KEY } from '../../../api';
 const AddNewPharmacieScreen = () => {
   const { user } = useContext(AuthContext);
+
+  // const { isLoaded } = useLoadScript({
+  //   googleMapsApiKey: GOOGLE_MAPS_API_KEY,
+  //   libraries: ['places'],
+  // });
 
   const { addPharmacie, addingPharmacieLoading } = useAddPharmacie(user);
 
@@ -60,13 +70,17 @@ const AddNewPharmacieScreen = () => {
     }));
   };
 
-  console.log(selectedChoices);
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
+
+    const address = `${data.city} ${data.street}`;
+
+    const geocode = await getGeocode({ address });
+
+    const { lat, lng } = getLatLng(geocode[0]);
 
     const newData = {
       ...data,
@@ -78,6 +92,11 @@ const AddNewPharmacieScreen = () => {
         mondayToFriday: [workingTime.weekDays.open, workingTime.weekDays.close],
         saturday: [workingTime.saturday.open, workingTime.saturday.close],
         sunday: [workingTime.sunday.open ?? '', workingTime.sunday.close ?? ''],
+      },
+
+      googleMap: {
+        lat,
+        lng,
       },
 
       mainImage: images[0],

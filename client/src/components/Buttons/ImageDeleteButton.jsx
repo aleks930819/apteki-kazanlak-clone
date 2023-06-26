@@ -38,7 +38,7 @@ const ImageDeleteButton = ({ filename }) => {
         hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-50
       "
     >
-      {deleting ? 'Изтриване...' : 'Изтрий снимката'}
+      {deleting ? 'Изтриване...' : 'Промени снимката'}
     </button>
   );
 };

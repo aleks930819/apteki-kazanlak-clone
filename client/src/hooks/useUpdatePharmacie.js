@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { updatePharmacieBySlug } from '../services/apiPharmacies';
 
 const useUpdatePharmacie = (slug, user) => {
-  console.log('user', user);
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const { isLoading: editingLoading, mutate: updatePharmacie } = useMutation({

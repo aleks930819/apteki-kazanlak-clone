@@ -62,7 +62,7 @@ const AddNewNews = () => {
         label="Снимка"
         handleFileChange={handleImagesUpload}
         value={images}
-        image={images[0]?.url}
+        image={images[0]}
       />
 
       <TextAreaField

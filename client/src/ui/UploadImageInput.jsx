@@ -8,6 +8,7 @@ const UploadImageInput = ({
   image,
   disabled,
   inputMessage,
+  itemToUpdate
 }) => {
   const imageUrl = image ? image.url : '';
 
@@ -63,7 +64,9 @@ const UploadImageInput = ({
             alt="product"
             style={{ width: '100px', height: '100px' }}
           />
-          <ImageDeleteButton filename={image.filename} />
+          <ImageDeleteButton filename={image.filename} 
+           itemToUpdate={itemToUpdate}
+          />
         </div>
       )}
     </div>

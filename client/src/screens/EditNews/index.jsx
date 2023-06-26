@@ -46,8 +46,6 @@ const EditNewsScreen = () => {
 
   const { title, summary, image, description } = data;
 
-  console.log(data);
-
   if (!values.title) {
     setValues({ title, summary, image, description });
   }
@@ -66,8 +64,6 @@ const EditNewsScreen = () => {
   const changeHandler = (e) => {
     setChangedValue(e, setValues);
   };
-
-  console.log(values);
 
   return (
     <ActionForm
@@ -108,6 +104,7 @@ const EditNewsScreen = () => {
         image={image}
         handleImagesUpload={handleImageUpload}
         data={data}
+        itemToUpdate={slug}
       />
     </ActionForm>
   );

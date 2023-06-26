@@ -39,7 +39,6 @@ const AddNewPromoProductScreen = () => {
     addPromoProduct(data);
   };
 
-  console.log(images);
 
   return (
     <ActionForm

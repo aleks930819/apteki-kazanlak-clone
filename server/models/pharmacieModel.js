@@ -26,6 +26,10 @@ const pharmacieSchema = mongoose.Schema({
     url: { type: String, required: true },
     filename: { type: String, required: true },
   },
+  googleMap: {
+    lat: { type: Number, required: true },
+    lng: { type: Number, required: true },
+  },
   managerImage: {
     url: { type: String, required: true },
     filename: { type: String, required: true },
