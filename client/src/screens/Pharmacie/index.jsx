@@ -15,7 +15,7 @@ import { getPharmacie } from '../../services/apiPharmacies';
 
 import Spinner from '../../ui/Spinner';
 
-import { useEffect } from 'react';
+import useDocumentTitle from '../../hooks/useDocumentTitle';
 
 const Pharmacie = () => {
   const { isLoaded } = useJsApiLoader({
@@ -28,9 +28,7 @@ const Pharmacie = () => {
     () => getPharmacie(slug)
   );
 
-  useEffect(() => {
-    document.title = `${pharmacie?.name} | Социални аптеки Казанлък`;
-  }, [pharmacie?.name]);
+  useDocumentTitle(`${pharmacie?.name} | Социални Аптеки Казанлък`);
 
   if (!isLoaded) {
     return <div>Loading...</div>;

@@ -8,12 +8,11 @@ import SecondRow from '../../components/Interesting/SecondRow';
 import { getNews } from '../../services/apiInteresting';
 
 import Spinner from '../../ui/Spinner';
-import { useEffect } from 'react';
+
+import useDocumentTitle from '../../hooks/useDocumentTitle';
 
 const InterestingScreen = () => {
-  useEffect(() => {
-    document.title = 'Интересно | Социални аптеки Казанлък';
-  }, []);
+  useDocumentTitle(`Интересно | Социални Аптеки Казанлък`);
 
   const { isLoading, data: allNews } = useQuery({
     queryKey: ['news'],

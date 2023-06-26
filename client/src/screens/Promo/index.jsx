@@ -3,12 +3,10 @@ import { getPromoProducts } from '../../services/apiPromoProducts';
 import { useQuery } from '@tanstack/react-query';
 import Spinner from '../../ui/Spinner';
 
-import { useEffect } from 'react';
+import useDocumentTitle from '../../hooks/useDocumentTitle';
 
 const PromoScreen = () => {
-  useEffect(() => {
-    document.title = 'Промоции | Социални аптеки Казанлък';
-  }, []);
+  useDocumentTitle(`Промоции | Социални Aптеки Казанлък`);
 
   const { isLoading, data: promoData } = useQuery({
     queryKey: ['promoProducts'],

@@ -2,13 +2,10 @@ import Hero from '../../components/Hero';
 import ServiceHighlights from '../../components/ServiceHighlights';
 import Maps from '../../components/Maps/Maps';
 
-import { useEffect } from 'react';
+import useDocumentTitle from '../../hooks/useDocumentTitle';
 
 const HomeScreen = () => {
-  
-  useEffect(() => {
-    document.title = 'Социални аптеки Казанлък';
-  }, []);
+  useDocumentTitle('Социални Аптеки Казанлък');
 
   return (
     <main>

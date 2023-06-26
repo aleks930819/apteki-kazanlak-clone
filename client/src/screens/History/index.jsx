@@ -1,6 +1,6 @@
 import HistoryBox from '../../components/History/HistoryBox';
 
-import { useEffect } from 'react';
+import useDocumentTitle from '../../hooks/useDocumentTitle';
 
 const historyData = [
   {
@@ -39,10 +39,7 @@ const historyData = [
 ];
 
 const HistoryScreen = () => {
-  
-  useEffect(() => {
-    document.title = 'История | Социални аптеки Казанлък';
-  }, []);
+  useDocumentTitle('История | Социални Аптеки Казанлък');
 
   return (
     <div className="relative flex h-full flex-col items-center justify-center overflow-hidden py-[60px]">

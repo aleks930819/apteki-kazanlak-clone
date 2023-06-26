@@ -4,12 +4,10 @@ import ContactInfo from '../../components/Contact/ContactInfo';
 import { getPharmacies } from '../../services/apiPharmacies';
 import Spinner from '../../ui/Spinner';
 
-import { useEffect } from 'react';
+import useDocumentTitle from '../../hooks/useDocumentTitle';
 
 const PharmaciesScreen = () => {
-  useEffect(() => {
-    document.title = 'Социални аптеки Казанлък';
-  }, []);
+  useDocumentTitle(`Социални Аптеки Казанлък`);
 
   const { isLoading, data: pharmaciesData } = useQuery({
     queryKey: ['pharmacies'],

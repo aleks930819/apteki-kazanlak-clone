@@ -5,7 +5,7 @@ import { getSingleNews } from '../../services/apiInteresting';
 import { useQuery } from '@tanstack/react-query';
 import Spinner from '../../ui/Spinner';
 
-import { useEffect } from 'react';
+import useDocumentTitle from '../../hooks/useDocumentTitle';
 
 const NewsScreen = () => {
   const { slug } = useParams();
@@ -14,9 +14,7 @@ const NewsScreen = () => {
     getSingleNews(slug)
   );
 
-  useEffect(() => {
-    document.title = `${data?.title} | Социални аптеки Казанлък`;
-  }, [data?.title]);
+  useDocumentTitle(`${data?.title} | Социални Аптеки Казанлък`);
 
   if (isLoading) {
     return <Spinner />;

@@ -27,9 +27,8 @@ const ServiceHighlightsTitles = [
 ];
 
 const AboutUsScreen = () => {
-  
   useEffect(() => {
-    document.title = 'За нас | Социални аптеки Казанлък';
+    document.title = 'За нас | Социални Аптеки Казанлък';
   }, []);
 
   return (
