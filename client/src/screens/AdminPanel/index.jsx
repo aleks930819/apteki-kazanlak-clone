@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import Logo from '../../assets/logo.png';
+import useDocumentTitle from '../../hooks/useDocumentTitle';
 
 const adminLinks = [
   {
@@ -21,6 +22,8 @@ const adminLinks = [
 ];
 
 const AdminPanelScreen = () => {
+  useDocumentTitle('Административен панел');
+
   return (
     <div className="flex flex-col">
       <div className="sidebar fixed bottom-0 top-0  w-[300px] overflow-y-auto border-r-2 border-black bg-primary p-2 text-center lg:left-0">
