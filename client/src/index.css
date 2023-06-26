@@ -5,9 +5,6 @@
 @tailwind utilities;
 
 @layer utilities {
-  .promo-card {
-    z-index: 11111;
-  }
   .promo-card-left:before {
     content: '';
     position: absolute;
@@ -18,7 +15,7 @@
     background: #00686d;
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform .5s;
+    transition: transform 0.5s;
   }
 
   .promo-card-left:hover:before {
@@ -35,8 +32,7 @@
     background: #00686d;
     transform: scaleY(0);
     transform-origin: top;
-    transition: transform .5s;
-
+    transition: transform 0.5s;
   }
 
   .promo-card-top:hover:after {
@@ -53,8 +49,7 @@
     background: #00686d;
     transform: scaleX(0);
     transform-origin: right;
-    transition: transform .5s;
-
+    transition: transform 0.5s;
   }
 
   .promo-card-right:hover:before {
@@ -71,8 +66,7 @@
     background: #00686d;
     transform: scaleY(0);
     transform-origin: bottom;
-    transition: transform .5s;
-
+    transition: transform 0.5s;
   }
 
   .promo-card-bottom:hover:after {
