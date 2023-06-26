@@ -7,7 +7,7 @@ import { getSingleNews } from '../../services/apiInteresting';
 
 import useUpdateNews from '../../hooks/useUpdateNews';
 import useDeleteNews from '../../hooks/useDeleteNews';
-// import useImagesUploader from '../../hooks/useUploadImages';
+import useImagesUploader from '../../hooks/useUploadImages';
 
 import ActionForm from '../../ui/ActionForm';
 import InputField from '../../ui/InputField';
@@ -16,7 +16,6 @@ import Spinner from '../../ui/Spinner';
 import setChangedValue from '../../utils/changeValueHandler';
 import { AuthContext } from '../../context/AuthContext';
 import UploadImageInput from '../../ui/UploadImageInput';
-import DeleteImageInput from '../../ui/DeleteImageInput';
 
 const EditNewsScreen = () => {
   const { slug } = useParams();
@@ -31,11 +30,11 @@ const EditNewsScreen = () => {
 
   const { editingLoading, updateNews } = useUpdateNews(slug, user);
   const { deleteNews, deletingLoading } = useDeleteNews(slug, user);
-  // const {
-  //   isLoadingImageUpload,
-  //   image: newImage,
-  //   handleImageUpload,
-  // } = useImagesUploader();
+  const {
+    isLoadingImageUpload,
+    image: mainImage,
+    handleImageUpload,
+  } = useImagesUploader();
 
   const { isLoading, data } = useQuery(['singleNews', slug], () =>
     getSingleNews(slug)
@@ -66,10 +65,6 @@ const EditNewsScreen = () => {
 
   const changeHandler = (e) => {
     setChangedValue(e, setValues);
-  };
-
-  const removeImageUrlFromValues = () => {
-    setValues((prev) => ({ ...prev, image: { url: '', publicId: '' } }));
   };
 
   console.log(values);
@@ -109,10 +104,10 @@ const EditNewsScreen = () => {
         onChange={changeHandler}
         value={values.description}
       />
-      <DeleteImageInput
-        removeImageUrlFromValues={removeImageUrlFromValues}
-        image={values.image.url}
-        filename={values.image.filename}
+      <UploadImageInput
+        image={image}
+        handleImagesUpload={handleImageUpload}
+        data={data}
       />
     </ActionForm>
   );

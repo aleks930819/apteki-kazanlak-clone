@@ -75,41 +75,38 @@ const EditPromoScreeen = () => {
       onDeleteAction={deleteProduct}
       deleteMessage="Сигурни ли сте, че искате да изтриете този продукт?"
     >
-      <InputField
-        type="text"
-        label="Име на продукта"
-        id="name"
-        name="name"
-        onChange={changeHandler}
-        value={values.name}
-      />
+      <div className="w-full">
+        <InputField
+          type="text"
+          label="Име на продукта"
+          id="name"
+          name="name"
+          onChange={changeHandler}
+          value={values.name}
+        />
+      </div>
 
-      <InputField
-        type="text"
-        label="Стара цена"
-        id="oldPrice"
-        name="oldPrice"
-        placeholder={oldPrice}
-        onChange={changeHandler}
-        value={values.oldPrice}
-      />
-      <InputField
-        type="text"
-        label="Нова цена"
-        id="newPrice"
-        name="newPrice"
-        placeholder={newPrice}
-        onChange={changeHandler}
-        value={values.newPrice}
-      />
-      <UploadImageInput
-        id="image"
-        label="Снимка"
-        inputMessage="Променете снимката"
-        handleFileChange={handleImagesUpload}
-        value={images}
-        image={image.url}
-      />
+      <div className="grid grid-cols-2 gap-4">
+        <InputField
+          type="text"
+          label="Стара цена"
+          id="oldPrice"
+          name="oldPrice"
+          placeholder={oldPrice}
+          onChange={changeHandler}
+          value={values.oldPrice}
+        />
+        <InputField
+          type="text"
+          label="Нова цена"
+          id="newPrice"
+          name="newPrice"
+          placeholder={newPrice}
+          onChange={changeHandler}
+          value={values.newPrice}
+        />
+      </div>
+
       <TextAreaField
         type="text"
         label="Описание на продукта"
@@ -118,6 +115,14 @@ const EditPromoScreeen = () => {
         placeholder={description}
         onChange={changeHandler}
         value={values.description}
+      />
+      <UploadImageInput
+        id="image"
+        label="Снимка"
+        inputMessage="Променете снимката"
+        handleFileChange={handleImagesUpload}
+        value={images}
+        image={image}
       />
     </ActionForm>
   );

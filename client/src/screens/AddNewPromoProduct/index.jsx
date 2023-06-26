@@ -39,6 +39,8 @@ const AddNewPromoProductScreen = () => {
     addPromoProduct(data);
   };
 
+  console.log(images);
+
   return (
     <ActionForm
       heading="Добавете нов продукт"
@@ -46,20 +48,13 @@ const AddNewPromoProductScreen = () => {
       onSubmit={handleSubmit}
       isLoading={addingPromoProductLoading || isLoadingImageUpload}
     >
-      <div className="grid grid-cols-2 gap-x-10">
+      <div className="grid w-full gap-x-10">
         <InputField
           type="text"
           label="Име на продукта"
           id="name"
           name="name"
           required
-        />
-        <UploadImageInput
-          id="image"
-          label="Снимка"
-          handleFileChange={handleImagesUpload}
-          value={images}
-          image={images[0]?.url}
         />
       </div>
       <div className="grid grid-cols-2 gap-x-10">
@@ -84,6 +79,13 @@ const AddNewPromoProductScreen = () => {
         id="description"
         name="description"
         required
+      />
+      <UploadImageInput
+        id="image"
+        label="Снимка"
+        handleFileChange={handleImagesUpload}
+        value={images}
+        image={images[0]}
       />
     </ActionForm>
   );

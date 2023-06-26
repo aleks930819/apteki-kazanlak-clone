@@ -159,6 +159,7 @@ const EditPharmacieScreen = () => {
     setChangedValue(e, setValues);
   };
 
+
   return (
     <ActionForm
       heading="Редактирай информация за аптека"
@@ -248,7 +249,11 @@ const EditPharmacieScreen = () => {
         required
       />
 
-      <EditImagesContainer />
+      <EditImagesContainer
+        images={images}
+        handleImagesUpload={handleImagesUpload}
+        data={data}
+      />
       <div>
         <Workingtime
           workingTime={workingTime}
