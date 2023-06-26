@@ -5,6 +5,7 @@ import ServiceHighlightsItems from '../../components/ServiceHighlights/ServiceHi
 import AboutUsPharmacyServices from '../../components/AboutUs/AboutUsPharmacyServices';
 
 import { AiOutlineCheck } from 'react-icons/ai';
+import { useEffect } from 'react';
 
 const ServiceHighlightsTitles = [
   {
@@ -26,6 +27,11 @@ const ServiceHighlightsTitles = [
 ];
 
 const AboutUsScreen = () => {
+  
+  useEffect(() => {
+    document.title = 'За нас | Социални аптеки Казанлък';
+  }, []);
+
   return (
     <div className=" bg-grey-lighter-2">
       <AboutUsBanner />

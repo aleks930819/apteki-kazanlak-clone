@@ -8,8 +8,13 @@ import SecondRow from '../../components/Interesting/SecondRow';
 import { getNews } from '../../services/apiInteresting';
 
 import Spinner from '../../ui/Spinner';
+import { useEffect } from 'react';
 
 const InterestingScreen = () => {
+  useEffect(() => {
+    document.title = 'Интересно | Социални аптеки Казанлък';
+  }, []);
+
   const { isLoading, data: allNews } = useQuery({
     queryKey: ['news'],
     queryFn: getNews,
@@ -18,7 +23,6 @@ const InterestingScreen = () => {
   if (isLoading) {
     return <Spinner />;
   }
-
 
   return (
     <div>

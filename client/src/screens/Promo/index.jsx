@@ -3,7 +3,13 @@ import { getPromoProducts } from '../../services/apiPromoProducts';
 import { useQuery } from '@tanstack/react-query';
 import Spinner from '../../ui/Spinner';
 
+import { useEffect } from 'react';
+
 const PromoScreen = () => {
+  useEffect(() => {
+    document.title = 'Промоции | Социални аптеки Казанлък';
+  }, []);
+
   const { isLoading, data: promoData } = useQuery({
     queryKey: ['promoProducts'],
     queryFn: getPromoProducts,
@@ -12,7 +18,6 @@ const PromoScreen = () => {
   if (isLoading) {
     return <Spinner />;
   }
-
 
   return (
     <div className="mx-auto  mt-10 w-[75vw] ">

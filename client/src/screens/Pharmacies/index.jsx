@@ -4,7 +4,13 @@ import ContactInfo from '../../components/Contact/ContactInfo';
 import { getPharmacies } from '../../services/apiPharmacies';
 import Spinner from '../../ui/Spinner';
 
+import { useEffect } from 'react';
+
 const PharmaciesScreen = () => {
+  useEffect(() => {
+    document.title = 'Социални аптеки Казанлък';
+  }, []);
+
   const { isLoading, data: pharmaciesData } = useQuery({
     queryKey: ['pharmacies'],
     queryFn: getPharmacies,

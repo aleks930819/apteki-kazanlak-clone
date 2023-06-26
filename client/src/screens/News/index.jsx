@@ -5,12 +5,18 @@ import { getSingleNews } from '../../services/apiInteresting';
 import { useQuery } from '@tanstack/react-query';
 import Spinner from '../../ui/Spinner';
 
+import { useEffect } from 'react';
+
 const NewsScreen = () => {
   const { slug } = useParams();
 
   const { isLoading, data } = useQuery(['singleNews', slug], () =>
     getSingleNews(slug)
   );
+
+  useEffect(() => {
+    document.title = `${data?.title} | Социални аптеки Казанлък`;
+  }, [data?.title]);
 
   if (isLoading) {
     return <Spinner />;

@@ -1,5 +1,7 @@
 import HistoryBox from '../../components/History/HistoryBox';
 
+import { useEffect } from 'react';
+
 const historyData = [
   {
     title: 'Хигия',
@@ -37,6 +39,11 @@ const historyData = [
 ];
 
 const HistoryScreen = () => {
+  
+  useEffect(() => {
+    document.title = 'История | Социални аптеки Казанлък';
+  }, []);
+
   return (
     <div className="relative flex h-full flex-col items-center justify-center overflow-hidden py-[60px]">
       <div className="spine hidden sm:block"></div>

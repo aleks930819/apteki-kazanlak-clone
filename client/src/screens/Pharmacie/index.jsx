@@ -15,6 +15,8 @@ import { getPharmacie } from '../../services/apiPharmacies';
 
 import Spinner from '../../ui/Spinner';
 
+import { useEffect } from 'react';
+
 const Pharmacie = () => {
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: GOOGLE_MAPS_API_KEY,
@@ -25,6 +27,10 @@ const Pharmacie = () => {
     ['singlePharmacie', slug],
     () => getPharmacie(slug)
   );
+
+  useEffect(() => {
+    document.title = `${pharmacie?.name} | Социални аптеки Казанлък`;
+  }, [pharmacie?.name]);
 
   if (!isLoaded) {
     return <div>Loading...</div>;
