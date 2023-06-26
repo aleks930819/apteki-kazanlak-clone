@@ -48,7 +48,7 @@ const EditPromoScreeen = () => {
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
     if (!deletingLoading) {
       const formData = new FormData(e.target);

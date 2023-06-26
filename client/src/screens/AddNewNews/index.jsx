@@ -12,9 +12,20 @@ import useImageUploader from '../../hooks/useUploadImages';
 import { AuthContext } from '../../context/AuthContext';
 import UploadImageInput from '../../ui/UploadImageInput';
 
+import { useState } from 'react';
+
+import setChangedValue from '../../utils/changeValueHandler';
+
 const AddNewNews = () => {
   const { user } = useContext(AuthContext);
   const { addNewNewsing, addingNewNewsLoading } = useAddNewNews(user);
+
+  const [values, setValues] = useState({
+    title: '',
+    summary: '',
+    image: '',
+    description: '',
+  });
 
   const { isLoadingImageUpload, images, handleImagesUpload } =
     useImageUploader();
@@ -22,16 +33,25 @@ const AddNewNews = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData);
-
-    data.image = images.mainImage;
-
-    if (!data.image || !data.title || !data.summary || !data.description) {
+    if (
+      !values.title ||
+      !values.summary ||
+      !values.description ||
+      !images.mainImage.url
+    ) {
       return toast.error('Моля попълнете всички полета!');
     }
+    addNewNewsing({
+      ...values,
+      image: {
+        url: images.mainImage.url,
+        filename: images.mainImage.filename,
+      },
+    });
+  };
 
-    addNewNewsing(data);
+  const changeHandler = (e) => {
+    setChangedValue(e, setValues);
   };
 
   return (
@@ -48,6 +68,7 @@ const AddNewNews = () => {
           id="title"
           name="title"
           required
+          onChange={changeHandler}
         />
         <InputField
           type="text"
@@ -55,6 +76,7 @@ const AddNewNews = () => {
           id="summary"
           name="summary"
           required
+          onChange={changeHandler}
         />
       </div>
       <UploadImageInput
@@ -71,6 +93,7 @@ const AddNewNews = () => {
         id="description"
         name="description"
         required
+        onChange={changeHandler}
       />
     </ActionForm>
   );

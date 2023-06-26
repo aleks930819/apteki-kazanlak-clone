@@ -19,13 +19,10 @@ import Workingtime from '../../ui/Workingtime';
 import InputsWrapper from '../../ui/InpusWrapper';
 
 import setChangedValue from '../../utils/changeValueHandler';
+import createNewData from '../../utils/createNewData';
+
 import { AuthContext } from '../../context/AuthContext';
 import EditImagesContainer from '../../components/EditPharmacie/EditImagesContainer';
-
-import UploadImageInput from '../../ui/UploadImageInput';
-import UploadImagesWrapper from '../../ui/UploadImagesWrapper';
-
-import createNewData from '../../utils/createNewData';
 
 import { GOOGLE_MAPS_API_KEY } from '../../../api';
 
@@ -142,7 +139,6 @@ const EditPharmacieScreen = () => {
     e.preventDefault();
 
     const newData = await createNewData(values, images, workingTime);
-
     updatePharmacie(newData);
   };
 
