@@ -3,7 +3,7 @@ import { AiFillPlusCircle } from 'react-icons/ai';
 
 const AddTableButton = ({ title, path }) => {
   return (
-    <div className="flex items-center justify-center">
+    <div className="mt-10 mb-10 lg:mb-0 lg:mt-0 flex items-center justify-center">
       <Link
         to={path}
         className="flex items-center rounded-md bg-primary p-4
