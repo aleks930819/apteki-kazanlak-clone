@@ -1,12 +1,15 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+
+import { AuthContext } from '../context/AuthContext';
 
 const ImageDeleteButton = ({ filename, removeImageUrlFromValues }) => {
   const [deleting, setDeleting] = useState(false);
+  const { user } = useContext(AuthContext);
 
   const handleDelete = async () => {
     setDeleting(true);
     removeImageUrlFromValues();
-    
+
     try {
       const response = await fetch(
         `http://localhost:5000/api/uploads/${filename}`,
@@ -14,11 +17,12 @@ const ImageDeleteButton = ({ filename, removeImageUrlFromValues }) => {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${user.token}`,
           },
         }
       );
 
-      const data = await response.json();
+      await response.json();
     } catch (error) {
       console.error('Error deleting image:', error);
     }

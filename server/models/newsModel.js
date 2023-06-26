@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 import slugify from 'slugify';
+import path from 'path';
+import fs from 'fs';
 
 const newsSchema = mongoose.Schema(
   {
@@ -41,6 +43,23 @@ newsSchema.pre('save', function (next) {
   if (this.isModified('title') || this.slug === null) {
     this.slug = slugify(this.title, { lower: true, replacement: '-' });
   }
+  next();
+});
+
+newsSchema.pre('deleteOne', function (next) {
+  const image = this.image;
+
+  console.log(image);
+
+  if (image && image.filename) {
+    const filePath = path.join('images/', image.filename);
+
+    if (fs.existsSync(filePath)) {
+      fs.unlinkSync(filePath);
+      console.log('deleted');
+    }
+  }
+
   next();
 });
 

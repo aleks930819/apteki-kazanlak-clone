@@ -1,9 +1,12 @@
-import { useState } from 'react';
-import { CLODUINARY_UPLOAD_PRESET, CLOUDINARY_URL } from '../../api';
+import { useContext, useState } from 'react';
+
+import { AuthContext } from '../context/AuthContext';
 
 const useImagesUploader = () => {
   const [isLoadingImageUpload, setIsLoadingImageUpload] = useState(false);
   const [images, setImages] = useState([]);
+
+  const { user } = useContext(AuthContext);
 
   const uploadImages = async (files) => {
     try {
@@ -11,11 +14,13 @@ const useImagesUploader = () => {
       const uploadPromises = files.map((file) => {
         const formData = new FormData();
         formData.append('image', file);
-        // formData.append('upload_preset', CLODUINARY_UPLOAD_PRESET);
 
         return fetch('http://localhost:5000/api/uploads', {
           method: 'POST',
           body: formData,
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
         }).then((response) => response.json());
       });
 

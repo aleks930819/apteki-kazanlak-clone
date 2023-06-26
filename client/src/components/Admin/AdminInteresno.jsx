@@ -17,7 +17,7 @@ const tableColumns = [
     dataKey: 'image',
     render: (rowData) => (
       <div className="flex items-center">
-        <img src={rowData.image.url} alt="image" className="h-[45px] w-[45px]" />
+        <img src={rowData.image} alt="image" className="h-[45px] w-[45px]" />
       </div>
     ),
   },
@@ -47,6 +47,8 @@ const AdminInteresno = () => {
     return <Spinner />;
   }
 
+  console.log(news);
+
   if (news) {
     tableData = [
       ...news.map((news) => ({
@@ -58,6 +60,8 @@ const AdminInteresno = () => {
       })),
     ];
   }
+
+  console.log(tableData);
 
   return (
     <Table

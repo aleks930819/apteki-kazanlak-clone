@@ -61,8 +61,8 @@ const AdminPromoProducts = () => {
 
   return (
     <Table
-      columns={tableColumns}
-      data={tableData}
+    columns={tableColumns}
+    data={tableData}
       addButtonTitle="Добави Продукт"
       to="/admin/promo-products/add"
     ></Table>

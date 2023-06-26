@@ -1,5 +1,6 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import News from '../models/newsModel.js';
+import deleteImage from '../utils/deleteImage.js';
 
 // @desc    Fetch all news
 // @route   GET /api/interesting
@@ -67,6 +68,7 @@ export const deleteNews = asyncHandler(async (req, res) => {
   const news = await News.deleteOne({ slug: req.params.slug });
 
   if (news) {
+    deleteImage(isNewsExist.image.filename);
     res.json({ message: 'News removed' });
   } else {
     res.status(404);
