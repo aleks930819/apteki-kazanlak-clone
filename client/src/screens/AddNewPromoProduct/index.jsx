@@ -24,7 +24,7 @@ const AddNewPromoProductScreen = () => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
 
-    data.image = images[0];
+    data.image = images.mainImage;
 
     if (
       !data.name ||
@@ -84,8 +84,9 @@ const AddNewPromoProductScreen = () => {
         id="image"
         label="Снимка"
         handleFileChange={handleImagesUpload}
-        value={images}
-        image={images[0]}
+        photoFieldName="mainImage"
+        value={images?.mainImage.url}
+        image={images?.mainImage.url}
       />
     </ActionForm>
   );

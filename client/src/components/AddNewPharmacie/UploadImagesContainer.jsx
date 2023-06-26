@@ -8,54 +8,57 @@ const UploadImagesContainer = ({ images, handleImagesUpload, isLoading }) => {
         id="mainImage"
         label="Заглавна снимка"
         handleFileChange={handleImagesUpload}
-        value={images[0]}
-        image={images[0]?.url}
+        value={images?.mainImage.url}
+        image={images?.mainImage.url}
         disabled={isLoading}
+        photoFieldName="mainImage"
       />
       <UploadImageInput
         id="secondaryImage"
         label="Втора снимка"
         handleFileChange={handleImagesUpload}
-        value={images[1]}
-        image={images[1]?.url}
+        value={images?.secondaryImage.url}
+        image={images?.secondaryImage.url}
         disabled={isLoading}
+        photoFieldName="secondaryImage"
       />
 
       <UploadImageInput
         id="managerImage"
         label="Снимка на мениджъра"
         handleFileChange={handleImagesUpload}
-        value={images[2]}
-        image={images[2]?.url}
+        value={images?.managerImage.url}
+        image={images?.managerImage.url}
         disabled={isLoading}
+        photoFieldName="managerImage"
       />
 
       <UploadImageInput
         id="pharmaciesImage-1"
         label="Снимки на Аптеката -1"
         handleFileChange={handleImagesUpload}
-        value={images[3]}
-        image={images[3]?.url}
+        value={images?.pharmaciesImage1.url}
+        image={images?.pharmaciesImage1.url}
         disabled={isLoading}
-        multiple={true}
+        photoFieldName="pharmaciesImage1"
       />
       <UploadImageInput
         id="pharmaciesImage-2"
         label="Снимки на Аптеката -2"
         handleFileChange={handleImagesUpload}
-        value={images[4]}
-        image={images[4]?.url}
+        value={images?.pharmaciesImage2.url}
+        image={images?.pharmaciesImage2.url}
         disabled={isLoading}
-        multiple={true}
+        photoFieldName="pharmaciesImage2"
       />
       <UploadImageInput
         id="pharmaciesImage-3"
         label="Снимки на Аптеката -3"
         handleFileChange={handleImagesUpload}
-        value={images[5]}
-        image={images[5]?.url}
+        value={images?.pharmaciesImage3.url}
+        image={images?.pharmaciesImage3.url}
         disabled={isLoading}
-        multiple={true}
+        photoFieldName="pharmaciesImage3"
       />
     </UploadImagesWrapper>
   );

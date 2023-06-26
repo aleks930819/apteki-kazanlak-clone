@@ -1,10 +1,36 @@
 import { useContext, useState } from 'react';
-
 import { AuthContext } from '../context/AuthContext';
 
 const useImagesUploader = () => {
   const [isLoadingImageUpload, setIsLoadingImageUpload] = useState(false);
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState({
+    mainImage: {
+      url: '',
+      filename: '',
+    },
+    secondaryImage: {
+      url: '',
+      filename: '',
+    },
+    managerImage: {
+      url: '',
+      filename: '',
+    },
+    pharmaciesImage1: {
+      url: '',
+      filename: '',
+    },
+
+    pharmaciesImage2: {
+      url: '',
+      filename: '',
+    },
+    pharmaciesImage3: {
+      url: '',
+
+      filename: '',
+    },
+  });
 
   const { user } = useContext(AuthContext);
 
@@ -34,24 +60,37 @@ const useImagesUploader = () => {
       return imagesData;
     } catch (error) {
       console.log(error);
-
       return [];
     } finally {
       setIsLoadingImageUpload(false);
     }
   };
 
-  const handleImagesUpload = async (e) => {
+  const handleImagesUpload = async (e, imageName) => {
     const files = Array.from(e.target.files);
 
     try {
       setIsLoadingImageUpload(true);
       const uploadedUrls = await uploadImages(files);
-      setImages((prevImages) => [...prevImages, ...uploadedUrls]);
+
+      const newImages = uploadedUrls.map((url) => ({
+        url: url.url,
+        filename: url.filename,
+        imageName: imageName,
+      }));
+
+      setImages((prevImages) => ({
+        ...prevImages,
+        [imageName]: {
+          url: newImages[0]?.url,
+          filename: newImages[0]?.filename,
+        },
+      }));
     } finally {
       setIsLoadingImageUpload(false);
     }
   };
+
 
   return { isLoadingImageUpload, images, handleImagesUpload, setImages };
 };

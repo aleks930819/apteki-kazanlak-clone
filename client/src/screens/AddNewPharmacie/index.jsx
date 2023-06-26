@@ -103,10 +103,14 @@ const AddNewPharmacieScreen = () => {
         lng,
       },
 
-      mainImage: images[0],
-      secondaryImage: images[1],
-      managerImage: images[2],
-      pharmacieImages: [images[3], images[4], images[5]],
+      mainImage: images.mainImage,
+      secondaryImage: images.secondaryImage,
+      managerImage: images.managerImage,
+      pharmacieImages: [
+        images.pharmaciesImage1,
+        images.pharmaciesImage2,
+        images.pharmaciesImage3,
+      ],
       workingWith: selectedChoices,
     };
 

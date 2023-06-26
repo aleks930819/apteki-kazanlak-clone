@@ -121,7 +121,7 @@ const EditPromoScreeen = () => {
         inputMessage="Променете снимката"
         handleFileChange={handleImagesUpload}
         value={images}
-        image={image}
+        image={image.url}
       />
     </ActionForm>
   );

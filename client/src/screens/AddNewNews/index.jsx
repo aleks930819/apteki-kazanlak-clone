@@ -25,7 +25,7 @@ const AddNewNews = () => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
 
-    data.image = images[0];
+    data.image = images.mainImage;
 
     if (!data.image || !data.title || !data.summary || !data.description) {
       return toast.error('Моля попълнете всички полета!');
@@ -61,8 +61,9 @@ const AddNewNews = () => {
         id="image"
         label="Снимка"
         handleFileChange={handleImagesUpload}
-        value={images}
-        image={images[0]}
+        value={images?.mainImage.url}
+        image={images?.mainImage.url}
+        photoFieldName="mainImage"
       />
 
       <TextAreaField

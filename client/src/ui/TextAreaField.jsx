@@ -6,6 +6,8 @@ const TextAreaField = ({
   required,
   value,
   onChange,
+  rows,
+  cols
 }) => {
   return (
     <div className="flex w-full flex-col items-start">
@@ -15,7 +17,8 @@ const TextAreaField = ({
       <textarea
         id={id}
         placeholder={placeholder}
-        rows={6}
+        rows={rows || 10}
+        cols={cols || 5}
         name={name}
         required={required}
         value={value}

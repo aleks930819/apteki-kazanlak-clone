@@ -68,7 +68,7 @@ const EditNewsScreen = () => {
   return (
     <ActionForm
       heading="Редактирай статия"
-      buttonName="Добави"
+      buttonName="Редактирай"
       onSubmit={handleSubmit}
       isLoading={editingLoading}
       onDeleteAction={deleteNews}
@@ -97,11 +97,12 @@ const EditNewsScreen = () => {
         label="Описание"
         id="description"
         name="description"
+        rows={15}
         onChange={changeHandler}
         value={values.description}
       />
       <UploadImageInput
-        image={image}
+        image={image.url}
         handleImagesUpload={handleImageUpload}
         data={data}
         itemToUpdate={slug}
