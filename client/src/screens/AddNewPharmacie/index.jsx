@@ -8,6 +8,7 @@ import useImagesUploader from '../../hooks/useUploadImages';
 import InputField from '../../ui/InputField';
 import TextAreaField from '../../ui/TextAreaField';
 import ActionForm from '../../ui/ActionForm';
+import Workingtime from '../../ui/Workingtime';
 
 import 'react-time-picker/dist/TimePicker.css';
 import 'react-clock/dist/Clock.css';
@@ -15,7 +16,6 @@ import 'react-clock/dist/Clock.css';
 import { AuthContext } from '../../context/AuthContext';
 import ChoiceButtons from '../../components/AddNewPharmacie/ChoiceButtons';
 import UploadImagesContainer from '../../components/AddNewPharmacie/UploadImagesContainer';
-import Workingtime from '../../components/AddNewPharmacie/Workingtime';
 
 const AddNewPharmacieScreen = () => {
   const { user } = useContext(AuthContext);

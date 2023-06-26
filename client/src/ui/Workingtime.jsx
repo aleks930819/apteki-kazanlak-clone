@@ -1,12 +1,12 @@
-import WorkTimePicker from '../../ui/WorkTimePicker';
-import WorkTimeWrapper from '../WorktTme/WorkTimeWrapper';
+import WorkTimePicker from './WorkTimePicker';
+import WorkTimeWrapper from '../components/WorktTme/WorkTimeWrapper';
 
 const Workingtime = ({ workingTime, handleChangeWorkingTime }) => {
   return (
     <>
-      <label className="mb-10 mt-10 text-xl font-bold text-gray-700">
+      <p className="mb-10 mt-10 text-center text-xl font-bold text-gray-700">
         Работно Време:
-      </label>
+      </p>
       <div className="grid grid-cols-2 gap-x-20 gap-y-10 ">
         {/* Weekdays working time */}
         <WorkTimeWrapper heading="Понеделник - Петък">
