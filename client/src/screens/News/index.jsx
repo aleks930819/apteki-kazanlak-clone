@@ -7,6 +7,8 @@ import Spinner from '../../ui/Spinner';
 
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 
+import NotFoundScreen from '../NotFound';
+
 const NewsScreen = () => {
   const { slug } = useParams();
 
@@ -15,10 +17,15 @@ const NewsScreen = () => {
   );
 
   useDocumentTitle(`${data?.title} | Социални Аптеки Казанлък`);
-
+  
   if (isLoading) {
     return <Spinner />;
   }
+
+  if (!data) {
+    return <NotFoundScreen />;
+  }
+
 
   const { image, title, description } = data;
 

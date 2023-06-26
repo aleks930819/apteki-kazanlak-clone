@@ -11,6 +11,8 @@ import PharmacieHero from '../../components/Pharmacie/PharmacieHero';
 import PharmacieWorking from '../../components/Pharmacie/PharmacieWorking';
 import GoogleMapView from '../../components/GoogleMap/GoogleMap';
 
+import NotFoundScreen from '../NotFound';
+
 import { getPharmacie } from '../../services/apiPharmacies';
 
 import Spinner from '../../ui/Spinner';
@@ -36,6 +38,10 @@ const Pharmacie = () => {
 
   if (isLoading) {
     return <Spinner />;
+  }
+
+  if (!pharmacie) {
+    return <NotFoundScreen />;
   }
 
   const markerPosition = {

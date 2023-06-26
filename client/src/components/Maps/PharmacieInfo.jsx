@@ -1,5 +1,4 @@
 const PharmacieInfo = ({ data }) => {
-  console.log(data);
   return (
     <div className="mt-12 flex h-full flex-col">
       <div className="h-[30%]">
