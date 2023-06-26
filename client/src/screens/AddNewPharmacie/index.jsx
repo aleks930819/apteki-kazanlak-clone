@@ -85,6 +85,8 @@ const AddNewPharmacieScreen = () => {
 
     const { lat, lng } = getLatLng(geocode[0]);
 
+    return console.log(lat, lng);
+
     const newData = {
       ...data,
       address: {

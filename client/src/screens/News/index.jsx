@@ -17,7 +17,7 @@ const NewsScreen = () => {
   );
 
   useDocumentTitle(`${data?.title} | Социални Аптеки Казанлък`);
-  
+
   if (isLoading) {
     return <Spinner />;
   }
@@ -25,7 +25,6 @@ const NewsScreen = () => {
   if (!data) {
     return <NotFoundScreen />;
   }
-
 
   const { image, title, description } = data;
 
