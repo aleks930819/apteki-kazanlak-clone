@@ -11,6 +11,10 @@ import ActionForm from '../../ui/ActionForm';
 import { AuthContext } from '../../context/AuthContext';
 import UploadImageInput from '../../ui/UploadImageInput';
 
+import { useState } from 'react';
+
+import setChangedValue from '../../utils/changeValueHandler';
+
 const AddNewPromoProductScreen = () => {
   const { user } = useContext(AuthContext);
   const { addPromoProduct, addingPromoProductLoading } =
@@ -18,25 +22,40 @@ const AddNewPromoProductScreen = () => {
   const { isLoadingImageUpload, images, handleImagesUpload } =
     useImagesUploader();
 
+  const [values, setValues] = useState({
+    name: '',
+    oldPrice: null,
+    newPrice: null,
+    description: '',
+    image: '',
+  });
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData);
-
-    data.image = images.mainImage;
-
     if (
-      !data.name ||
-      !data.oldPrice ||
-      !data.newPrice ||
-      !data.image ||
-      !data.description
+      !values.name ||
+      !values.oldPrice ||
+      !values.newPrice ||
+      !values.description ||
+      !images?.mainImage.url
     ) {
       return toast.error('Моля попълнете всички полета!');
     }
 
+    const data = {
+      ...values,
+      image: {
+        url: images?.mainImage.url,
+        filename: images?.mainImage.filename,
+      },
+    };
+
     addPromoProduct(data);
+  };
+
+  const changeHandler = (e) => {
+    setChangedValue(e, setValues);
   };
 
   return (
@@ -53,6 +72,7 @@ const AddNewPromoProductScreen = () => {
           id="name"
           name="name"
           required
+          onChange={changeHandler}
         />
       </div>
       <div className="grid grid-cols-2 gap-x-10">
@@ -63,6 +83,7 @@ const AddNewPromoProductScreen = () => {
           id="oldPrice"
           name="oldPrice"
           required
+          onChange={changeHandler}
         />
         <InputField
           type="number"
@@ -71,6 +92,7 @@ const AddNewPromoProductScreen = () => {
           step={0.01}
           name="newPrice"
           required
+          onChange={changeHandler}
         />
       </div>
 
@@ -79,6 +101,7 @@ const AddNewPromoProductScreen = () => {
         id="description"
         name="description"
         required
+        onChange={changeHandler}
       />
       <UploadImageInput
         id="image"

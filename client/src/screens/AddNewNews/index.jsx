@@ -41,13 +41,15 @@ const AddNewNews = () => {
     ) {
       return toast.error('Моля попълнете всички полета!');
     }
-    addNewNewsing({
+
+    const data = {
       ...values,
       image: {
-        url: images.mainImage.url,
-        filename: images.mainImage.filename,
+        url: images?.mainImage.url,
+        filename: images?.mainImage.filename,
       },
-    });
+    };
+    addNewNewsing(data);
   };
 
   const changeHandler = (e) => {
