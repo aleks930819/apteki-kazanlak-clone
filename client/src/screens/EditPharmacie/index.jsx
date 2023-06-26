@@ -1,6 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 
+import { useLoadScript } from '@react-google-maps/api';
+
 import { useContext, useState } from 'react';
 
 import useUpdatePharmacie from '../../hooks/useUpdatePharmacie';
@@ -8,8 +10,6 @@ import useDeletePharmacie from '../../hooks/useDeletePharmacie';
 import useImagesUploader from '../../hooks/useUploadImages';
 
 import { getPharmacie } from '../../services/apiPharmacies';
-
-import WorkTimeWrapper from '../../components/WorktTme/WorkTimeWrapper';
 
 import ActionForm from '../../ui/ActionForm';
 import InputField from '../../ui/InputField';
@@ -22,11 +22,21 @@ import setChangedValue from '../../utils/changeValueHandler';
 import { AuthContext } from '../../context/AuthContext';
 import EditImagesContainer from '../../components/EditPharmacie/EditImagesContainer';
 
+import UploadImageInput from '../../ui/UploadImageInput';
+import UploadImagesWrapper from '../../ui/UploadImagesWrapper';
+
 import createNewData from '../../utils/createNewData';
+
+import { GOOGLE_MAPS_API_KEY } from '../../../api';
 
 const EditPharmacieScreen = () => {
   const { slug } = useParams();
   const { user } = useContext(AuthContext);
+
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: GOOGLE_MAPS_API_KEY,
+    libraries: ['places'],
+  });
 
   const [workingTime, setWorkingTime] = useState({
     weekDays: {
@@ -63,18 +73,15 @@ const EditPharmacieScreen = () => {
     workingHours: '',
     managerTitle: '',
     managerDescription: '',
+    mainImage: '',
+    secondaryImage: '',
+    managerImage: '',
+    pharmacieImages: [],
   });
 
   const { editingLoading, updatePharmacie } = useUpdatePharmacie(slug, user);
   const { deletePharmacie, deletingLoading } = useDeletePharmacie(slug, user);
   const { images, handleImagesUpload } = useImagesUploader();
-
-  const [updatedImages, setUpdatedImages] = useState({
-    mainImage: null,
-    secondaryImage: null,
-    managerImage: null,
-    pharmacieImages: [null, null, null],
-  });
 
   const { isLoading, data } = useQuery(['pharmacies', slug], () =>
     getPharmacie(slug)
@@ -93,6 +100,10 @@ const EditPharmacieScreen = () => {
     workingHours,
     managerTitle,
     managerDescription,
+    mainImage,
+    secondaryImage,
+    managerImage,
+    pharmacieImages,
   } = data;
 
   if (!values.name) {
@@ -105,6 +116,10 @@ const EditPharmacieScreen = () => {
       managerDescription,
       city: address.city,
       street: address.street,
+      mainImage,
+      secondaryImage,
+      managerImage,
+      pharmacieImages,
     });
 
     setWorkingTime({
@@ -126,10 +141,7 @@ const EditPharmacieScreen = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData);
-
-    const newData = await createNewData(data, images, workingTime);
+    const newData = await createNewData(values, images, workingTime);
 
     updatePharmacie(newData);
   };
@@ -230,14 +242,12 @@ const EditPharmacieScreen = () => {
       <EditImagesContainer
         images={images}
         handleImagesUpload={handleImagesUpload}
-        data={data}
+        data={values}
       />
-      <div>
-        <Workingtime
-          workingTime={workingTime}
-          handleChangeWorkingTime={handleChangeWorkingTime}
-        />
-      </div>
+      <Workingtime
+        workingTime={workingTime}
+        handleChangeWorkingTime={handleChangeWorkingTime}
+      />
     </ActionForm>
   );
 };

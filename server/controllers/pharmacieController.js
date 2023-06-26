@@ -139,6 +139,11 @@ export const updatePharmacy = asyncHandler(async (req, res) => {
     workingHours,
     managerTitle,
     managerDescription,
+    mainImage,
+    secondaryImage,
+    managerImage,
+    pharmacieImages,
+    workingWith,
   } = req.body;
 
   const pharmacy = await Pharmacie.findOne({ slug: req.params.slug });
@@ -153,8 +158,14 @@ export const updatePharmacy = asyncHandler(async (req, res) => {
     pharmacy.managerTitle = managerTitle || pharmacy.managerTitle;
     pharmacy.managerDescription =
       managerDescription || pharmacy.managerDescription;
+    pharmacy.mainImage = mainImage || pharmacy.mainImage;
+    pharmacy.secondaryImage = secondaryImage || pharmacy.secondaryImage;
+    pharmacy.managerImage = managerImage || pharmacy.managerImage;
+    pharmacy.pharmacieImages = pharmacieImages || pharmacy.pharmacieImages;
+    pharmacy.workingWith = workingWith || pharmacy.workingWith;
 
     const updatedPharmacy = await pharmacy.save();
+
     res.status(200).json(updatedPharmacy);
   } else {
     res.status(404);

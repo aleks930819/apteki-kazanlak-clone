@@ -10,7 +10,7 @@ const useUpdatePromoProduct = (id, user) => {
     mutationFn: (data) => updateProductById(data, id, user.token),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['singleProduct'],
+        queryKey: ['promoProducts'],
       });
       toast.success('Продуктът е променен успешно!');
       navigate('/admin/promo-products');

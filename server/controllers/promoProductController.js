@@ -81,6 +81,7 @@ export const editPromoProduct = asyncHandler(async (req, res) => {
   const { name, image, oldPrice, description, newPrice } = req.body;
 
   const promoProduct = await PromoProduct.findById(req.params.id);
+  console.log(req.body);
 
   if (promoProduct) {
     promoProduct.name = name || promoProduct.name;

@@ -2,6 +2,7 @@ import UploadImageInput from '../../ui/UploadImageInput';
 import UploadImagesWrapper from '../../ui/UploadImagesWrapper';
 
 const EditImagesContainer = ({ images, handleImagesUpload, data }) => {
+  console.log(images);
   return (
     <UploadImagesWrapper heading="Снимки">
       <UploadImageInput
@@ -36,13 +37,13 @@ const EditImagesContainer = ({ images, handleImagesUpload, data }) => {
         handleFileChange={handleImagesUpload}
         value={images?.pharmaciesImage1.url || data?.pharmacieImages[0].url}
         image={images?.pharmaciesImage1.url || data?.pharmacieImages[0].url}
-        imageName="pharmacieImages1"
+        imageName="pharmaciesImage1"
       />
       <UploadImageInput
         id="pharmaciesImage-2"
         label="Снимки на Аптеката -2"
         handleFileChange={handleImagesUpload}
-        name="pharmaciesImage2"
+        imageName="pharmaciesImage2"
         value={images?.pharmaciesImage2.url || data?.pharmacieImages[1].url}
         image={images?.pharmaciesImage2.url || data?.pharmacieImages[1].url}
       />
@@ -52,7 +53,7 @@ const EditImagesContainer = ({ images, handleImagesUpload, data }) => {
         handleFileChange={handleImagesUpload}
         value={images?.pharmaciesImage3.url || data?.pharmacieImages[2].url}
         image={images?.pharmaciesImage3.url || data?.pharmacieImages[2].url}
-        imageName="pharmacieImages3"
+        imageName="pharmaciesImage3"
       />
     </UploadImagesWrapper>
   );
