@@ -9,13 +9,13 @@ const PharmacieRow1 = ({ image, workingWith }) => {
     <PharmacieRowWrapper>
       <PharmacieRowTitle title="Ние работим с" />
       <div>
-        <ul className="flex flex-col gap-4 text-primary ">
+        <ul className="flex flex-col gap-2 text-primary ">
           {workingWith?.map((item) => (
             <li
               className="flex items-center text-base font-semibold leading-9 text-primary"
               key={item}
             >
-              <AiOutlineCheck className="mr-3 inline-block text-2xl" />
+              <AiOutlineCheck className="mr-3 inline-block text-3xl" />
               {item}
             </li>
           ))}

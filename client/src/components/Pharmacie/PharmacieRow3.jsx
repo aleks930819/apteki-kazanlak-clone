@@ -7,7 +7,7 @@ const PharmacieRow3 = ({ phone, image }) => {
     <PharmacieRowWrapper>
       <PharmacieRowTitle title="Контакти" />
       <div className="flex flex-col items-start ">
-        <p className="mb-0 font-semibold text-primary sm:mb-4">Телефон:</p>
+        <p className="mb-0 font-semibold text-primary ">Телефон:</p>
         <br />
         <span className="font-semibold  text-primary">{phone}</span>
       </div>

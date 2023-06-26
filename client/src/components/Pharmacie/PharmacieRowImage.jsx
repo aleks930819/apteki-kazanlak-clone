@@ -5,11 +5,11 @@ const PharmacieRowImage = ({ rounded, image }) => {
 
   return (
     <div
-      className={`h-70 ${roundedClass} ml-auto w-full overflow-hidden lg:h-60 lg:w-auto`}
+      className={`h-70 ${roundedClass} ml-auto w-full overflow-hidden lg:h-60 lg:w-[400px]`}
     >
       <img
         src={image || Woman}
-        className="h-full w-full object-cover transition-transform duration-200 ease-in-out hover:scale-110"
+        className="h-full w-full object-center transition-transform duration-200 ease-in-out hover:scale-110"
       />
     </div>
   );

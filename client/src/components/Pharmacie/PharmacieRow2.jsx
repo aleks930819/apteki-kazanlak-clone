@@ -10,12 +10,12 @@ const PharmacieRow2 = ({ workingHours, image }) => {
     <PharmacieRowWrapper>
       <PharmacieRowTitle title="Работно време" />
       <div className="flex flex-col items-start ">
-        <p className="mb-0 font-semibold text-primary sm:mb-4">
+        <p className="mb-0 font-semibold text-primary">
           Понеделник – Петък:{' '}
           {formattedHours(mondayToFriday[0], mondayToFriday[1])}
         </p>
         <br />
-        <p className="mb-0  font-semibold text-primary sm:mb-4">
+        <p className="mb-0  font-semibold text-primary ">
           Събота: {formattedHours(saturday[0], saturday[1])}
         </p>
         <br />
