@@ -19,13 +19,9 @@ import UploadImagesContainer from '../../components/AddNewPharmacie/UploadImages
 
 import { useLoadScript } from '@react-google-maps/api';
 
-import usePlacesAutocomplete, {
-  getGeocode,
-  getLatLng,
-} from 'use-places-autocomplete';
-
 import { GOOGLE_MAPS_API_KEY } from '../../../api';
 import InputsWrapper from '../../ui/InpusWrapper';
+import createNewData from '../../utils/createNewData';
 const AddNewPharmacieScreen = () => {
   const { user } = useContext(AuthContext);
 
@@ -80,39 +76,40 @@ const AddNewPharmacieScreen = () => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
 
-    const address = `${data.city} ${data.street}`;
+    // const newData = {
+    //   ...data,
+    //   address: {
+    //     city: data.city,
+    //     street: data.street,
+    //   },
+    //   workingHours: {
+    //     mondayToFriday: [workingTime.weekDays.open, workingTime.weekDays.close],
+    //     saturday: [workingTime.saturday.open, workingTime.saturday.close],
+    //     sunday: [workingTime.sunday.open ?? '', workingTime.sunday.close ?? ''],
+    //   },
 
-    const geocode = await getGeocode({ address });
+    //   googleMap: {
+    //     lat,
+    //     lng,
+    //   },
 
-    const { lat, lng } = getLatLng(geocode[0]);
+    //   mainImage: images.mainImage,
+    //   secondaryImage: images.secondaryImage,
+    //   managerImage: images.managerImage,
+    //   pharmacieImages: [
+    //     images.pharmaciesImage1,
+    //     images.pharmaciesImage2,
+    //     images.pharmaciesImage3,
+    //   ],
+    //   workingWith: selectedChoices,
+    // };
 
-    const newData = {
-      ...data,
-      address: {
-        city: data.city,
-        street: data.street,
-      },
-      workingHours: {
-        mondayToFriday: [workingTime.weekDays.open, workingTime.weekDays.close],
-        saturday: [workingTime.saturday.open, workingTime.saturday.close],
-        sunday: [workingTime.sunday.open ?? '', workingTime.sunday.close ?? ''],
-      },
-
-      googleMap: {
-        lat,
-        lng,
-      },
-
-      mainImage: images.mainImage,
-      secondaryImage: images.secondaryImage,
-      managerImage: images.managerImage,
-      pharmacieImages: [
-        images.pharmaciesImage1,
-        images.pharmaciesImage2,
-        images.pharmaciesImage3,
-      ],
-      workingWith: selectedChoices,
-    };
+    const newData = await createNewData(
+      data,
+      images,
+      workingTime,
+      selectedChoices
+    );
 
     addPharmacie(newData);
 
