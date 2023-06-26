@@ -16,7 +16,7 @@ const adminLinks = [
     path: '/admin/interesno',
   },
   {
-    name: 'Изход',
+    name: 'Изход от административен панел',
     path: '/',
   },
 ];

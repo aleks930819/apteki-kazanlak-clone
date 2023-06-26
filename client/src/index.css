@@ -18,7 +18,7 @@
     background: #00686d;
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 0.3s;
+    transition: transform .5s;
   }
 
   .promo-card-left:hover:before {
@@ -35,7 +35,8 @@
     background: #00686d;
     transform: scaleY(0);
     transform-origin: top;
-    transition: transform 0.3s;
+    transition: transform .5s;
+
   }
 
   .promo-card-top:hover:after {
@@ -52,7 +53,8 @@
     background: #00686d;
     transform: scaleX(0);
     transform-origin: right;
-    transition: transform 0.3s;
+    transition: transform .5s;
+
   }
 
   .promo-card-right:hover:before {
@@ -69,11 +71,17 @@
     background: #00686d;
     transform: scaleY(0);
     transform-origin: bottom;
-    transition: transform 0.3s;
+    transition: transform .5s;
+
   }
 
   .promo-card-bottom:hover:after {
     transform: scaleY(1);
+  }
+
+  .promo-card:hover .price-discount {
+    transform: scale(1.3);
+    opacity: 1;
   }
 
   .timeline-item {

@@ -54,8 +54,7 @@ const EditPromoScreeen = () => {
       const formData = new FormData(e.target);
       const data = Object.fromEntries(formData);
       data.image = images[0];
-      return console.log(data);
-      // updateProduct(data);
+      updateProduct(data);
     }
   };
 

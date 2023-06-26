@@ -107,7 +107,7 @@ const Maps = () => {
   };
 
   return (
-    <div className="lg:h-[80vh] flex h-[120vh]  flex-col lg:flex-row">
+    <div className="flex h-[120vh] flex-col  lg:h-[80vh] lg:flex-row">
       <div className="flex-1">
         <GoogleMap
           mapContainerStyle={{ width: '100%', height: '100%' }}
@@ -126,7 +126,7 @@ const Maps = () => {
           ))}
         </GoogleMap>
       </div>
-      <div className="w-full lg:w-[25%]">
+      <div className="w-full  lg:w-[25%]">
         <Links data={data} onLocationClick={handleLocationClick} />
       </div>
     </div>
