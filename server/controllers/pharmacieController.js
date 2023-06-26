@@ -1,6 +1,8 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import Pharmacie from '../models/pharmacieModel.js';
 
+import deleteImage from '../utils/deleteImage.js';
+
 // @desc    Fetch all pharmacies
 // @route   GET /api/pharmacies
 // @access  Public
@@ -100,6 +102,17 @@ export const deletePharmacy = asyncHandler(async (req, res) => {
   if (!isPharmacyExist) {
     return res.status(404).json({ message: 'Pharmacy not found' });
   }
+
+  if (isPharmacyExist) {
+    isPharmacyExist.pharmacieImages.map((image) => {
+      deleteImage(image.filename);
+    });
+
+    deleteImage(isPharmacyExist.mainImage.filename);
+    deleteImage(isPharmacyExist.secondaryImage.filename);
+    deleteImage(isPharmacyExist.managerImage.filename);
+  }
+
   const pharmacy = await Pharmacie.deleteOne({ slug: req.params.slug });
 
   if (pharmacy) {
