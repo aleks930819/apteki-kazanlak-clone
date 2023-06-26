@@ -7,6 +7,7 @@ const InputField = ({
   value,
   required,
   onChange,
+  step
 }) => {
   return (
     <div className="flex w-full flex-col items-start">
@@ -17,6 +18,7 @@ const InputField = ({
         type={type}
         id={id}
         name={name}
+        step={step}
         value={value}
         placeholder={placeholder}
         required={required}

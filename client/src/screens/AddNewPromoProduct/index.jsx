@@ -39,7 +39,6 @@ const AddNewPromoProductScreen = () => {
     addPromoProduct(data);
   };
 
-
   return (
     <ActionForm
       heading="Добавете нов продукт"
@@ -59,6 +58,7 @@ const AddNewPromoProductScreen = () => {
       <div className="grid grid-cols-2 gap-x-10">
         <InputField
           type="number"
+          step={0.01}
           label="Стара Цена"
           id="oldPrice"
           name="oldPrice"
@@ -68,6 +68,7 @@ const AddNewPromoProductScreen = () => {
           type="number"
           label="Нова Цена"
           id="newPrice"
+          step={0.01}
           name="newPrice"
           required
         />
