@@ -1,16 +1,10 @@
-import usePlacesAutocomplete, {
-  getGeocode,
-  getLatLng,
-} from 'use-places-autocomplete';
+import { getGeocode, getLatLng } from 'use-places-autocomplete';
 
 const createNewData = async (data, images, workingTime, selectedChoices) => {
   const address = `${data.city} ${data.street}`;
   const geocode = await getGeocode({ address });
 
   const { lat, lng } = getLatLng(geocode[0]);
-
-  console.log(lat, lng);
-  console.log(workingTime);
 
   const newData = {
     ...data,

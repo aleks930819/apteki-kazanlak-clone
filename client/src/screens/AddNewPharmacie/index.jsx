@@ -1,3 +1,5 @@
+import { useLoadScript } from '@react-google-maps/api';
+
 import { toast } from 'react-hot-toast';
 
 import { useState, useContext } from 'react';
@@ -9,19 +11,16 @@ import InputField from '../../ui/InputField';
 import TextAreaField from '../../ui/TextAreaField';
 import ActionForm from '../../ui/ActionForm';
 import Workingtime from '../../ui/Workingtime';
+import InputsWrapper from '../../ui/InpusWrapper';
 
-import 'react-time-picker/dist/TimePicker.css';
-import 'react-clock/dist/Clock.css';
 
 import { AuthContext } from '../../context/AuthContext';
 import ChoiceButtons from '../../components/AddNewPharmacie/ChoiceButtons';
 import UploadImagesContainer from '../../components/AddNewPharmacie/UploadImagesContainer';
 
-import { useLoadScript } from '@react-google-maps/api';
+import  createNewData  from '../../utils/createNewData';
 
 import { GOOGLE_MAPS_API_KEY } from '../../../api';
-import InputsWrapper from '../../ui/InpusWrapper';
-import createNewData from '../../utils/createNewData';
 const AddNewPharmacieScreen = () => {
   const { user } = useContext(AuthContext);
 
@@ -75,34 +74,6 @@ const AddNewPharmacieScreen = () => {
 
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
-
-    // const newData = {
-    //   ...data,
-    //   address: {
-    //     city: data.city,
-    //     street: data.street,
-    //   },
-    //   workingHours: {
-    //     mondayToFriday: [workingTime.weekDays.open, workingTime.weekDays.close],
-    //     saturday: [workingTime.saturday.open, workingTime.saturday.close],
-    //     sunday: [workingTime.sunday.open ?? '', workingTime.sunday.close ?? ''],
-    //   },
-
-    //   googleMap: {
-    //     lat,
-    //     lng,
-    //   },
-
-    //   mainImage: images.mainImage,
-    //   secondaryImage: images.secondaryImage,
-    //   managerImage: images.managerImage,
-    //   pharmacieImages: [
-    //     images.pharmaciesImage1,
-    //     images.pharmaciesImage2,
-    //     images.pharmaciesImage3,
-    //   ],
-    //   workingWith: selectedChoices,
-    // };
 
     const newData = await createNewData(
       data,

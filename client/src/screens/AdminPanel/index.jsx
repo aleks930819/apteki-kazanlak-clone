@@ -1,10 +1,13 @@
 import { NavLink, Outlet } from 'react-router-dom';
-import Logo from '../../assets/logo.png';
-import useDocumentTitle from '../../hooks/useDocumentTitle';
+
 import { MdLocalPharmacy } from 'react-icons/md';
 import { FaMoneyBillWave } from 'react-icons/fa';
 import { AiOutlineLogout } from 'react-icons/ai';
 import { GiNewspaper } from 'react-icons/gi';
+
+import Logo from '../../assets/logo.png';
+
+import useDocumentTitle from '../../hooks/useDocumentTitle';
 
 const adminLinks = [
   {
@@ -34,7 +37,7 @@ const AdminPanelScreen = () => {
 
   return (
     <>
-      <div className="sidebar lg:fixed bottom-0 top-0  lg:w-[300px]  overflow-y-auto border-r-2 border-black bg-primary p-2 text-center lg:left-0">
+      <div className="sidebar bottom-0 top-0 overflow-y-auto  border-r-2  border-black bg-primary p-2 text-center lg:fixed lg:left-0 lg:w-[300px]">
         {adminLinks.map((link) => (
           <NavLink
             key={link.name}

@@ -54,7 +54,7 @@ const UploadImageInput = ({
       )}
 
       {image && (
-        <div className="flex w-full flex-col items-start">
+        <div className="flex w-full flex-col items-center justify-center">
           <label htmlFor={id} className="mb-2 font-bold text-gray-700">
             {label}
           </label>

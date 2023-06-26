@@ -76,8 +76,27 @@ const useImagesUploader = () => {
       const newImages = uploadedUrls.map((url) => ({
         url: url.url,
         filename: url.filename,
-        imageName: imageName,
       }));
+
+      if (images[imageName] !== undefined) {
+        await fetch(
+          `http://localhost:5000/api/uploads/${images[imageName].filename}`,
+          {
+            method: 'DELETE',
+            headers: {
+              Authorization: `Bearer ${user.token}`,
+            },
+          }
+        );
+
+        setImages((prevImages) => ({
+          ...prevImages,
+          [imageName]: {
+            url: newImages[0]?.url,
+            filename: newImages[0]?.filename,
+          },
+        }));
+      }
 
       setImages((prevImages) => ({
         ...prevImages,
@@ -90,7 +109,6 @@ const useImagesUploader = () => {
       setIsLoadingImageUpload(false);
     }
   };
-
 
   return { isLoadingImageUpload, images, handleImagesUpload, setImages };
 };

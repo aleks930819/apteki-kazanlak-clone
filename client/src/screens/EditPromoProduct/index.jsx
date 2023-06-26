@@ -117,7 +117,6 @@ const EditPromoScreeen = () => {
       />
       <UploadImageInput
         id="image"
-        label="Снимка"
         inputMessage="Променете снимката"
         handleFileChange={handleImagesUpload}
         value={images}
