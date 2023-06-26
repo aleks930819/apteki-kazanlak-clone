@@ -8,48 +8,51 @@ const EditImagesContainer = ({ images, handleImagesUpload, data }) => {
         id="mainImage"
         label="Заглавна снимка"
         handleFileChange={handleImagesUpload}
-          value={images[0] || data?.mainImage}
-          image={images[0]?.url || data?.mainImage.url}
+        imageName="mainImage"
+        value={images?.mainImage.url || data?.mainImage.url}
+        image={images?.mainImage.url || data?.mainImage.url}
       />
       <UploadImageInput
         id="secondaryImage"
         label="Втора снимка"
         handleFileChange={handleImagesUpload}
-          value={images[1] || data?.secondaryImage}
-          image={images[1]?.url || data?.secondaryImage.url}
+        value={images?.secondaryImage.url}
+        image={images?.secondaryImage.url}
+        imageName="secondaryImage"
       />
 
       <UploadImageInput
         id="managerImage"
         label="Снимка на мениджъра"
         handleFileChange={handleImagesUpload}
-          value={images[2] || data?.managerImage}
-          image={images[2]?.url || data?.managerImage.url}
+        value={images?.managerImage.url || data?.managerImage.url}
+        image={images?.managerImage.url || data?.managerImage.url}
+        imageName="managerImage"
       />
 
       <UploadImageInput
         id="pharmaciesImage-1"
         label="Снимки на Аптеката -1"
         handleFileChange={handleImagesUpload}
-          value={images[3] || data?.pharmacieImages[0]}
-          image={images[3]?.url || data?.pharmacieImages[0].url}
-        multiple={true}
+        value={images?.pharmaciesImage1.url || data?.pharmacieImages[0].url}
+        image={images?.pharmaciesImage1.url || data?.pharmacieImages[0].url}
+        imageName="pharmacieImages1"
       />
       <UploadImageInput
         id="pharmaciesImage-2"
         label="Снимки на Аптеката -2"
         handleFileChange={handleImagesUpload}
-          value={images[4] || data?.pharmacieImages[1]}
-          image={images[4]?.url || data?.pharmacieImages[1].url}
-        multiple={true}
+        name="pharmaciesImage2"
+        value={images?.pharmaciesImage2.url || data?.pharmacieImages[1].url}
+        image={images?.pharmaciesImage2.url || data?.pharmacieImages[1].url}
       />
       <UploadImageInput
         id="pharmaciesImage-3"
         label="Снимки на Аптеката -3"
         handleFileChange={handleImagesUpload}
-          value={images[5] || data?.pharmacieImages[2]}
-          image={images[5]?.url || data?.pharmacieImages[2].url}
-        multiple={true}
+        value={images?.pharmaciesImage3.url || data?.pharmacieImages[2].url}
+        image={images?.pharmaciesImage3.url || data?.pharmacieImages[2].url}
+        imageName="pharmacieImages3"
       />
     </UploadImagesWrapper>
   );

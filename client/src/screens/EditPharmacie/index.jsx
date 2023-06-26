@@ -16,11 +16,13 @@ import InputField from '../../ui/InputField';
 import TextAreaField from '../../ui/TextAreaField';
 import Spinner from '../../ui/Spinner';
 import Workingtime from '../../ui/Workingtime';
+import InputsWrapper from '../../ui/InpusWrapper';
 
 import setChangedValue from '../../utils/changeValueHandler';
 import { AuthContext } from '../../context/AuthContext';
 import EditImagesContainer from '../../components/EditPharmacie/EditImagesContainer';
-import InputsWrapper from '../../ui/InpusWrapper';
+
+import createNewData from '../../utils/createNewData';
 
 const EditPharmacieScreen = () => {
   const { slug } = useParams();
@@ -121,38 +123,17 @@ const EditPharmacieScreen = () => {
     });
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!deletingLoading) {
-      const formData = new FormData(e.target);
-      const data = Object.fromEntries(formData);
-      const newData = {
-        ...data,
-        address: {
-          city: data.city,
-          street: data.street,
-        },
-        workingHours: {
-          mondayToFriday: [
-            workingTime.weekDays.open,
-            workingTime.weekDays.close,
-          ],
-          saturday: [workingTime.saturday.open, workingTime.saturday.close],
-          sunday: [
-            workingTime.sunday.open ?? '',
-            workingTime.sunday.close ?? '',
-          ],
-        },
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
 
-        mainImage: images[0],
-        secondaryImage: images[1],
-        managerImage: images[2],
-        pharmacieImages: [images[3], images[4], images[5]],
-      };
+    console.log(workingHours);
+    return console.log(data);
 
-      updatePharmacie(newData);
-    }
+    const newData = await createNewData(data, images, workingHours);
+    updatePharmacie(newData);
   };
 
   const changeHandler = (e) => {

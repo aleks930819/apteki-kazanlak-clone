@@ -63,7 +63,7 @@ const AddNewNews = () => {
         handleFileChange={handleImagesUpload}
         value={images?.mainImage.url}
         image={images?.mainImage.url}
-        photoFieldName="mainImage"
+        imageName="mainImage"
       />
 
       <TextAreaField

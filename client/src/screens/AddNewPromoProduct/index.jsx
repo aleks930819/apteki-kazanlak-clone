@@ -84,7 +84,7 @@ const AddNewPromoProductScreen = () => {
         id="image"
         label="Снимка"
         handleFileChange={handleImagesUpload}
-        photoFieldName="mainImage"
+        imageName="mainImage"
         value={images?.mainImage.url}
         image={images?.mainImage.url}
       />

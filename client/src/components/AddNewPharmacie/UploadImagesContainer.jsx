@@ -11,7 +11,7 @@ const UploadImagesContainer = ({ images, handleImagesUpload, isLoading }) => {
         value={images?.mainImage.url}
         image={images?.mainImage.url}
         disabled={isLoading}
-        photoFieldName="mainImage"
+        imageName="mainImage"
       />
       <UploadImageInput
         id="secondaryImage"
@@ -20,7 +20,7 @@ const UploadImagesContainer = ({ images, handleImagesUpload, isLoading }) => {
         value={images?.secondaryImage.url}
         image={images?.secondaryImage.url}
         disabled={isLoading}
-        photoFieldName="secondaryImage"
+        imageName="secondaryImage"
       />
 
       <UploadImageInput
@@ -30,7 +30,7 @@ const UploadImagesContainer = ({ images, handleImagesUpload, isLoading }) => {
         value={images?.managerImage.url}
         image={images?.managerImage.url}
         disabled={isLoading}
-        photoFieldName="managerImage"
+        imageName="managerImage"
       />
 
       <UploadImageInput
@@ -40,7 +40,7 @@ const UploadImagesContainer = ({ images, handleImagesUpload, isLoading }) => {
         value={images?.pharmaciesImage1.url}
         image={images?.pharmaciesImage1.url}
         disabled={isLoading}
-        photoFieldName="pharmaciesImage1"
+        imageName="pharmaciesImage1"
       />
       <UploadImageInput
         id="pharmaciesImage-2"
@@ -49,7 +49,7 @@ const UploadImagesContainer = ({ images, handleImagesUpload, isLoading }) => {
         value={images?.pharmaciesImage2.url}
         image={images?.pharmaciesImage2.url}
         disabled={isLoading}
-        photoFieldName="pharmaciesImage2"
+        imageName="pharmaciesImage2"
       />
       <UploadImageInput
         id="pharmaciesImage-3"
@@ -58,7 +58,7 @@ const UploadImagesContainer = ({ images, handleImagesUpload, isLoading }) => {
         value={images?.pharmaciesImage3.url}
         image={images?.pharmaciesImage3.url}
         disabled={isLoading}
-        photoFieldName="pharmaciesImage3"
+        imageName="pharmaciesImage3"
       />
     </UploadImagesWrapper>
   );

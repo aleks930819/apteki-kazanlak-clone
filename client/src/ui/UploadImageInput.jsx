@@ -6,7 +6,7 @@ const UploadImageInput = ({
   image,
   disabled,
   inputMessage,
-  photoFieldName,
+  imageName,
 }) => {
   return (
     <div className="flex w-full  flex-col items-center  justify-between">
@@ -44,7 +44,7 @@ const UploadImageInput = ({
             accept="image/*"
             className="hidden"
             size={2 * 1024 * 1024}
-            onChange={(e) => handleFileChange(e, photoFieldName)}
+            onChange={(e) => handleFileChange(e, imageName)}
             disabled={disabled}
           />
           {value && (
@@ -86,7 +86,7 @@ const UploadImageInput = ({
             accept="image/*"
             className="hidden"
             size={2 * 1024 * 1024}
-            onChange={handleFileChange}
+            onChange={(e) => handleFileChange(e, imageName)}
             disabled={disabled}
           />
         </div>

@@ -78,7 +78,8 @@ const useImagesUploader = () => {
         filename: url.filename,
       }));
 
-      if (images[imageName] !== undefined) {
+      if (images[imageName].url) {
+        console.log('here');
         await fetch(
           `http://localhost:5000/api/uploads/${images[imageName].filename}`,
           {
