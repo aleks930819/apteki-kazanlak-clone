@@ -1,11 +1,38 @@
-import { Link } from 'react-router-dom';
 import Logo from '../../assets/contacts-banner.jpg';
+import PharmaciesDropdownItem from './PharmaciesDropdownItem';
+
+const pharamicesLinks = [
+  {
+    path: '/pharmacies/xigiya',
+    name: 'ХИГИЯ',
+  },
+  {
+    path: '/pharmacies/farma-1-kazanlak',
+    name: 'ФАРМА 1 КАЗАНЛЪК',
+  },
+  {
+    path: '/pharmacies/arnika',
+    name: 'АРНИКА',
+  },
+  {
+    path: '/pharmacies/farmavist',
+    name: 'ФАРМАВИСТ',
+  },
+  {
+    path: '/pharmacies/farma-1-pavel-banya',
+    name: 'ФАРМА 1 ПАВЕЛ БАНЯ',
+  },
+  {
+    path: '/pharmacies/farma-1-centr',
+    name: 'ФАРМА 1 ЦЕНТЪР',
+  },
+];
 
 const PharmaciesDropdown = ({ itsHover, dropdownRef, handleDropdownClose }) => {
   return (
     <div
       ref={dropdownRef}
-      className={`transition-height absolute top-[100%] left-0 flex h-[35vh] w-full bg-grey-lighter-2 duration-500 ${
+      className={`transition-height absolute left-0 top-[100%] flex h-[35vh] w-full bg-grey-lighter-2 duration-500 ${
         itsHover ? 'show' : ''
       }`}
       onMouseLeave={handleDropdownClose}
@@ -16,24 +43,13 @@ const PharmaciesDropdown = ({ itsHover, dropdownRef, handleDropdownClose }) => {
 
       <div className="ml-4 flex justify-center">
         <ul className="flex flex-col items-start justify-center gap-2 p-5">
-          <li className="text-base font-semibold text-primary">
-            <Link to="/pharmacies/xigiya">Хигия</Link>
-          </li>
-          <li className="text-base font-semibold text-primary">
-            <Link to="/pharmacies/farma-1-kazanlk">Фарма 1 Казанлък</Link>
-          </li>
-          <li className="text-base font-semibold text-primary">
-            <Link to="/pharmacies/arnika">Арника</Link>
-          </li>
-          <li className="text-base font-semibold text-primary">
-            <Link to="/pharmacies/farmavist">Фармавист</Link>
-          </li>
-          <li className="text-base font-semibold text-primary">
-            <Link to="/pharmacies/farma-1-pavel-banya">Фарма 1 Павел Баня</Link>
-          </li>
-          <li className="text-base font-semibold text-primary">
-            <Link to="/pharmacies/farma-1-centr">Фарма 1 Център</Link>
-          </li>
+          {pharamicesLinks.map((link) => (
+            <PharmaciesDropdownItem
+              key={link.name}
+              path={link.path}
+              name={link.name}
+            />
+          ))}
         </ul>
       </div>
     </div>
