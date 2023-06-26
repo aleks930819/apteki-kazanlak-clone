@@ -7,7 +7,6 @@ const NewsBanner = ({ image }) => {
           alt="People Banner Logo"
           className="h-[60vh]
            w-full object-cover
-              object-top
           "
         />
       </div>
