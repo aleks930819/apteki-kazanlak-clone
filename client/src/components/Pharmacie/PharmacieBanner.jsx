@@ -3,7 +3,7 @@ import People from '../../assets/people.jpg';
 const PharmacieBanner = ({ name, mainImage }) => {
   return (
     <div className="relative">
-      <div className="flex flex-col items-center justify-center ">
+      <figure className="flex flex-col items-center justify-center ">
         <img
           src={mainImage || People}
           alt="People Banner Logo"
@@ -12,7 +12,7 @@ const PharmacieBanner = ({ name, mainImage }) => {
                 object-top
             "
         />
-      </div>
+      </figure>
       <span
         className="
     animate-pop-in

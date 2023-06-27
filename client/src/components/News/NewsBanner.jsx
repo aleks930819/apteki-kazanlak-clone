@@ -1,7 +1,7 @@
 const NewsBanner = ({ image }) => {
   return (
     <div className="relative">
-      <div className="flex flex-col items-center justify-center ">
+      <figure className="flex flex-col items-center justify-center ">
         <img
           src={image}
           alt="People Banner Logo"
@@ -9,7 +9,7 @@ const NewsBanner = ({ image }) => {
            w-full object-cover
           "
         />
-      </div>
+      </figure>
     </div>
   );
 };

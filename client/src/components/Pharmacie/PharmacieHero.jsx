@@ -7,7 +7,7 @@ const PharmacieHero = ({
   managerImage,
 }) => {
   return (
-    <div className="linear-background-purple py-[30px] sm:py-[80px]">
+    <header className="linear-background-purple py-[30px] sm:py-[80px]">
       <div className="mx-auto flex w-[90vw]  flex-col-reverse items-center justify-center gap-10 sm:w-[75vw] sm:flex-row">
         <div className="font-montserrat flex-1  text-white">
           <h2 className="text-4xl">{managerName}</h2>
@@ -17,16 +17,16 @@ const PharmacieHero = ({
           <p className="whitespace-pre-wrap ">{managerDescription}</p>
         </div>
         <div className="flex flex-1 items-center">
-          <div className="h-full w-full">
+          <figure className="h-full w-full">
             <img
               src={managerImage || Man}
-              alt="man"
+              alt="manager"
               className="h-full w-full object-cover"
             />
-          </div>
+          </figure>
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 

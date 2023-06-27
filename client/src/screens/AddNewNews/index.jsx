@@ -3,6 +3,7 @@ import useAddNewNews from '../../hooks/useAddNewNews';
 import InputField from '../../ui/InputField';
 import TextAreaField from '../../ui/TextAreaField';
 import ActionForm from '../../ui/ActionForm';
+import UploadImageInput from '../../ui/UploadImageInput';
 
 import { toast } from 'react-hot-toast';
 import { useContext } from 'react';
@@ -10,7 +11,6 @@ import { useContext } from 'react';
 import useImageUploader from '../../hooks/useUploadImages';
 
 import { AuthContext } from '../../context/AuthContext';
-import UploadImageInput from '../../ui/UploadImageInput';
 
 import { useState } from 'react';
 

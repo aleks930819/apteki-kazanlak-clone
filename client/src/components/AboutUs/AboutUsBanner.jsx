@@ -5,7 +5,7 @@ const AboutUsBanner = () => {
     backgroundImage: `url(${AboutUsImage})`,
   };
   return (
-    <div
+    <figure
       style={divStyle}
       className="relative h-[30vh] bg-cover bg-no-repeat 
       object-top
@@ -22,7 +22,7 @@ const AboutUsBanner = () => {
           За нас
         </span>
       </div>
-    </div>
+    </figure>
   );
 };
 

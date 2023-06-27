@@ -4,7 +4,7 @@ const HeroBanner = ({ imageSrc, children }) => {
   };
 
   return (
-    <div
+    <figure
       style={divStyle}
       className="relative h-[30vh] bg-cover bg-center bg-no-repeat
       sm:h-[50vh]
@@ -17,7 +17,7 @@ const HeroBanner = ({ imageSrc, children }) => {
           </span>
         </div>
       </div>
-    </div>
+    </figure>
   );
 };
 

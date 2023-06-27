@@ -6,7 +6,7 @@ const ContactBanner = () => {
       <h3 className="mr-6 flex-1 text-2xl text-blue-dark lg:text-5xl">
         Нашите Аптеки
       </h3>
-      <div className="">
+      <figure>
         <img
           src={PharmaciesLogo}
           alt="Pharmacies Logo"
@@ -18,7 +18,7 @@ const ContactBanner = () => {
                 lg:w-full 
                 "
         />
-      </div>
+      </figure>
     </section>
   );
 };

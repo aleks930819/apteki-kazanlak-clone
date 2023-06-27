@@ -8,10 +8,8 @@ const ActionForm = ({
   editingLoading,
   deletingLoading,
   onDeleteAction,
-  deleteMessage,
 }) => {
   const handleDelete = (deleteMessage) => {
-    console.log(deleteMessage);
     const shouldDelete = window.confirm(deleteMessage);
     if (shouldDelete) {
       onDeleteAction();
