@@ -26,7 +26,7 @@ const InterestingScreen = () => {
   return (
     <div>
       <HeroBanner imageSrc={HeroBannerLogo}></HeroBanner>
-      <div className="mx-auto mb-20 mt-10 p-5 lg:max-w-[1180px]">
+      <div className="mx-auto mb-20 mt-10  px-5 lg:max-w-[1180px]">
         <FirstRow item={allNews} />
         <SecondRow item={allNews} />
       </div>

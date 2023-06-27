@@ -14,7 +14,7 @@ const SecondRow = ({ item }) => {
               <img
                 src={item.image.url}
                 alt={item.title}
-                className="h-[150px] w-full object-cover"
+                className=" w-full object-cover object-center h-[150px]"
               />
             </div>
             <div>

@@ -9,15 +9,15 @@ const FirstRow = ({ item }) => {
       {item?.slice(0, 2).map((item) => (
         <li key={item.id}>
           <article>
-            <div className="mb-5">
+            <div className="mb-5" style={{}}>
               <img
                 src={item.image.url}
                 alt={item.title}
                 className="
-              h-[160px] w-full
-              object-cover
-
-              object-center
+             h-[150px]
+              w-full
+           object-cover
+            object-center
             sm:h-[250px]
                   "
               />

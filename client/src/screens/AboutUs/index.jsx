@@ -36,10 +36,11 @@ const AboutUsScreen = () => {
       <section
         className="
       container mx-auto
-      mb-12
-      mt-12
-      lg:w-[54vw]
-      xl:w-[45vw]
+      mt-14
+      mb-10
+    max-w-lg
+    sm:px-20
+    lg:px-52
       "
       >
         <article>
