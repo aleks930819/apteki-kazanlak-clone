@@ -8,6 +8,8 @@ import { GOOGLE_MAPS_API_KEY } from '../../../api';
 
 import useAddPharmacie from '../../hooks/useAddPharmacie';
 import useImagesUploader from '../../hooks/useUploadImages';
+import useWorkingTime from '../../hooks/useWorkingTime';
+
 
 import InputField from '../../ui/InputField';
 import TextAreaField from '../../ui/TextAreaField';
@@ -16,12 +18,12 @@ import Workingtime from '../../ui/Workingtime';
 import InputsWrapper from '../../ui/InpusWrapper';
 
 import { AuthContext } from '../../context/AuthContext';
+
 import ChoiceButtons from '../../components/AddNewPharmacie/ChoiceButtons';
 import UploadImagesContainer from '../../components/AddNewPharmacie/UploadImagesContainer';
 
 import createNewData from '../../utils/createNewData';
 import setChangedValue from '../../utils/changeValueHandler';
-import useWorkingTime from '../../hooks/useWorkingTime';
 
 const libaries = ['places'];
 

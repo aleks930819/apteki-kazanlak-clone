@@ -61,8 +61,6 @@ const AdminInteresno = () => {
     ];
   }
 
-  console.log(tableData);
-
   return (
     <Table
       columns={tableColumns}
