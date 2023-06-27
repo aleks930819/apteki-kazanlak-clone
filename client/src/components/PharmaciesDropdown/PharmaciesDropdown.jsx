@@ -13,7 +13,7 @@ const PharmaciesDropdown = ({ itsHover, dropdownRef, handleDropdownClose }) => {
   return (
     <div
       ref={dropdownRef}
-      className={`transition-height absolute left-0 top-[100%] flex h-[35vh] w-full bg-grey-lighter-2 duration-400 ${
+      className={`transition-height absolute left-0 top-[100%] flex h-[35vh] w-full bg-grey-lighter-2 duration-100 ${
         itsHover ? 'show' : ''
       }`}
       onMouseLeave={handleDropdownClose}
