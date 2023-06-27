@@ -52,11 +52,12 @@ export const updatePharmacieBySlug = async (slug, data, token) => {
     body: JSON.stringify(data),
   });
 
+  const responseData = await response.json();
+
   if (!response.ok) {
-    throw new Error('Failed to update pharmacy.');
+    throw new Error(responseData.message);
   }
 
-  const responseData = await response.json();
   return responseData;
 };
 
@@ -69,10 +70,10 @@ export const deletePharmacieBySlug = async (slug, token) => {
     },
   });
 
-  if (!response.ok) {
-    throw new Error('Failed to delete pharmacy.');
-  }
-
   const responseData = await response.json();
+
+  if (!response.ok) {
+    throw new Error(responseData.message);
+  }
   return responseData;
 };

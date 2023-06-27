@@ -5,22 +5,23 @@ const API_URL = `${BASE_URL}/interesting`;
 export const getNews = async () => {
   const response = await fetch(API_URL);
 
+  const data = await response.json();
+
   if (!response.ok) {
-    throw new Error('Failed to fetch promo products.');
+    throw new Error(data.message);
   }
 
-  const data = await response.json();
   return data;
 };
 
 export const getSingleNews = async (slug) => {
   const response = await fetch(`${API_URL}/${slug}`);
 
-  if (!response.ok) {
-    throw new Error('Failed to fetch single news');
-  }
-
   const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message);
+  }
   return data;
 };
 
@@ -34,11 +35,11 @@ export const createNewNews = async (news, token) => {
     body: JSON.stringify(news),
   });
 
-  if (!response.ok) {
-    throw new Error('Failed to create new news');
-  }
-
   const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message);
+  }
   return data;
 };
 
@@ -52,11 +53,11 @@ export const updateNews = async (news, slug, token) => {
     body: JSON.stringify(news),
   });
 
-  if (!response.ok) {
-    throw new Error('Failed to update news');
-  }
-
   const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message);
+  }
   return data;
 };
 
@@ -69,10 +70,10 @@ export const deleteNewsBySlug = async (slug, token) => {
     },
   });
 
-  if (!response.ok) {
-    throw new Error('Failed to delete news');
-  }
-
   const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message);
+  }
   return data;
 };
