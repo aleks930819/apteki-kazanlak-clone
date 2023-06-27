@@ -182,7 +182,7 @@ function App() {
           containerStyle={{ top: 80 }}
           toastOptions={{
             success: {
-              duration: 5000,
+              duration: 3000,
             },
             error: {
               duration: 5000,

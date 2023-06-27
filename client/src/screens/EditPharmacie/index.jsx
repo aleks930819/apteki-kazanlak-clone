@@ -28,13 +28,15 @@ import { GOOGLE_MAPS_API_KEY } from '../../../api';
 import ChoiceButtons from '../../components/AddNewPharmacie/ChoiceButtons';
 import useWorkingTime from '../../hooks/useWorkingTime';
 
+const libaries = ['places'];
+
 const EditPharmacieScreen = () => {
   const { slug } = useParams();
   const { user } = useContext(AuthContext);
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: GOOGLE_MAPS_API_KEY,
-    libraries: ['places'],
+    libraries: libaries,
   });
 
   let initialWorkingTime = {

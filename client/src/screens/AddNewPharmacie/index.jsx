@@ -23,11 +23,13 @@ import createNewData from '../../utils/createNewData';
 import setChangedValue from '../../utils/changeValueHandler';
 import useWorkingTime from '../../hooks/useWorkingTime';
 
+const libaries = ['places'];
+
 const AddNewPharmacieScreen = () => {
   const { user } = useContext(AuthContext);
   const [values, setValues] = useState({
     name: '',
-    city: '',
+    city: 'гр. Казанлък',
     street: '',
     phone: '',
     history: '',
@@ -37,7 +39,7 @@ const AddNewPharmacieScreen = () => {
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: GOOGLE_MAPS_API_KEY,
-    libraries: ['places'],
+    libraries: libaries,
   });
 
   const { addPharmacie, addingPharmacieLoading } = useAddPharmacie(user);
