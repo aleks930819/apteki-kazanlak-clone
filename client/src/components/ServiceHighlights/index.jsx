@@ -21,7 +21,7 @@ const ServiceHighlightsTitles = [
 
 const ServiceHighlights = () => {
   return (
-    <div className="linear-background flex h-[50vh] items-center justify-center border-b-[1px] border-t-[1px] border-black text-primary">
+    <div className="linear-background flex h-[50vh]  items-center justify-center border-b-[1px] border-t-[1px] border-black text-primary">
       <ServiceHighlightsItems
         ServiceHighlightsTitles={ServiceHighlightsTitles}
       />

@@ -5,7 +5,7 @@ const ServiceHighlightsItem = ({ title, fontSize }) => {
 
   return (
     <li className={itemClassName}>
-      <AiOutlineCheck className="mr-3 inline-block text-2xl" />
+      <AiOutlineCheck className="mr-3 inline-block text-3xl" />
       {title}
     </li>
   );

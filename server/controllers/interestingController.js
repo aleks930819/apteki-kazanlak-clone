@@ -75,6 +75,8 @@ export const deleteNews = asyncHandler(async (req, res) => {
 export const editNews = asyncHandler(async (req, res) => {
   const { title, description, summary, image } = req.body;
 
+
+
   const news = await News.findOne({ slug: req.params.slug });
 
   if (news) {

@@ -28,6 +28,7 @@ import EditNewsScreen from './screens/EditNews';
 import AddNewPharmacieScreen from './screens/AddNewPharmacie';
 import EditPharmacieScreen from './screens/EditPharmacie';
 import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -80,43 +81,83 @@ const router = createBrowserRouter([
       },
       {
         path: '/admin',
-        element: <AdminPanelScreen />,
+        element: (
+          <ProtectedRoute>
+            <AdminPanelScreen />
+          </ProtectedRoute>
+        ),
         children: [
           {
             path: 'pharmacies',
-            element: <AdminPharmacies />,
+            element: (
+              <ProtectedRoute>
+                <AdminPharmacies />
+              </ProtectedRoute>
+            ),
           },
           {
             path: 'pharmacies/add',
-            element: <AddNewPharmacieScreen />,
+            element: (
+              <ProtectedRoute>
+                <AddNewPharmacieScreen />,
+              </ProtectedRoute>
+            ),
           },
           {
             path: 'pharmacies/edit/:slug',
-            element: <EditPharmacieScreen />,
+            element: (
+              <ProtectedRoute>
+                <EditPharmacieScreen />,
+              </ProtectedRoute>
+            ),
           },
           {
             path: 'promo-products',
-            element: <AdminPromoProducts />,
+            element: (
+              <ProtectedRoute>
+                <AdminPromoProducts />,
+              </ProtectedRoute>
+            ),
           },
           {
             path: 'promo-products/add',
-            element: <AddNewPromoProductScreen />,
+            element: (
+              <ProtectedRoute>
+                <AddNewPromoProductScreen />,
+              </ProtectedRoute>
+            ),
           },
           {
             path: 'promo-products/edit/:id',
-            element: <EditPromoScreeen />,
+            element: (
+              <ProtectedRoute>
+                <EditPromoScreeen />,
+              </ProtectedRoute>
+            ),
           },
           {
             path: 'interesno',
-            element: <AdminInteresno />,
+            element: (
+              <ProtectedRoute>
+                <AdminInteresno />,
+              </ProtectedRoute>
+            ),
           },
           {
             path: 'interesno/add',
-            element: <AddNewNewsScreen />,
+            element: (
+              <ProtectedRoute>
+                <AddNewNewsScreen />,
+              </ProtectedRoute>
+            ),
           },
           {
             path: 'interesno/edit/:slug',
-            element: <EditNewsScreen />,
+            element: (
+              <ProtectedRoute>
+                <EditNewsScreen />,
+              </ProtectedRoute>
+            ),
           },
         ],
       },
