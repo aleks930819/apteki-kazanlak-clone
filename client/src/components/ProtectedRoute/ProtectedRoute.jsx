@@ -7,8 +7,8 @@ const ProtectedRoute = ({ children }) => {
   useEffect(() => {
     const user = localStorage.getItem('user');
 
-    if (!user) {
-      navigate('/login');
+    if (!user || JSON.parse(user).role !== 2995) {
+      navigate('/');
     }
   }, [navigate]);
 

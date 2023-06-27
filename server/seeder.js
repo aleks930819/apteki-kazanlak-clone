@@ -19,21 +19,18 @@ connectDB();
 const importData = async () => {
   try {
     await User.deleteMany();
-    await PromoProduct.deleteMany();
-    await News.deleteMany();
-    await Pharmacie.deleteMany();
+    // await PromoProduct.deleteMany();
+    // await News.deleteMany();
+    // await Pharmacie.deleteMany();
 
     const createdUsers = await User.insertMany(users);
 
     const adminUser = createdUsers[0]._id;
 
-    const samplePromoProducts = promoProducts.map((promoProduct) => {
-      return { ...promoProduct, user: adminUser };
-    });
 
-    await PromoProduct.insertMany(samplePromoProducts);
-    await News.insertMany(news);
-    await Pharmacie.insertMany(pharmaciesData);
+    // await PromoProduct.insertMany(samplePromoProducts);
+    // await News.insertMany(news);
+    // await Pharmacie.insertMany(pharmaciesData);
 
     console.log('Data imported!');
     process.exit();
@@ -46,9 +43,9 @@ const importData = async () => {
 const destroyData = async () => {
   try {
     await User.deleteMany();
-    await PromoProduct.deleteMany();
-    await News.deleteMany();
-    await Pharmacie.deleteMany();
+    // await PromoProduct.deleteMany();
+    // await News.deleteMany();
+    // await Pharmacie.deleteMany();
 
     console.log('Data destroyed!');
     process.exit();
