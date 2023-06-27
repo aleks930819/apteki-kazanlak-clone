@@ -4,7 +4,7 @@ import Links from './Links';
 
 import { useState } from 'react';
 
-const data = [
+const pharmacies = [
   {
     id: 1,
     name: 'Хигия',
@@ -85,6 +85,9 @@ const data = [
 ];
 
 const Maps = () => {
+  // const GOOGLE_API_KEY = process.env.VITE_GOOGLE_API_KEY;
+
+
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: GOOGLE_MAPS_API_KEY,
   });
@@ -116,7 +119,7 @@ const Maps = () => {
           panControl={true}
           zoomControl={true}
         >
-          {data.map((location) => (
+          {pharmacies.map((location) => (
             <Marker
               key={location.id}
               position={location.location}
@@ -126,9 +129,9 @@ const Maps = () => {
           ))}
         </GoogleMap>
       </div>
-      <div className="w-full  lg:w-[25%]">
-        <Links data={data} onLocationClick={handleLocationClick} />
-      </div>
+      <nav className="w-full  lg:w-[25%]">
+        <Links pharmacies={pharmacies} onLocationClick={handleLocationClick} />
+      </nav>
     </div>
   );
 };

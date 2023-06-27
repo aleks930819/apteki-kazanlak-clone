@@ -2,7 +2,6 @@ import UploadImageInput from '../../ui/UploadImageInput';
 import UploadImagesWrapper from '../../ui/UploadImagesWrapper';
 
 const EditImagesContainer = ({ images, handleImagesUpload, data }) => {
-  console.log(images);
   return (
     <UploadImagesWrapper heading="Снимки">
       <UploadImageInput
