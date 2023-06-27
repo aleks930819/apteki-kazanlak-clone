@@ -12,13 +12,15 @@ const HistoryYearOdd = ({ item }) => {
       setIsVisible(entry.isIntersecting);
     });
 
+    const currentRef = componentRef.current;
+
     if (componentRef.current) {
-      observer.observe(componentRef.current);
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (componentRef.current) {
-        observer.unobserve(componentRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -28,7 +30,7 @@ const HistoryYearOdd = ({ item }) => {
       ref={componentRef}
       initial={{ opacity: 0, y: -30, x: -30 }}
       animate={isVisible ? { opacity: 1, y: 0, x: 0 } : {}}
-      transition={{ duration: .5 }}
+      transition={{ duration: 1 }}
       className="mr-5 flex items-center  gap-x-10 self-start sm:ml-[-38px] sm:mr-auto sm:w-[50%]"
     >
       <div className="ml-auto flex w-[100%] flex-col items-end justify-end sm:w-[40%]">

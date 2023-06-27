@@ -109,7 +109,7 @@
     left: calc(50% - 2px);
     position: absolute;
     top: 24px;
-    width: 5px;
+    width: 4px;
   }
 
   .spine::before {
@@ -117,7 +117,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 20px;
+    width: 18px;
     height: 4px;
     background: #00686c;
   }
@@ -126,7 +126,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: 20px;
+    width: 18px;
     height: 4px;
     background: #00686c;
   }
