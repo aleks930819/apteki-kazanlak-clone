@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 
 import { MdLocalPharmacy } from 'react-icons/md';
 import { FaMoneyBillWave } from 'react-icons/fa';
@@ -25,15 +25,17 @@ const adminLinks = [
     path: '/admin/interesno',
     icon: <GiNewspaper />,
   },
-  {
-    name: 'Изход',
-    path: '/',
-    icon: <AiOutlineLogout />,
-  },
 ];
 
 const AdminPanelScreen = () => {
   useDocumentTitle('Административен панел');
+
+  const navigate = useNavigate();
+
+  const logoutHandler = () => {
+    localStorage.removeItem('user');
+    navigate('/');
+  };
 
   return (
     <>
@@ -50,6 +52,17 @@ const AdminPanelScreen = () => {
             </span>
           </NavLink>
         ))}
+
+        <NavLink
+          className="mt-3 flex cursor-pointer items-center rounded-md border-b-2 p-2.5 px-4 text-white duration-300 hover:bg-green-600"
+          onClick={logoutHandler}
+        >
+          <AiOutlineLogout />
+          <span className="ml-4 text-[15px] font-bold text-gray-200" to="/">
+            Изход
+          </span>
+        </NavLink>
+
         <div className="absolute bottom-0 left-1/2 hidden -translate-x-1/2 transform lg:block">
           <img
             className=" h-[200px] w-[200px]

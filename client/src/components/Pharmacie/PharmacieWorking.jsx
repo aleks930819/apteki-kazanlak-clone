@@ -12,7 +12,7 @@ const PharmacieWorking = ({
   return (
     <section className="bg-grey-main py-10 ">
       <div
-        className="mx-auto ml-auto w-full px-5  lg:px-10 mr-auto flex max-w-lg  flex-col items-center justify-center  
+        className="mx-auto ml-auto mr-auto flex  w-full max-w-lg flex-col items-center  justify-center px-5 lg:px-10  
       "
       >
         {/* 1 */}

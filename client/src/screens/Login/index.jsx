@@ -5,6 +5,7 @@ import { login } from '../../services/apiAuth';
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
+import Photo from '../../assets/contacts-banner.jpg';
 
 const LoginScreen = () => {
   const [isShowPassword, setIsShowPassword] = useState(false);
@@ -44,14 +45,21 @@ const LoginScreen = () => {
       userLogin(data);
       toast.success('Успешно влизане!');
 
-      navigate('/admin');
+      navigate('/admin/pharmacies');
     } catch (error) {
       toast.error(error.message);
     }
   };
 
   return (
-    <section className="mx-auto mb-10 mt-10 flex  w-full items-center justify-center rounded-md bg-white text-black shadow-lg sm:w-[40vw]">
+    <section className="mx-auto  flex h-screen w-full flex-col items-center justify-center rounded-md bg-white text-black shadow-lg sm:flex-row">
+      <div>
+        <img
+          src={Photo}
+          alt="contacts-banner"
+          className="w-full object-center sm:h-screen"
+        />
+      </div>
       <form
         className="flex w-full flex-col items-center p-10"
         onSubmit={submitHandler}
