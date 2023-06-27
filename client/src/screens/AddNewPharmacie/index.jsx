@@ -21,6 +21,7 @@ import UploadImagesContainer from '../../components/AddNewPharmacie/UploadImages
 
 import createNewData from '../../utils/createNewData';
 import setChangedValue from '../../utils/changeValueHandler';
+import useWorkingTime from '../../hooks/useWorkingTime';
 
 const AddNewPharmacieScreen = () => {
   const { user } = useContext(AuthContext);
@@ -54,7 +55,7 @@ const AddNewPharmacieScreen = () => {
     }
   };
 
-  const [workingTime, setWorkingTime] = useState({
+  const initialWorkingTime = {
     weekDays: {
       open: '08:00',
       close: '20:00',
@@ -67,17 +68,10 @@ const AddNewPharmacieScreen = () => {
       open: '08:00',
       close: '20:00',
     },
-  });
-
-  const handleChangeWorkingTime = (day, type) => (value) => {
-    setWorkingTime((prev) => ({
-      ...prev,
-      [day]: {
-        ...prev[day],
-        [type]: value,
-      },
-    }));
   };
+
+  const { workingTime, handleChangeWorkingTime } =
+    useWorkingTime(initialWorkingTime);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

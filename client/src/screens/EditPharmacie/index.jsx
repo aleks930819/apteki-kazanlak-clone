@@ -26,6 +26,7 @@ import EditImagesContainer from '../../components/EditPharmacie/EditImagesContai
 
 import { GOOGLE_MAPS_API_KEY } from '../../../api';
 import ChoiceButtons from '../../components/AddNewPharmacie/ChoiceButtons';
+import useWorkingTime from '../../hooks/useWorkingTime';
 
 const EditPharmacieScreen = () => {
   const { slug } = useParams();
@@ -36,7 +37,7 @@ const EditPharmacieScreen = () => {
     libraries: ['places'],
   });
 
-  const [workingTime, setWorkingTime] = useState({
+  let initialWorkingTime = {
     weekDays: {
       open: null,
       close: null,
@@ -49,7 +50,10 @@ const EditPharmacieScreen = () => {
       open: null,
       close: null,
     },
-  });
+  };
+
+  const { workingTime, setWorkingTime, handleChangeWorkingTime } =
+    useWorkingTime(initialWorkingTime);
 
   const [selectedChoices, setSelectedChoices] = useState([]);
 
@@ -59,16 +63,6 @@ const EditPharmacieScreen = () => {
     } else {
       setSelectedChoices([...selectedChoices, choice]);
     }
-  };
-
-  const handleChangeWorkingTime = (day, type) => (value) => {
-    setWorkingTime((prev) => ({
-      ...prev,
-      [day]: {
-        ...prev[day],
-        [type]: value,
-      },
-    }));
   };
 
   const [values, setValues] = useState({
