@@ -20,7 +20,7 @@ import Spinner from '../../ui/Spinner';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 
 const Pharmacie = () => {
-  const { isLoaded } = useJsApiLoader({
+  const { isLoaded: loadingGogleMaps } = useJsApiLoader({
     googleMapsApiKey: GOOGLE_MAPS_API_KEY,
   });
 
@@ -29,14 +29,10 @@ const Pharmacie = () => {
     ['singlePharmacie', slug],
     () => getPharmacie(slug)
   );
-
+  
   useDocumentTitle(`${pharmacie?.name} | Социални Аптеки Казанлък`);
 
-  if (!isLoaded) {
-    return <div>Loading...</div>;
-  }
-
-  if (isLoading) {
+  if (isLoading || loadingGogleMaps) {
     return <Spinner />;
   }
 

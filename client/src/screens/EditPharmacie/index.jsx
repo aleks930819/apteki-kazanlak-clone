@@ -39,6 +39,23 @@ const EditPharmacieScreen = () => {
     libraries: libaries,
   });
 
+  const [values, setValues] = useState({
+    name: '',
+    history: '',
+    phone: '',
+    managerName: '',
+    city: '',
+    street: '',
+    workingHours: '',
+    managerTitle: '',
+    managerDescription: '',
+    mainImage: '',
+    secondaryImage: '',
+    managerImage: '',
+    pharmacieImages: [],
+    workingWith: [],
+  });
+
   let initialWorkingTime = {
     weekDays: {
       open: null,
@@ -66,23 +83,6 @@ const EditPharmacieScreen = () => {
       setSelectedChoices([...selectedChoices, choice]);
     }
   };
-
-  const [values, setValues] = useState({
-    name: '',
-    history: '',
-    phone: '',
-    managerName: '',
-    city: '',
-    street: '',
-    workingHours: '',
-    managerTitle: '',
-    managerDescription: '',
-    mainImage: '',
-    secondaryImage: '',
-    managerImage: '',
-    pharmacieImages: [],
-    workingWith: [],
-  });
 
   const { editingLoading, updatePharmacie } = useUpdatePharmacie(slug, user);
   const { deletePharmacie, deletingLoading } = useDeletePharmacie(slug, user);

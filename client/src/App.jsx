@@ -1,3 +1,5 @@
+import { Suspense, lazy } from 'react';
+
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import AppLayout from './ui/AppLayout';
@@ -12,23 +14,31 @@ import HistoryScreen from './screens/History';
 import Pharmacie from './screens/Pharmacie';
 import NewsScreen from './screens/News';
 import LoginScreen from './screens/Login';
-import AdminPanelScreen from './screens/AdminPanel';
-import AddNewPromoProductScreen from './screens/AddNewPromoProduct';
-import EditPromoScreeen from './screens/EditPromoProduct';
-import AddNewNewsScreen from './screens/AddNewNews';
 
-import AdminPromoProducts from './components/Admin/AdminPromoProducts';
-import AdminInteresno from './components/Admin/adminInteresno';
-import AdminPharmacies from './components/Admin/adminPharmacies';
+const AdminPanelScreen = lazy(() => import('./screens/AdminPanel'));
+const AdminPharmacies = lazy(() =>
+  import('./components/Admin/adminPharmacies')
+);
+const AdminPromoProducts = lazy(() =>
+  import('./components/Admin/AdminPromoProducts')
+);
+const AdminInteresno = lazy(() => import('./components/Admin/adminInteresno'));
+const AddNewPharmacieScreen = lazy(() => import('./screens/AddNewPharmacie'));
+const EditPharmacieScreen = lazy(() => import('./screens/EditPharmacie'));
+const AddNewPromoProductScreen = lazy(() =>
+  import('./screens/AddNewPromoProduct')
+);
+const EditPromoScreeen = lazy(() => import('./screens/EditPromoProduct'));
+const AddNewNewsScreen = lazy(() => import('./screens/AddNewNews'));
+const EditNewsScreen = lazy(() => import('./screens/EditNews'));
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Toaster } from 'react-hot-toast';
-import EditNewsScreen from './screens/EditNews';
-import AddNewPharmacieScreen from './screens/AddNewPharmacie';
-import EditPharmacieScreen from './screens/EditPharmacie';
 import { AuthProvider } from './context/AuthContext';
+
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import Spinner from './ui/Spinner';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -174,7 +184,9 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <ReactQueryDevtools initialIsOpen={false} />
-        <RouterProvider router={router} />
+        <Suspense fallback={<Spinner />}>
+          <RouterProvider router={router} />
+        </Suspense>
         <Toaster
           position="top-center"
           reverseOrder={false}

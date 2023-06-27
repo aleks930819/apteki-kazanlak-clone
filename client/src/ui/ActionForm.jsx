@@ -17,7 +17,7 @@ const ActionForm = ({
   };
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center rounded-md bg-white p-4 shadow-md">
+    <div className="flex h-full w-full flex-col items-center justify-center rounded-md  p-4 shadow-md">
       <form
         onSubmit={onSubmit}
         className="flex flex-col items-center justify-center gap-5 text-blue-dark"

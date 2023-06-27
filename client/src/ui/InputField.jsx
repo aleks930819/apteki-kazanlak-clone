@@ -23,7 +23,7 @@ const InputField = ({
         placeholder={placeholder}
         required={required}
         onChange={(e) => onChange(e)}
-        className="w-full rounded-md border-2 border-gray-300 p-2 outline-none focus:border-primary"
+        className="w-full rounded-md border-2  border-gray-300 p-2 outline-none focus:border-primary"
       />
     </div>
   );
