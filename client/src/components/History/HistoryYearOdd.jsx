@@ -33,7 +33,7 @@ const HistoryYearOdd = ({ item }) => {
       transition={{ duration: 1 }}
       className="mr-5 flex items-center  gap-x-10 self-start sm:ml-[-38px] sm:mr-auto sm:w-[50%]"
     >
-      <div className="ml-auto flex w-[100%] flex-col items-end justify-end sm:w-[40%]">
+      <div className="ml-auto flex w-[100%] flex-col items-end justify-end ">
         <p className="mb-4 pl-1 text-2xl text-blue-dark">{item.title}</p>
         <p className="center  text-blue-dark">{item.summary}</p>
       </div>

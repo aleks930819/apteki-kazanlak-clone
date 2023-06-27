@@ -10,9 +10,9 @@ const PharmacieWorking = ({
   workingWith,
 }) => {
   return (
-    <section className="bg-grey-main p-5 sm:p-10 ">
+    <section className="bg-grey-main py-10 ">
       <div
-        className="mx-auto flex  flex-col items-center justify-center   sm:w-[75vw] xl:w-[67vw]
+        className="mx-auto ml-auto w-full px-5  lg:px-10 mr-auto flex max-w-lg  flex-col items-center justify-center  
       "
       >
         {/* 1 */}
