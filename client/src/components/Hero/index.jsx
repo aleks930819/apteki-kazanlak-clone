@@ -1,13 +1,16 @@
-// import HeroBanner from './HeroBanner';
+import 'swiper/css';
+
+import { useState } from 'react';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Link } from 'react-router-dom';
+
 import thirdImage from '../../assets/promo-banner-centrum.jpg';
 import secondImage from '../../assets/slide2.jpg';
 import firstImage from '../../assets/slide1.jpg';
-import { useState } from 'react';
+
 import HeroCurrentImageShow from './HeroCurrentImageShow';
 import HeroImagesChangeButtons from './HeroImagesChangeButtons';
-import { Link } from 'react-router-dom';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
 
 const imagesArray = [
   {

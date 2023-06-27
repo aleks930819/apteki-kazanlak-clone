@@ -46,18 +46,17 @@ router.post('/', adminMiddleware, upload.single('image'), async (req, res) => {
       res.status(400).json({ message: err });
       return;
     }
-  });
 
-  res.send({
-    message: 'Image uploaded successfully',
-    url: `http://localhost:5000/images/${req.file.filename}`,
-    filename: req.file.filename,
+    res.json({
+      message: 'Image uploaded successfully',
+      url: `http://localhost:5000/images/${req.file.filename}`,
+      filename: req.file.filename,
+    });
   });
 });
 
 router.delete('/:filename', adminMiddleware, async (req, res) => {
   const filename = req.params.filename;
-
   const filePath = path.join('images/', filename);
 
   if (fs.existsSync(filePath)) {
@@ -67,5 +66,6 @@ router.delete('/:filename', adminMiddleware, async (req, res) => {
     res.status(404).json({ message: 'File not found' });
   }
 });
+
 
 export default router;

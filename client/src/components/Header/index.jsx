@@ -44,7 +44,7 @@ const Header = () => {
         zIndex: 100,
         width: '100%',
         padding: '2px',
-        boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.4)',
+        boxShadow: '0px 4px 4px rgba(0, 0, 0, .5)',
       }}
       className="h-20 "
     >

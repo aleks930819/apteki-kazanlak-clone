@@ -1,6 +1,8 @@
 import { useContext, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 
+import toast from 'react-hot-toast';
+
 const useImagesUploader = () => {
   const [isLoadingImageUpload, setIsLoadingImageUpload] = useState(false);
   const [images, setImages] = useState({
@@ -47,7 +49,12 @@ const useImagesUploader = () => {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
-        }).then((response) => response.json());
+        }).then((response) =>
+          response
+            .json()
+            .then((data) => (data.message ? toast.error(data.message) : ''))
+            .catch((err) => console.log(err))
+        );
       });
 
       const uploadedImages = await Promise.all(uploadPromises);
@@ -72,6 +79,8 @@ const useImagesUploader = () => {
     try {
       setIsLoadingImageUpload(true);
       const uploadedUrls = await uploadImages(files);
+
+      console.log(uploadedUrls);
 
       const newImages = uploadedUrls.map((url) => ({
         url: url.url,
