@@ -13,12 +13,12 @@ const PharmaciesDropdown = ({ itsHover, dropdownRef, handleDropdownClose }) => {
   return (
     <div
       ref={dropdownRef}
-      className={`transition-height absolute left-0 top-[100%] flex h-[35vh] w-full bg-grey-lighter-2 duration-500 ${
+      className={`transition-height absolute left-0 top-[100%] flex h-[35vh] w-full bg-grey-lighter-2 duration-400 ${
         itsHover ? 'show' : ''
       }`}
       onMouseLeave={handleDropdownClose}
     >
-      <div>
+      <div className="h-full w-1/3 bg-cover bg-center">
         <img src={Logo} alt="Logo" className="h-full w-full object-cover" />
       </div>
 
