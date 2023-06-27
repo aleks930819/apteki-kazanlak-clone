@@ -6,6 +6,8 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 
 
+import errorHandler from './middleware/errorHandler.js';
+
 import promoProductRoutes from './routes/promoProductRoute.js';
 import interestingRoute from './routes/interestingRoute.js';
 import pharmacieRoute from './routes/phramcieRoute.js';
@@ -31,6 +33,8 @@ app.use('/api/interesting', interestingRoute);
 app.use('/api/pharmacies', pharmacieRoute);
 app.use('/api/auth', userRoute);
 app.use('/api/uploads', uploadsRoute);
+
+app.use(errorHandler);
 
 const __dirname = path.resolve();
 

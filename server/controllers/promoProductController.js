@@ -11,8 +11,7 @@ export const getAllPromoProducts = asyncHandler(async (req, res) => {
   if (promoProducts) {
     res.status(200).json(promoProducts);
   } else {
-    res.status(404);
-    throw new Error('No promo products found.');
+    res.status(404).json({ message: 'Няма налични промо продукти' });
   }
 });
 
@@ -23,7 +22,7 @@ export const addPromoProduct = asyncHandler(async (req, res) => {
   const { name, image, oldPrice, description, newPrice } = req.body;
 
   if (!name || !image || !oldPrice || !description || !newPrice) {
-    return res.status(400).json({ message: 'Please fill all fields' });
+    return res.status(400).json({ message: 'Моля попълнете всички полета!' });
   }
 
   const promoProduct = new PromoProduct({
@@ -55,8 +54,7 @@ export const deletePromoProduct = asyncHandler(async (req, res) => {
     deleteImage(isPromoProductExist.image.filename);
     res.json({ message: 'Promo product removed' });
   } else {
-    res.status(404);
-    throw new Error('Promo product not found');
+    res.status(404).json({ message: 'Продуктът не е намерен' });
   }
 });
 
@@ -69,8 +67,7 @@ export const getPromoProductById = asyncHandler(async (req, res) => {
   if (promoProduct) {
     res.status(200).json(promoProduct);
   } else {
-    res.status(404);
-    throw new Error('Promo product not found');
+    res.status(404).json({ message: 'Продуктът не е намерен' });
   }
 });
 
@@ -93,7 +90,6 @@ export const editPromoProduct = asyncHandler(async (req, res) => {
     const updatedPromoProduct = await promoProduct.save();
     res.status(200).json(updatedPromoProduct);
   } else {
-    res.status(404);
-    throw new Error('Promo product not found');
+    res.status(404).json({ message: 'Продуктът не е намерен' });
   }
 });

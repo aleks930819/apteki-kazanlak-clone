@@ -11,8 +11,7 @@ export const getAllNews = asyncHandler(async (req, res) => {
   if (news) {
     res.status(200).json(news);
   } else {
-    res.status(404);
-    throw new Error('No news found.');
+    res.status(404).json({ message: 'Няма налични статии' });
   }
 });
 
@@ -27,8 +26,7 @@ export const getSingleNews = asyncHandler(async (req, res) => {
   if (news) {
     res.status(200).json(news);
   } else {
-    res.status(404);
-    throw new Error('News not found.');
+    res.status(404).json({ message: 'Статията не е намерeна' });
   }
 });
 
@@ -41,7 +39,7 @@ export const createNews = asyncHandler(async (req, res) => {
   console.log(req.body);
 
   if (!title || !description || !image || !summary) {
-    return res.status(400).json({ message: 'Please fill all fields' });
+    return res.status(400).json({ message: 'Моля попълнете всички полета!' });
   }
 
   const news = new News({
@@ -62,18 +60,13 @@ export const deleteNews = asyncHandler(async (req, res) => {
   const isNewsExist = await News.findOne({ slug: req.params.slug });
 
   if (!isNewsExist) {
-    return res.status(404).json({ message: 'News not found' });
+    return res.status(404).json({ message: 'Статията не е намерена' });
   }
 
   const news = await News.deleteOne({ slug: req.params.slug });
 
-  if (news) {
-    deleteImage(isNewsExist.image.filename);
-    res.json({ message: 'News removed' });
-  } else {
-    res.status(404);
-    throw new Error('News not found');
-  }
+  deleteImage(isNewsExist.image.filename);
+  res.json({ message: 'Статията е премахната' });
 });
 
 // @desc    Edit news
@@ -93,7 +86,6 @@ export const editNews = asyncHandler(async (req, res) => {
     const updatedNews = await news.save();
     res.status(200).json(updatedNews);
   } else {
-    res.status(404);
-    throw new Error('News not found');
+    res.status(404).json({ message: 'Статията не е намерена' });
   }
 });

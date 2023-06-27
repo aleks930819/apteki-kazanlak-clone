@@ -12,8 +12,7 @@ export const getAllPharmacies = asyncHandler(async (req, res) => {
   if (pharmacies) {
     res.status(200).json(pharmacies);
   } else {
-    res.status(404);
-    throw new Error('No pharmacies found.');
+    res.status(404).json({ message: 'Няма налични аптеки' });
   }
 });
 
@@ -29,8 +28,7 @@ export const getSinglePharmacy = asyncHandler(async (req, res) => {
   if (news) {
     res.status(200).json(news);
   } else {
-    res.status(404);
-    throw new Error('News not found.');
+    res.status(404).json({ message: 'Аптеката не е намерена' });
   }
 });
 
@@ -71,7 +69,7 @@ export const createPharmacy = asyncHandler(async (req, res) => {
     !pharmacieImages ||
     !googleMap
   ) {
-    return res.status(400).json({ message: 'Please fill all fields.' });
+    return res.status(400).json({ message: 'Моля попълнете всички полета!' });
   }
 
   const pharmacy = new Pharmacie({
@@ -121,8 +119,7 @@ export const deletePharmacy = asyncHandler(async (req, res) => {
   if (pharmacy) {
     res.json({ message: 'Pharmacy removed' });
   } else {
-    res.status(404);
-    throw new Error('Pharmacy not found');
+    res.status(404).json({ message: 'Аптеката не е намерена' });
   }
 });
 
@@ -168,7 +165,6 @@ export const updatePharmacy = asyncHandler(async (req, res) => {
 
     res.status(200).json(updatedPharmacy);
   } else {
-    res.status(404);
-    throw new Error('Pharmacy not found');
+    res.status(404).json({ message: 'Аптеката не е намерена' });
   }
 });
