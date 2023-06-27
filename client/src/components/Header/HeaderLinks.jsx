@@ -37,13 +37,13 @@ const HeaderLinks = ({ handleDropdownToggle, user }) => {
           </Link>
         </li>
       ))}
-      <li className="text-secondary">
+      {/* <li className="text-secondary">
         {user._id ? (
           <Link to="/admin/pharmacies">Админ панел</Link>
         ) : (
           <Link to="/login">Вход</Link>
         )}
-      </li>
+      </li> */}
     </ul>
   );
 };

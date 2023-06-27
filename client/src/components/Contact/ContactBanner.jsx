@@ -2,23 +2,19 @@ import PharmaciesLogo from '../../assets/contacts-banner.jpg';
 
 const ContactBanner = () => {
   return (
-    <section className="flex h-[20vh]  w-full items-center bg-grey-lighter text-center lg:h-[38vh]">
-      <h3 className="mr-6 flex-1 text-2xl text-blue-dark lg:text-5xl">
-        Нашите Аптеки
-      </h3>
-      <figure>
-        <img
-          src={PharmaciesLogo}
-          alt="Pharmacies Logo"
-          className="mx-auto
-                h-[20vh]
-                w-[40vw]
-                object-center
-                lg:h-[38vh]
-                lg:w-full 
-                "
-        />
-      </figure>
+    <section className="relative h-[20vh] overflow-hidden bg-grey-lighter py-20 sm:h-[35vh] sm:py-32">
+      <div className="mx-auto flex max-w-lg">
+        <div className="w-full">
+          <h3 className="pl-4 text-2xl text-blue-dark lg:text-5xl">
+            Нашите Аптеки
+          </h3>
+          <img
+            src={PharmaciesLogo}
+            alt="Pharmacies"
+            className="absolute right-0 top-0 h-auto min-h-full w-[40vw] lg:h-[35vh]"
+          />
+        </div>
+      </div>
     </section>
   );
 };

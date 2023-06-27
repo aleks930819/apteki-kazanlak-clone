@@ -7,7 +7,7 @@ import FooterInfo from './FooterInfo';
 const Footer = () => {
   return (
     <footer className="mt-auto flex  w-full  flex-col items-center justify-between gap-10 bg-primary  text-white">
-      <div className="mt-10 flex w-full flex-col gap-2 p-2 sm:w-auto sm:flex-row sm:gap-12 ">
+      <div className="mt-10 flex max-w-lg ml-auto mr-auto flex-col gap-2 p-2 sm:w-auto sm:flex-row sm:gap-12 ">
         <FooterInfo />
         <FooterPharmacies />
         <FooterNomenclature />

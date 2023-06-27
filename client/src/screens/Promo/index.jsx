@@ -18,8 +18,8 @@ const PromoScreen = () => {
   }
 
   return (
-    <div className="mx-auto mb-2  mt-10 w-full flex justify-center items-center ">
-      <ul className="grid grid-cols-1  items-center justify-center  gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="mb-2  mt-10 max-w-lg w-full ml-auto mr-auto ">
+      <ul className="grid grid-cols-1  items-center justify-center  gap-x-16 gap-y-2 sm:grid-cols-2 lg:grid-cols-4">
         {promoData.map((item) => (
           <PromoCard
             key={item.id}

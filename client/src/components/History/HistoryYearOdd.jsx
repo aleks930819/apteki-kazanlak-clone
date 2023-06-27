@@ -35,7 +35,7 @@ const HistoryYearOdd = ({ item }) => {
     >
       <div className="ml-auto flex w-[100%] flex-col items-end justify-end sm:w-[40%]">
         <p className="mb-4 pl-1 text-2xl text-blue-dark">{item.title}</p>
-        <p className="center">{item.summary}</p>
+        <p className="center  text-blue-dark">{item.summary}</p>
       </div>
       <div
         className="relative flex flex-col items-center justify-center gap-2 px-10"
