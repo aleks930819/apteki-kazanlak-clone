@@ -41,7 +41,7 @@ const queryClient = new QueryClient({
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
-    // errorElement: <NotFoundScreen />,
+    errorElement: <NotFoundScreen />,
     children: [
       {
         path: '/',

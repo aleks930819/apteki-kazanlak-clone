@@ -1,15 +1,12 @@
 const PharmacieBanner = ({ name, mainImage }) => {
-  const divStyle = {
+  const figStyle = {
     backgroundImage: `url(${mainImage})`,
   };
 
   return (
     <figure
-      style={divStyle}
-      className="relative h-[30vh]  bg-cover bg-no-repeat
-
-    
-      sm:h-[60vh]
+      style={figStyle}
+      className="bg-no-repeat relative  h-[30vh] bg-cover sm:h-[60vh]
       "
     >
       <div className="mx-auto flex w-full max-w-lg items-center justify-center p-4 ">
