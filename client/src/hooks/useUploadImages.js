@@ -49,12 +49,7 @@ const useImagesUploader = () => {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
-        }).then((response) =>
-          response
-            .json()
-            .then((data) => (data.message ? toast.error(data.message) : ''))
-            .catch((err) => console.log(err))
-        );
+        }).then((response) => response.json());
       });
 
       const uploadedImages = await Promise.all(uploadPromises);
@@ -80,7 +75,6 @@ const useImagesUploader = () => {
       setIsLoadingImageUpload(true);
       const uploadedUrls = await uploadImages(files);
 
-      console.log(uploadedUrls);
 
       const newImages = uploadedUrls.map((url) => ({
         url: url.url,

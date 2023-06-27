@@ -25,6 +25,7 @@ import { AuthContext } from '../../context/AuthContext';
 import EditImagesContainer from '../../components/EditPharmacie/EditImagesContainer';
 
 import { GOOGLE_MAPS_API_KEY } from '../../../api';
+import ChoiceButtons from '../../components/AddNewPharmacie/ChoiceButtons';
 
 const EditPharmacieScreen = () => {
   const { slug } = useParams();
@@ -50,6 +51,16 @@ const EditPharmacieScreen = () => {
     },
   });
 
+  const [selectedChoices, setSelectedChoices] = useState([]);
+
+  const handleChoiceClick = (choice) => {
+    if (selectedChoices.includes(choice)) {
+      setSelectedChoices(selectedChoices.filter((c) => c !== choice));
+    } else {
+      setSelectedChoices([...selectedChoices, choice]);
+    }
+  };
+
   const handleChangeWorkingTime = (day, type) => (value) => {
     setWorkingTime((prev) => ({
       ...prev,
@@ -74,6 +85,7 @@ const EditPharmacieScreen = () => {
     secondaryImage: '',
     managerImage: '',
     pharmacieImages: [],
+    workingWith: [],
   });
 
   const { editingLoading, updatePharmacie } = useUpdatePharmacie(slug, user);
@@ -101,6 +113,7 @@ const EditPharmacieScreen = () => {
     secondaryImage,
     managerImage,
     pharmacieImages,
+    workingWith,
   } = data;
 
   if (!values.name) {
@@ -117,6 +130,7 @@ const EditPharmacieScreen = () => {
       secondaryImage,
       managerImage,
       pharmacieImages,
+      workingWith,
     });
 
     setWorkingTime({
@@ -138,7 +152,13 @@ const EditPharmacieScreen = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const newData = await createNewData(values, images, workingTime);
+    const newData = await createNewData(
+      values,
+      images,
+      workingTime,
+      selectedChoices
+    );
+
     updatePharmacie(newData);
   };
 
@@ -234,7 +254,11 @@ const EditPharmacieScreen = () => {
         onChange={changeHandler}
         required
       />
-
+      <label className=" text-xl font-bold text-gray-700">Рецепти</label>
+      <ChoiceButtons
+        selectedChoices={selectedChoices}
+        handleChoiceClick={handleChoiceClick}
+      />
       <EditImagesContainer
         images={images}
         handleImagesUpload={handleImagesUpload}
