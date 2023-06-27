@@ -1,35 +1,43 @@
-import People from '../../assets/people.jpg';
-
 const PharmacieBanner = ({ name, mainImage }) => {
+  const divStyle = {
+    backgroundImage: `url(${mainImage})`,
+  };
+
   return (
-    <div className="relative">
-      <figure className="flex flex-col items-center justify-center ">
-        <img
-          src={mainImage || People}
-          alt="People Banner Logo"
-          className="h-[65vh]
-             w-full object-cover
-                object-top
-            "
-        />
-      </figure>
-      <span
-        className="
+    <figure
+      style={divStyle}
+      className="relative h-[30vh]  bg-cover bg-no-repeat
+
+    
+      sm:h-[60vh]
+      "
+    >
+      <div className="mx-auto flex w-full max-w-lg items-center justify-center p-4 ">
+        <div className="mt-[5vh] flex w-full  max-w-lg sm:mt-[20vh] ">
+          <span
+            className="
     animate-pop-in
     absolute
-    bottom-12
-    left-60
+    bottom-[10vh]
+
     transform
     bg-primary
     bg-opacity-90
-    p-2
-    text-5xl
+    px-4
+    text-3xl
     text-white
+    lg:bottom-16
+    lg:left-64
+    lg:px-6
+    lg:py-1
+    lg:text-6xl
   "
-      >
-        {name}
-      </span>
-    </div>
+          >
+            {name}
+          </span>
+        </div>
+      </div>
+    </figure>
   );
 };
 
