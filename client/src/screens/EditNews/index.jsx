@@ -36,7 +36,6 @@ const EditNewsScreen = () => {
   const { isLoading, data } = useQuery(['news', slug], () =>
     getSingleNews(slug)
   );
-
   if (isLoading) {
     return <Spinner />;
   }

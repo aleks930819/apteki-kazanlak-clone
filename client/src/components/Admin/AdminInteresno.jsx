@@ -7,7 +7,6 @@ import { BsPencilSquare } from 'react-icons/bs';
 import { getNews } from '../../services/apiInteresting';
 
 import Table from '../../ui/Table';
-import Spinner from '../../ui/Spinner';
 
 const tableColumns = [
   { label: 'Заглавие на статията', dataKey: 'title' },
@@ -37,15 +36,12 @@ const tableColumns = [
 ];
 
 const AdminInteresno = () => {
-  const { isLoading, data: news } = useQuery({
+  const { data: news } = useQuery({
     queryKey: ['news'],
     queryFn: getNews,
   });
 
   let tableData = [];
-  if (isLoading) {
-    return <Spinner />;
-  }
 
   console.log(news);
 

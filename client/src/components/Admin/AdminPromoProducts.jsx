@@ -1,12 +1,12 @@
+import { useQuery } from '@tanstack/react-query';
+import { Link } from 'react-router-dom';
+
 import { BsPencilSquare } from 'react-icons/bs';
 
 import { getPromoProducts } from '../../services/apiPromoProducts';
 
 import Table from '../../ui/Table';
-import Spinner from '../../ui/Spinner';
 
-import { Link } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
 
 const tableColumns = [
   { label: 'Име на продукта', dataKey: 'productName' },
@@ -37,16 +37,13 @@ const tableColumns = [
 ];
 
 const AdminPromoProducts = () => {
-  const { isLoading, data: promoProducts } = useQuery({
+  const { data: promoProducts } = useQuery({
     queryKey: ['promoProducts'],
     queryFn: getPromoProducts,
   });
 
   let tableData = [];
 
-  if (isLoading) {
-    return <Spinner />;
-  }
   if (promoProducts) {
     tableData = [
       ...promoProducts.map((promoProduct) => ({
@@ -61,8 +58,8 @@ const AdminPromoProducts = () => {
 
   return (
     <Table
-    columns={tableColumns}
-    data={tableData}
+      columns={tableColumns}
+      data={tableData}
       addButtonTitle="Добави Продукт"
       to="/admin/promo-products/add"
     ></Table>

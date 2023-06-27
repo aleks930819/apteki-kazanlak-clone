@@ -1,12 +1,11 @@
 import { Link } from 'react-router-dom';
 
+import { BsPencilSquare } from 'react-icons/bs';
+import { useQuery } from '@tanstack/react-query';
+
 import { getPharmacies } from '../../services/apiPharmacies';
 
 import Table from '../../ui/Table';
-import Spinner from '../../ui/Spinner';
-
-import { BsPencilSquare } from 'react-icons/bs';
-import { useQuery } from '@tanstack/react-query';
 
 const tableColumns = [
   { label: 'Име на Аптеката', dataKey: 'pharmacieName' },
@@ -29,15 +28,11 @@ const tableColumns = [
 ];
 
 const AdminPharmacies = () => {
-  const { isLoading, data: pharmacies } = useQuery({
+  const { data: pharmacies } = useQuery({
     queryKey: ['pharmacies'],
     queryFn: getPharmacies,
   });
   let tableData = [];
-
-  if (isLoading) {
-    return <Spinner />;
-  }
 
   if (pharmacies) {
     tableData = [
