@@ -33,7 +33,7 @@ const EditNewsScreen = () => {
   const { isLoadingImageUpload, images, handleImagesUpload } =
     useImagesUploader();
 
-  const { isLoading, data } = useQuery(['singleNews', slug], () =>
+  const { isLoading, data } = useQuery(['news', slug], () =>
     getSingleNews(slug)
   );
 

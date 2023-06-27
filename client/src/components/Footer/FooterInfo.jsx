@@ -31,9 +31,9 @@ const FooterInfoData = [
 const FooterInfo = () => {
   return (
     <div>
-      <h2 className="border-b-[1px] border-white pb-2 text-start text-2xl">
+      <h3 className="border-b-[1px]  border-white pb-2 text-start text-2xl">
         Социални Аптеки
-      </h2>
+      </h3>
       <ul className="flex flex-col gap-2 pt-4">
         {FooterInfoData.map((link) => (
           <li key={link.title} className="text-start text-sm">

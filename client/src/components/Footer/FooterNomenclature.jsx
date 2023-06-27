@@ -34,9 +34,9 @@ const nomenclature = [
 const FooterNomenclature = () => {
   return (
     <div>
-      <h2 className="border-b-[1px] border-white pb-2 text-start text-2xl">
+      <h3 className="border-b-[1px] border-white pb-2 text-start text-2xl">
         Номенклатура
-      </h2>
+      </h3>
       <ul className="flex flex-col pt-4">
         {nomenclature.map((link) => (
           <li key={link.title} className="text-start text-sm">

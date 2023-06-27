@@ -22,8 +22,8 @@ const PORT = process.env.PORT || 8000;
 connectDB();
 
 // const limiter = rateLimit({
-//   windowMs: 10 * 60 * 1000, // 10 minutes
-//   max: 1000, // limit each IP to 100 requests per windowMs
+//   windowMs: 10 * 60 * 4000, 
+//   max:400,
 //   message: 'Too many requests from this IP, please try again later!',
 // });
 
