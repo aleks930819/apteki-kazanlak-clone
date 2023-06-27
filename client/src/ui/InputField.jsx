@@ -7,7 +7,7 @@ const InputField = ({
   value,
   required,
   onChange,
-  step
+  step,
 }) => {
   return (
     <div className="flex w-full flex-col items-start">
@@ -22,7 +22,7 @@ const InputField = ({
         value={value}
         placeholder={placeholder}
         required={required}
-        onChange={onChange}
+        onChange={(e) => onChange(e)}
         className="w-full rounded-md border-2 border-gray-300 p-2 outline-none focus:border-primary"
       />
     </div>

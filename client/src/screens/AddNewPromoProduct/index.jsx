@@ -24,8 +24,8 @@ const AddNewPromoProductScreen = () => {
 
   const [values, setValues] = useState({
     name: '',
-    oldPrice: null,
-    newPrice: null,
+    oldPrice: '',
+    newPrice: '',
     description: '',
     image: '',
   });
@@ -41,6 +41,10 @@ const AddNewPromoProductScreen = () => {
       !images?.mainImage.url
     ) {
       return toast.error('Моля попълнете всички полета!');
+    }
+
+    if (values.oldPrice <= values.newPrice) {
+      return toast.error('Новата цена трябва да е по-малка от старата!');
     }
 
     const data = {
@@ -72,6 +76,7 @@ const AddNewPromoProductScreen = () => {
           id="name"
           name="name"
           required
+          value={values.name}
           onChange={changeHandler}
         />
       </div>
@@ -83,6 +88,7 @@ const AddNewPromoProductScreen = () => {
           id="oldPrice"
           name="oldPrice"
           required
+          value={values.oldPrice}
           onChange={changeHandler}
         />
         <InputField
@@ -91,6 +97,7 @@ const AddNewPromoProductScreen = () => {
           id="newPrice"
           step={0.01}
           name="newPrice"
+          value={values.newPrice}
           required
           onChange={changeHandler}
         />
@@ -100,6 +107,7 @@ const AddNewPromoProductScreen = () => {
         label="Описание"
         id="description"
         name="description"
+        value={values.description}
         required
         onChange={changeHandler}
       />

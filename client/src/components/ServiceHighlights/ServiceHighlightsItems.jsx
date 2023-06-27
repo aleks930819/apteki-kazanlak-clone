@@ -2,7 +2,7 @@ import ServiceHighlightsItem from './ServiceHighlightsItem';
 
 const ServiceHighlightsItems = ({ ServiceHighlightsTitles }) => {
   return (
-    <ul className="flex flex-col gap-4 text-primary ">
+    <ul className="flex flex-col gap-2 sm:gap-4 text-primary ">
       {ServiceHighlightsTitles?.map((item) => (
         <ServiceHighlightsItem
           key={item.title}

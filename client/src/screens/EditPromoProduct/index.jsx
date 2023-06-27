@@ -1,6 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 
+import { toast } from 'react-hot-toast';
+
 import { useContext, useState } from 'react';
 
 import { getProductById } from '../../services/apiPromoProducts';
@@ -16,6 +18,10 @@ import Spinner from '../../ui/Spinner';
 import setChangedValue from '../../utils/changeValueHandler';
 import { AuthContext } from '../../context/AuthContext';
 import UploadImageInput from '../../ui/UploadImageInput';
+
+
+
+
 
 const EditPromoScreeen = () => {
   const { id } = useParams();
@@ -49,6 +55,11 @@ const EditPromoScreeen = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+
+    if (values.oldPrice <= values.newPrice) {
+      return toast.error('Новата цена трябва да е по-малка от старата!');
+    }
 
     const updatedData = {
       ...values,

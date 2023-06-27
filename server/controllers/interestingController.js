@@ -63,7 +63,7 @@ export const deleteNews = asyncHandler(async (req, res) => {
     return res.status(404).json({ message: 'Статията не е намерена' });
   }
 
-  const news = await News.deleteOne({ slug: req.params.slug });
+  await News.deleteOne({ slug: req.params.slug });
 
   deleteImage(isNewsExist.image.filename);
   res.json({ message: 'Статията е премахната' });
@@ -74,8 +74,6 @@ export const deleteNews = asyncHandler(async (req, res) => {
 // @access  Private/Admin
 export const editNews = asyncHandler(async (req, res) => {
   const { title, description, summary, image } = req.body;
-
-
 
   const news = await News.findOne({ slug: req.params.slug });
 

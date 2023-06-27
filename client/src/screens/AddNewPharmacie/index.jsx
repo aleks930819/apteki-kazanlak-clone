@@ -10,7 +10,6 @@ import useAddPharmacie from '../../hooks/useAddPharmacie';
 import useImagesUploader from '../../hooks/useUploadImages';
 import useWorkingTime from '../../hooks/useWorkingTime';
 
-
 import InputField from '../../ui/InputField';
 import TextAreaField from '../../ui/TextAreaField';
 import ActionForm from '../../ui/ActionForm';
@@ -118,6 +117,7 @@ const AddNewPharmacieScreen = () => {
           label="Име на аптеката"
           id="name"
           name="name"
+          value={values.name}
           required
           onChange={changeHandler}
         />
@@ -127,6 +127,7 @@ const AddNewPharmacieScreen = () => {
           id="city"
           name="city"
           required
+          value={values.city}
           onChange={changeHandler}
         />
 
@@ -135,6 +136,7 @@ const AddNewPharmacieScreen = () => {
           label="Улица"
           id="street"
           name="street"
+          value={values.street}
           required
           onChange={changeHandler}
         />
@@ -146,6 +148,7 @@ const AddNewPharmacieScreen = () => {
           label="Телефон"
           id="phone"
           name="phone"
+          value={values.phone}
           required
           onChange={changeHandler}
         />
@@ -154,6 +157,7 @@ const AddNewPharmacieScreen = () => {
           label="Мениджър"
           id="managerName"
           name="managerName"
+          value={values.managerName}
           required
           onChange={changeHandler}
         />
@@ -162,6 +166,7 @@ const AddNewPharmacieScreen = () => {
           label="Мениджър образование"
           id="managerTitle"
           name="managerTitle"
+          value={values.managerTitle}
           required
           onChange={changeHandler}
         />
@@ -171,6 +176,7 @@ const AddNewPharmacieScreen = () => {
         label="История на аптеката"
         id="history"
         name="history"
+        value={values.history}
         required
         onChange={changeHandler}
       />
@@ -179,6 +185,7 @@ const AddNewPharmacieScreen = () => {
         label="Мениджър описание"
         id="managerDescription"
         name="managerDescription"
+        value={values.managerDescription}
         required
         onChange={changeHandler}
       />

@@ -26,7 +26,7 @@ fixed left-0 top-20 z-50 h-full w-full
           <Link to="/history">ИСТОРИЯ</Link>
         </li>
 
-        <li className="w-full border-b-[1px] border-primary pb-2 pl-10 text-2xl text-primary">
+        <li className="w-full border-b-[1px] mt-[-22px] border-primary pb-2 pl-10 text-2xl text-primary">
           <Link to="/pharmacies">АПТЕКИ</Link>
           <ul className="flex flex-col gap-1 pl-10">
             {memoizedPharmacies?.map((pharmacy) => (

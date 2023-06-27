@@ -70,6 +70,7 @@ const AddNewNews = () => {
           id="title"
           name="title"
           required
+          value={values.title}
           onChange={changeHandler}
         />
         <InputField
@@ -77,6 +78,7 @@ const AddNewNews = () => {
           label="Кратко описание"
           id="summary"
           name="summary"
+          value={values.summary}
           required
           onChange={changeHandler}
         />
@@ -94,6 +96,7 @@ const AddNewNews = () => {
         label="Описание"
         id="description"
         name="description"
+        value={values.description}
         required
         onChange={changeHandler}
       />
