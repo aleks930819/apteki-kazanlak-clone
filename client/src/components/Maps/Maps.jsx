@@ -87,7 +87,6 @@ const pharmacies = [
 const Maps = () => {
   // const GOOGLE_API_KEY = process.env.VITE_GOOGLE_API_KEY;
 
-
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: GOOGLE_MAPS_API_KEY,
   });
@@ -111,7 +110,7 @@ const Maps = () => {
 
   return (
     <div className="flex h-[120vh] flex-col  lg:h-[80vh] lg:flex-row">
-      <div className="flex-1">
+      <div className="flex-1 border-r-[1px]  border-primary">
         <GoogleMap
           mapContainerStyle={{ width: '100%', height: '100%' }}
           center={selectedLocation ? selectedLocation : mapCenter}
@@ -125,7 +124,7 @@ const Maps = () => {
               position={location.location}
               icon={customMarkerIcon}
               onClick={() => handleLocationClick(location.location)}
-            />
+            ></Marker>
           ))}
         </GoogleMap>
       </div>

@@ -19,13 +19,16 @@ const Links = ({ pharmacies, onLocationClick }) => {
           <LinkElement
             key={item.id}
             name={item.name}
+            activatedItemId={activeItemId}
             isActive={activeItemId === item.id}
             onClick={() => handleItemClick(item.id)}
           />
         ))}
       </ul>
       {activeItemId !== null && (
-        <PharmacieDetails pharmacie={pharmacies.find((item) => item.id === activeItemId)} />
+        <PharmacieDetails
+          pharmacie={pharmacies.find((item) => item.id === activeItemId)}
+        />
       )}
     </>
   );

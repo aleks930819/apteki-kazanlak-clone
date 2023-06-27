@@ -4,11 +4,18 @@ import PharmaciesDropdownItem from './PharmaciesDropdownItem';
 import { useQuery } from '@tanstack/react-query';
 import { getPharmacies } from '../../services/apiPharmacies';
 
+import { useMemo } from 'react';
+
 const PharmaciesDropdown = ({ itsHover, dropdownRef, handleDropdownClose }) => {
   const { data: pharmaciesData } = useQuery({
     queryKey: ['pharmacies'],
     queryFn: getPharmacies,
   });
+
+  const memoizedPharmaciesData = useMemo(
+    () => pharmaciesData,
+    [pharmaciesData]
+  );
 
   return (
     <div
@@ -24,7 +31,7 @@ const PharmaciesDropdown = ({ itsHover, dropdownRef, handleDropdownClose }) => {
 
       <div className="ml-4 flex justify-center">
         <ul className="flex flex-col items-start justify-center gap-2 p-5">
-          {pharmaciesData?.map((pharmacie) => (
+          {memoizedPharmaciesData?.map((pharmacie) => (
             <PharmaciesDropdownItem
               key={pharmacie.name}
               path={pharmacie.slug}

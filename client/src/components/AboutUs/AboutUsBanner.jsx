@@ -9,7 +9,7 @@ const AboutUsBanner = () => {
       style={divStyle}
       className="relative h-[30vh] bg-cover bg-no-repeat 
       object-top
-    sm:h-[58vh]
+    sm:h-[400px]
     "
     >
       <div className="relative mx-auto flex w-full max-w-lg items-start justify-start p-4 ">

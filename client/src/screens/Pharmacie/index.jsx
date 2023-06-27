@@ -32,7 +32,7 @@ const Pharmacie = () => {
 
   useDocumentTitle(`${pharmacie?.name} | Социални Аптеки Казанлък`);
 
-  if (isLoading && isLoaded) {
+  if (isLoading) {
     return <Spinner />;
   }
 
