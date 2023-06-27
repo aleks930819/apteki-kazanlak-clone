@@ -34,31 +34,17 @@ const Header = () => {
 
   return (
     <header
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        background: 'white',
-        position: 'sticky',
-        top: 0,
-        left: 0,
-        zIndex: 100,
-        width: '100%',
-        padding: '2px',
-        boxShadow: '0px 4px 4px rgba(0, 0, 0, .5)',
-      }}
-      className="h-20 "
+      className="header-shadow sticky
+       left-0
+      top-0 z-[100] flex h-20 w-[100%] justify-center bg-white px-[2px]
+      "
     >
       <div
-        style={{
-          display: 'flex',
-          maxWidth: '1140px',
-          width: '100%',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          padding: '0 20px',
-        }}
+        className="flex w-[100%] max-w-lg items-center justify-between
+       px-[20px]
+       "
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+        <div className="gap-15 flex items-center">
           <HeaderLogo />
           <HeaderTitle />
         </div>
@@ -79,11 +65,11 @@ const Header = () => {
           )}
         </nav>
       </div>
-        <PharmaciesDropdown
-          dropdownRef={dropdownRef}
-          itsHover={isDropdownVisible}
-          handleDropdownClose={handleDropdownClose}
-        />
+      <PharmaciesDropdown
+        dropdownRef={dropdownRef}
+        itsHover={isDropdownVisible}
+        handleDropdownClose={handleDropdownClose}
+      />
     </header>
   );
 };

@@ -141,6 +141,12 @@
   .transition-height.show {
     transform: scaleY(1);
   }
+
+  .header-shadow {
+    box-shadow: 1px 5px 8px -3px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 1px 5px 8px -3px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 5px 8px -3px rgba(0, 0, 0, 0.75);
+  }
 }
 
 *,
@@ -182,12 +188,6 @@ body {
 
 .text-shadow-primary {
   text-shadow: 1px 1px #232c64;
-}
-
-.header-shadow {
-  box-shadow: 1px 5px 8px -3px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 1px 5px 8px -3px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 1px 5px 8px -3px rgba(0, 0, 0, 0.75);
 }
 
 @keyframes pop-in {

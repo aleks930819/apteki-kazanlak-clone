@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 const HeaderTitle = () => {
   return (
     <Link to="/">
-      <div className="flex flex-col">
+      <div className="flex flex-col pl-4">
         <span className=" text-base font-semibold tracking-wide text-primary sm:text-2xl lg:text-3xl">
           Социални Аптеки
         </span>

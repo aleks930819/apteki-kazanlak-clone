@@ -24,9 +24,9 @@ const headerLinks = [
   },
 ];
 
-const HeaderLinks = ({ handleDropdownToggle, user }) => {
+const HeaderLinks = ({ handleDropdownToggle }) => {
   return (
-    <ul className="flex items-center gap-8">
+    <ul className="flex items-center gap-[50px]">
       {headerLinks.map((link) => (
         <li key={link.title} className="text-secondary">
           <Link
@@ -37,13 +37,6 @@ const HeaderLinks = ({ handleDropdownToggle, user }) => {
           </Link>
         </li>
       ))}
-      {/* <li className="text-secondary">
-        {user._id ? (
-          <Link to="/admin/pharmacies">Админ панел</Link>
-        ) : (
-          <Link to="/login">Вход</Link>
-        )}
-      </li> */}
     </ul>
   );
 };

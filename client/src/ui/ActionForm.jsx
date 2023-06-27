@@ -39,7 +39,7 @@ const ActionForm = ({
               className="rounded-md border-2  bg-red-600 px-4  py-2 font-bold uppercase text-white disabled:cursor-not-allowed disabled:opacity-80"
               type="button"
               disabled={deletingLoading}
-              onClick={() => handleDelete('Сигурнили сте?')}
+              onClick={() => handleDelete('Сигурни ли сте?')}
             >
               {deleteButton}
             </button>
