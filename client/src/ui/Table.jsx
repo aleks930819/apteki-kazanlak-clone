@@ -1,7 +1,6 @@
 import AddTableButton from './AddTableButton';
 
 const Table = ({ columns, data, addButtonTitle, to }) => {
-  console.log(to);
   return (
     <div>
       <div className="lg:h-[calc(100vh-100px)] lg:w-[calc(100vw-300px)] overflow-y-auto ">

@@ -44,7 +44,13 @@ const AdminPanelScreen = () => {
           <NavLink
             key={link.name}
             to={link.path}
-            className="mt-3 flex cursor-pointer items-center rounded-md border-b-2 p-2.5 px-4 text-white duration-300 hover:bg-green-600"
+            actie
+            // className="mt-3 flex cursor-pointer items-center rounded-md border-b-2 p-2.5 px-4 text-white duration-300 hover:bg-green-600"
+            className={({ isActive }) =>
+              `mt-3 flex cursor-pointer items-center rounded-md border-b-2 p-2.5 px-4 text-white duration-300 hover:bg-green-700 ${
+                isActive ? 'bg-green-700' : ''
+              }`
+            }
           >
             {link.icon}
             <span className="ml-4 text-[15px] font-bold text-gray-200" to="/">
@@ -54,7 +60,7 @@ const AdminPanelScreen = () => {
         ))}
 
         <NavLink
-          className="mt-3 flex cursor-pointer items-center rounded-md border-b-2 p-2.5 px-4 text-white duration-300 hover:bg-green-600"
+          className="mt-3 flex cursor-pointer items-center rounded-md border-b-2 p-2.5 px-4 text-white duration-300 hover:bg-green-700"
           onClick={logoutHandler}
         >
           <AiOutlineLogout />
