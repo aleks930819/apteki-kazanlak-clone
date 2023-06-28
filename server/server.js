@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 8000;
 connectDB();
 
 // const limiter = rateLimit({
-//   windowMs: 10 * 60 * 4000, 
+//   windowMs: 10 * 60 * 4000,
 //   max:400,
 //   message: 'Too many requests from this IP, please try again later!',
 // });
@@ -45,13 +45,15 @@ app.use(errorHandler);
 
 const __dirname = path.resolve();
 
+const clientDistPath = path.join(__dirname, '../client/dist');
+
 app.use('/images', express.static(path.join(__dirname, '/images')));
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname), '/frontend/build'));
+  app.use(express.static(clientDistPath));
 
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../client', 'dist', 'index.html'));
+    res.sendFile(path.resolve(clientDistPath, 'index.html'));
   });
 } else {
   app.listen(PORT, () =>

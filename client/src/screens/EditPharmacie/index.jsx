@@ -22,7 +22,6 @@ import setChangedValue from '../../utils/changeValueHandler';
 import createNewData from '../../utils/createNewData';
 
 import { AuthContext } from '../../context/AuthContext';
-import EditImagesContainer from '../../components/EditPharmacie/EditImagesContainer';
 
 import { GOOGLE_MAPS_API_KEY } from '../../../api';
 import ChoiceButtons from '../../components/AddNewPharmacie/ChoiceButtons';
