@@ -15,16 +15,16 @@ import Pharmacie from './screens/Pharmacie';
 import NewsScreen from './screens/News';
 import LoginScreen from './screens/Login';
 
-import AdminPanelScreen from './screens/AdminPanel';
-import AdminPharmacies from './components/Admin/adminPharmacies';
-import AdminPromoProducts from './components/Admin/AdminPromoProducts';
-import AdminInteresno from './components/Admin/adminInteresno';
-import AddNewPharmacieScreen from './screens/AddNewPharmacie';
-import EditPharmacieScreen from './screens/EditPharmacie';
-import AddNewPromoProductScreen from './screens/AddNewPromoProduct';
-import EditPromoScreeen from './screens/EditPromoProduct';
-import AddNewNewsScreen from './screens/AddNewNews';
-import EditNewsScreen from './screens/EditNews';
+// import AdminPanelScreen from './screens/AdminPanel';
+// import AdminPharmacies from './components/Admin/adminPharmacies';
+// import AdminPromoProducts from './components/Admin/AdminPromoProducts';
+// import AdminInteresno from './components/Admin/adminInteresno';
+// import AddNewPharmacieScreen from './screens/AddNewPharmacie';
+// import EditPharmacieScreen from './screens/EditPharmacie';
+// import AddNewPromoProductScreen from './screens/AddNewPromoProduct';
+// import EditPromoScreeen from './screens/EditPromoProduct';
+// import AddNewNewsScreen from './screens/AddNewNews';
+// import EditNewsScreen from './screens/EditNews';
 
 
 // const AdminPanelScreen = lazy(() => import('./screens/AdminPanel'));
@@ -101,88 +101,88 @@ const router = createBrowserRouter([
         path: '/admin/login',
         element: <LoginScreen />,
       },
-      {
-        path: '/admin',
-        element: (
-          <ProtectedRoute>
-            <AdminPanelScreen />
-          </ProtectedRoute>
-        ),
-        children: [
-          {
-            path: 'pharmacies',
-            element: (
-              <ProtectedRoute>
-                <AdminPharmacies />
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: 'pharmacies/add',
-            element: (
-              <ProtectedRoute>
-                <AddNewPharmacieScreen />,
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: 'pharmacies/edit/:slug',
-            element: (
-              <ProtectedRoute>
-                <EditPharmacieScreen />,
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: 'promo-products',
-            element: (
-              <ProtectedRoute>
-                <AdminPromoProducts />,
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: 'promo-products/add',
-            element: (
-              <ProtectedRoute>
-                <AddNewPromoProductScreen />,
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: 'promo-products/edit/:id',
-            element: (
-              <ProtectedRoute>
-                <EditPromoScreeen />,
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: 'interesno',
-            element: (
-              <ProtectedRoute>
-                <AdminInteresno />,
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: 'interesno/add',
-            element: (
-              <ProtectedRoute>
-                <AddNewNewsScreen />,
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: 'interesno/edit/:slug',
-            element: (
-              <ProtectedRoute>
-                <EditNewsScreen />,
-              </ProtectedRoute>
-            ),
-          },
-        ],
-      },
+      // {
+      //   path: '/admin',
+      //   element: (
+      //     <ProtectedRoute>
+      //       <AdminPanelScreen />
+      //     </ProtectedRoute>
+      //   ),
+      //   children: [
+      //     {
+      //       path: 'pharmacies',
+      //       element: (
+      //         <ProtectedRoute>
+      //           <AdminPharmacies />
+      //         </ProtectedRoute>
+      //       ),
+      //     },
+      //     {
+      //       path: 'pharmacies/add',
+      //       element: (
+      //         <ProtectedRoute>
+      //           <AddNewPharmacieScreen />,
+      //         </ProtectedRoute>
+      //       ),
+      //     },
+      //     {
+      //       path: 'pharmacies/edit/:slug',
+      //       element: (
+      //         <ProtectedRoute>
+      //           <EditPharmacieScreen />,
+      //         </ProtectedRoute>
+      //       ),
+      //     },
+      //     {
+      //       path: 'promo-products',
+      //       element: (
+      //         <ProtectedRoute>
+      //           <AdminPromoProducts />,
+      //         </ProtectedRoute>
+      //       ),
+      //     },
+      //     {
+      //       path: 'promo-products/add',
+      //       element: (
+      //         <ProtectedRoute>
+      //           <AddNewPromoProductScreen />,
+      //         </ProtectedRoute>
+      //       ),
+      //     },
+      //     {
+      //       path: 'promo-products/edit/:id',
+      //       element: (
+      //         <ProtectedRoute>
+      //           <EditPromoScreeen />,
+      //         </ProtectedRoute>
+      //       ),
+      //     },
+      //     {
+      //       path: 'interesno',
+      //       element: (
+      //         <ProtectedRoute>
+      //           <AdminInteresno />,
+      //         </ProtectedRoute>
+      //       ),
+      //     },
+      //     {
+      //       path: 'interesno/add',
+      //       element: (
+      //         <ProtectedRoute>
+      //           <AddNewNewsScreen />,
+      //         </ProtectedRoute>
+      //       ),
+      //     },
+      //     {
+      //       path: 'interesno/edit/:slug',
+      //       element: (
+      //         <ProtectedRoute>
+      //           <EditNewsScreen />,
+      //         </ProtectedRoute>
+      //       ),
+      //     },
+      //   ],
+      // },
       {
         path: '*',
         element: <NotFoundScreen />,
