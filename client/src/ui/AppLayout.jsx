@@ -2,6 +2,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import ScrollToTop from '../utils/scrollToTop';
+import { MobileNavMenuProvider } from '../context/MenuCloseContext';
 
 const AppLayout = () => {
   const location = useLocation();
@@ -11,7 +12,11 @@ const AppLayout = () => {
   return (
     <div className="flex min-h-screen flex-col bg-grey-lighter-2">
       <ScrollToTop />
-      {!hideHeaderFooter && <Header />}
+      {!hideHeaderFooter && (
+        <MobileNavMenuProvider>
+          <Header />
+        </MobileNavMenuProvider>
+      )}
       <Outlet />
       {!hideHeaderFooter && <Footer />}
     </div>

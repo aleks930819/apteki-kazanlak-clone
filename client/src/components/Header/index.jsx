@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 
 import { AuthContext } from '../../context/AuthContext';
+import { MobileNavMenuContext } from '../../context/MenuCloseContext';
 
 import HeaderTitle from './HeaderTitle';
 import HeaderLogo from './HeaderLogo';
@@ -14,9 +15,9 @@ import HamburgerMenu from '../../ui/HamburgerMenu';
 
 const Header = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
-  const [openMenu, setOpenMenu] = useState(false);
   const [isDekstopView] = useIsDekstopView();
 
+  const { isOpen } = useContext(MobileNavMenuContext);
   const { user } = useContext(AuthContext);
 
   const handleDropdownOpen = () => {
@@ -27,15 +28,11 @@ const Header = () => {
     setDropdownVisible(false);
   };
 
-  const handleMenuToggle = () => {
-    setOpenMenu(!openMenu);
-  };
-
   return (
     <header
       className="header-shadow sticky
        left-0
-      top-0 z-[100] flex h-14 sm:h-20 w-[100%] justify-center bg-white px-[2px]
+      top-0 z-[100] flex h-14 w-[100%] justify-center bg-white px-[2px] sm:h-20
       "
     >
       <div
@@ -55,11 +52,8 @@ const Header = () => {
             />
           ) : (
             <>
-              <HamburgerMenu
-                openMenu={openMenu}
-                handleMenuToggle={handleMenuToggle}
-              />
-              {openMenu && <MobileHeaderLinks />}
+              <HamburgerMenu />
+              {isOpen && <MobileHeaderLinks />}
             </>
           )}
         </nav>

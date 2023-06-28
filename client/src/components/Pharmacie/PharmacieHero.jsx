@@ -10,7 +10,7 @@ const PharmacieHero = ({
     <header className="linear-background-purple py-[30px] sm:py-[80px]">
       <div className="mx-auto flex w-[90vw]  flex-col-reverse items-center justify-center gap-10 sm:max-w-lg sm:flex-row">
         <div className="font-montserrat flex-1  text-white">
-          <h2 className="text-4xl">{managerName}</h2>
+          <h2 className=" text-3xl sm:text-4xl">{managerName}</h2>
           <br />
           <p className="text-lg font-semibold">{managerTitle.toLowerCase()}</p>
           <br />
