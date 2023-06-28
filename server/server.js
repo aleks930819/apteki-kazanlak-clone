@@ -43,8 +43,6 @@ app.use('/api/uploads', uploadsRoute);
 
 app.use(errorHandler);
 
-console.log(process.env.NODE_ENV);
-
 // const __dirname = path.resolve();
 
 // const clientDistPath = path.join(__dirname, '../client/dist');
