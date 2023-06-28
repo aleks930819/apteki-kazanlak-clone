@@ -97,7 +97,7 @@ const router = createBrowserRouter([
         element: <HistoryScreen />,
       },
       {
-        path: '/login',
+        path: '/admin/login',
         element: <LoginScreen />,
       },
       {

@@ -10,7 +10,7 @@ import adminMiddleware from '../middleware/authMiddleware.js';
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'images/');
+    cb(null, 'uploads/');
   },
 
   filename: function (req, file, cb) {
@@ -58,7 +58,7 @@ router.post('/', adminMiddleware, upload.single('image'), async (req, res) => {
 
 router.delete('/:filename', adminMiddleware, async (req, res) => {
   const filename = req.params.filename;
-  const filePath = path.join('images/', filename);
+  const filePath = path.join('uploads/', filename);
 
   if (fs.existsSync(filePath)) {
     fs.unlinkSync(filePath);
