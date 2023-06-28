@@ -15,17 +15,6 @@ import Pharmacie from './screens/Pharmacie';
 import NewsScreen from './screens/News';
 import LoginScreen from './screens/Login';
 
-// import AdminPanelScreen from './screens/AdminPanel';
-// import AdminPharmacies from './components/Admin/adminPharmacies';
-// import AdminPromoProducts from './components/Admin/AdminPromoProducts';
-// import AdminInteresno from './components/Admin/adminInteresno';
-// import AddNewPharmacieScreen from './screens/AddNewPharmacie';
-// import EditPharmacieScreen from './screens/EditPharmacie';
-// import AddNewPromoProductScreen from './screens/AddNewPromoProduct';
-// import EditPromoScreeen from './screens/EditPromoProduct';
-// import AddNewNewsScreen from './screens/AddNewNews';
-// import EditNewsScreen from './screens/EditNews';
-
 const AdminPanelScreen = lazy(() => import('./screens/AdminPanel'));
 const AdminPharmacies = lazy(() =>
   import('./components/Admin/adminPharmacies')
@@ -100,6 +89,7 @@ const router = createBrowserRouter([
         path: '/admin/login',
         element: <LoginScreen />,
       },
+
       {
         path: '/admin',
         element: (
