@@ -53,15 +53,15 @@ app.use('/images', express.static(path.join(__dirname, '/images')));
 //   console.log(`Server running on port: http://localhost:${PORT}`)
 // );
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(clientDistPath));
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static(clientDistPath));
 
-  console.log(clientDistPath);
-  console.log(PORT);
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(clientDistPath, 'index.html'));
-  });
-}
+//   console.log(clientDistPath);
+//   console.log(PORT);
+//   app.get('*', (req, res) => {
+//     res.sendFile(path.resolve(clientDistPath, 'index.html'));
+//   });
+// }
 
 app.listen(PORT, () =>
   console.log(`Server running on port: http://localhost:${PORT}`)
