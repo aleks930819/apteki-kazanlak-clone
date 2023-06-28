@@ -14,7 +14,7 @@ const Links = ({ pharmacies, onLocationClick }) => {
 
   return (
     <>
-      <ul className="mr-auto flex flex-col gap-2 pl-6  pt-5">
+      <ul className="mr-auto flex flex-col gap-2 pl-6  pt-5 pb-5">
         {pharmacies.map((item) => (
           <LinkElement
             key={item.id}

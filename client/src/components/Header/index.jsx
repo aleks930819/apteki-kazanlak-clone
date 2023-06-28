@@ -35,12 +35,12 @@ const Header = () => {
     <header
       className="header-shadow sticky
        left-0
-      top-0 z-[100] flex h-20 w-[100%] justify-center bg-white px-[2px]
+      top-0 z-[100] flex h-14 sm:h-20 w-[100%] justify-center bg-white px-[2px]
       "
     >
       <div
         className="flex w-[100%] max-w-lg items-center justify-between
-       px-[20px]
+       px-[10px] sm:px-[20px]
        "
       >
         <div className="gap-15 flex items-center">

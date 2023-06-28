@@ -5,7 +5,7 @@ import MobileHeaderLinksPharmacies from './MobileHeaderLinksPharmacies';
 const MobileHeaderLinks = () => {
   return (
     <div
-      className="linear-background fixed left-0 top-20 z-50 h-full w-full 
+      className="linear-background fixed left-0 top-14 sm:top-20 z-50 h-full w-full 
 "
     >
       <ul className="flex flex-col items-center gap-8 pt-10 ">

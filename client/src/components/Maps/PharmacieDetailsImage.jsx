@@ -1,6 +1,6 @@
 const PharmacieDetailsImage = ({ pharmacie }) => {
   return (
-    <div className="h-[30%]">
+    <div className="h-[200px]">
       <img
         src={pharmacie.imageUrl}
         alt="logo"
