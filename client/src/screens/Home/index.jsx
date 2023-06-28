@@ -1,6 +1,6 @@
 import Hero from '../../components/Hero';
 import ServiceHighlights from '../../components/ServiceHighlights';
-import Maps from '../../components/Maps/Maps';
+import Locations from '../../components/Maps/Locations';
 
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 
@@ -11,7 +11,7 @@ const HomeScreen = () => {
     <main>
       <Hero />
       <ServiceHighlights />
-      <Maps />
+      <Locations />
     </main>
   );
 };

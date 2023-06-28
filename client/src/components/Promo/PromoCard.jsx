@@ -1,12 +1,6 @@
 import PromoCardSummary from './PromoCardSummary';
 
 const PromoCard = ({ image, name, description, newPrice, oldPrice }) => {
-  const divStyle = {
-    backgroundImage: `url(${image})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-  };
 
   return (
     <li className=" promo-card-top promo-card-left promo-card relative flex h-[400px] w-full cursor-cell  flex-col overflow-hidden transition duration-300 ease-in-out sm:w-[300px]">

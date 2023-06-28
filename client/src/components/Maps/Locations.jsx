@@ -84,8 +84,7 @@ const pharmacies = [
   },
 ];
 
-const Maps = () => {
-  // const GOOGLE_API_KEY = process.env.VITE_GOOGLE_API_KEY;
+const Locations = () => {
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: GOOGLE_MAPS_API_KEY,
@@ -135,4 +134,4 @@ const Maps = () => {
   );
 };
 
-export default Maps;
+export default Locations;
