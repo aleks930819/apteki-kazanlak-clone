@@ -29,40 +29,42 @@ const Header = () => {
   };
 
   return (
-    <header
-      className="header-shadow sticky
+    <div className="mb-14 sm:mb-20">
+      <header
+        className="header-shadow fixed
        left-0
       top-0 z-[100] flex h-14 w-[100%] justify-center bg-white px-[2px] sm:h-20
       "
-    >
-      <div
-        className="flex w-[100%] max-w-lg items-center justify-between
+      >
+        <div
+          className="flex w-[100%] max-w-lg items-center justify-between
        px-[10px] sm:px-[20px]
        "
-      >
-        <div className="gap-15 flex items-center">
-          <HeaderLogo />
-          <HeaderTitle />
+        >
+          <div className="gap-15 flex items-center">
+            <HeaderLogo />
+            <HeaderTitle />
+          </div>
+          <nav>
+            {isDekstopView ? (
+              <HeaderLinks
+                handleDropdownToggle={handleDropdownOpen}
+                user={user}
+              />
+            ) : (
+              <>
+                <HamburgerMenu />
+                {isOpen && <MobileHeaderLinks />}
+              </>
+            )}
+          </nav>
         </div>
-        <nav>
-          {isDekstopView ? (
-            <HeaderLinks
-              handleDropdownToggle={handleDropdownOpen}
-              user={user}
-            />
-          ) : (
-            <>
-              <HamburgerMenu />
-              {isOpen && <MobileHeaderLinks />}
-            </>
-          )}
-        </nav>
-      </div>
-      <PharmaciesDropdown
-        itsHover={isDropdownVisible}
-        handleDropdownClose={handleDropdownClose}
-      />
-    </header>
+        <PharmaciesDropdown
+          itsHover={isDropdownVisible}
+          handleDropdownClose={handleDropdownClose}
+        />
+      </header>
+    </div>
   );
 };
 
