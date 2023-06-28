@@ -6,8 +6,8 @@ import FooterInfo from './FooterInfo';
 
 const Footer = () => {
   return (
-    <footer className="mt-auto pl-[10px] flex  w-full  flex-col items-center justify-between gap-10 bg-primary  text-white">
-      <div className="mt-10 grid grid-cols-1 w-full  sm:grid-cols-4 sm:max-w-lg ml-auto mr-auto  gap-2   sm:gap-12 ">
+    <footer className="mt-auto flex  w-full  flex-col items-center justify-between gap-10 bg-primary  text-white">
+      <div className="ml-auto  mr-auto mt-10 grid w-full  grid-cols-1 gap-2 pl-[10px] sm:max-w-lg  sm:grid-cols-4   sm:gap-12 ">
         <FooterInfo />
         <FooterPharmacies />
         <FooterNomenclature />
