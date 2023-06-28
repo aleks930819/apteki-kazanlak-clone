@@ -86,7 +86,8 @@ const EditPharmacieScreen = () => {
 
   const { editingLoading, updatePharmacie } = useUpdatePharmacie(slug, user);
   const { deletePharmacie, deletingLoading } = useDeletePharmacie(slug, user);
-  const { images, handleImagesUpload } = useImagesUploader();
+  const { images, handleImagesUpload, isLoadingImageUpload } =
+    useImagesUploader();
 
   const { isLoading, data } = useQuery(['pharmacies', slug], () =>
     getPharmacie(slug)
@@ -259,12 +260,9 @@ const EditPharmacieScreen = () => {
         images={images}
         handleImagesUpload={handleImagesUpload}
         values={values}
+        isLoading={isLoadingImageUpload}
       />
-      {/* <EditImagesContainer
-        images={images}
-        handleImagesUpload={handleImagesUpload}
-        data={values}
-      /> */}
+
       <Workingtime
         workingTime={workingTime}
         handleChangeWorkingTime={handleChangeWorkingTime}

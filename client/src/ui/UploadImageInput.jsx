@@ -1,9 +1,12 @@
+import ButtonSpinner from './ButtonSpinner';
+
 const UploadImageInput = ({
   id,
   label,
   handleFileChange,
   image,
   disabled,
+  isLoading,
   imageName,
 }) => {
   const inputMessage = image ? 'Промени снимката' : 'Качете снимка';
@@ -32,7 +35,9 @@ const UploadImageInput = ({
             d="M12 6v6m0 0v6m0-6h6m-6 0H6"
           />
         </svg>
-        <span className="text-gray-700">{inputMessage}</span>
+        <span className="text-gray-700">
+          {isLoading ? <ButtonSpinner /> : inputMessage}
+        </span>
       </label>
 
       <input

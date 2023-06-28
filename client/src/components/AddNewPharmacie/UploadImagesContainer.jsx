@@ -16,6 +16,7 @@ const UploadImagesContainer = ({
         image={images?.mainImage.url || values?.mainImage.url}
         disabled={isLoading}
         imageName="mainImage"
+        isLoading={isLoading}
       />
       <UploadImageInput
         id="secondaryImage"
@@ -23,6 +24,7 @@ const UploadImagesContainer = ({
         handleFileChange={handleImagesUpload}
         image={images?.secondaryImage.url || values?.secondaryImage.url}
         disabled={isLoading}
+        isLoading={isLoading}
         imageName="secondaryImage"
       />
 
@@ -32,6 +34,7 @@ const UploadImagesContainer = ({
         handleFileChange={handleImagesUpload}
         image={images?.managerImage.url || values?.managerImage.url}
         disabled={isLoading}
+        isLoading={isLoading}
         imageName="managerImage"
       />
 
@@ -41,6 +44,7 @@ const UploadImagesContainer = ({
         handleFileChange={handleImagesUpload}
         image={images?.pharmaciesImage1.url || values?.pharmacieImages[0].url}
         disabled={isLoading}
+        isLoading={isLoading}
         imageName="pharmaciesImage1"
       />
       <UploadImageInput
@@ -50,6 +54,7 @@ const UploadImagesContainer = ({
         imageName="pharmaciesImage2"
         image={images?.pharmaciesImage2.url || values?.pharmacieImages[1].url}
         disabled={isLoading}
+        isLoading={isLoading}
       />
       <UploadImageInput
         id="pharmaciesImage-3"
@@ -57,6 +62,7 @@ const UploadImagesContainer = ({
         handleFileChange={handleImagesUpload}
         image={images?.pharmaciesImage3.url || values?.pharmacieImages[2].url}
         disabled={isLoading}
+        isLoading={isLoading}
         imageName="pharmaciesImage3"
       />
     </UploadImagesWrapper>

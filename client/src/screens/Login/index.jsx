@@ -1,18 +1,22 @@
+import Photo from '../../assets/contacts-banner.jpg';
+
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
-import Photo from '../../assets/contacts-banner.jpg';
+import { login } from '../../services/apiAuth';
 
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 
-import { login } from '../../services/apiAuth';
 import { AuthContext } from '../../context/AuthContext';
+import Spinner from '../../ui/Spinner';
+import ButtonSpinner from '../../ui/ButtonSpinner';
 
 const LoginScreen = () => {
   const [isShowPassword, setIsShowPassword] = useState(false);
   const { userLogin } = useContext(AuthContext);
+  const [isLoading, setIsLoading] = useState(false);
 
   useDocumentTitle('Вход | Социални Аптеки Казанлък');
 
@@ -40,6 +44,7 @@ const LoginScreen = () => {
     }
 
     try {
+      setIsLoading(true);
       const data = await login({
         email,
         password,
@@ -51,6 +56,8 @@ const LoginScreen = () => {
       navigate('/admin/pharmacies');
     } catch (error) {
       toast.error(error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -101,7 +108,7 @@ const LoginScreen = () => {
           </div>
         </div>
         <button className="mt-5 w-full rounded-md bg-primary p-2 text-2xl text-white">
-          Вход
+          {isLoading ? <ButtonSpinner /> : 'Вход'}
         </button>
       </form>
     </section>
