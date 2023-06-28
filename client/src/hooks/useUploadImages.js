@@ -52,6 +52,8 @@ const useImagesUploader = () => {
 
       const uploadedImages = await Promise.all(uploadPromises);
 
+      console.log(uploadedImages);
+
       const imagesData = uploadedImages.map((data) => ({
         filename: data.filename,
         url: data.url,
@@ -72,8 +74,6 @@ const useImagesUploader = () => {
     try {
       setIsLoadingImageUpload(true);
       const uploadedUrls = await uploadImages(files);
-
-      console.log(uploadedUrls);
 
       const newImages = uploadedUrls.map((url) => ({
         url: url.url,

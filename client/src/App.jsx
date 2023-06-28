@@ -15,33 +15,33 @@ import Pharmacie from './screens/Pharmacie';
 import NewsScreen from './screens/News';
 import LoginScreen from './screens/Login';
 
-import AdminPanelScreen from './screens/AdminPanel';
-import AdminPharmacies from './components/Admin/adminPharmacies';
-import AdminPromoProducts from './components/Admin/AdminPromoProducts';
-import AdminInteresno from './components/Admin/adminInteresno';
-import AddNewPharmacieScreen from './screens/AddNewPharmacie';
-import EditPharmacieScreen from './screens/EditPharmacie';
-import AddNewPromoProductScreen from './screens/AddNewPromoProduct';
-import EditPromoScreeen from './screens/EditPromoProduct';
-import AddNewNewsScreen from './screens/AddNewNews';
-import EditNewsScreen from './screens/EditNews';
+// import AdminPanelScreen from './screens/AdminPanel';
+// import AdminPharmacies from './components/Admin/adminPharmacies';
+// import AdminPromoProducts from './components/Admin/AdminPromoProducts';
+// import AdminInteresno from './components/Admin/adminInteresno';
+// import AddNewPharmacieScreen from './screens/AddNewPharmacie';
+// import EditPharmacieScreen from './screens/EditPharmacie';
+// import AddNewPromoProductScreen from './screens/AddNewPromoProduct';
+// import EditPromoScreeen from './screens/EditPromoProduct';
+// import AddNewNewsScreen from './screens/AddNewNews';
+// import EditNewsScreen from './screens/EditNews';
 
-// const AdminPanelScreen = lazy(() => import('./screens/AdminPanel'));
-// const AdminPharmacies = lazy(() =>
-//   import('./components/Admin/adminPharmacies')
-// );
-// const AdminPromoProducts = lazy(() =>
-//   import('./components/Admin/AdminPromoProducts')
-// );
-// const AdminInteresno = lazy(() => import('./components/Admin/adminInteresno'));
-// const AddNewPharmacieScreen = lazy(() => import('./screens/AddNewPharmacie'));
-// const EditPharmacieScreen = lazy(() => import('./screens/EditPharmacie'));
-// const AddNewPromoProductScreen = lazy(() =>
-//   import('./screens/AddNewPromoProduct')
-// );
-// const EditPromoScreeen = lazy(() => import('./screens/EditPromoProduct'));
-// const AddNewNewsScreen = lazy(() => import('./screens/AddNewNews'));
-// const EditNewsScreen = lazy(() => import('./screens/EditNews'));
+const AdminPanelScreen = lazy(() => import('./screens/AdminPanel'));
+const AdminPharmacies = lazy(() =>
+  import('./components/Admin/adminPharmacies')
+);
+const AdminPromoProducts = lazy(() =>
+  import('./components/Admin/AdminPromoProducts')
+);
+const AdminInteresno = lazy(() => import('./components/Admin/adminInteresno'));
+const AddNewPharmacieScreen = lazy(() => import('./screens/AddNewPharmacie'));
+const EditPharmacieScreen = lazy(() => import('./screens/EditPharmacie'));
+const AddNewPromoProductScreen = lazy(() =>
+  import('./screens/AddNewPromoProduct')
+);
+const EditPromoScreeen = lazy(() => import('./screens/EditPromoProduct'));
+const AddNewNewsScreen = lazy(() => import('./screens/AddNewNews'));
+const EditNewsScreen = lazy(() => import('./screens/EditNews'));
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';

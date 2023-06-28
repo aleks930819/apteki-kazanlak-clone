@@ -140,6 +140,7 @@
 
   .transition-height.show {
     transform: scaleY(1);
+    height: 35vh;
   }
 
   .header-shadow {

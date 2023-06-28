@@ -19,7 +19,7 @@ const PharmaciesDropdown = ({ itsHover, handleDropdownClose }) => {
 
   return (
     <div
-      className={`transition-height absolute left-0 top-[100%] flex h-[35vh] w-full bg-grey-lighter-2 duration-100 ${
+      className={`transition-height absolute left-0 top-[100%] flex h-0 w-full bg-grey-lighter-2 duration-100 ${
         itsHover ? 'show' : ''
       }`}
       onMouseLeave={handleDropdownClose}

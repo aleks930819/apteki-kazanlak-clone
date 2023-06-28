@@ -10,7 +10,7 @@ import adminMiddleware from '../middleware/authMiddleware.js';
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads/');
+    cb(null, 'uploads');
   },
 
   filename: function (req, file, cb) {
@@ -40,7 +40,6 @@ router.post('/', adminMiddleware, upload.single('image'), async (req, res) => {
     res.status(400).json({ message: 'No file uploaded' });
     return;
   }
-  console.log(req);
 
   checkFileType(req.file, (err, isMatch) => {
     if (err) {
@@ -50,7 +49,7 @@ router.post('/', adminMiddleware, upload.single('image'), async (req, res) => {
 
     res.json({
       message: 'Image uploaded successfully',
-      url: `https://apteki-kazanlak-server.onrender.com/uploads/images/${req.file.filename}`,
+      url: `http://localhost:5000/uploads/${req.file.filename}`,
       filename: req.file.filename,
     });
   });
