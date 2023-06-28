@@ -5,6 +5,8 @@ import { toast } from 'react-hot-toast';
 
 import { useContext, useState } from 'react';
 
+import { AuthContext } from '../../context/AuthContext';
+
 import { getProductById } from '../../services/apiPromoProducts';
 
 import useDeletePromoProduct from '../../hooks/useDeletePromoProduct';
@@ -15,13 +17,10 @@ import ActionForm from '../../ui/ActionForm';
 import InputField from '../../ui/InputField';
 import TextAreaField from '../../ui/TextAreaField';
 import Spinner from '../../ui/Spinner';
-import setChangedValue from '../../utils/changeValueHandler';
-import { AuthContext } from '../../context/AuthContext';
 import UploadImageInput from '../../ui/UploadImageInput';
 
-
-
-
+import setChangedValue from '../../utils/changeValueHandler';
+import priceValidation from '../../utils/priceValidation';
 
 const EditPromoScreeen = () => {
   const { id } = useParams();
@@ -39,7 +38,7 @@ const EditPromoScreeen = () => {
   const { deleteProduct, deletingLoading } = useDeletePromoProduct(id, user);
   const { images, handleImagesUpload } = useImagesUploader();
 
-  const { isLoading, data } = useQuery(['singleProduct', id], () =>
+  const { isLoading, data } = useQuery(['promoProducts', id], () =>
     getProductById(id)
   );
 
@@ -56,9 +55,10 @@ const EditPromoScreeen = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const validationError = priceValidation(values.newPrice, values.oldPrice);
 
-    if (values.oldPrice <= values.newPrice) {
-      return toast.error('Новата цена трябва да е по-малка от старата!');
+    if (validationError) {
+      return toast.error(validationError);
     }
 
     const updatedData = {

@@ -1,8 +1,6 @@
 import { useContext, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 
-import toast from 'react-hot-toast';
-
 const useImagesUploader = () => {
   const [isLoadingImageUpload, setIsLoadingImageUpload] = useState(false);
   const [images, setImages] = useState({

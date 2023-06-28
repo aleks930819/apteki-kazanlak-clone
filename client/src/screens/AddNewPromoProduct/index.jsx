@@ -14,6 +14,7 @@ import UploadImageInput from '../../ui/UploadImageInput';
 import { useState } from 'react';
 
 import setChangedValue from '../../utils/changeValueHandler';
+import priceValidation from '../../utils/priceValidation';
 
 const AddNewPromoProductScreen = () => {
   const { user } = useContext(AuthContext);
@@ -43,10 +44,11 @@ const AddNewPromoProductScreen = () => {
       return toast.error('Моля попълнете всички полета!');
     }
 
-    if (values.oldPrice <= values.newPrice) {
-      return toast.error('Новата цена трябва да е по-малка от старата!');
-    }
+    const validationError = priceValidation(values.newPrice, values.oldPrice);
 
+    if (validationError) {
+      return toast.error(validationError);
+    }
     const data = {
       ...values,
       image: {
@@ -62,7 +64,7 @@ const AddNewPromoProductScreen = () => {
     setChangedValue(e, setValues);
   };
 
-  console.log(images);
+  console.log(values);
 
   return (
     <ActionForm
