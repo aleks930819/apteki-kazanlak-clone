@@ -1,6 +1,11 @@
 import { Suspense, lazy } from 'react';
 
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import {
+  RouterProvider,
+  Route,
+  Routes,
+  createBrowserRouter,
+} from 'react-router-dom';
 
 import AppLayout from './ui/AppLayout';
 
@@ -25,7 +30,6 @@ import LoginScreen from './screens/Login';
 // import EditPromoScreeen from './screens/EditPromoProduct';
 // import AddNewNewsScreen from './screens/AddNewNews';
 // import EditNewsScreen from './screens/EditNews';
-
 
 // const AdminPanelScreen = lazy(() => import('./screens/AdminPanel'));
 // const AdminPharmacies = lazy(() =>
@@ -60,136 +64,136 @@ const queryClient = new QueryClient({
   },
 });
 
-const router = createBrowserRouter([
-  {
-    element: <AppLayout />,
-    errorElement: <NotFoundScreen />,
-    children: [
-      {
-        path: '/',
-        element: <HomeScreen />,
-      },
-      {
-        path: '/pharmacies',
-        element: <PharmaciesScreen />,
-      },
-      {
-        path: '/pharmacies/:slug',
-        element: <Pharmacie />,
-      },
-      {
-        path: '/za-nas',
-        element: <AboutUsScreen />,
-      },
-      {
-        path: '/interesno',
-        element: <InterestingScreen />,
-      },
-      {
-        path: '/interesno/:slug',
-        element: <NewsScreen />,
-      },
-      {
-        path: '/promo',
-        element: <PromoScreen />,
-      },
-      {
-        path: '/history',
-        element: <HistoryScreen />,
-      },
-      {
-        path: '/admin/login',
-        element: <LoginScreen />,
-      },
-      // {
-      //   path: '/admin',
-      //   element: (
-      //     <ProtectedRoute>
-      //       <AdminPanelScreen />
-      //     </ProtectedRoute>
-      //   ),
-      //   children: [
-      //     {
-      //       path: 'pharmacies',
-      //       element: (
-      //         <ProtectedRoute>
-      //           <AdminPharmacies />
-      //         </ProtectedRoute>
-      //       ),
-      //     },
-      //     {
-      //       path: 'pharmacies/add',
-      //       element: (
-      //         <ProtectedRoute>
-      //           <AddNewPharmacieScreen />,
-      //         </ProtectedRoute>
-      //       ),
-      //     },
-      //     {
-      //       path: 'pharmacies/edit/:slug',
-      //       element: (
-      //         <ProtectedRoute>
-      //           <EditPharmacieScreen />,
-      //         </ProtectedRoute>
-      //       ),
-      //     },
-      //     {
-      //       path: 'promo-products',
-      //       element: (
-      //         <ProtectedRoute>
-      //           <AdminPromoProducts />,
-      //         </ProtectedRoute>
-      //       ),
-      //     },
-      //     {
-      //       path: 'promo-products/add',
-      //       element: (
-      //         <ProtectedRoute>
-      //           <AddNewPromoProductScreen />,
-      //         </ProtectedRoute>
-      //       ),
-      //     },
-      //     {
-      //       path: 'promo-products/edit/:id',
-      //       element: (
-      //         <ProtectedRoute>
-      //           <EditPromoScreeen />,
-      //         </ProtectedRoute>
-      //       ),
-      //     },
-      //     {
-      //       path: 'interesno',
-      //       element: (
-      //         <ProtectedRoute>
-      //           <AdminInteresno />,
-      //         </ProtectedRoute>
-      //       ),
-      //     },
-      //     {
-      //       path: 'interesno/add',
-      //       element: (
-      //         <ProtectedRoute>
-      //           <AddNewNewsScreen />,
-      //         </ProtectedRoute>
-      //       ),
-      //     },
-      //     {
-      //       path: 'interesno/edit/:slug',
-      //       element: (
-      //         <ProtectedRoute>
-      //           <EditNewsScreen />,
-      //         </ProtectedRoute>
-      //       ),
-      //     },
-      //   ],
-      // },
-      {
-        path: '*',
-        element: <NotFoundScreen />,
-      },
-    ],
-  },
-]);
+// const router = createBrowserRouter([
+//   {
+//     element: <AppLayout />,
+//     errorElement: <NotFoundScreen />,
+//     children: [
+//       {
+//         path: '/',
+//         element: <HomeScreen />,
+//       },
+//       {
+//         path: '/pharmacies',
+//         element: <PharmaciesScreen />,
+//       },
+//       {
+//         path: '/pharmacies/:slug',
+//         element: <Pharmacie />,
+//       },
+//       {
+//         path: '/za-nas',
+//         element: <AboutUsScreen />,
+//       },
+//       {
+//         path: '/interesno',
+//         element: <InterestingScreen />,
+//       },
+//       {
+//         path: '/interesno/:slug',
+//         element: <NewsScreen />,
+//       },
+//       {
+//         path: '/promo',
+//         element: <PromoScreen />,
+//       },
+//       {
+//         path: '/history',
+//         element: <HistoryScreen />,
+//       },
+//       {
+//         path: '/admin/login',
+//         element: <LoginScreen />,
+//       },
+//       // {
+//       //   path: '/admin',
+//       //   element: (
+//       //     <ProtectedRoute>
+//       //       <AdminPanelScreen />
+//       //     </ProtectedRoute>
+//       //   ),
+//       //   children: [
+//       //     {
+//       //       path: 'pharmacies',
+//       //       element: (
+//       //         <ProtectedRoute>
+//       //           <AdminPharmacies />
+//       //         </ProtectedRoute>
+//       //       ),
+//       //     },
+//       //     {
+//       //       path: 'pharmacies/add',
+//       //       element: (
+//       //         <ProtectedRoute>
+//       //           <AddNewPharmacieScreen />,
+//       //         </ProtectedRoute>
+//       //       ),
+//       //     },
+//       //     {
+//       //       path: 'pharmacies/edit/:slug',
+//       //       element: (
+//       //         <ProtectedRoute>
+//       //           <EditPharmacieScreen />,
+//       //         </ProtectedRoute>
+//       //       ),
+//       //     },
+//       //     {
+//       //       path: 'promo-products',
+//       //       element: (
+//       //         <ProtectedRoute>
+//       //           <AdminPromoProducts />,
+//       //         </ProtectedRoute>
+//       //       ),
+//       //     },
+//       //     {
+//       //       path: 'promo-products/add',
+//       //       element: (
+//       //         <ProtectedRoute>
+//       //           <AddNewPromoProductScreen />,
+//       //         </ProtectedRoute>
+//       //       ),
+//       //     },
+//       //     {
+//       //       path: 'promo-products/edit/:id',
+//       //       element: (
+//       //         <ProtectedRoute>
+//       //           <EditPromoScreeen />,
+//       //         </ProtectedRoute>
+//       //       ),
+//       //     },
+//       //     {
+//       //       path: 'interesno',
+//       //       element: (
+//       //         <ProtectedRoute>
+//       //           <AdminInteresno />,
+//       //         </ProtectedRoute>
+//       //       ),
+//       //     },
+//       //     {
+//       //       path: 'interesno/add',
+//       //       element: (
+//       //         <ProtectedRoute>
+//       //           <AddNewNewsScreen />,
+//       //         </ProtectedRoute>
+//       //       ),
+//       //     },
+//       //     {
+//       //       path: 'interesno/edit/:slug',
+//       //       element: (
+//       //         <ProtectedRoute>
+//       //           <EditNewsScreen />,
+//       //         </ProtectedRoute>
+//       //       ),
+//       //     },
+//       //   ],
+//       // },
+//       {
+//         path: '*',
+//         element: <NotFoundScreen />,
+//       },
+//     ],
+//   },
+// ]);
 
 function App() {
   return (
@@ -197,7 +201,31 @@ function App() {
       <AuthProvider>
         <ReactQueryDevtools initialIsOpen={false} />
         <Suspense fallback={<Spinner />}>
-          <RouterProvider router={router} />
+          {/* <RouterProvider router={router} /> */}
+          <Routes>
+            <Route path="/" element={<HomeScreen />} />
+            <Route path="/pharmacies" element={<PharmaciesScreen />} />
+            <Route path="/pharmacies/:slug" element={<Pharmacie />} />
+            <Route path="/za-nas" element={<AboutUsScreen />} />
+            <Route path="/interesno" element={<InterestingScreen />} />
+            <Route path="/interesno/:slug" element={<NewsScreen />} />
+            <Route path="/promo" element={<PromoScreen />} />
+            <Route path="/history" element={<HistoryScreen />} />
+            <Route path="/admin/login" element={<LoginScreen />} />
+            {/* <ProtectedRoute path="/admin" element={<AdminPanelScreen />}>
+              <Route path="pharmacies" element={<AdminPharmacies />} />
+              <Route path="pharmacies/add" element={<AddNewPharmacieScreen />} />
+              <Route path="pharmacies/edit/:slug" element={<EditPharmacieScreen />} />
+              <Route path="promo-products" element={<AdminPromoProducts />} />
+              <Route path="promo-products/add" element={<AddNewPromoProductScreen />} />
+              <Route path="promo-products/edit/:id" element={<EditPromoScreeen />} />
+              <Route path="interesno" element={<AdminInteresno />} />
+
+              <Route path="interesno/add" element={<AddNewNewsScreen />} />
+              <Route path="interesno/edit/:slug" element={<EditNewsScreen />} />
+            </ProtectedRoute> */}
+            <Route path="*" element={<NotFoundScreen />} />
+          </Routes>
         </Suspense>
         <Toaster
           position="top-center"
