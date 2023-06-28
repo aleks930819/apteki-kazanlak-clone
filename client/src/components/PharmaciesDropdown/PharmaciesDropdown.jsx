@@ -6,7 +6,7 @@ import { getPharmacies } from '../../services/apiPharmacies';
 
 import { useMemo } from 'react';
 
-const PharmaciesDropdown = ({ itsHover, dropdownRef, handleDropdownClose }) => {
+const PharmaciesDropdown = ({ itsHover, handleDropdownClose }) => {
   const { data: pharmaciesData } = useQuery({
     queryKey: ['pharmacies'],
     queryFn: getPharmacies,
@@ -19,7 +19,6 @@ const PharmaciesDropdown = ({ itsHover, dropdownRef, handleDropdownClose }) => {
 
   return (
     <div
-      ref={dropdownRef}
       className={`transition-height absolute left-0 top-[100%] flex h-[35vh] w-full bg-grey-lighter-2 duration-100 ${
         itsHover ? 'show' : ''
       }`}

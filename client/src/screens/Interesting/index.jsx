@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import HeroBannerLogo from '../../assets/slide2.jpg';
 
-import HeroBanner from '../../components/Hero/HeroBanner';
+import HeroBanner from '../../components/Interesting/HeroBanner';
 import FirstRow from '../../components/Interesting/FirstRow';
 import SecondRow from '../../components/Interesting/SecondRow';
 import { getNews } from '../../services/apiInteresting';

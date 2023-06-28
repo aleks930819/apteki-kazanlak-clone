@@ -14,7 +14,9 @@ const adminMiddleware = asyncHandler(async (req, res, next) => {
 
     const user = await User.findById(decoded.userId);
 
-    if (!user || !user.isAdmin) {
+    console.log(user);
+
+    if (!user || user.role !== 2995) {
       return res.status(403).json({ message: 'Unauthorized access' });
     }
 

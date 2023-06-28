@@ -1,4 +1,4 @@
-import { useContext, useState, useRef } from 'react';
+import { useContext, useState } from 'react';
 
 import { AuthContext } from '../../context/AuthContext';
 
@@ -14,7 +14,6 @@ import HamburgerMenu from '../../ui/HamburgerMenu';
 
 const Header = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
-  const dropdownRef = useRef(null);
   const [openMenu, setOpenMenu] = useState(false);
   const [isDekstopView] = useIsDekstopView();
 
@@ -66,7 +65,6 @@ const Header = () => {
         </nav>
       </div>
       <PharmaciesDropdown
-        dropdownRef={dropdownRef}
         itsHover={isDropdownVisible}
         handleDropdownClose={handleDropdownClose}
       />

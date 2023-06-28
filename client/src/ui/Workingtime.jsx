@@ -1,5 +1,5 @@
-import WorkTimePicker from './WorkTimePicker';
 import WorkTimeWrapper from '../components/WorktTme/WorkTimeWrapper';
+import WorkTimePicker from './WorkTimePicker';
 
 import 'react-time-picker/dist/TimePicker.css';
 import 'react-clock/dist/Clock.css';

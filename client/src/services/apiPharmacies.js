@@ -5,22 +5,23 @@ const API_URL = `${BASE_URL}/pharmacies`;
 export const getPharmacies = async () => {
   const response = await fetch(API_URL);
 
-  if (!response.ok) {
-    throw new Error('Failed to fetch pharmacies.');
-  }
-
   const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message);
+  }
   return data;
 };
 
 export const getPharmacie = async (slug) => {
   const response = await fetch(`${API_URL}/${slug}`);
 
+  const data = await response.json();
+
   if (!response.ok) {
-    throw new Error('Failed to fetch pharmacy.');
+    throw new Error(data.message);
   }
 
-  const data = await response.json();
   return data;
 };
 
@@ -34,11 +35,11 @@ export const addNewPharmacie = async (data, token) => {
     body: JSON.stringify(data),
   });
 
-  if (!response.ok) {
-    throw new Error('Failed to add new pharmacy.');
-  }
-
   const responseData = await response.json();
+
+  if (!response.ok) {
+    throw new Error(responseData.message);
+  }
   return responseData;
 };
 

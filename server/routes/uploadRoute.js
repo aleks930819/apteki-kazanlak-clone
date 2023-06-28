@@ -40,6 +40,7 @@ router.post('/', adminMiddleware, upload.single('image'), async (req, res) => {
     res.status(400).json({ message: 'No file uploaded' });
     return;
   }
+  console.log(req);
 
   checkFileType(req.file, (err, isMatch) => {
     if (err) {
@@ -66,6 +67,5 @@ router.delete('/:filename', adminMiddleware, async (req, res) => {
     res.status(404).json({ message: 'File not found' });
   }
 });
-
 
 export default router;

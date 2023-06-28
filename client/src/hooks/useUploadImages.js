@@ -75,7 +75,6 @@ const useImagesUploader = () => {
       setIsLoadingImageUpload(true);
       const uploadedUrls = await uploadImages(files);
 
-
       const newImages = uploadedUrls.map((url) => ({
         url: url.url,
         filename: url.filename,

@@ -1,21 +1,11 @@
-import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
-import { getPharmacies } from '../../services/apiPharmacies';
 
-import { useMemo } from 'react';
+import MobileHeaderLinksPharmacies from './MobileHeaderLinksPharmacies';
 
 const MobileHeaderLinks = () => {
-  const { isLoading, data: pharmacies } = useQuery({
-    queryKey: ['pharmacies'],
-    queryFn: getPharmacies,
-  });
-
-  const memoizedPharmacies = useMemo(() => pharmacies, [pharmacies]);
-
   return (
     <div
-      className="linear-background
-fixed left-0 top-20 z-50 h-full w-full 
+      className="linear-background fixed left-0 top-20 z-50 h-full w-full 
 "
     >
       <ul className="flex flex-col items-center gap-8 pt-10 ">
@@ -26,17 +16,9 @@ fixed left-0 top-20 z-50 h-full w-full
           <Link to="/history">ИСТОРИЯ</Link>
         </li>
 
-        <li className="w-full border-b-[1px] mt-[-22px] border-primary pb-2 pl-10 text-2xl text-primary">
+        <li className="mt-[-22px] w-full border-b-[1px] border-primary pb-2 pl-10 text-2xl text-primary">
           <Link to="/pharmacies">АПТЕКИ</Link>
-          <ul className="flex flex-col gap-1 pl-10">
-            {memoizedPharmacies?.map((pharmacy) => (
-              <li className="text-base" key={pharmacy._id}>
-                <Link to={`/pharmacies/${pharmacy.slug}`}>
-                  {pharmacy.name.toUpperCase()}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <MobileHeaderLinksPharmacies />
         </li>
 
         <li className="w-full border-b-[1px] border-primary pb-2 pl-10 text-2xl text-primary">

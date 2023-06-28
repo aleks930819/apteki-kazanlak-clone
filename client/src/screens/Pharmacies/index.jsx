@@ -1,13 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
-import ContactBanner from '../../components/Contact/ContactBanner';
-import ContactInfo from '../../components/Contact/ContactInfo';
+
 import { getPharmacies } from '../../services/apiPharmacies';
-import Spinner from '../../ui/Spinner';
 
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 
+import ContactBanner from '../../components/Contact/ContactBanner';
+import ContactInfo from '../../components/Contact/ContactInfo';
+
+import Spinner from '../../ui/Spinner';
+
 const PharmaciesScreen = () => {
-  useDocumentTitle(`Социални Аптеки Казанлък`);
+  useDocumentTitle('Социални Аптеки Казанлък');
 
   const { isLoading, data: pharmaciesData } = useQuery({
     queryKey: ['pharmacies'],

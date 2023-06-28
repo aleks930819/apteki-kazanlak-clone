@@ -1,11 +1,11 @@
-const HeroBanner = ({ imageSrc, children }) => {
-  const divStyle = {
+const HeroBanner = ({ imageSrc }) => {
+  const figBackground = {
     backgroundImage: `url(${imageSrc})`,
   };
 
   return (
     <figure
-      style={divStyle}
+      style={figBackground}
       className="relative h-[30vh] bg-cover bg-center bg-no-repeat
       sm:h-[50vh]
       "

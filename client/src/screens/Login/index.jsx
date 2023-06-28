@@ -1,11 +1,14 @@
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+
+import Photo from '../../assets/contacts-banner.jpg';
+
+import useDocumentTitle from '../../hooks/useDocumentTitle';
+
 import { login } from '../../services/apiAuth';
 import { AuthContext } from '../../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
-import useDocumentTitle from '../../hooks/useDocumentTitle';
-import Photo from '../../assets/contacts-banner.jpg';
 
 const LoginScreen = () => {
   const [isShowPassword, setIsShowPassword] = useState(false);
