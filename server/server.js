@@ -49,14 +49,20 @@ const clientDistPath = path.join(__dirname, '../client/dist');
 
 app.use('/images', express.static(path.join(__dirname, '/images')));
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(clientDistPath));
+app.listen(PORT, () =>
+  console.log(`Server running on port: http://localhost:${PORT}`)
+);
 
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(clientDistPath, 'index.html'));
-  });
-} else {
-  app.listen(PORT, () =>
-    console.log(`Server running on port: http://localhost:${PORT}`)
-  );
-}
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static(clientDistPath));
+
+//   console.log(clientDistPath);
+//   console.log(PORT);
+//   app.get('*', (req, res) => {
+//     res.sendFile(path.resolve(clientDistPath, 'index.html'));
+//   });
+// } else {
+//   app.listen(PORT, () =>
+//     console.log(`Server running on port: http://localhost:${PORT}`)
+//   );
+// }
