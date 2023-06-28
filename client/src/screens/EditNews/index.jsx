@@ -104,7 +104,6 @@ const EditNewsScreen = () => {
         id="image"
         inputMessage="Променете снимката"
         handleFileChange={handleImagesUpload}
-        value={images?.mainImage.url || values?.image.url}
         image={images?.mainImage.url || values?.image.url}
         imageName="mainImage"
       />

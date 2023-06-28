@@ -120,7 +120,6 @@ const AddNewPromoProductScreen = () => {
         label="Снимка"
         handleFileChange={handleImagesUpload}
         imageName="mainImage"
-        value={images?.mainImage.url}
         image={images?.mainImage.url}
       />
     </ActionForm>

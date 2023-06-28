@@ -5,7 +5,7 @@ const ProtectedRoute = ({ children }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const user = localStorage.getItem('user');
+    const user = sessionStorage.getItem('user');
 
     if (!user || JSON.parse(user).role !== 2995) {
       navigate('/');

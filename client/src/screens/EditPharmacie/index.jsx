@@ -27,6 +27,7 @@ import EditImagesContainer from '../../components/EditPharmacie/EditImagesContai
 import { GOOGLE_MAPS_API_KEY } from '../../../api';
 import ChoiceButtons from '../../components/AddNewPharmacie/ChoiceButtons';
 import useWorkingTime from '../../hooks/useWorkingTime';
+import UploadImagesContainer from '../../components/AddNewPharmacie/UploadImagesContainer';
 
 const libaries = ['places'];
 
@@ -255,11 +256,16 @@ const EditPharmacieScreen = () => {
         selectedChoices={selectedChoices}
         handleChoiceClick={handleChoiceClick}
       />
-      <EditImagesContainer
+      <UploadImagesContainer
+        images={images}
+        handleImagesUpload={handleImagesUpload}
+        values={values}
+      />
+      {/* <EditImagesContainer
         images={images}
         handleImagesUpload={handleImagesUpload}
         data={values}
-      />
+      /> */}
       <Workingtime
         workingTime={workingTime}
         handleChangeWorkingTime={handleChangeWorkingTime}

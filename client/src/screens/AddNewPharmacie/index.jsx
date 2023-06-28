@@ -104,6 +104,7 @@ const AddNewPharmacieScreen = () => {
     setChangedValue(e, setValues);
   };
 
+
   return (
     <ActionForm
       heading="Добавате нова аптека"

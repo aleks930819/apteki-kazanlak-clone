@@ -24,6 +24,11 @@ export const addPromoProduct = asyncHandler(async (req, res) => {
   if (!name || !image || !oldPrice || !description || !newPrice) {
     return res.status(400).json({ message: 'Моля попълнете всички полета!' });
   }
+  const isPromoProductExist = await PromoProduct.findOne({ name: name });
+
+  if (isPromoProductExist) {
+    return res.status(400).json({ message: 'Продуктът вече съществува!' });
+  }
 
   const promoProduct = new PromoProduct({
     name,

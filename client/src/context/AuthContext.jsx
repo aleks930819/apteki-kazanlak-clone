@@ -7,16 +7,16 @@ export const AuthProvider = ({ children }) => {
 
   const userLogin = (authData) => {
     setAuth(authData);
-    localStorage.setItem('user', JSON.stringify(authData));
+    sessionStorage.setItem('user', JSON.stringify(authData));
   };
 
   const userLogout = () => {
     setAuth({});
-    localStorage.removeItem('user');
+    sessionStorage.removeItem('user');
   };
 
   useEffect(() => {
-    const loggedInUser = localStorage.getItem('user');
+    const loggedInUser = sessionStorage.getItem('user');
     if (loggedInUser) {
       const foundUser = JSON.parse(loggedInUser);
       setAuth(foundUser);

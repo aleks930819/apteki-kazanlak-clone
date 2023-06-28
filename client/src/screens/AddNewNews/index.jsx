@@ -87,7 +87,6 @@ const AddNewNews = () => {
         id="image"
         label="Снимка"
         handleFileChange={handleImagesUpload}
-        value={images?.mainImage.url}
         image={images?.mainImage.url}
         imageName="mainImage"
       />

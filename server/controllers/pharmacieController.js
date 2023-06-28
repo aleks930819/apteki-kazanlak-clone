@@ -72,6 +72,12 @@ export const createPharmacy = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: 'Моля попълнете всички полета!' });
   }
 
+  const isPharmacyExist = await Pharmacie.findOne({ name: name });
+
+  if (isPharmacyExist) {
+    return res.status(400).json({ message: 'Аптеката вече съществува!' });
+  }
+
   const pharmacy = new Pharmacie({
     name,
     address,

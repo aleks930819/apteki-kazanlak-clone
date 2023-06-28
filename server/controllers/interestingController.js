@@ -36,10 +36,14 @@ export const getSingleNews = asyncHandler(async (req, res) => {
 export const createNews = asyncHandler(async (req, res) => {
   const { title, description, summary, image } = req.body;
 
-  console.log(req.body);
-
   if (!title || !description || !image || !summary) {
     return res.status(400).json({ message: 'Моля попълнете всички полета!' });
+  }
+
+  const isNewsExist = await News.findOne({ title: title });
+
+  if (isNewsExist) {
+    return res.status(400).json({ message: 'Статията вече съществува' });
   }
 
   const news = new News({

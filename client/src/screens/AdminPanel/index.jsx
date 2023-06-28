@@ -33,7 +33,7 @@ const AdminPanelScreen = () => {
   const navigate = useNavigate();
 
   const logoutHandler = () => {
-    localStorage.removeItem('user');
+    sessionStorage.removeItem('user');
     navigate('/');
   };
 
