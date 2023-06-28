@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
+import { BASE_URL } from '../config';
 
 const useImagesUploader = () => {
   const [isLoadingImageUpload, setIsLoadingImageUpload] = useState(false);
@@ -41,7 +42,7 @@ const useImagesUploader = () => {
         const formData = new FormData();
         formData.append('image', file);
 
-        return fetch('http://localhost:5000/api/uploads', {
+        return fetch(`${BASE_URL}/uploads`, {
           method: 'POST',
           body: formData,
           headers: {
@@ -81,15 +82,12 @@ const useImagesUploader = () => {
       }));
 
       if (images[imageName].url) {
-        await fetch(
-          `http://localhost:5000/api/uploads/${images[imageName].filename}`,
-          {
-            method: 'DELETE',
-            headers: {
-              Authorization: `Bearer ${user.token}`,
-            },
-          }
-        );
+        await fetch(`${BASE_URL}/uploads/${images[imageName].filename}`, {
+          method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        });
 
         setImages((prevImages) => ({
           ...prevImages,

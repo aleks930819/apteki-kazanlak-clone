@@ -1,10 +1,15 @@
 import cloudinary from 'cloudinary';
+import {
+  CLOUDINARY_API_KEY,
+  CLOUDINARY_API_SECRET,
+  CLOUDINARY_CLOUD_NAME,
+} from '../config';
 
 cloudinary.v2.config({
   secure: true,
-  cloud_name: 'dbrewse3d',
-  api_key: '397664564716853',
-  api_secret: 'NN7hwb0FzycQKKkPkhPfPoZCL9A',
+  cloud_name: CLOUDINARY_CLOUD_NAME,
+  api_key: CLOUDINARY_API_KEY,
+  api_secret: CLOUDINARY_API_SECRET,
 });
 
 export default cloudinary;
