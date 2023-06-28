@@ -61,8 +61,8 @@ if (process.env.NODE_ENV === 'production') {
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(clientDistPath, 'index.html'));
   });
-} else {
-  app.listen(PORT, () =>
-    console.log(`Server running on port: http://localhost:${PORT}`)
-  );
 }
+
+app.listen(PORT, () =>
+  console.log(`Server running on port: http://localhost:${PORT}`)
+);
