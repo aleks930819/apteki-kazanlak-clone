@@ -50,7 +50,7 @@ router.post('/', adminMiddleware, upload.single('image'), async (req, res) => {
 
     res.json({
       message: 'Image uploaded successfully',
-      url: `http://localhost:5000/images/${req.file.filename}`,
+      url: `https://apteki-kazanlak-server.onrender.com/uploads/images/${req.file.filename}`,
       filename: req.file.filename,
     });
   });
