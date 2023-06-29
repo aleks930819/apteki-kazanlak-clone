@@ -63,7 +63,7 @@ const AddNewNews = () => {
       onSubmit={handleSubmit}
       isLoading={addingNewNewsLoading || isLoadingImageUpload}
     >
-      <div className="grid grid-cols-2 gap-x-10">
+      <div className="grid grid-cols-1 w-full lg:grid-cols-2 gap-x-10">
         <InputField
           type="text"
           label="Залгавие на статията"

@@ -69,7 +69,6 @@ export const deleteNews = asyncHandler(async (req, res) => {
 
   await News.deleteOne({ slug: req.params.slug });
 
-  deleteImage(isNewsExist.image.filename);
   res.json({ message: 'Статията е премахната' });
 });
 

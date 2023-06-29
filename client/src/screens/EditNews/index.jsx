@@ -74,7 +74,7 @@ const EditNewsScreen = () => {
       isDeleting={deletingLoading}
       deleteButton={'Изтрий'}
     >
-      <div className="grid grid-cols-2 gap-x-10">
+      <div className="grid w-full grid-cols-1 gap-x-10 lg:grid-cols-2">
         <InputField
           type="text"
           label="Залгавие на статията"

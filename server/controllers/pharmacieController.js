@@ -113,16 +113,6 @@ export const deletePharmacy = asyncHandler(async (req, res) => {
     return res.status(404).json({ message: 'Pharmacy not found' });
   }
 
-  if (isPharmacyExist) {
-    isPharmacyExist.pharmacieImages.map((image) => {
-      deleteImage(image.filename);
-    });
-
-    deleteImage(isPharmacyExist.mainImage.filename);
-    deleteImage(isPharmacyExist.secondaryImage.filename);
-    deleteImage(isPharmacyExist.managerImage.filename);
-  }
-
   const pharmacy = await Pharmacie.deleteOne({ slug: req.params.slug });
 
   if (pharmacy) {
@@ -154,7 +144,6 @@ export const updatePharmacy = asyncHandler(async (req, res) => {
   } = req.body;
 
   const pharmacy = await Pharmacie.findOne({ slug: req.params.slug });
-
 
   if (pharmacy) {
     pharmacy.name = name || pharmacy.name;

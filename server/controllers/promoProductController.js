@@ -56,7 +56,6 @@ export const deletePromoProduct = asyncHandler(async (req, res) => {
   const promoProduct = await PromoProduct.deleteOne({ _id: req.params.id });
 
   if (promoProduct) {
-    deleteImage(isPromoProductExist.image.filename);
     res.json({ message: 'Promo product removed' });
   } else {
     res.status(404).json({ message: 'Продуктът не е намерен' });
