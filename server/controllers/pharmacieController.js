@@ -1,7 +1,7 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import Pharmacie from '../models/pharmacieModel.js';
 
-import deleteImage from '../utils/deleteImage.js';
+import cloudinary from '../config/cloudinaryConfig.js';
 
 // @desc    Fetch all pharmacies
 // @route   GET /api/pharmacies
@@ -110,13 +110,27 @@ export const deletePharmacy = asyncHandler(async (req, res) => {
   const isPharmacyExist = await Pharmacie.findOne({ slug: req.params.slug });
 
   if (!isPharmacyExist) {
-    return res.status(404).json({ message: 'Pharmacy not found' });
+    return res.status(404).json({ message: 'Аптеката не е намеренa' });
+  }
+
+  if (isPharmacyExist.mainImage.filename) {
+    const imageFiles = [
+      isPharmacyExist.mainImage.filename,
+      isPharmacyExist.secondaryImage.filename,
+      isPharmacyExist.managerImage.filename,
+      isPharmacyExist.frontImage.filename,
+      ...isPharmacyExist.pharmacieImages.map((image) => image.filename),
+    ];
+
+    for (const filename of imageFiles) {
+      await cloudinary.uploader.destroy(filename);
+    }
   }
 
   const pharmacy = await Pharmacie.deleteOne({ slug: req.params.slug });
 
   if (pharmacy) {
-    res.json({ message: 'Pharmacy removed' });
+    res.json({ message: 'Аптеката е успешно премахната' });
   } else {
     res.status(404).json({ message: 'Аптеката не е намерена' });
   }

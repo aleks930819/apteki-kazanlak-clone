@@ -1,6 +1,6 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import News from '../models/newsModel.js';
-import deleteImage from '../utils/deleteImage.js';
+import cloudinary from '../config/cloudinaryConfig.js';
 
 // @desc    Fetch all news
 // @route   GET /api/interesting
@@ -65,6 +65,12 @@ export const deleteNews = asyncHandler(async (req, res) => {
 
   if (!isNewsExist) {
     return res.status(404).json({ message: 'Статията не е намерена' });
+  }
+
+  const imageFileName = isNewsExist.image.filename;
+
+  if (imageFileName) {
+    await cloudinary.uploader.destroy(imageFileName);
   }
 
   await News.deleteOne({ slug: req.params.slug });

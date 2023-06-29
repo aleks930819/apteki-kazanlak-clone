@@ -1,6 +1,6 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import PromoProduct from '../models/promoProductModel.js';
-import deleteImage from '../utils/deleteImage.js';
+import cloudinary from '../config/cloudinaryConfig.js';
 
 // @desc    Fetch all promo products
 // @route   GET /api/promo
@@ -53,10 +53,16 @@ export const deletePromoProduct = asyncHandler(async (req, res) => {
     return res.status(404).json({ message: 'Promo product not found' });
   }
 
+  const imageFileName = isPromoProductExist.image.filename;
+
+  if (imageFileName) {
+    await cloudinary.uploader.destroy(imageFileName);
+  }
+
   const promoProduct = await PromoProduct.deleteOne({ _id: req.params.id });
 
   if (promoProduct) {
-    res.json({ message: 'Promo product removed' });
+    res.json({ message: 'Продуктът е премахнат' });
   } else {
     res.status(404).json({ message: 'Продуктът не е намерен' });
   }
