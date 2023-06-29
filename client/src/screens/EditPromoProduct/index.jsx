@@ -36,8 +36,7 @@ const EditPromoScreeen = () => {
 
   const { editingLoading, updateProduct } = useUpdatePromoProduct(id, user);
   const { deleteProduct, deletingLoading } = useDeletePromoProduct(id, user);
-  const { images, handleImagesUpload, isLoadingImageUpload } =
-    useImagesUploader();
+  const { images, handleImagesUpload } = useImagesUploader();
 
   const { isLoading, data } = useQuery(['promoProducts', id], () =>
     getProductById(id)
@@ -83,7 +82,6 @@ const EditPromoScreeen = () => {
       buttonName="Редактирай"
       deleteButton="Изтрий"
       method="POST"
-      isLoading={editingLoading || isLoadingImageUpload || deletingLoading}
       onSubmit={handleSubmit}
       editingLoading={editingLoading}
       deletingLoading={deletingLoading}
@@ -137,7 +135,6 @@ const EditPromoScreeen = () => {
         handleFileChange={handleImagesUpload}
         image={images?.mainImage.url || values?.image.url}
         imageName="mainImage"
-        isLoading={isLoadingImageUpload}
       />
     </ActionForm>
   );

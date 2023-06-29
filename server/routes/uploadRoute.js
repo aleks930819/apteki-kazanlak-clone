@@ -17,13 +17,6 @@ router.post('/', upload.single('image'), async (req, res) => {
     return;
   }
 
-  const fileType = req.file.mimetype.split('/')[0];
-
-  if (fileType !== 'image') {
-    res.status(400).json({ message: 'Само снимки!' });
-    return;
-  }
-
   const result = await cloudinary.v2.uploader.upload(req.file.path);
 
   res.json({

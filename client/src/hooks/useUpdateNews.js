@@ -12,6 +12,9 @@ const useUpdateNews = (slug, user) => {
     mutationFn: (data) => updateNewsBySlug(data, slug, user.token),
     onSuccess: async () => {
       queryClient.invalidateQueries({
+        queryKey: ['news', slug],
+      });
+      queryClient.invalidateQueries({
         queryKey: ['news'],
       });
       toast.success('Статията е променена успешно!');
