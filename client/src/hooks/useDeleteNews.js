@@ -12,9 +12,6 @@ const useDeleteNews = (slug, user) => {
     mutationFn: () => deleteNewsBySlug(slug, user.token),
     onSuccess: async () => {
       queryClient.invalidateQueries({
-        queryKey: ['news', slug],
-      });
-      queryClient.invalidateQueries({
         queryKey: ['news'],
       });
 
