@@ -17,13 +17,22 @@ const UploadImageInput = ({
         {label}
       </label>
       <div className="relative h-[200px] w-[200px]">
-        {image && (
-          <img src={image} alt="image" className="h-full w-full object-center" />
+        {image ? (
+          <img
+            src={image}
+            alt="image"
+            className="h-full w-full object-center"
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center border-2 ">
+            <span className="text-gray-700">Качете снимка</span>
+          </div>
         )}
       </div>
       <label
         htmlFor={id}
-        className="mt-4 inline-flex cursor-pointer items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2"
+        className="mt-4 inline-flex
+           cursor-pointer items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2"
       >
         <svg
           className="mr-2 h-6 w-6"
@@ -39,7 +48,7 @@ const UploadImageInput = ({
             d="M12 6v6m0 0v6m0-6h6m-6 0H6"
           />
         </svg>
-        <span className="text-gray-700">
+        <span className=" text-gray-700">
           {isLoading ? <ButtonSpinner /> : inputMessage}
         </span>
       </label>

@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { BASE_URL } from '../config';
+import { toast } from 'react-hot-toast';
 
 const useImagesUploader = () => {
   const [isLoadingImageUpload, setIsLoadingImageUpload] = useState(false);
@@ -73,6 +74,12 @@ const useImagesUploader = () => {
 
   const handleImagesUpload = async (e, imageName) => {
     const files = Array.from(e.target.files);
+
+    const isImageFile = files.every((file) => file.type.startsWith('image/'));
+
+    if (!isImageFile) {
+      return toast.error('Само снимки!');
+    }
 
     try {
       setIsLoadingImageUpload(true);

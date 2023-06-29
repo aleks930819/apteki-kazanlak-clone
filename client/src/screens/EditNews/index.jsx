@@ -69,7 +69,7 @@ const EditNewsScreen = () => {
       heading="Редактирай статия"
       buttonName="Редактирай"
       onSubmit={handleSubmit}
-      isLoading={editingLoading}
+      isLoading={editingLoading || isLoadingImageUpload || deletingLoading}
       onDeleteAction={deleteNews}
       isDeleting={deletingLoading}
       deleteButton={'Изтрий'}
@@ -106,6 +106,7 @@ const EditNewsScreen = () => {
         handleFileChange={handleImagesUpload}
         image={images?.mainImage.url || values?.image.url}
         imageName="mainImage"
+        isLoading={isLoadingImageUpload}
       />
     </ActionForm>
   );
