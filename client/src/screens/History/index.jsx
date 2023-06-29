@@ -42,7 +42,7 @@ const HistoryScreen = () => {
   useDocumentTitle('История | Социални Аптеки Казанлък');
 
   return (
-    <div className="relative ml-auto mr-auto flex h-full max-w-lg flex-col items-center justify-center overflow-hidden py-[60px]">
+    <div className="relative ml-auto mr-auto flex h-full max-w-lg flex-col items-center justify-center overflow-hidden py-[60px]  sm:overflow-visible">
       <div className="spine hidden sm:block"></div>
       <HistoryBox data={historyData} />
     </div>

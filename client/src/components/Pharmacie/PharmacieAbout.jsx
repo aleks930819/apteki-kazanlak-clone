@@ -13,7 +13,7 @@ sm:px-0 sm:py-[35px]"
           className=" w-full object-cover"
         />
       </div>
-      <div className="mt-[60px] max-w-prose px-2 sm:pr-10">
+      <div className=" max-w-prose px-2 sm:pr-10">
         <p className="whitespace-pre-wrap">{history}</p>
       </div>
     </section>

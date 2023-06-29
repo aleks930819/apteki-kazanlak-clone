@@ -4,6 +4,8 @@ import Header from '../components/Header';
 import ScrollToTop from '../utils/scrollToTop';
 import { MobileNavMenuProvider } from '../context/MenuCloseContext';
 
+import '../index.css';
+
 const AppLayout = () => {
   const location = useLocation();
 
