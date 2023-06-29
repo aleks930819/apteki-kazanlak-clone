@@ -1,8 +1,8 @@
+import useDocumentTitle from '../../hooks/useDocumentTitle';
+
 import Hero from '../../components/Hero';
 import ServiceHighlights from '../../components/ServiceHighlights';
-import Maps from '../../components/Maps/Maps';
-
-import useDocumentTitle from '../../hooks/useDocumentTitle';
+import Locations from '../../components/Maps/Locations';
 
 const HomeScreen = () => {
   useDocumentTitle('Социални Аптеки Казанлък');
@@ -11,7 +11,7 @@ const HomeScreen = () => {
     <main>
       <Hero />
       <ServiceHighlights />
-      <Maps />
+      <Locations />
     </main>
   );
 };

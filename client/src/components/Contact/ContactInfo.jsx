@@ -36,7 +36,7 @@ const ContactInfo = ({
         />
         <ContactInfoManager managerName={managerName} />
       </div>
-      <div className="mx-auto mt-5 h-[.5px] w-24 bg-grey-dark sm:hidden" />
+      <div className="mx-auto mt-5 h-[1px] w-24 bg-primary sm:hidden" />
     </div>
   );
 };

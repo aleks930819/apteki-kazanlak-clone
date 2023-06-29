@@ -8,6 +8,11 @@ import { useContext, useState } from 'react';
 import useUpdatePharmacie from '../../hooks/useUpdatePharmacie';
 import useDeletePharmacie from '../../hooks/useDeletePharmacie';
 import useImagesUploader from '../../hooks/useUploadImages';
+import useWorkingTime from '../../hooks/useWorkingTime';
+
+import { AuthContext } from '../../context/AuthContext';
+
+import { GOOGLE_MAPS_API_KEY } from '../../../api';
 
 import { getPharmacie } from '../../services/apiPharmacies';
 
@@ -21,23 +26,13 @@ import InputsWrapper from '../../ui/InpusWrapper';
 import setChangedValue from '../../utils/changeValueHandler';
 import createNewData from '../../utils/createNewData';
 
-import { AuthContext } from '../../context/AuthContext';
-
-import { GOOGLE_MAPS_API_KEY } from '../../../api';
 import ChoiceButtons from '../../components/AddNewPharmacie/ChoiceButtons';
-import useWorkingTime from '../../hooks/useWorkingTime';
 import UploadImagesContainer from '../../components/AddNewPharmacie/UploadImagesContainer';
 
 const libaries = ['places'];
 
 const EditPharmacieScreen = () => {
-  const { slug } = useParams();
-  const { user } = useContext(AuthContext);
-
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: GOOGLE_MAPS_API_KEY,
-    libraries: libaries,
-  });
+  const [selectedChoices, setSelectedChoices] = useState([]);
 
   const [values, setValues] = useState({
     name: '',
@@ -52,8 +47,25 @@ const EditPharmacieScreen = () => {
     mainImage: '',
     secondaryImage: '',
     managerImage: '',
+    frontImage: '',
     pharmacieImages: [],
-    workingWith: [],
+  });
+
+  const { slug } = useParams();
+  const { user } = useContext(AuthContext);
+
+  const { editingLoading, updatePharmacie } = useUpdatePharmacie(slug, user);
+  const { deletePharmacie, deletingLoading } = useDeletePharmacie(slug, user);
+  const { images, handleImagesUpload, isLoadingImageUpload } =
+    useImagesUploader();
+
+  const { isLoading, data } = useQuery(['pharmacies', slug], () =>
+    getPharmacie(slug)
+  );
+
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: GOOGLE_MAPS_API_KEY,
+    libraries: libaries,
   });
 
   let initialWorkingTime = {
@@ -74,8 +86,6 @@ const EditPharmacieScreen = () => {
   const { workingTime, setWorkingTime, handleChangeWorkingTime } =
     useWorkingTime(initialWorkingTime);
 
-  const [selectedChoices, setSelectedChoices] = useState([]);
-
   const handleChoiceClick = (choice) => {
     if (selectedChoices.includes(choice)) {
       setSelectedChoices(selectedChoices.filter((c) => c !== choice));
@@ -83,14 +93,6 @@ const EditPharmacieScreen = () => {
       setSelectedChoices([...selectedChoices, choice]);
     }
   };
-
-  const { editingLoading, updatePharmacie } = useUpdatePharmacie(slug, user);
-  const { deletePharmacie, deletingLoading } = useDeletePharmacie(slug, user);
-  const { images, handleImagesUpload } = useImagesUploader();
-
-  const { isLoading, data } = useQuery(['pharmacies', slug], () =>
-    getPharmacie(slug)
-  );
 
   if (isLoading) {
     return <Spinner />;
@@ -110,6 +112,7 @@ const EditPharmacieScreen = () => {
     managerImage,
     pharmacieImages,
     workingWith,
+    frontImage = '',
   } = data;
 
   if (!values.name) {
@@ -127,6 +130,7 @@ const EditPharmacieScreen = () => {
       managerImage,
       pharmacieImages,
       workingWith,
+      frontImage,
     });
 
     setWorkingTime({
@@ -143,6 +147,8 @@ const EditPharmacieScreen = () => {
         close: workingHours.sunday[1],
       },
     });
+
+    setSelectedChoices(workingWith);
   }
 
   const handleSubmit = async (e) => {
@@ -259,12 +265,9 @@ const EditPharmacieScreen = () => {
         images={images}
         handleImagesUpload={handleImagesUpload}
         values={values}
+        isLoading={isLoadingImageUpload}
       />
-      {/* <EditImagesContainer
-        images={images}
-        handleImagesUpload={handleImagesUpload}
-        data={values}
-      /> */}
+
       <Workingtime
         workingTime={workingTime}
         handleChangeWorkingTime={handleChangeWorkingTime}

@@ -4,6 +4,7 @@ const createNewData = async (data, images, workingTime, selectedChoices) => {
   const address = `${data.city} ${data.street}`;
   const geocode = await getGeocode({ address });
 
+
   const { lat, lng } = getLatLng(geocode[0]);
 
   const newData = {
@@ -28,6 +29,7 @@ const createNewData = async (data, images, workingTime, selectedChoices) => {
     managerImage: images.managerImage.url
       ? images.managerImage
       : data.managerImage,
+    frontImage: images.frontImage.url ? images.frontImage : data.frontImage,
     pharmacieImages: [
       images.pharmaciesImage1.url
         ? images.pharmaciesImage1

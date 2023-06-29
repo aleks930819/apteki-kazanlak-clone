@@ -1,10 +1,10 @@
-const Spinner = () => {
+const ButtonSpinner = () => {
   return (
-    <div className="mx-auto  h-screen flex items-center justify-center">
+    <div className="mx-auto  flex items-center justify-center">
       <div role="status">
         <svg
           aria-hidden="true"
-          className="mr-2 h-8 w-8 animate-spin fill-green-900 text-gray-200 dark:text-gray-600"
+          className="mr-2 h-4 w-4 animate-spin fill-white text-gray-200 dark:text-gray-600"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -18,10 +18,9 @@ const Spinner = () => {
             fill="currentFill"
           />
         </svg>
-        <span className="sr-only">Loading...</span>
       </div>
     </div>
   );
 };
 
-export default Spinner;
+export default ButtonSpinner;

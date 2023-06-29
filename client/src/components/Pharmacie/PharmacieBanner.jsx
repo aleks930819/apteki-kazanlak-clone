@@ -1,38 +1,38 @@
 const PharmacieBanner = ({ name, mainImage }) => {
   const figStyle = {
     backgroundImage: `url(${mainImage})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'top 15% center',
   };
 
   return (
     <figure
       style={figStyle}
-      className="bg-no-repeat relative  h-[30vh] bg-cover sm:h-[60vh]
-      "
+      className="relative h-[35vh]  w-full bg-no-repeat sm:h-[55vh]"
     >
-      <div className="mx-auto flex w-full max-w-lg items-center justify-center p-4 ">
-        <div className="mt-[5vh] flex w-full  max-w-lg sm:mt-[20vh] ">
-          <span
-            className="
+      <div className=" flex w-full max-w-lg  justify-center  "></div>
+
+      <div className="mx-auto mt-[5vh] w-full  max-w-lg  px-[20px]  sm:mt-[20vh] ">
+        <span
+          className="
     animate-pop-in
     absolute
-    bottom-[10vh]
-
+    bottom-[70px]
     transform
     bg-primary
     bg-opacity-90
-    px-4
-    text-3xl
+    px-5
+    py-0
+    text-2xl
     text-white
-    lg:bottom-16
-    lg:left-64
+    sm:text-3xl
     lg:px-6
     lg:py-1
     lg:text-6xl
   "
-          >
-            {name}
-          </span>
-        </div>
+        >
+          {name}
+        </span>
       </div>
     </figure>
   );

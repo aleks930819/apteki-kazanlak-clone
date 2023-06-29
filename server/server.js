@@ -43,11 +43,11 @@ app.use('/api/uploads', uploadsRoute);
 
 app.use(errorHandler);
 
-const __dirname = path.resolve();
+// const __dirname = path.resolve();
 
-const clientDistPath = path.join(__dirname, '../client/dist');
+// const clientDistPath = path.join(__dirname, '../client/dist');
 
-app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+// app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 // app.listen(PORT, () =>
 //   console.log(`Server running on port: http://localhost:${PORT}`)

@@ -1,9 +1,12 @@
+import ButtonSpinner from './ButtonSpinner';
+
 const UploadImageInput = ({
   id,
   label,
   handleFileChange,
   image,
   disabled,
+  isLoading,
   imageName,
 }) => {
   const inputMessage = image ? 'Промени снимката' : 'Качете снимка';
@@ -13,7 +16,11 @@ const UploadImageInput = ({
       <label htmlFor={id} className="mb-2 font-bold text-gray-700">
         {label}
       </label>
-      {image && <img src={image} alt="image" className="h-[200px] w-[200px]" />}
+      <div className="relative h-[200px] w-[200px]">
+        {image && (
+          <img src={image} alt="image" className="h-full w-full object-center" />
+        )}
+      </div>
       <label
         htmlFor={id}
         className="mt-4 inline-flex cursor-pointer items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2"
@@ -32,7 +39,9 @@ const UploadImageInput = ({
             d="M12 6v6m0 0v6m0-6h6m-6 0H6"
           />
         </svg>
-        <span className="text-gray-700">{inputMessage}</span>
+        <span className="text-gray-700">
+          {isLoading ? <ButtonSpinner /> : inputMessage}
+        </span>
       </label>
 
       <input

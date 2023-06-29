@@ -2,17 +2,18 @@ import { useQuery } from '@tanstack/react-query';
 
 import HeroBannerLogo from '../../assets/slide2.jpg';
 
+import useDocumentTitle from '../../hooks/useDocumentTitle';
+
+import { getNews } from '../../services/apiInteresting';
+
 import HeroBanner from '../../components/Interesting/HeroBanner';
 import FirstRow from '../../components/Interesting/FirstRow';
 import SecondRow from '../../components/Interesting/SecondRow';
-import { getNews } from '../../services/apiInteresting';
 
 import Spinner from '../../ui/Spinner';
 
-import useDocumentTitle from '../../hooks/useDocumentTitle';
-
 const InterestingScreen = () => {
-  useDocumentTitle(`Интересно | Социални Аптеки Казанлък`);
+  useDocumentTitle('Интересно | Социални Аптеки Казанлък');
 
   const { isLoading, data: allNews } = useQuery({
     queryKey: ['news'],
