@@ -83,13 +83,6 @@ const AddNewNews = () => {
           onChange={changeHandler}
         />
       </div>
-      <UploadImageInput
-        id="image"
-        label="Снимка"
-        handleFileChange={handleImagesUpload}
-        image={images?.mainImage.url}
-        imageName="mainImage"
-      />
 
       <TextAreaField
         label="Описание"
@@ -98,6 +91,13 @@ const AddNewNews = () => {
         value={values.description}
         required
         onChange={changeHandler}
+      />
+      <UploadImageInput
+        id="image"
+        label="Снимка"
+        handleFileChange={handleImagesUpload}
+        image={images?.mainImage.url}
+        imageName="mainImage"
       />
     </ActionForm>
   );

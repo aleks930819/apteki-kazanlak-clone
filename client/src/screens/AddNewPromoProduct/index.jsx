@@ -64,8 +64,6 @@ const AddNewPromoProductScreen = () => {
     setChangedValue(e, setValues);
   };
 
-  console.log(values);
-
   return (
     <ActionForm
       heading="Добавете нов продукт"
