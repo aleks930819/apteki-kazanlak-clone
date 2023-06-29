@@ -8,6 +8,11 @@ import { useContext, useState } from 'react';
 import useUpdatePharmacie from '../../hooks/useUpdatePharmacie';
 import useDeletePharmacie from '../../hooks/useDeletePharmacie';
 import useImagesUploader from '../../hooks/useUploadImages';
+import useWorkingTime from '../../hooks/useWorkingTime';
+
+import { AuthContext } from '../../context/AuthContext';
+
+import { GOOGLE_MAPS_API_KEY } from '../../../api';
 
 import { getPharmacie } from '../../services/apiPharmacies';
 
@@ -21,11 +26,7 @@ import InputsWrapper from '../../ui/InpusWrapper';
 import setChangedValue from '../../utils/changeValueHandler';
 import createNewData from '../../utils/createNewData';
 
-import { AuthContext } from '../../context/AuthContext';
-
-import { GOOGLE_MAPS_API_KEY } from '../../../api';
 import ChoiceButtons from '../../components/AddNewPharmacie/ChoiceButtons';
-import useWorkingTime from '../../hooks/useWorkingTime';
 import UploadImagesContainer from '../../components/AddNewPharmacie/UploadImagesContainer';
 
 const libaries = ['places'];

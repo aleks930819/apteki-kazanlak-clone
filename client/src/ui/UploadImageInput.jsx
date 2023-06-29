@@ -16,7 +16,11 @@ const UploadImageInput = ({
       <label htmlFor={id} className="mb-2 font-bold text-gray-700">
         {label}
       </label>
-      {image && <img src={image} alt="image" className="h-[200px] w-[200px]" />}
+      <div className="relative h-[200px] w-[200px]">
+        {image && (
+          <img src={image} alt="image" className="h-full w-full object-center" />
+        )}
+      </div>
       <label
         htmlFor={id}
         className="mt-4 inline-flex cursor-pointer items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2"

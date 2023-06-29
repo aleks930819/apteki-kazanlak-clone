@@ -5,11 +5,10 @@ const PharmacieBanner = ({ name, mainImage }) => {
     backgroundPosition: 'top 15% center',
   };
 
-
   return (
     <figure
       style={figStyle}
-      className=" relative h-[35vh]  w-full bg-no-repeat sm:h-[55vh]"
+      className="relative h-[35vh]  w-full bg-no-repeat sm:h-[55vh]"
     >
       <div className=" flex w-full max-w-lg  justify-center  "></div>
 

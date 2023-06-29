@@ -5,12 +5,12 @@ import { useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
-import { login } from '../../services/apiAuth';
-
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 
 import { AuthContext } from '../../context/AuthContext';
-import Spinner from '../../ui/Spinner';
+
+import { login } from '../../services/apiAuth';
+
 import ButtonSpinner from '../../ui/ButtonSpinner';
 
 const LoginScreen = () => {
