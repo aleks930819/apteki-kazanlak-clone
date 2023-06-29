@@ -32,7 +32,7 @@ const Header = () => {
     <div className="mb-14 sm:mb-20">
       <header
         className="header-shadow fixed
-       left-0
+       left-0  
       top-0 z-[100] flex h-14 w-[100%] justify-center bg-white px-[2px] sm:h-20
       "
       >
