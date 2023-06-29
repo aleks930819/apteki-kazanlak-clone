@@ -9,6 +9,7 @@ const ActionForm = ({
   deletingLoading,
   onDeleteAction,
 }) => {
+  
   const handleDelete = (deleteMessage) => {
     const shouldDelete = window.confirm(deleteMessage);
     if (shouldDelete) {

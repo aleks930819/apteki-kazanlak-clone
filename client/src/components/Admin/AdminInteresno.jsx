@@ -7,6 +7,7 @@ import { BsPencilSquare } from 'react-icons/bs';
 import { getNews } from '../../services/apiInteresting';
 
 import Table from '../../ui/Table';
+import formatDate from '../../utils/formatDate';
 
 const tableColumns = [
   { label: 'Заглавие на статията', dataKey: 'title' },
@@ -43,16 +44,14 @@ const AdminInteresno = () => {
 
   let tableData = [];
 
-  console.log(news);
-
   if (news) {
     tableData = [
-      ...news.map((news) => ({
-        _id: news._id,
-        slug: news.slug,
-        title: news.title,
-        date: news.createdAt,
-        image: news.image.url,
+      ...news.map((newsItem) => ({
+        _id: newsItem._id,
+        slug: newsItem.slug,
+        title: newsItem.title,
+        date: formatDate(newsItem.createdAt), // Format the date
+        image: newsItem.image.url,
       })),
     ];
   }

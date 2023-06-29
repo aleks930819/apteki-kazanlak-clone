@@ -97,13 +97,15 @@ const AddNewPharmacieScreen = () => {
     ) {
       return toast.error('Моля попълнете всички полета!');
     }
-    addPharmacie(newData);
+
+    if (newData) {
+      addPharmacie(newData);
+    }
   };
 
   const changeHandler = (e) => {
     setChangedValue(e, setValues);
   };
-
 
   return (
     <ActionForm

@@ -14,7 +14,7 @@ const useDeletePharmacie = (slug, user) => {
         queryKey: ['pharmacies'],
       });
 
-      toast.success('Аптеката е изтрит успешно!');
+      toast.success('Аптеката е изтрита успешно!');
       navigate('/admin/pharmacies');
     },
     onError: (error) => toast.error(error.message),

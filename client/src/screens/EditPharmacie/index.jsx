@@ -161,7 +161,9 @@ const EditPharmacieScreen = () => {
       selectedChoices
     );
 
-    updatePharmacie(newData);
+    if (newData) {
+      updatePharmacie(newData);
+    }
   };
 
   const changeHandler = (e) => {
