@@ -31,13 +31,7 @@ import UploadImagesContainer from '../../components/AddNewPharmacie/UploadImages
 const libaries = ['places'];
 
 const EditPharmacieScreen = () => {
-  const { slug } = useParams();
-  const { user } = useContext(AuthContext);
-
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: GOOGLE_MAPS_API_KEY,
-    libraries: libaries,
-  });
+  const [selectedChoices, setSelectedChoices] = useState([]);
 
   const [values, setValues] = useState({
     name: '',
@@ -53,7 +47,23 @@ const EditPharmacieScreen = () => {
     secondaryImage: '',
     managerImage: '',
     pharmacieImages: [],
-    workingWith: [],
+  });
+
+  const { slug } = useParams();
+  const { user } = useContext(AuthContext);
+
+  const { editingLoading, updatePharmacie } = useUpdatePharmacie(slug, user);
+  const { deletePharmacie, deletingLoading } = useDeletePharmacie(slug, user);
+  const { images, handleImagesUpload, isLoadingImageUpload } =
+    useImagesUploader();
+
+  const { isLoading, data } = useQuery(['pharmacies', slug], () =>
+    getPharmacie(slug)
+  );
+
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: GOOGLE_MAPS_API_KEY,
+    libraries: libaries,
   });
 
   let initialWorkingTime = {
@@ -74,8 +84,6 @@ const EditPharmacieScreen = () => {
   const { workingTime, setWorkingTime, handleChangeWorkingTime } =
     useWorkingTime(initialWorkingTime);
 
-  const [selectedChoices, setSelectedChoices] = useState([]);
-
   const handleChoiceClick = (choice) => {
     if (selectedChoices.includes(choice)) {
       setSelectedChoices(selectedChoices.filter((c) => c !== choice));
@@ -83,15 +91,6 @@ const EditPharmacieScreen = () => {
       setSelectedChoices([...selectedChoices, choice]);
     }
   };
-
-  const { editingLoading, updatePharmacie } = useUpdatePharmacie(slug, user);
-  const { deletePharmacie, deletingLoading } = useDeletePharmacie(slug, user);
-  const { images, handleImagesUpload, isLoadingImageUpload } =
-    useImagesUploader();
-
-  const { isLoading, data } = useQuery(['pharmacies', slug], () =>
-    getPharmacie(slug)
-  );
 
   if (isLoading) {
     return <Spinner />;
@@ -144,6 +143,8 @@ const EditPharmacieScreen = () => {
         close: workingHours.sunday[1],
       },
     });
+
+    setSelectedChoices(workingWith);
   }
 
   const handleSubmit = async (e) => {
