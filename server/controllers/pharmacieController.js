@@ -49,6 +49,7 @@ export const createPharmacy = asyncHandler(async (req, res) => {
     secondaryImage,
     mainImage,
     pharmacieImages,
+    frontImage,
     workingWith,
     googleMap,
   } = req.body;
@@ -65,6 +66,7 @@ export const createPharmacy = asyncHandler(async (req, res) => {
     !managerImage ||
     !secondaryImage ||
     !mainImage ||
+    !frontImage ||
     !workingWith ||
     !pharmacieImages ||
     !googleMap
@@ -91,6 +93,7 @@ export const createPharmacy = asyncHandler(async (req, res) => {
     secondaryImage,
     mainImage,
     workingWith,
+    frontImage,
     pharmacieImages,
     googleMap,
   });
@@ -146,10 +149,12 @@ export const updatePharmacy = asyncHandler(async (req, res) => {
     secondaryImage,
     managerImage,
     pharmacieImages,
+    frontImage,
     workingWith,
   } = req.body;
 
   const pharmacy = await Pharmacie.findOne({ slug: req.params.slug });
+
 
   if (pharmacy) {
     pharmacy.name = name || pharmacy.name;
@@ -162,6 +167,7 @@ export const updatePharmacy = asyncHandler(async (req, res) => {
     pharmacy.managerDescription =
       managerDescription || pharmacy.managerDescription;
     pharmacy.mainImage = mainImage || pharmacy.mainImage;
+    pharmacy.frontImage = frontImage;
     pharmacy.secondaryImage = secondaryImage || pharmacy.secondaryImage;
     pharmacy.managerImage = managerImage || pharmacy.managerImage;
     pharmacy.pharmacieImages = pharmacieImages || pharmacy.pharmacieImages;

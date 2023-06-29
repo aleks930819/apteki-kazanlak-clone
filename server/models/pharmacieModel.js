@@ -34,6 +34,10 @@ const pharmacieSchema = mongoose.Schema({
     url: { type: String, required: true },
     filename: { type: String, required: true },
   },
+  frontImage: {
+    url: { type: String, required: true },
+    filename: { type: String, required: true },
+  },
   pharmacieImages: [
     {
       url: { type: String, required: true },
