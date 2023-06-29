@@ -12,13 +12,12 @@ import MobileHeaderLinks from './MobileHeaderLinks';
 import useIsDekstopView from '../../hooks/useIsDekstopView';
 
 import HamburgerMenu from '../../ui/HamburgerMenu';
-import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [isDekstopView] = useIsDekstopView();
 
-  const { isOpen, handleMenu } = useContext(MobileNavMenuContext);
+  const { isOpen } = useContext(MobileNavMenuContext);
   const { user } = useContext(AuthContext);
 
   const handleDropdownOpen = () => {
