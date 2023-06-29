@@ -17,6 +17,10 @@ const useImagesUploader = () => {
       url: '',
       filename: '',
     },
+    frontImage: {
+      url: '',
+      filename: '',
+    },
     pharmaciesImage1: {
       url: '',
       filename: '',

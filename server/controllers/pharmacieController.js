@@ -167,7 +167,7 @@ export const updatePharmacy = asyncHandler(async (req, res) => {
     pharmacy.managerDescription =
       managerDescription || pharmacy.managerDescription;
     pharmacy.mainImage = mainImage || pharmacy.mainImage;
-    pharmacy.frontImage = frontImage;
+    pharmacy.frontImage = frontImage || pharmacy.frontImage;
     pharmacy.secondaryImage = secondaryImage || pharmacy.secondaryImage;
     pharmacy.managerImage = managerImage || pharmacy.managerImage;
     pharmacy.pharmacieImages = pharmacieImages || pharmacy.pharmacieImages;

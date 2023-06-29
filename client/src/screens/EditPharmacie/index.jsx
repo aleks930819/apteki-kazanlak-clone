@@ -47,6 +47,7 @@ const EditPharmacieScreen = () => {
     mainImage: '',
     secondaryImage: '',
     managerImage: '',
+    frontImage: '',
     pharmacieImages: [],
   });
 
@@ -111,6 +112,7 @@ const EditPharmacieScreen = () => {
     managerImage,
     pharmacieImages,
     workingWith,
+    frontImage = '',
   } = data;
 
   if (!values.name) {
@@ -128,6 +130,7 @@ const EditPharmacieScreen = () => {
       managerImage,
       pharmacieImages,
       workingWith,
+      frontImage,
     });
 
     setWorkingTime({

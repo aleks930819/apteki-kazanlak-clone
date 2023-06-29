@@ -37,6 +37,15 @@ const UploadImagesContainer = ({
         isLoading={isLoading}
         imageName="managerImage"
       />
+      <UploadImageInput
+        id="frontImage"
+        label="Снимка на аптеката"
+        handleFileChange={handleImagesUpload}
+        image={images?.frontImage.url || values?.frontImage.url}
+        disabled={isLoading}
+        isLoading={isLoading}
+        imageName="frontImage"
+      />
 
       <UploadImageInput
         id="pharmaciesImage-1"

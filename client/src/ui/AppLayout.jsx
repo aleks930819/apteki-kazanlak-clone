@@ -1,9 +1,11 @@
 import { Outlet, useLocation } from 'react-router-dom';
 
+import { MobileNavMenuProvider } from '../context/MenuCloseContext';
+
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+
 import ScrollToTop from '../utils/scrollToTop';
-import { MobileNavMenuProvider } from '../context/MenuCloseContext';
 
 import '../index.css';
 
