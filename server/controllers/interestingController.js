@@ -1,6 +1,6 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import News from '../models/newsModel.js';
-import deleteImage from '../utils/deleteImage.js';
+import cloudinary from '../config/cloudinaryConfig.js';
 
 // @desc    Fetch all news
 // @route   GET /api/interesting
@@ -67,9 +67,14 @@ export const deleteNews = asyncHandler(async (req, res) => {
     return res.status(404).json({ message: 'Статията не е намерена' });
   }
 
+  const imageFileName = isNewsExist.image.filename;
+
+  if (imageFileName) {
+    await cloudinary.uploader.destroy(imageFileName);
+  }
+
   await News.deleteOne({ slug: req.params.slug });
 
-  deleteImage(isNewsExist.image.filename);
   res.json({ message: 'Статията е премахната' });
 });
 
@@ -86,6 +91,12 @@ export const editNews = asyncHandler(async (req, res) => {
     news.description = description || news.description;
     news.image = image || news.image;
     news.summary = summary || news.summary;
+
+    const isNewsExist = await News.findOne({ title: title });
+
+    if (isNewsExist) {
+      return res.status(400).json({ message: 'Статията вече съществува' });
+    }
 
     const updatedNews = await news.save();
     res.status(200).json(updatedNews);

@@ -1,11 +1,29 @@
 import { getGeocode, getLatLng } from 'use-places-autocomplete';
+import { toast } from 'react-hot-toast';
+
+const geocodeAddress = async (address) => {
+  try {
+    const geocode = await getGeocode({ address });
+    const { lat, lng } = getLatLng(geocode[0]);
+    return { lat, lng };
+  } catch (error) {
+    throw new Error('Моля въведете валиден адрес!');
+  }
+};
 
 const createNewData = async (data, images, workingTime, selectedChoices) => {
   const address = `${data.city} ${data.street}`;
-  const geocode = await getGeocode({ address });
+  let lat = 0;
+  let lng = 0;
 
-
-  const { lat, lng } = getLatLng(geocode[0]);
+  try {
+    const { lat: newLat, lng: newLng } = await geocodeAddress(address);
+    lat = newLat;
+    lng = newLng;
+  } catch (error) {
+    toast.error(error.message);
+    return null;
+  }
 
   const newData = {
     ...data,

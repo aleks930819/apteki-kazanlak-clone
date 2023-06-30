@@ -69,12 +69,12 @@ const EditNewsScreen = () => {
       heading="Редактирай статия"
       buttonName="Редактирай"
       onSubmit={handleSubmit}
-      isLoading={editingLoading}
+      isLoading={editingLoading || isLoadingImageUpload || deletingLoading}
       onDeleteAction={deleteNews}
       isDeleting={deletingLoading}
       deleteButton={'Изтрий'}
     >
-      <div className="grid grid-cols-2 gap-x-10">
+      <div className="grid w-full grid-cols-1 gap-x-10 lg:grid-cols-2">
         <InputField
           type="text"
           label="Залгавие на статията"
@@ -106,6 +106,7 @@ const EditNewsScreen = () => {
         handleFileChange={handleImagesUpload}
         image={images?.mainImage.url || values?.image.url}
         imageName="mainImage"
+        isLoading={isLoadingImageUpload}
       />
     </ActionForm>
   );

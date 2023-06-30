@@ -5,10 +5,10 @@ const HamburgerMenu = () => {
   const { isOpen, handleMenu } = useContext(MobileNavMenuContext);
 
   const hamburgerLine =
-    'h-1 w-10 my-1 rounded-full bg-primary transition ease transform duration-300';
+    'h-[3px] w-[35px] my-[3px] rounded-full bg-primary transition ease transform duration-300';
   return (
     <div
-      className="visible absolute right-4 top-2 space-y-1 lg:hidden"
+      className="visible absolute right-2 top-1 space-y-1 lg:hidden"
       onClick={handleMenu}
     >
       <button
@@ -17,7 +17,7 @@ const HamburgerMenu = () => {
       >
         <div
           className={`${hamburgerLine} ${
-            isOpen ? 'opacity-1 translate-y-3 rotate-45 ' : ''
+            isOpen ? 'opacity-1 translate-y-[9px] rotate-45 ' : ''
           }`}
         />
         <div
@@ -25,7 +25,7 @@ const HamburgerMenu = () => {
         />
         <div
           className={`${hamburgerLine} ${
-            isOpen ? 'opacity-1 -translate-y-3 -rotate-45 ' : 'opacity-1 '
+            isOpen ? 'opacity-1 -translate-y-[9px] -rotate-45 ' : 'opacity-1 '
           }`}
         />
       </button>

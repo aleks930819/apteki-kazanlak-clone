@@ -63,7 +63,7 @@ const AddNewNews = () => {
       onSubmit={handleSubmit}
       isLoading={addingNewNewsLoading || isLoadingImageUpload}
     >
-      <div className="grid grid-cols-2 gap-x-10">
+      <div className="grid grid-cols-1 w-full lg:grid-cols-2 gap-x-10">
         <InputField
           type="text"
           label="Залгавие на статията"
@@ -83,13 +83,6 @@ const AddNewNews = () => {
           onChange={changeHandler}
         />
       </div>
-      <UploadImageInput
-        id="image"
-        label="Снимка"
-        handleFileChange={handleImagesUpload}
-        image={images?.mainImage.url}
-        imageName="mainImage"
-      />
 
       <TextAreaField
         label="Описание"
@@ -98,6 +91,13 @@ const AddNewNews = () => {
         value={values.description}
         required
         onChange={changeHandler}
+      />
+      <UploadImageInput
+        id="image"
+        label="Снимка"
+        handleFileChange={handleImagesUpload}
+        image={images?.mainImage.url}
+        imageName="mainImage"
       />
     </ActionForm>
   );

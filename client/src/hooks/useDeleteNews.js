@@ -4,13 +4,13 @@ import { useNavigate } from 'react-router-dom';
 
 import { deleteNewsBySlug } from '../services/apiInteresting';
 
-const useDeleteNews = (slug,user) => {
+const useDeleteNews = (slug, user) => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
   const { isLoading: deletingLoading, mutate: deleteNews } = useMutation({
-    mutationFn: () => deleteNewsBySlug(slug,user.token),
-    onSuccess: () => {
+    mutationFn: () => deleteNewsBySlug(slug, user.token),
+    onSuccess: async () => {
       queryClient.invalidateQueries({
         queryKey: ['news'],
       });

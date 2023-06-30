@@ -10,7 +10,7 @@ const useUpdateNews = (slug, user) => {
   const navigate = useNavigate();
   const { isLoading: editingLoading, mutate: updateNews } = useMutation({
     mutationFn: (data) => updateNewsBySlug(data, slug, user.token),
-    onSuccess: () => {
+    onSuccess: async () => {
       queryClient.invalidateQueries({
         queryKey: ['news'],
       });

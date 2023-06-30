@@ -161,7 +161,9 @@ const EditPharmacieScreen = () => {
       selectedChoices
     );
 
-    updatePharmacie(newData);
+    if (newData) {
+      updatePharmacie(newData);
+    }
   };
 
   const changeHandler = (e) => {
@@ -173,6 +175,7 @@ const EditPharmacieScreen = () => {
       heading="Редактирай информация за аптека"
       buttonName="Редактирай"
       onSubmit={handleSubmit}
+      isLoading={editingLoading || isLoadingImageUpload || deletingLoading}
       editingLoading={editingLoading}
       deletingLoading={deletingLoading}
       onDeleteAction={deletePharmacie}

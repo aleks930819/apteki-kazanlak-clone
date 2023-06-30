@@ -5,6 +5,10 @@
 @tailwind utilities;
 
 @layer utilities {
+  .t-shadow {
+    text-shadow: 1px 1px #232c64;
+  }
+
   .promo-card-left:before {
     content: '';
     position: absolute;

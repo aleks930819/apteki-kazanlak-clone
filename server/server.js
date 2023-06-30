@@ -1,4 +1,3 @@
-import path from 'path';
 import express from 'express';
 import connectDB from './config/db.js';
 import bodyParser from 'body-parser';
@@ -8,7 +7,7 @@ import cors from 'cors';
 import errorHandler from './middleware/errorHandler.js';
 
 import promoProductRoutes from './routes/promoProductRoute.js';
-import interestingRoute from './routes/interestingRoute.js';
+import newsRoute from './routes/newsRoute.js';
 import pharmacieRoute from './routes/phramcieRoute.js';
 import userRoute from './routes/userRoute.js';
 import uploadsRoute from './routes/uploadRoute.js';
@@ -36,32 +35,12 @@ app.use(cors());
 // app.use(limiter);
 
 app.use('/api/promo', promoProductRoutes);
-app.use('/api/interesting', interestingRoute);
+app.use('/api/interesting', newsRoute);
 app.use('/api/pharmacies', pharmacieRoute);
 app.use('/api/auth', userRoute);
 app.use('/api/uploads', uploadsRoute);
 
 app.use(errorHandler);
-
-// const __dirname = path.resolve();
-
-// const clientDistPath = path.join(__dirname, '../client/dist');
-
-// app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
-
-// app.listen(PORT, () =>
-//   console.log(`Server running on port: http://localhost:${PORT}`)
-// );
-
-// if (process.env.NODE_ENV === 'production') {
-//   app.use(express.static(clientDistPath));
-
-//   console.log(clientDistPath);
-//   console.log(PORT);
-//   app.get('*', (req, res) => {
-//     res.sendFile(path.resolve(clientDistPath, 'index.html'));
-//   });
-// }
 
 app.listen(PORT, () =>
   console.log(`Server running on port: http://localhost:${PORT}`)

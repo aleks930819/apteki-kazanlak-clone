@@ -1,7 +1,7 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import Pharmacie from '../models/pharmacieModel.js';
 
-import deleteImage from '../utils/deleteImage.js';
+import cloudinary from '../config/cloudinaryConfig.js';
 
 // @desc    Fetch all pharmacies
 // @route   GET /api/pharmacies
@@ -110,23 +110,27 @@ export const deletePharmacy = asyncHandler(async (req, res) => {
   const isPharmacyExist = await Pharmacie.findOne({ slug: req.params.slug });
 
   if (!isPharmacyExist) {
-    return res.status(404).json({ message: 'Pharmacy not found' });
+    return res.status(404).json({ message: 'Аптеката не е намеренa' });
   }
 
-  if (isPharmacyExist) {
-    isPharmacyExist.pharmacieImages.map((image) => {
-      deleteImage(image.filename);
-    });
+  if (isPharmacyExist.mainImage.filename) {
+    const imageFiles = [
+      isPharmacyExist.mainImage.filename,
+      isPharmacyExist.secondaryImage.filename,
+      isPharmacyExist.managerImage.filename,
+      isPharmacyExist.frontImage.filename,
+      ...isPharmacyExist.pharmacieImages.map((image) => image.filename),
+    ];
 
-    deleteImage(isPharmacyExist.mainImage.filename);
-    deleteImage(isPharmacyExist.secondaryImage.filename);
-    deleteImage(isPharmacyExist.managerImage.filename);
+    for (const filename of imageFiles) {
+      await cloudinary.uploader.destroy(filename);
+    }
   }
 
   const pharmacy = await Pharmacie.deleteOne({ slug: req.params.slug });
 
   if (pharmacy) {
-    res.json({ message: 'Pharmacy removed' });
+    res.json({ message: 'Аптеката е успешно премахната' });
   } else {
     res.status(404).json({ message: 'Аптеката не е намерена' });
   }
@@ -155,7 +159,6 @@ export const updatePharmacy = asyncHandler(async (req, res) => {
 
   const pharmacy = await Pharmacie.findOne({ slug: req.params.slug });
 
-
   if (pharmacy) {
     pharmacy.name = name || pharmacy.name;
     pharmacy.address = address || pharmacy.address;
@@ -172,6 +175,12 @@ export const updatePharmacy = asyncHandler(async (req, res) => {
     pharmacy.managerImage = managerImage || pharmacy.managerImage;
     pharmacy.pharmacieImages = pharmacieImages || pharmacy.pharmacieImages;
     pharmacy.workingWith = workingWith || pharmacy.workingWith;
+
+    const isPharmacyExist = await Pharmacie.findOne({ name: name });
+
+    if (isPharmacyExist) {
+      return res.status(400).json({ message: 'Аптеката вече съществува!' });
+    }
 
     const updatedPharmacy = await pharmacy.save();
 
