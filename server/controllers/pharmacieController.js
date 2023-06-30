@@ -176,6 +176,12 @@ export const updatePharmacy = asyncHandler(async (req, res) => {
     pharmacy.pharmacieImages = pharmacieImages || pharmacy.pharmacieImages;
     pharmacy.workingWith = workingWith || pharmacy.workingWith;
 
+    const isPharmacyExist = await Pharmacie.findOne({ name: name });
+
+    if (isPharmacyExist) {
+      return res.status(400).json({ message: 'Аптеката вече съществува!' });
+    }
+
     const updatedPharmacy = await pharmacy.save();
 
     res.status(200).json(updatedPharmacy);

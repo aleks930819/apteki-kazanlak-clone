@@ -97,6 +97,12 @@ export const editPromoProduct = asyncHandler(async (req, res) => {
     promoProduct.newPrice = newPrice || promoProduct.newPrice;
     promoProduct.description = description || promoProduct.description;
 
+    const isPromoProductExist = await PromoProduct.findOne({ name: name });
+
+    if (isPromoProductExist) {
+      return res.status(400).json({ message: 'Продуктът вече съществува!' });
+    }
+
     const updatedPromoProduct = await promoProduct.save();
     res.status(200).json(updatedPromoProduct);
   } else {

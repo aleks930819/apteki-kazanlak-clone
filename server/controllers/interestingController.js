@@ -92,6 +92,12 @@ export const editNews = asyncHandler(async (req, res) => {
     news.image = image || news.image;
     news.summary = summary || news.summary;
 
+    const isNewsExist = await News.findOne({ title: title });
+
+    if (isNewsExist) {
+      return res.status(400).json({ message: 'Статията вече съществува' });
+    }
+
     const updatedNews = await news.save();
     res.status(200).json(updatedNews);
   } else {
